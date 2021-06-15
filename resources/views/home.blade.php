@@ -3,35 +3,34 @@
 @section('title', 'Home')
 
 @section('content')
-    <section id="slider" class="slider">
-        @include('_partials.slider2')
+    <section id="header" class="header">
+        <div id="slider" class="slider">
+            @include('_partials.slider')
+        </div>
+
+        <div class="navigation">
+            @include('_partials.navbar')
+            @include('_partials.menu')
+        </div>
     </section>
 
-    {{-- <nav class="navbar">
-        @include('_partials.navbar')
-    </nav> --}}
+    <section id="services" class="services">
+        @include('_partials.services')
+    </section>
 
-    {{-- <section id="about" class="about">
-        @include('_partials.about')
-    </section> --}}
+    <section id="history" class="history">
+        @include('_partials.history')
+    </section>
 
-    {{-- <section id="tour" class="tour">
-        @include('_partials.tour')
-    </section> --}}
+    <section id="partners" class="partners">
+        @include('_partials.partners')
+    </section>
 
-    {{-- <section id="news" class="news">
-        @include('_partials.news')
-    </section> --}}
-
-    {{-- <section id="music" class="music">
-        @include('_partials.music')
-    </section> --}}
-
-    {{-- <section id="contact" class="contact">
+    <section id="contact" class="contact">
         @include('_partials.contact')
-    </section> --}}
+    </section>
 
-    {{-- <footer class="footer">
+    <footer class="footer">
         @include('_partials.footer')
-    </footer> --}}
+    </footer>
 @endsection

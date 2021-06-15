@@ -1,3 +1,6 @@
 require('./bootstrap');
-// require('./slider');
-require('./slider2');
+require('./slider');
+require('./navigation');
+
+// BORRAR
+// require('./test');

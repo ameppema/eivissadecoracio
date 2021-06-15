@@ -1,0 +1,40 @@
+.trigger-menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    z-index: 2;
+    background: #9e91f2;
+    transition: transform 0.4s;
+}
+
+.page-header .trigger-menu {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.page-header .trigger-menu svg {
+    fill: white;
+    margin-right: 8px;
+}
+
+.page-main section {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.scroll-down .trigger-menu-wrapper {
+    transform: translate3d(0, -100%, 0);
+}
+
+.scroll-up .trigger-menu-wrapper {
+    transform: none;
+}

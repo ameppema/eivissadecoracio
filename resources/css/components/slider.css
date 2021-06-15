@@ -1,20 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    background: #333;
-    color: #fff;
-    line-height: 1.6;
-}
-
 .slider {
-    position: relative;
+    position: absolute;
     overflow: hidden;
     height: 100vh;
     width: 100vw;
@@ -30,132 +15,137 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0;
-    /* transition: opacity 0.2s ease-in-out; */
 }
 
 .slide.current {
     opacity: 1;
 }
 
-.slide .slide__info {
-    /* position: absolute; */
-    /* bottom: 50%; */
-    /* left: -25%; */
-    /* opacity: 0; */
-    /* background-color: black; */
-    /* padding: 35px; */
-    width: 750px;
-    display: inline-block;
-    color: white;
+.slide__overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #00000025;
+}
+
+.slide__info {
+    margin: 0 60px;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
+    z-index: 1;
 }
 
-.slide .slide__info h1 {
-    font-size: 45px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    /* margin-bottom: 10px; */
-}
-
-.slide.current .slide__info {
-    opacity: 1;
-    /* transform: translateX(600px); */
-    /* transition: all 0.2s ease-in-out 0.2s; */
-    text-align: center;
-}
-
-.slide__line {
-    display: inline-block;
-    width: 70%;
-    height: 4px;
-    background-color: #FFCC33;
+.slide__title {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2rem;
+    border-bottom: 3px solid #FFCC33;
 }
 
 .slide__text {
-    display: inline-block;
-    width: 70%;
-    font-weight: 400;
+    line-height: 1.2rem;
 }
 
-.buttons button#next {
+button:focus {
+    outline: none !important;
+}
+
+.prev {
     position: absolute;
-    top: 40%;
-    right: 15px;
+    top: 85%;
+    left: 20%;
 }
 
-.buttons button#next:hover {
-    transform: scale(1.3);
+.prev.open {
+    display: none;
 }
 
-.buttons button#prev {
+.prev svg {
+    max-width: 70%;
+    width: 50px;
+    height: auto;
+    fill: #fff;
+}
+
+.next {
     position: absolute;
-    top: 40%;
-    left: 15px;
+    top: 85%;
+    right: 20%;
 }
 
-.buttons button#prev:hover {
-    transform: scale(1.3);
+.next.open {
+    display: none;
 }
 
-.buttons button {
-    border: 2px solid #fff;
-    background-color: transparent;
-    color: #fff;
-    cursor: pointer;
-    padding: 13px 15px;
-    border-radius: 50%;
-    outline: none;
+.next svg {
+    max-width: 70%;
+    width: 50px;
+    height: auto;
+    fill: #fff;
 }
 
-.buttons button:hover {
-    background-color: #fff;
-    color: #333;
+@media (min-width: 768px) {
+    .slide__info {
+        margin: 0 200px;
+    }
+
+    .slide__title {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+
+    .slide__text {
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
 }
 
-@media (max-width: 500px) {
-    .slide .slide__info {
-        bottom: -300px;
-        left: 0;
+@media (min-width: 1280px) {
+    .slide__overlay {
         width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #0000005a;
     }
 
-    .slide.current .slide__info {
-        transform: translateY(-300px);
+    .slide__info {
+        margin: 0 400px;
+    }
+
+    .prev, .next {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 5px;
+        background-color: #ffffff;
+    }
+
+    .prev:hover, .next:hover {
+        background-color: black;
+    }
+
+    .prev svg, .next svg {
+        width: 35px;
+        fill: #535353;
+    }
+
+    .prev svg:hover, .next svg:hover {
+        fill: #ffffff;
+    }
+
+    .prev {
+        top: 47%;
+        left: 80px;
+        width: 45px;
+        height: 45px;
+    }
+
+    .next {
+        top: 47%;
+        right: 80px;
+        width: 45px;
+        height: 45px;
     }
 }
-
-/* Backgorund Images */
-.slide:first-child {
-    background: url('/images/slide1.jpg') no-repeat
-        center top/cover;
-}
-.slide:nth-child(2) {
-    background: url('/images/slide2.jpg')
-        no-repeat center top/cover;
-}
-.slide:nth-child(3) {
-    background: url('/images/slide3.jpg')
-        no-repeat center top/cover;
-}
-.slide:nth-child(4) {
-    background: url('/images/slide4.jpg')
-        no-repeat center top/cover;
-}
-.slide:nth-child(5) {
-    background: url('/images/slide5.jpg')
-        no-repeat center top/cover;
-}
-.slide:nth-child(6) {
-    background: url('/images/slide6.jpg') no-repeat
-        center center/cover;
-}
-.slide:nth-child(7) {
-    background: url('/images/slide7.jpg') no-repeat
-        center center/cover;
-}
-.slide:nth-child(8) {
-    background: url('/images/slide8.jpg') no-repeat
-        center center/cover;
-}
-

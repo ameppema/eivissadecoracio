@@ -1,0 +1,112 @@
+.navigation {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: auto;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.navigation.exposed {
+    background-color: #000000c0;
+}
+
+.block__scroll {
+    overflow: hidden;
+}
+
+.navbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 1;
+    background-color: #fff;
+    box-shadow: 0 0 10px #0000005c;
+}
+
+.navbar__hide {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.logo {
+    width: 100px;
+}
+
+.hamburguer {
+    width: 30px;
+    height: 30px;
+}
+
+/* Hamburguer Button */
+.hamburguer-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    appearance: none;
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.hamburguer-line__one,
+.hamburguer-line__two,
+.hamburguer-line__three,
+.hamburguer-line__four {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: black;
+    border-radius: 2px;
+    transition: transform .2s ease-in-out;
+}
+
+.hamburguer-line__one {
+    transform: translateY(-8px);
+}
+
+.hamburguer-line__four {
+    transform: translateY(8px);
+}
+
+/* Hamburguer Animation */
+.hamburguer-btn.open .hamburguer-line__one {
+    transform: translateY(0);
+    background: transparent;
+}
+
+.hamburguer-btn.open .hamburguer-line__four {
+    transform: translateY(0);
+    background: transparent;
+}
+
+.hamburguer-btn.open .hamburguer-line__two {
+    transform: rotate(45deg);
+}
+
+.hamburguer-btn.open .hamburguer-line__three {
+    transform: rotate(-45deg);
+}
+
+@media (min-width: 1280px) {
+    .navigation {
+        position: relative;
+        padding: 40px 80px;
+    }
+
+    .hamburguer {
+        display: none;
+    }
+}

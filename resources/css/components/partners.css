@@ -1,0 +1,79 @@
+.partners__brands {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+}
+
+.partners__info {
+    width: 150px;
+    margin: 0 auto;
+    color: black;
+    font-family: 'Montserrat';
+    text-align: center;
+    line-height: 20px;
+}
+
+.partners__title {
+    margin: 20px auto 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2rem;
+    border-bottom: 3px solid #FFCC33;
+}
+
+.partners__text {
+    margin: 5px auto;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.partners__brands img {
+    width: 80px;
+    margin: 5px 10px;
+}
+
+.partners__brands img:last-child {
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .partners__info {
+        margin: 45px auto 5px;
+        width: 200px;
+    }
+
+    .partners__title {
+        padding-bottom: 5px;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 30px;
+        border-bottom: 3px solid #ffcc33;
+    }
+
+    .partners__text {
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    .partners__brands {
+        padding: 10px 50px;
+    }
+
+    .partners__brands img {
+        width: 120px;
+        margin: 10px 30px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .partners__info {
+        width: 300px;
+    }
+
+    .partners__brands img {
+        width: 170px;
+        height: 80px;
+        margin: 20px 40px;
+    }
+}
