@@ -45,3 +45,7 @@ Route::get('parquets', function () {
 // Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
 
 Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
