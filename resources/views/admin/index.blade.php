@@ -1,1 +1,11 @@
-<h1>'Hola desde el Admin Home controller'</h1>
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
+
+@section('content')
+    <p>Bienvenido a este Hermoso admin panel.</p>
+@stop

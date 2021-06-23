@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => false,
-    'use_full_favicon' => false,
+    'use_full_favicon' =>  false,
 
     /*
     |--------------------------------------------------------------------------
@@ -42,15 +42,16 @@ return [
     |
     | For detailed instructions you can look the logo section here:
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
-    |
+    | vendor/adminlte/dist/img/AdminLTELogo.png
+    img-classes  img-circle elevation-3
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>Eivissa</b>ADM',
+    'logo_img' => 'images\navbar\ibiza_decoracio.png',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Eivissa Decoración',
 
     /*
     |--------------------------------------------------------------------------
