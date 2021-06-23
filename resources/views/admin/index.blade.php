@@ -1,0 +1,1 @@
+<h1>'Hola desde el Admin Home controller'</h1>
