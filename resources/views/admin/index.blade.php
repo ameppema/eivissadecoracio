@@ -1,11 +1,25 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', ' Eivissa')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <div class="page-header">
+    <h1>Panel de Administración Eivisa | <small>Gestor de la Pagina</small></h1>
+    </div>
 @stop
 
 @section('content')
-    <p>Bienvenido a este Hermoso admin panel.</p>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Bienvenido a este Hermoso admin panel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @stop
