@@ -30,12 +30,35 @@
                                     <label for="imagen" class="form-label">Imagen</label>
                                     <input class="form-control" type="file" id="imagen-slide" name="imagen">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="imagen" class="form-label">Imagen Version Movil</label>
+                                    <input class="form-control" type="file" id="imagen-slide-movil" name="imagen-movil">
+                                </div>
 
                                 <br>
 
                                 <x-adminlte-button type="submit" label="Agregar al Slide" theme="primary"/>
                         </form>
 
+                    </div>
+                </div>
+
+                <!-- Start SlideShow -->
+                <div class="card">
+                    <div class="card-body">
+                    <section id="pinBoot">
+                        @foreach($slide as $slideItem)
+
+                        <article class="white-panel">
+                        <img src="http://eivissadecoracio.test/storage/{{$slideItem->imagen}}" alt="imagen slider">
+                            <h4><a href="#">{{$slideItem->titulo}}</a></h4>
+                            <p>
+                            {{$slideItem->descripcion}}
+                            </p>
+                        </article>
+                        
+                        @endforeach
+                    </section>
                     </div>
                 </div>
             </div>

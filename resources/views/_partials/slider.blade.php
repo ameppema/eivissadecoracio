@@ -98,7 +98,7 @@
 </div>
 
  -->
-<div class="slider">
+<!-- <div class="slider">
     <div class="slide current" style="background: url('/images/slider/slide_lg_01.jpg') no-repeat
     center top/cover;">
         <div class="slide__info">
@@ -187,6 +187,21 @@
             </p>
         </div>
     </div>
+</div> -->
+
+
+<div class="slider">
+
+    <div class="slide" style="background: url('/images/slider/slide_lg_08.jpg') no-repeat center top/cover;">
+        <div class="slide__info">
+            <h2 class="slide__title">Think big.</h2>
+
+            <p class="slide__text">
+                When it comes to transit, it's always a good idea to think big.
+            </p>
+        </div>
+    </div>
+
 </div>
 
 <button id="prev" class="prev">

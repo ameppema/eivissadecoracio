@@ -16,7 +16,9 @@ class SlideController extends Controller
      */
     public function index()
     {
-        return view('admin.modules.slider');
+        $slide = DB::select('SELECT * FROM slide');
+
+        return view('admin.modules.slider')->with('slide', $slide);
     }
 
     /**
@@ -53,7 +55,7 @@ class SlideController extends Controller
             'imagen'    => $rutaImg
         ]);
 
-        return redirect('slide');
+        return redirect('admin/slide');
     }
 
     /**
