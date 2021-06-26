@@ -155,18 +155,22 @@ button:focus {
     fill: #535353;
   }
 
-  .prev svg:hover, .next svg:hover {
+  .prev:hover svg, .next:hover svg {
     fill: #ffffff;
   }
 
   .prev {
     top: 47%;
     left: 80px;
+    width: 45px;
+    height: 45px;
   }
 
   .next {
     top: 47%;
     right: 80px;
+    width: 45px;
+    height: 45px;
   }
 }
 
