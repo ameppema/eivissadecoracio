@@ -15,7 +15,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <p>Bienvenido a este Hermoso admin panel.</p>
+                            <p>Bienvenido a tu admin panel.</p>
                         </div>
                     </div>
                 </div>

@@ -44,15 +44,18 @@ class SlideController extends Controller
             'titulo' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
             'imagen' => ['required', 'image'],
+            'imagen-movil' => ['required', 'image'],
         ]);
 
         // Guardar imagen del slide
         $rutaImg = $request['imagen']->store('slide', 'public');
+        $rutaImgMovil = $request['imagen-movil']->store('slide', 'public');
 
         DB::table('slide')->insert([
             'titulo'    => $datos['titulo'],
             'descripcion'=> $datos['descripcion'],
-            'imagen'    => $rutaImg
+            'imagen'    => $rutaImg,
+            'imagen_movil'    => $rutaImgMovil
         ]);
 
         return redirect('admin/slide');
@@ -77,7 +80,10 @@ class SlideController extends Controller
      */
     public function edit(Slide $slide)
     {
-        //
+        //Devuelve la informacion del modal
+        $slide = Slide::find($slide);
+
+        return $slide;
     }
 
     /**

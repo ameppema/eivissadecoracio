@@ -15,15 +15,28 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        
+
+                    {{-- Mostrando Errores --}}
+                    @if($errors->any())
+                    <x-adminlte-alert class="bg-red " icon="fa-lg fas fa-exclamation-circle" title="Error en el Formulario" dismissable>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    </x-adminlte-alert>
+                    
+                    @endif
+
+                        <!-- Formulario para agregar un elemento al slider -->
                         <form action="" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <x-adminlte-input name="titulo" label="Titulo" placeholder="Titulo"
-                                    fgroup-class="col-4" disable-feedback/>
+                                    fgroup-class="col-4" disable-feedback value="{{old('titulo')}}"/>
     
                                 <x-adminlte-input name="descripcion" label="Descripcion" placeholder="..."
-                                    fgroup-class="col-6" disable-feedback/>
+                                    fgroup-class="col-6" disable-feedback value="{{old('descripcion')}}"/>
                                 
                             </div>
                                 <div class="mb-3">
@@ -31,7 +44,7 @@
                                     <input class="form-control" type="file" id="imagen-slide" name="imagen">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="imagen" class="form-label">Imagen Version Movil</label>
+                                    <label for="imagen-movil" class="form-label">Imagen Version Movil</label>
                                     <input class="form-control" type="file" id="imagen-slide-movil" name="imagen-movil">
                                 </div>
 
@@ -46,29 +59,7 @@
                 <!-- Start SlideShow -->
                 <div class="card">
                     <div class="card-body">
-                        @foreach($slide as $slideItem)
-                        {{--
-                        <article class="white-panel">
-                        <img src="http://eivissadecoracio.test/storage/{{$slideItem->imagen}}" alt="imagen slider">
-                            <h4><a href="#">{{$slideItem->titulo}}</a></h4>
-                            <p>
-                            {{$slideItem->descripcion}}
-                            </p>
-                        </article>
-                        --}}
                         
-                            <!-- <div class="card bg-dark text-white" >
-                                <img src="http://eivissadecoracio.test/storage/{{$slideItem->imagen}}" class="card-img" alt="...">
-                                <div class="card-img-overlay">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text">Last updated 3 mins ago</p>
-                                </div>
-                            </div> -->
-                        
-
-                        @endforeach
-
                         <!-- Tabla de imagenes en el slider -->
 
                         <table class="table">
@@ -86,13 +77,13 @@
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{ $slideItem->titulo }}</td>
-                                    <td class="w-25"><img src="http://eivissadecoracio.test/storage/{{$slideItem->imagen}}" class="card-img" alt="..."></td>
+                                    <td class="w-25"><img src="http://eivissadecoracio.test/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
                                     <td>{{$slideItem->descripcion}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning" id="btn-editar-slideItem"><i class="fas fa-pencil-alt"></i></button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCustom" data-slideid="{{$slideItem->id}}" ><i class="fas fa-pencil-alt"></i></button>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-danger" id="btn-borrar-slideItem"><i class="fas fa-trash-alt"></i></button>
+                                        <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -105,4 +96,71 @@
         </div>
     </div>
 </section>
+
+{{-- Modal para editar slide --}}
+<x-adminlte-modal id="modalCustom" title="Editar Elemento del Slider" size="xl" theme="dark"
+    icon="fas fa-bell" v-centered static-backdrop scrollable>
+
+    <div>
+            <!-- Formulario Modal para Editar un elemento al slider -->
+            <form action="" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <x-adminlte-input name="titulo" label="Titulo" placeholder="Titulo"
+                                    fgroup-class="col-4" disable-feedback value="{{old('titulo')}}" id="modal-titulo"/>
+    
+                                <x-adminlte-input name="descripcion" label="Descripcion" placeholder="..."
+                                    fgroup-class="col-6" disable-feedback value="{{old('descripcion')}}" id="modal-desc" />
+                                
+                            </div>
+                                <div class="mb-3">
+                                    <label for="imagen" class="form-label">Imagen</label>
+                                    <input class="form-control" type="file" id="imagen-slide-modal" name="imagen">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagen-movil" class="form-label">Imagen Version Movil</label>
+                                    <input class="form-control" type="file" id="imagen-slide-movil-modal" name="imagen-movil">
+                                </div>
+
+                                <br>
+
+                                <x-adminlte-button type="submit" label="Agregar al Slide" theme="primary"/>
+                        </form>
+    </div>
+
+    <x-slot name="footerSlot">
+        <x-adminlte-button class="mr-auto" theme="success" label="Aceptar"/>
+        <x-adminlte-button theme="danger" label="Cerrar" data-dismiss="modal"/>
+    </x-slot>
+
+</x-adminlte-modal>
+@stop
+
+@section('js')
+
+    <script type="application/javascript">
+        $(document).ready(() => {
+            //Varibales
+            let inpTitulo = $('#modal-titulo');
+            let inpDesc = $('#modal-desc');
+
+            
+            // Peticion Asincrona para editar elementos
+            $.ajax({
+                url : 'http://eivissadecoracio.test/admin/slide/1/edit',
+                data: {},
+                type: 'GET',
+                success: function(data){
+                    if(data.success){
+                        console.log(data[0]);
+                    }
+                },
+                error: function(error){
+                    console.log({error})
+                    console.log({'error msg': error.responseJSON.message})
+                }
+            });
+        })
+    </script>
+
 @stop

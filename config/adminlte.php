@@ -226,22 +226,22 @@ return [
     */
 
     'menu' => [
-        // Navbar items:
-        [
+        // Navbar top items:
+        /* [
             'type'         => 'navbar-search',
             'text'         => 'Buscar',
             'topnav_right' => true,
-        ],
+        ], */
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
-        [
+        /* [
             'type' => 'sidebar-menu-search',
             'text' => 'Buscar',
-        ],
+        ], */
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -249,8 +249,8 @@ return [
         ],
         [
             'text'        => 'Dashborad',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
+            'url'         => 'admin',
+            'icon'        => 'fas fa-landmark',
             'label'       => 4,
             'label_color' => 'success',
         ],
@@ -260,7 +260,7 @@ return [
             'url'  => 'admin/slide',
             'icon' => 'far fa-images',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Cuenta de usuario [En proceso]'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -308,22 +308,6 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 
