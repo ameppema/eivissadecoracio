@@ -18,7 +18,7 @@ class SlideController extends Controller
     {
         $slide = DB::select('SELECT * FROM slide');
 
-        return view('admin.modules.slider')->with('slide', $slide);
+        return view('admin.modules.slider')->with(['slide' => $slide]);
     }
 
     /**
