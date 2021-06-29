@@ -32,9 +32,9 @@ prev.addEventListener("click", e => {
 
 // Repoblando las imagenes con sus versiones moviles
 $(window).on('DOMContentLoaded', function(){
-    console.log('Jquery disponible');
-    alert(1)
-
+    console.log(slides);
+    console.log(slides[0].style);
+    
 let width = $(window).width();
 let heigth = $(window).height();
 
@@ -48,7 +48,7 @@ let heigth = $(window).height();
         success: function(data){
             if(data){
                 
-                /*  */console.log(data[0].titulo); //Debug
+                // console.log(data[0].titulo); //Debug
 
                 $('#modal-titulo').val(data[0].titulo);
                 $('#modal-desc').val(data[0].descripcion);

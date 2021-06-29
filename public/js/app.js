@@ -1994,8 +1994,8 @@ prev.addEventListener("click", function (e) {
 }); // Repoblando las imagenes con sus versiones moviles
 
 $(window).on('DOMContentLoaded', function () {
-  console.log('Jquery disponible');
-  alert(1);
+  console.log(slides);
+  console.log(slides[0].style);
   var width = $(window).width();
   var heigth = $(window).height(); // console.log(`Ancho de la ventana: ${width} . Alto de la ventana: ${heigth}`) //Debug
   // Peticion Asincrona para editar elementos
@@ -2006,9 +2006,7 @@ $(window).on('DOMContentLoaded', function () {
     type: 'GET',
     success: function success(data) {
       if (data) {
-        /*  */
-        console.log(data[0].titulo); //Debug
-
+        // console.log(data[0].titulo); //Debug
         $('#modal-titulo').val(data[0].titulo);
         $('#modal-desc').val(data[0].descripcion);
       }

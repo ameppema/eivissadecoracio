@@ -101,35 +101,48 @@
 <x-adminlte-modal id="modalCustom" title="Editar Elemento del Slider" size="xl" theme="dark"
     icon="fas fa-bell" v-centered static-backdrop scrollable>
 
-    <div>
+    <div class="container">
             <!-- Formulario Modal para Editar un elemento al slider -->
-            <form action="" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <x-adminlte-input name="titulo" label="Titulo" placeholder="Titulo"
-                                    fgroup-class="col-4" disable-feedback value="{{old('titulo')}}" id="modal-titulo"/>
-    
-                                <x-adminlte-input name="descripcion" label="Descripcion" placeholder="..."
-                                    fgroup-class="col-6" disable-feedback value="{{old('descripcion')}}" id="modal-desc" />
-                                
-                            </div>
-                                <div class="mb-3">
-                                    <label for="imagen" class="form-label">Imagen</label>
-                                    <input class="form-control" type="file" id="imagen-slide-modal" name="imagen">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagen-movil" class="form-label">Imagen Version Movil</label>
-                                    <input class="form-control" type="file" id="imagen-slide-movil-modal" name="imagen-movil">
-                                </div>
+            <form action="" method="post" enctype="multipart/form-data" id="Form-Edit">
+                @csrf
+                @method('put')
+                <div class="row">
+                    <x-adminlte-input name="titulo" label="Titulo" placeholder="Titulo"
+                        fgroup-class="col-4" disable-feedback value="{{old('titulo')}}" id="modal-titulo"/>
 
-                                <br>
+                    <x-adminlte-input name="descripcion" label="Descripcion" placeholder="..."
+                        fgroup-class="col-6" disable-feedback value="{{old('descripcion')}}" id="modal-desc" />
+                    
+                </div>
+                    
+                    <div>
 
-                                <x-adminlte-button type="submit" label="Agregar al Slide" theme="primary"/>
-                        </form>
+                        <p class="h3">Imagen Anterior</p>
+                        <img class="img-fluid w-50" src="" alt="Imagen anterior Slide" id="oldImgDesk">
+
+                        <div class="mb-3">
+                            <label for="imagen" class="h2">Subir Imagen Nueva</label>
+                            <input class="form-control w-50" type="file" id="imagen-slide-modal" name="imagenNueva">
+                        </div>
+
+                        <p class="h3">Imagen Movil Anterior</p>
+                        <img class="img-fluid w-25" src="" alt="Imagen anterior Slide" id="oldImgMovil">
+
+                        <div class="mb-3">
+                            <label for="imagenMovilNueva" class="form-label h2">Subir Imagen Version Movil Nueva</label>
+                            <input class="form-control w-50" type="file" id="imagen-slide-movil-modal" name="imagenMovilNueva">
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <x-adminlte-button type="submit" label="Agregar al Slide" theme="primary"/>
+            </form>
     </div>
 
     <x-slot name="footerSlot">
-        <x-adminlte-button class="mr-auto" theme="success" label="Aceptar"/>
+        <x-adminlte-button type="submit" class="mr-auto" theme="success" label="Aceptar" id="EnviarModalEditar"/>
         <x-adminlte-button theme="danger" label="Cerrar" data-dismiss="modal"/>
     </x-slot>
 
@@ -137,28 +150,18 @@
 @stop
 
 @section('js')
-    <script type="application/javascript">
-        $(document).ready(() => {
-            /*  Obtener id del item a editar  */
-            const editTable = $('#table-edit');
+<script type="application/javascript">
 
-            /* Campos a Editar */
-            const InpTitulo = $('#modal-titulo');
-            const InpDesc = $('#modal-desc');
+    const URL_BASE = 'http://eivissadecoracio.test/admin/slide/'
+
+        $(document).ready(() => {
 
             // Obteniendo datos a editar
-            editTable.on('click', function(e) {
+            $('#table-edit').on('click', function(e) {
                 let _target = e.target;
-
-                let width = $(window).width();
-                let heigth = $(window).height();
-                
-                // console.log(`Ancho de la ventana: ${width} . Alto de la ventana: ${heigth}`) //Debug
 
                 if(_target.classList.contains('btn-warning') | _target.classList.contains('fa-pencil-alt'))
                 {
-                    // console.log(_target.getAttribute('data-slideid')) //Debug
-
                     let SlideId = _target.getAttribute('data-slideid')
                     // Peticion Asincrona para editar elementos
                     $.ajax({
@@ -166,12 +169,15 @@
                         data: {},
                         type: 'GET',
                         success: function(data){
-                            if(data){
-                                
-                                // console.log(data[0].titulo); //Debug
+                            if(data){      
+                                console.log(data[0]); //Debug
+
+                                $('#Form-Edit').attr('action', 'http://eivissadecoracio.test/admin/slide/' + data[0].id)
 
                                 $('#modal-titulo').val(data[0].titulo);
                                 $('#modal-desc').val(data[0].descripcion);
+                                $('#oldImgDesk').attr('src' , 'http://eivissadecoracio.test/storage/' + data[0].imagen);
+                                $('#oldImgMovil').attr('src' , 'http://eivissadecoracio.test/storage/' + data[0].imagen_movil);
                             }
                         },
                         error: function(error){
@@ -179,11 +185,13 @@
                             console.log({'error msg': error.responseJSON.message})
                         }
                     });
-
                 }
             });
 
+            $('#EnviarModalEditar').on('click', function(){
+                $('#Form-Edit').submit();
+            })
         })
-    </script>
+</script>
 
 @stop
