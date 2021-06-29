@@ -72,7 +72,7 @@
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="table-edit">
                                 @foreach($slide as $slideItem)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
@@ -80,7 +80,7 @@
                                     <td class="w-25"><img src="http://eivissadecoracio.test/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
                                     <td>{{$slideItem->descripcion}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCustom" data-slideid="{{$slideItem->id}}" ><i class="fas fa-pencil-alt"></i></button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCustom" data-slideid="{{$slideItem->id}}" ><i class="fas fa-pencil-alt" data-slideid="{{$slideItem->id}}"></i></button>
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
@@ -137,29 +137,52 @@
 @stop
 
 @section('js')
-
     <script type="application/javascript">
         $(document).ready(() => {
-            //Varibales
-            let inpTitulo = $('#modal-titulo');
-            let inpDesc = $('#modal-desc');
+            /*  Obtener id del item a editar  */
+            const editTable = $('#table-edit');
 
-            
-            // Peticion Asincrona para editar elementos
-            $.ajax({
-                url : 'http://eivissadecoracio.test/admin/slide/1/edit',
-                data: {},
-                type: 'GET',
-                success: function(data){
-                    if(data.success){
-                        console.log(data[0]);
-                    }
-                },
-                error: function(error){
-                    console.log({error})
-                    console.log({'error msg': error.responseJSON.message})
+            /* Campos a Editar */
+            const InpTitulo = $('#modal-titulo');
+            const InpDesc = $('#modal-desc');
+
+            // Obteniendo datos a editar
+            editTable.on('click', function(e) {
+                let _target = e.target;
+
+                let width = $(window).width();
+                let heigth = $(window).height();
+                
+                // console.log(`Ancho de la ventana: ${width} . Alto de la ventana: ${heigth}`) //Debug
+
+                if(_target.classList.contains('btn-warning') | _target.classList.contains('fa-pencil-alt'))
+                {
+                    // console.log(_target.getAttribute('data-slideid')) //Debug
+
+                    let SlideId = _target.getAttribute('data-slideid')
+                    // Peticion Asincrona para editar elementos
+                    $.ajax({
+                        url : 'http://eivissadecoracio.test/admin/slide/'+SlideId+'/edit',
+                        data: {},
+                        type: 'GET',
+                        success: function(data){
+                            if(data){
+                                
+                                // console.log(data[0].titulo); //Debug
+
+                                $('#modal-titulo').val(data[0].titulo);
+                                $('#modal-desc').val(data[0].descripcion);
+                            }
+                        },
+                        error: function(error){
+                            console.log({error})
+                            console.log({'error msg': error.responseJSON.message})
+                        }
+                    });
+
                 }
             });
+
         })
     </script>
 

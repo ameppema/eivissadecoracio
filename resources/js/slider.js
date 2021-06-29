@@ -29,3 +29,36 @@ next.addEventListener("click", e => {
 prev.addEventListener("click", e => {
     prevSlide();
 });
+
+// Repoblando las imagenes con sus versiones moviles
+$(window).on('DOMContentLoaded', function(){
+    console.log('Jquery disponible');
+    alert(1)
+
+let width = $(window).width();
+let heigth = $(window).height();
+
+// console.log(`Ancho de la ventana: ${width} . Alto de la ventana: ${heigth}`) //Debug
+
+    // Peticion Asincrona para editar elementos
+    $.ajax({
+        url : 'http://eivissadecoracio.test/admin/slide/1/edit',
+        data: {},
+        type: 'GET',
+        success: function(data){
+            if(data){
+                
+                /*  */console.log(data[0].titulo); //Debug
+
+                $('#modal-titulo').val(data[0].titulo);
+                $('#modal-desc').val(data[0].descripcion);
+            }
+        },
+        error: function(error){
+            console.log({error})
+            console.log({'error msg': error.responseJSON.message})
+        }
+    });
+
+
+})

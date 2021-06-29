@@ -1991,6 +1991,37 @@ next.addEventListener("click", function (e) {
 });
 prev.addEventListener("click", function (e) {
   prevSlide();
+}); // Repoblando las imagenes con sus versiones moviles
+
+$(window).on('DOMContentLoaded', function () {
+  console.log('Jquery disponible');
+  alert(1);
+  var width = $(window).width();
+  var heigth = $(window).height(); // console.log(`Ancho de la ventana: ${width} . Alto de la ventana: ${heigth}`) //Debug
+  // Peticion Asincrona para editar elementos
+
+  $.ajax({
+    url: 'http://eivissadecoracio.test/admin/slide/1/edit',
+    data: {},
+    type: 'GET',
+    success: function success(data) {
+      if (data) {
+        /*  */
+        console.log(data[0].titulo); //Debug
+
+        $('#modal-titulo').val(data[0].titulo);
+        $('#modal-desc').val(data[0].descripcion);
+      }
+    },
+    error: function error(_error) {
+      console.log({
+        error: _error
+      });
+      console.log({
+        'error msg': _error.responseJSON.message
+      });
+    }
+  });
 });
 
 /***/ }),
