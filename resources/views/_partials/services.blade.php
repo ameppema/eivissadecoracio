@@ -13,10 +13,11 @@
         </div>
     </a>
 </div>
-
+<!-- 
 <div class="service__card">
     <a href="/">
         <img class="service__image" src="/images/services/service_02.jpg" alt="">
+
         <div class="service__info">
             <h3 class="service__title">Rehabilitacion.</h3>
 
@@ -32,6 +33,7 @@
 <div class="service__card">
     <a href="/">
         <img class="service__image" src="/images/services/service_03.jpg" alt="">
+
         <div class="service__info">
             <h3 class="service__title">Interiores.</h3>
 
@@ -47,6 +49,7 @@
 <div class="service__card">
     <a href="/">
         <img class="service__image" src="/images/services/service_04.jpg" alt="">
+
         <div class="service__info">
             <h3 class="service__title">Cocinas.</h3>
 
@@ -87,4 +90,4 @@
             <button class="service__button">Click</button>
         </div>
     </a>
-</div>
+</div> -->
