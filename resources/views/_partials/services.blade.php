@@ -13,6 +13,13 @@
         </div>
     </a>
 </div>
+@php
+$services = array(
+    'title' => 'Obras y Reformas.', 'link' => ''
+    'desc' => 'Nunc ultricies libero sed tellus tincidunt..',
+    'img' => '/images/services/service_01.jpg',
+)
+@endphp
 <!-- 
 <div class="service__card">
     <a href="/">
