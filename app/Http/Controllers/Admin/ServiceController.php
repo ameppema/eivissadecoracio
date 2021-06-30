@@ -17,7 +17,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('admin.modules.services');
+
+        $service = DB::select('SELECT * FROM services');
+        return view('admin.modules.services', compact('service'));
     }
 
     /**
@@ -42,7 +44,6 @@ class ServiceController extends Controller
         $datos = request()->validate([
             'titulo' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
-            'enlace' => ['string', 'max:255'],
             'imagen' => ['required', 'image']
         ]);
 
@@ -52,7 +53,7 @@ class ServiceController extends Controller
         // Guardando datos en la BD
         DB::table('services')->insert([
             'titulo'    => $datos['titulo'],
-            'descrpcion'=> $datos['descripcion'],
+            'descripcion'=> $datos['descripcion'],
             'enlace'    => $datos['enlace'] ?? $enlace,
             'imagen'    => $rutaImg
         ]);
