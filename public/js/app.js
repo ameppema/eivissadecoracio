@@ -1855,11 +1855,6 @@ __webpack_require__(/*! ./navigation */ "./resources/js/navigation.js");
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
 
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js").default;
@@ -1948,7 +1943,10 @@ window.onscroll = function () {
 /*!********************************!*\
   !*** ./resources/js/slider.js ***!
   \********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+var _require = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js"),
+    Alert = _require.Alert;
 
 var slides = document.querySelectorAll(".slide");
 var next = document.querySelector("#next");
@@ -1981,6 +1979,41 @@ next.addEventListener("click", function (e) {
 });
 prev.addEventListener("click", function (e) {
   prevSlide();
+}); // Repoblando las imagenes con sus versiones moviles
+
+$(window).on('DOMContentLoaded', function () {
+  console.log(slides); //Trabajando con los media querys
+
+  var window_size = window.matchMedia('(max-width: 1280px)'); // Detectando la vista movil
+
+  if (window_size.matches) {
+    // alert('usar imagenes responsive!!!')
+    slides.forEach(function (slide, index) {
+      //Leyendo al ruta de la imagen movil
+      var imgM = slides[index].getAttribute('data-img-movil');
+      console.log(imgM, index);
+      slides[index].setAttribute('style', imgM + ' no-repeat center top/cover;');
+    });
+  } else {
+    // alert('No usar imagenes responsive!!!')
+    console.log(slides[index].getAttribute('data-img-movil'));
+  } // En caso de que se Redimensione la pantalla
+
+
+  $(window).on('resize', function () {
+    if (window_size.matches) {
+      // alert('usar imagenes responsive!!!')
+      slides.forEach(function (slide, index) {
+        //Leyendo al ruta de la imagen movil
+        var imgM = slides[index].getAttribute('data-img-movil');
+        console.log(imgM, index);
+        slides[index].setAttribute('style', imgM + ' no-repeat center top/cover;');
+      });
+    } else {
+      // alert('No usar imagenes responsive!!!')
+      console.log(slides[0].getAttribute('data-img-movil'));
+    }
+  });
 });
 
 /***/ }),

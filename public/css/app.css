@@ -174,88 +174,6 @@ button:focus {
   }
 }
 
-.slide:nth-child(1) {
-  background: url('/images/slider/slide_xs_01.jpg') no-repeat
-center top/cover;
-}
-
-.slide:nth-child(2) {
-  background: url('/images/slider/slide_xs_02.jpg') no-repeat
-center top/cover;
-}
-
-.slide:nth-child(3) {
-  background: url('/images/slider/slide_xs_03.jpg') no-repeat
-center top/cover;
-}
-
-.slide:nth-child(4) {
-  background: url('/images/slider/slide_xs_04.jpg') no-repeat
-center top/cover;
-}
-
-.slide:nth-child(5) {
-  background: url('/images/slider/slide_xs_05.jpg') no-repeat
-center top/cover;
-}
-
-.slide:nth-child(6) {
-  background: url('/images/slider/slide_xs_06.jpg') no-repeat
-center top/cover;
-}
-
-.slide:nth-child(7) {
-  background: url('/images/slider/slide_xs_07.jpg') no-repeat
-center top/cover;
-}
-
-.slide:nth-child(8) {
-  background: url('/images/slider/slide_xs_08.jpg') no-repeat
-center top/cover;
-}
-
-@media (min-width: 1280px) {
-  .slide:nth-child(1) {
-    background: url('/images/slider/slide_lg_01.jpg') no-repeat
-    center top/cover;
-  }
-
-  .slide:nth-child(2) {
-    background: url('/images/slider/slide_lg_02.jpg') no-repeat
-    center top/cover;
-  }
-
-  .slide:nth-child(3) {
-    background: url('/images/slider/slide_lg_03.jpg') no-repeat
-    center top/cover;
-  }
-
-  .slide:nth-child(4) {
-    background: url('/images/slider/slide_lg_04.jpg') no-repeat
-    center top/cover;
-  }
-
-  .slide:nth-child(5) {
-    background: url('/images/slider/slide_lg_05.jpg') no-repeat
-    center top/cover;
-  }
-
-  .slide:nth-child(6) {
-    background: url('/images/slider/slide_lg_06.jpg') no-repeat
-    center top/cover;
-  }
-
-  .slide:nth-child(7) {
-    background: url('/images/slider/slide_lg_07.jpg') no-repeat
-    center top/cover;
-  }
-
-  .slide:nth-child(8) {
-    background: url('/images/slider/slide_lg_08.jpg') no-repeat
-    center top/cover;
-  }
-}
-
 .navigation {
   position: fixed;
   top: 0;
@@ -1186,6 +1104,8 @@ center top/cover;
 .scroll-up .trigger-menu-wrapper {
   transform: none;
 }
+
+/* @import "components/slider_images"; */
 
 /* BORRAR */
 

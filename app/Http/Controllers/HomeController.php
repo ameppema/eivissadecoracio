@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Admin\SlideController;
 use Illuminate\Http\Request;
 use App\Models\Slide;
+use App\Models\Service;
 
 class HomeController extends Controller
 {
@@ -25,9 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Trallendo el Slide desde el admin
+        // trayendo el Slide desde el admin
         $slider = Slide::all();
+        $services = Service::all();
 
-        return view('home')->with(['slider' => $slider]);
+        return view('home')->with(['slider' => $slider, 'service' => $services]);
     }
 }
