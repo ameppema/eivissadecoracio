@@ -34,8 +34,12 @@
     transition: opacity 0.5s ease-in-out;
 }
 
-.logo {
+.logo-mobile {
     width: 100px;
+}
+
+.logo-desktop {
+    display: none;
 }
 
 .hamburguer {
@@ -52,7 +56,6 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
-
     appearance: none;
     background: none;
     outline: none;
@@ -108,5 +111,28 @@
 
     .hamburguer {
         display: none;
+    }
+
+    .navbar {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        font-family: 'Montserrat', sans-serif;
+        opacity: 1;
+        background-color: inherit;
+        box-shadow: inherit;
+    }
+
+    .logo-mobile {
+        display: none;
+    }
+    
+    .logo-desktop {
+        display: inline-block;
+        width: 300px;
     }
 }

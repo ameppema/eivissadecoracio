@@ -1898,6 +1898,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   \************************************/
 /***/ (() => {
 
+// Hamburguer button
 var hamburguer_btn = document.querySelector('.hamburguer-btn');
 hamburguer_btn.addEventListener('click', function () {
   if (hamburguer_btn) {
@@ -1911,24 +1912,13 @@ hamburguer_btn.addEventListener('click', function () {
     prev.classList.toggle('open');
     next.classList.toggle('open'); // Menu Slide
 
-    var menu = document.querySelector('.menu');
+    var menu = document.querySelector('.menu-mobile');
     menu.classList.toggle('open'); // Block Scroll
 
     var body = document.querySelector('body');
     body.classList.toggle('block__scroll');
   }
-}); // const menuBtn = document.querySelector('.hamburguer-btn');
-// let menuOpen = false;
-// menuBtn.addEventListener('click', () => {
-//     if(!menuOpen) {
-//         menuBtn.classList.add('open');
-//         menuOpen = true;
-//     } else {
-//         menuBtn.classList.remove('open');
-//         menuOpen = false;
-//     }
-// });
-// Navbar Hide
+}); // Navbar Hide
 
 var lastScroll = 0;
 

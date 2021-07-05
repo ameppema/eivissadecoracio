@@ -1,7 +1,13 @@
 <div class="navbar">
-    <div class="logo">
+    <div class="logo-mobile">
         <a href="/">
             <img src="/images/navbar/ibiza_decoracio.png" alt="Eivissa Decoracio Logo">
+        </a>
+    </div>
+    
+    <div class="logo-desktop">
+        <a href="/">
+            <img src="/images/navbar/ibizaDecoracio_white.png" alt="Eivissa Decoracio Logo">
         </a>
     </div>
 

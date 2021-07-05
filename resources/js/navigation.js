@@ -1,3 +1,4 @@
+// Hamburguer button
 const hamburguer_btn = document.querySelector('.hamburguer-btn');
 
 hamburguer_btn.addEventListener('click', () => {
@@ -14,7 +15,7 @@ hamburguer_btn.addEventListener('click', () => {
         next.classList.toggle('open');
 
         // Menu Slide
-        const menu = document.querySelector('.menu');
+        const menu = document.querySelector('.menu-mobile');
         menu.classList.toggle('open');
 
         // Block Scroll
@@ -22,19 +23,6 @@ hamburguer_btn.addEventListener('click', () => {
         body.classList.toggle('block__scroll');
     }
 });
-
-
-// const menuBtn = document.querySelector('.hamburguer-btn');
-// let menuOpen = false;
-// menuBtn.addEventListener('click', () => {
-//     if(!menuOpen) {
-//         menuBtn.classList.add('open');
-//         menuOpen = true;
-//     } else {
-//         menuBtn.classList.remove('open');
-//         menuOpen = false;
-//     }
-// });
 
 
 // Navbar Hide
