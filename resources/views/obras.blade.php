@@ -5,7 +5,7 @@
 @section('content')
     <section id="header" class="header">
         <div id="slider" class="slider">
-            @include('_partials.slider')
+            {{--@include('_partials.slider')--}}
         </div>
 
         <div class="navigation">
@@ -15,7 +15,7 @@
     </section>
 
     <section id="services" class="services">
-        @include('_partials.services')
+        {{--@include('_partials.services')--}}
     </section>
 
     <section id="history" class="history">

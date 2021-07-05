@@ -35,7 +35,6 @@
 
                     <br>
 
-                    <x-adminlte-button type="submit" label="Agregar al Slide" theme="primary"/>
             </form>
     </div>
 

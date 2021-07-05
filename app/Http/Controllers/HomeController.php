@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Trallendo el Slide desde el admin
+        // trayendo el Slide desde el admin
         $slider = Slide::all();
         $services = Service::all();
 

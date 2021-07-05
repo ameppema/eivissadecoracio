@@ -147,7 +147,7 @@ return [
     */
 
     'sidebar_mini' => 'lg',
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
@@ -227,21 +227,10 @@ return [
 
     'menu' => [
         // Navbar top items:
-        /* [
-            'type'         => 'navbar-search',
-            'text'         => 'Buscar',
-            'topnav_right' => true,
-        ], */
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
-        // Sidebar items:
-        /* [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Buscar',
-        ], */
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
@@ -251,19 +240,38 @@ return [
             'text'        => 'Dashborad',
             'url'         => 'admin',
             'icon'        => 'fas fa-landmark',
-            'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'Gestores'],
+        ['header' => 'Modulos'],
         [
-            'text' => 'Gestor del Slider',
+            'text' => 'Slider',
             'url'  => 'admin/slide',
             'icon' => 'far fa-images',
         ],
         [
-            'text' => 'Gestor Servicios',
-            'url'  => 'admin/services',
-            'icon' => 'far fa-images',
+            'text' => 'Menu',
+            'url'  => 'admin/category_menu',
+            'icon' => 'fas fa-list-ul',
+        ],
+        [
+            'text' => 'Servicios',
+            'url'  => 'admin/module/services',
+            'icon' => 'fas fa-briefcase',
+        ],
+        [
+            'text' => 'Historia',
+            'url'  => 'admin/module/history',
+            'icon' => 'fas fa-book',
+        ],
+        [
+            'text' => 'Obras',
+            'url'  => 'admin/module/construction',
+            'icon' => 'fas fa-hard-hat',
+        ],
+        [
+            'text' => 'Interiores',
+            'url'  => 'admin/module/interiors',
+            'icon' => 'fas fa-house-user',
         ],
         ['header' => 'Cuenta de usuario [En proceso]'],
         [

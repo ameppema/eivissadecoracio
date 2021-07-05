@@ -19,7 +19,8 @@
 </div>
 @endif
 
-<!-- Formulario para agregar un elemento al slider -->
+<!-- Formulario para agregar un elemento -->
+<p class="h1">Contenido en Inicio</p>
 <form action="" method="post" enctype="multipart/form-data">
     @csrf
     <div class="row">
@@ -27,29 +28,31 @@
         <div class="mb-3 col-4">
             <label for="titulo" class="form-label">Titulo</label>
             <input type="text" class="form-control" id="titulo" name="titulo"
-                placeholder="Texto principal" value="{{old('titulo')}}">
+                placeholder="Titulo..." value="{{old('titulo')}}">
         </div>
 
         <div class="mb-3 col-8">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcion"
+            <label for="subtitulo" class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="subtitulo" name="subtitulo"
                 placeholder="..." value="{{old('descripcion')}}">
         </div>
-
-
-        <div class="mb-3 col-4">
-            <label for="enlace" class="form-label">Enlace</label>
-            <input type="text" class="form-control" id="enlace" name="enlace"
-                placeholder="Enlace a donde ira al hacer click" value="{{old('enlace')}}">
-        </div>
         
-    </div>
         <div class="mb-3">
-            <label for="imagen" class="form-label">Imagen</label>
-            <input class="form-control" type="file" id="imagen-slide" name="imagen">
+            <label for="imagen" class="form-label">Imagen Principal</label>
+            <input class="form-control" type="file" id="imagen-slide" name="imagen-principal">
         </div>
-
-        <br>
-
-        <button type="submit" class="btn btn-primary">Agregar servicio</button>
+    </div>
+    
+    <p class="h2">Contenido en la pagina</p>
+    
+    <div class="form-group w-75">
+        <label for="fisrt_text">Texto Principal</label>
+        <textarea class="form-control" id="fisrt_text" rows="3" name="fisrt_text"></textarea>
+    </div>
+    <div class="form-group w-75">
+        <label for="second_text">Texto Secundario</label>
+        <textarea class="form-control" id="second_text" rows="3" name="second_text"></textarea>
+    </div>
+    <br>
+        <button type="submit" class="btn btn-primary">Agregar a <span class="text-capitalize">{{$module_name}}</span></button>
 </form>

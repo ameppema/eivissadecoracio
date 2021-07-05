@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ModuleController;
+use App\Http\Controllers\Admin\MenuController;
 
 Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
@@ -13,6 +15,17 @@ Route::post('/slide', [SlideController::class, 'store'])->name('admin.slide.stor
 Route::get('/slide/{slide}/edit', [SlideController::class, 'edit'])->name('admin.slide.edit');
 Route::put('/slide/{slide}', [SlideController::class, 'update'])->name('admin.slide.update');
 
+/* Menu routes */
+Route::get('/category_menu', [MenuController::class, 'index'])->name('admin.menu');
+Route::post('/category_menu', [MenuController::class, 'store'])->name('admin.menu.store');
+Route::put('/category_menu/sort', [MenuController::class, 'sortMenu'])->name('admin.menu.sort');
+Route::put('/category_menu/edit/{id}', [MenuController::class, 'update'])->name('admin.menu.update');
+Route::delete('/category_menu/delete/{id}', [MenuController::class, 'destroy'])->name('admin.menu.destroy');
+
 /* Services routes */
 Route::get('/services', [ServiceController::class, 'index'])->name('admin.service');
 Route::post('/services', [ServiceController::class, 'store'])->name('admin.store');
+
+// Pages managment routes test
+Route::get('/module/{name}', [ModuleController::class, 'index'])->name('admin.module');
+Route::post('/module/{name}/{id}', [ModuleController::class, 'store'])->name('admin.module.store');

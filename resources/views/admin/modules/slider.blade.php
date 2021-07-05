@@ -44,8 +44,6 @@
 @section('js')
 <script type="application/javascript">
 
-    const URL_BASE = 'http://eivissadecoracio.test/admin/slide/'
-
         $(document).ready(() => {
             // Obteniendo datos a actualizar
             $('#table-edit').on('click', function(e) {
@@ -56,18 +54,18 @@
                     let SlideId = _target.getAttribute('data-slideid')
                     // Peticion Asincrona para actualizar elementos
                     $.ajax({
-                        url : 'http://eivissadecoracio.test/admin/slide/'+SlideId+'/edit',
+                        url : 'slide/'+SlideId+'/edit',
                         data: {},
                         type: 'GET',
                         success: function(data){
                             if(data){//console.log(data[0]); //Debug
 
-                                $('#Form-Edit').attr('action', 'http://eivissadecoracio.test/admin/slide/' + data[0].id)
+                                $('#Form-Edit').attr('action', 'slide/' + data[0].id)
 
                                 $('#modal-titulo').val(data[0].titulo);
                                 $('#modal-desc').val(data[0].descripcion);
-                                $('#oldImgDesk').attr('src' , 'http://eivissadecoracio.test/storage/' + data[0].imagen);
-                                $('#oldImgMovil').attr('src' , 'http://eivissadecoracio.test/storage/' + data[0].imagen_movil);
+                                $('#oldImgDesk').attr('src' , '/storage/' + data[0].imagen);
+                                $('#oldImgMovil').attr('src' , '/storage/' + data[0].imagen_movil);
                             }
                         },
                         error: function(error){

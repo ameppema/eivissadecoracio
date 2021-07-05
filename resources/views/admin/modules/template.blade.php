@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', ' Eivissa Services')
+@section('title', ' Eivissa Modules')
 
 @section('content_header')
     <div class="page-header">
-    <h1>Eivisa | <small>Gestor de Servicios</small></h1>
+    <h1>Eivisa | <small>Gestor de <span class="text-capitalize">{{$module_name}}</span></small></h1>
     </div>
 @stop
 
@@ -16,24 +16,18 @@
             {{-- Start New Slider Item Form -  --}}
                 <div class="card">
                     <div class="card-body">
-                        <p class="h1">Home</p>
-                    {{--Inicia formulario en Home--}}
-                    <div class="">
-                        @include('admin.modules._services.form')
-                    </div>
-                    
-                    {{--Fin formulario en Home--}}
-                    
-                    {{--Inicia formulario en Pagina--}}
-
-                    <p class="h1">Contenido de la Pagina</p>
-                    {{--Fin formulario en pagina--}}
+                    {{--Inicia formulario de Contenido--}}
+                        <div>
+                            @include('admin.modules._parts.form')
+                        </div>
+                        <p class="h2">Galerias</p>
+                    {{--Fin formulario en Contenido--}}
 
                     </div>
                 </div>
             {{-- End New Slider Item Form  --}}
 
-            {{-- Start SlideShow -  --}}
+            {{-- Start SlideShow -  
                 <div class="card">
                     <div class="card-body">
 
@@ -68,7 +62,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                        
+                    --}}
                     </div>
                 </div>
             {{-- End SlideShow --}}

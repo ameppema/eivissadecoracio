@@ -7,7 +7,7 @@
             <h3 class="service__title">{{$servItem->titulo}}</h3>
 
             <p class="service__text">
-            $servItem->descripcion
+            {{$servItem->descripcion}}
             </p>
 
             <button class="service__button">Click</button>
@@ -16,7 +16,7 @@
 </div>
 @endforeach()
 
-<!-- <div class="service__card">
+<div class="service__card">
     <a href="/">
         <img class="service__image" src="/images/services/service_06.jpg" alt="">
         <div class="service__info">
@@ -29,4 +29,4 @@
             <button class="service__button">Click</button>
         </div>
     </a>
-</div> -->
+</div>
