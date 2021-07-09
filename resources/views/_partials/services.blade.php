@@ -1,4 +1,4 @@
-@foreach($service as $servItem)
+@foreach($services as $servItem)
 <div class="service__card">
     <a href="{{$servItem->enlace}}">
         <img class="service__image" src="storage/{{$servItem->imagen}}" alt="Imagen Servicios">

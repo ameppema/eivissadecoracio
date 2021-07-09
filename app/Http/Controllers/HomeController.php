@@ -30,6 +30,6 @@ class HomeController extends Controller
         $slider = Slide::all();
         $services = Service::all();
 
-        return view('home')->with(['slider' => $slider, 'service' => $services]);
+        return view('home')->with(['slider' => $slider, 'services' => $services]);
     }
 }

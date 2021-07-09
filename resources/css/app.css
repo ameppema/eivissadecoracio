@@ -9,9 +9,10 @@
 @import "components/partners";
 @import "components/contact";
 @import "components/footer";
+@import "components/pages";
 
 /* BORRAR */
-@import "components/test";
+/* @import "components/test"; */
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
