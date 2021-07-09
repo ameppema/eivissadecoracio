@@ -1,15 +1,11 @@
 <div class="slider">
+    <div class="slide current" style="background: url('storage/{{ $services[0]->imagen }}') no-repeat center top/cover;">
+        <div class="slide__info">
+            <h2 class="slide__title">{{ $services[0]->titulo }}</h2>
 
-    @foreach($slider as $sliderItem)
-        <div class="slide {{ $loop->first ? 'current' : '' }}" style="background: url('storage/{{ $sliderItem->imagen }}') no-repeat center top/cover;">
-            <div class="slide__info">
-                <h2 class="slide__title">{{ $sliderItem->titulo }}</h2>
-
-                <p class="slide__text">
-                {{ $sliderItem->descripcion }}
-                </p>
-            </div>
+            <p class="slide__text">
+                {{ $services[0]->descripcion }}
+            </p>
         </div>
-    @endforeach
-
+    </div>
 </div>

@@ -1,0 +1,151 @@
+.slider {
+    position: absolute;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.slide.current {
+    opacity: 1;
+}
+
+.slide__overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #00000025;
+}
+
+.slide__info {
+    margin: 0 60px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    z-index: 1;
+}
+
+.slide__title {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2rem;
+    border-bottom: 3px solid #FFCC33;
+}
+
+.slide__text {
+    line-height: 1.2rem;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+.prev {
+    position: absolute;
+    top: 85%;
+    left: 20%;
+}
+
+.prev.open {
+    display: none;
+}
+
+.prev svg {
+    max-width: 70%;
+    width: 50px;
+    height: auto;
+    fill: #fff;
+}
+
+.next {
+    position: absolute;
+    top: 85%;
+    right: 20%;
+}
+
+.next.open {
+    display: none;
+}
+
+.next svg {
+    max-width: 70%;
+    width: 50px;
+    height: auto;
+    fill: #fff;
+}
+
+@media (min-width: 768px) {
+    .slide__info {
+        margin: 0 200px;
+    }
+
+    .slide__title {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+
+    .slide__text {
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .slide__overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #0000005a;
+    }
+
+    .slide__info {
+        margin: 0 400px;
+    }
+
+    .prev, .next {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 5px;
+        background-color: #ffffff;
+    }
+
+    .prev:hover, .next:hover {
+        background-color: black;
+    }
+
+    .prev svg, .next svg {
+        width: 35px;
+        fill: #535353;
+    }
+
+    .prev:hover svg, .next:hover svg {
+        fill: #ffffff;
+    }
+
+    .prev {
+        top: 47%;
+        left: 80px;
+        width: 45px;
+        height: 45px;
+    }
+
+    .next {
+        top: 47%;
+        right: 80px;
+        width: 45px;
+        height: 45px;
+    }
+}
