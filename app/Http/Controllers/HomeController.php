@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SlideController;
 use Illuminate\Http\Request;
 use App\Models\Slide;
 use App\Models\Service;
+use App\Models\Menu;
 
 class HomeController extends Controller
 {
@@ -29,7 +30,8 @@ class HomeController extends Controller
         // trayendo el Slide desde el admin
         $slider = Slide::all();
         $services = Service::all();
+        $menus = Menu::orderBy('sort_order', 'ASC')->get();
 
-        return view('home')->with(['slider' => $slider, 'services' => $services]);
+        return view('home', compact(['slider', 'services', 'menus']));
     }
 }
