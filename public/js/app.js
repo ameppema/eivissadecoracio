@@ -1943,10 +1943,7 @@ window.onscroll = function () {
 /*!********************************!*\
   !*** ./resources/js/slider.js ***!
   \********************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-var _require = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js"),
-    Alert = _require.Alert;
+/***/ (() => {
 
 var slides = document.querySelectorAll(".slide");
 var next = document.querySelector("#next");

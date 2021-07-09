@@ -29,30 +29,9 @@
         </a>
     </li>
 
-    <li class="menu__item {{ (request()->is('interiores')) ? 'selected' : '' }}">
-        <a href="/interiores">
-            Interiores
-        </a>
-    </li>
-
-    <li class="menu__item {{ (request()->is('cocinas')) ? 'selected' : '' }}">
-        <a href="/cocinas">
-            Cocinas
-        </a>
-    </li>
-
-    <li class="menu__item {{ (request()->is('rehabilitaciones')) ? 'selected' : '' }}">
-        <a href="/rehabilitaciones">
-            Rehabilitaciones
-        </a>
-    </li>
-
-    <li class="menu__item {{ (request()->is('parquets')) ? 'selected' : '' }}">
-        <a href="/parquets">
-            Parquets
-        </a>
-    </li>
 </ul>
+
+<!-- Inicia Menu de Escritorio -->
 
 <ul class="menu-desktop">
     <li class="menu__item {{ (request()->is('/')) ? 'selected' : '' }}">
@@ -67,35 +46,13 @@
         </a>
     </li>
 
+    @foreach($menus as $menuItem)
     <li class="menu__item {{ (request()->is('obras')) ? 'selected' : '' }}">
-        <a href="/obras">
-            Obras
+        <a href="{{$menuItem->ruta}}">
+            {{$menuItem->nombre}}
         </a>
     </li>
-
-    <li class="menu__item {{ (request()->is('interiores')) ? 'selected' : '' }}">
-        <a href="/interiores">
-            Interiores
-        </a>
-    </li>
-
-    <li class="menu__item {{ (request()->is('cocinas')) ? 'selected' : '' }}">
-        <a href="/cocinas">
-            Cocinas
-        </a>
-    </li>
-
-    <li class="menu__item {{ (request()->is('rehabilitaciones')) ? 'selected' : '' }}">
-        <a href="/rehabilitaciones">
-            Rehabilitaciones
-        </a>
-    </li>
-
-    <li class="menu__item {{ (request()->is('parquets')) ? 'selected' : '' }}">
-        <a href="/parquets">
-            Parquets
-        </a>
-    </li>
+    @endforeach
 
     <li class="language">
         <a class="spanish active" href="/">
