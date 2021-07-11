@@ -1,13 +1,13 @@
 @foreach($services as $servItem)
 <div class="service__card">
-    <a href="{{$servItem->enlace}}">
-        <img class="service__image" src="storage/{{$servItem->imagen}}" alt="Imagen Servicios">
+    <a href="{{$servItem->category_menu_id}}">
+        <img class="service__image" src="storage/{{$servItem->imagen_principal}}" alt="Nuestros Servicios">
 
         <div class="service__info">
             <h3 class="service__title">{{$servItem->titulo}}</h3>
 
             <p class="service__text">
-            {{$servItem->descripcion}}
+            {{$servItem->subtitulo}}
             </p>
 
             <button class="service__button">Click</button>

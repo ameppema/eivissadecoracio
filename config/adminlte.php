@@ -254,23 +254,33 @@ return [
             'icon' => 'fas fa-list-ul',
         ],
         [
-            'text' => 'Servicios',
-            'url'  => 'admin/module/services',
-            'icon' => 'fas fa-briefcase',
-        ],
-        [
             'text' => 'Historia',
-            'url'  => 'admin/module/history',
+            'url'  => 'admin/module/historia',
             'icon' => 'fas fa-book',
         ],
         [
             'text' => 'Obras',
-            'url'  => 'admin/module/construction',
+            'url'  => 'admin/module/obras/1',
+            'icon' => 'fas fa-hard-hat',
+        ],
+        [
+            'text' => 'Rehabilitaciones',
+            'url'  => 'admin/module/rehabilitaciones/2',
             'icon' => 'fas fa-hard-hat',
         ],
         [
             'text' => 'Interiores',
-            'url'  => 'admin/module/interiors',
+            'url'  => 'admin/module/interiores/3',
+            'icon' => 'fas fa-house-user',
+        ],
+        [
+            'text' => 'Cocinas',
+            'url'  => 'admin/module/cocinas/4',
+            'icon' => 'fas fa-house-user',
+        ],
+        [
+            'text' => 'Parquets',
+            'url'  => 'admin/module/parquets/5',
             'icon' => 'fas fa-house-user',
         ],
         ['header' => 'Cuenta de usuario [En proceso]'],

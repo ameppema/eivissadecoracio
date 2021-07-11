@@ -14,4 +14,9 @@ class Menu extends Model
     protected $fillable = ['nombre', 'ruta', 'sort_order'];
 
     public $timestamps = false;
+
+    public function getModule(){
+        
+        return $this->hasOne('App\Models\Module', 'category_menu_id');
+    }
 }

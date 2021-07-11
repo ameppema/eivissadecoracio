@@ -27,5 +27,6 @@ Route::get('/services', [ServiceController::class, 'index'])->name('admin.servic
 Route::post('/services', [ServiceController::class, 'store'])->name('admin.store');
 
 // Pages managment routes test
-Route::get('/module/{name}', [ModuleController::class, 'index'])->name('admin.module');
-Route::post('/module/{name}/{id}', [ModuleController::class, 'store'])->name('admin.module.store');
+Route::get('/module/{name}/{id?}', [ModuleController::class, 'index'])->name('admin.module');
+Route::post('/module/{name}', [ModuleController::class, 'store'])->name('admin.module.store');
+Route::put('/module/{name}/{id}', [ModuleController::class, 'update'])->name('admin.module.update');

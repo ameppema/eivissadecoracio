@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Service;
+use App\Models\Module;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class ServiceController extends Controller
+class ModulesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class ServiceController extends Controller
     public function index()
     {
 
-        $service = DB::select('SELECT * FROM services');
+        $service = DB::select('SELECT * FROM modules');
         return view('admin.modules.services', compact('service'));
     }
 

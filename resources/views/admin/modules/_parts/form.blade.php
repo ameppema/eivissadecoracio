@@ -20,26 +20,27 @@
 @endif
 
 <!-- Formulario para agregar un elemento -->
-<p class="h1">Contenido en Inicio</p>
-<form action="" method="post" enctype="multipart/form-data">
+<p class="h1">Editar Contenido</p>
+<form action="{{$module_id}}" method="POST" enctype="multipart/form-data">
+    @method('put')
     @csrf
     <div class="row">
 
         <div class="mb-3 col-4">
             <label for="titulo" class="form-label">Titulo</label>
             <input type="text" class="form-control" id="titulo" name="titulo"
-                placeholder="Titulo..." value="{{old('titulo')}}">
+                placeholder="Titulo..." value="{{old('titulo') ?? $module->titulo}}">
         </div>
 
         <div class="mb-3 col-8">
             <label for="subtitulo" class="form-label">Descripción</label>
             <input type="text" class="form-control" id="subtitulo" name="subtitulo"
-                placeholder="..." value="{{old('descripcion')}}">
+                placeholder="..." value="{{old('subtitulo') ?? $module->subtitulo}}">
         </div>
         
         <div class="mb-3">
             <label for="imagen" class="form-label">Imagen Principal</label>
-            <input class="form-control" type="file" id="imagen-slide" name="imagen-principal">
+            <input class="form-control" type="file" id="imagen-principal" name="imagen-principal">
         </div>
     </div>
     
@@ -47,11 +48,11 @@
     
     <div class="form-group w-75">
         <label for="fisrt_text">Texto Principal</label>
-        <textarea class="form-control" id="fisrt_text" rows="3" name="fisrt_text"></textarea>
+        <textarea class="form-control" id="fisrt_text" rows="3" name="fisrt_text" >{{$module->texto_principal}}</textarea>
     </div>
     <div class="form-group w-75">
         <label for="second_text">Texto Secundario</label>
-        <textarea class="form-control" id="second_text" rows="3" name="second_text"></textarea>
+        <textarea class="form-control" id="second_text" rows="3" name="second_text">{{$module->texto_secundario}}</textarea>
     </div>
     <br>
         <button type="submit" class="btn btn-primary">Agregar a <span class="text-capitalize">{{$module_name}}</span></button>

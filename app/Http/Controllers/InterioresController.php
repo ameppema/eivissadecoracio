@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Service;
+use App\Models\Module;
+use App\Models\Menu;
 
 class InterioresController extends Controller
 {
@@ -13,10 +14,10 @@ class InterioresController extends Controller
      */
     public function index()
     {
-        $interiores = Service::find(3);
+        $interiores = Module::find(3);
+        $menus = Menu::orderBy('sort_order', 'ASC')->get();
 
-        // $interioresData = $services[2];
 
-        return view('interiores', compact(['interiores']));
+        return view('interiores', compact(['interiores', 'menus']));
     }
 }

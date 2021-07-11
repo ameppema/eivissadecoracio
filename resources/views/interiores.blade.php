@@ -7,12 +7,12 @@
 
         
         <div class="head">
-            <div class="head__image" style="background: url('storage/{{ $interiores->imagen }}') no-repeat center top/cover;" data-img-movil="background: url('storage/{{ $interiores->imagen_movil }}')">
+            <div class="head__image" style="background: url('storage/{{ $interiores->imagen_principal }}') no-repeat center top/cover;" data-img-movil="background: url('storage/{{ $interiores->imagen_movil }}')">
                 <div class="slide__info">
                     <h2 class="slide__title">{{ $interiores->titulo }}</h2>
         
                     <p class="slide__text">
-                    {{ $interiores->descripcion }}
+                    {{ $interiores->subtitulo }}
                     </p>
                 </div>
             </div>
