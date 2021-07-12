@@ -30,9 +30,11 @@
     
     
     <section id="gallery" class="gallery">
-        <div class="gallery__image">
-            <img src="storage/{{$interiores->imagen}}" alt="Imagen Servicios">
-        </div>
+        @foreach ($services as $service)
+            <div class="gallery__image">
+                <img src="storage/{{$service->imagen}}" alt="Imagen Servicios">
+            </div>
+        @endforeach
     </section>
 
     <section id="text__body" class="text__body">
@@ -40,9 +42,11 @@
     </section>
 
     <section id="gallery" class="gallery">
-        <div class="gallery__image">
-            <img src="storage/{{$interiores->imagen}}" alt="Imagen Servicios">
-        </div>
+        @foreach ($services as $service)
+            <div class="gallery__image">
+                <img src="storage/{{$service->imagen}}" alt="Imagen Servicios">
+            </div>
+        @endforeach
     </section>
 
     <section id="text__body" class="text__body">
