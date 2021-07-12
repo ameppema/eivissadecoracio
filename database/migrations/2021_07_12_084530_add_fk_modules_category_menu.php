@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddComumnsToModulesTable extends Migration
+class AddFkModulesCategoryMenu extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,12 @@ class AddComumnsToModulesTable extends Migration
     public function up()
     {
         Schema::table('modules', function (Blueprint $table) {
-            //
-            $table->unsignedBigInteger('category_menu_id');
-            $table->renameColumn('descripcion', 'subtitulo');
-            $table->renameColumn('imagen', 'imagen_principal');
-            $table->renameColumn('enlace', 'texto_principal');
-            $table->text('texto_secundario');
-            $table->text('enlace');
-            
+            //Agregando realcion a nivel MySql
+            $table->foreign('category_menu_id')
+                    ->references('id')
+                    ->on('category_menu')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 

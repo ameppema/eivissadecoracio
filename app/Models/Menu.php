@@ -16,7 +16,6 @@ class Menu extends Model
     public $timestamps = false;
 
     public function getModule(){
-        
         return $this->hasOne('App\Models\Module', 'category_menu_id');
     }
 }

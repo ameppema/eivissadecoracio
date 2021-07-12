@@ -120,8 +120,3 @@ $(document).ready(() => {
 })
 </script>
 @stop
-
-<!-- [
-Boton
-<input type="text" name="nombre" value="{{$item->nombre}}" class="text-capitalize"> <button title="Guardar" type="submit" class="btn btn-info"><i class="fas fa-check-square"></i></button>
-] -->

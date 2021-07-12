@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Admin\SlideController;
 use Illuminate\Http\Request;
 use App\Models\Slide;
 use App\Models\Menu;
 use App\Models\Module;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -29,9 +29,15 @@ class HomeController extends Controller
     {
         // trayendo el Slide desde el admin
         $slider = Slide::all();
-        $services = Module::all();
+        $modules = Module::all();
         $menus = Menu::orderBy('sort_order', 'ASC')->get();
 
-        return view('home', compact(['slider', 'services', 'menus']));
+        $dumps = DB::table('Modules')
+                ->join('category_menu', 'modules.category_menu_id', '=', 'category_menu.id')
+                ->get();
+
+        // dd($dumps);
+        // die();
+        return view('home', compact(['slider', 'modules', 'menus']));
     }
 }
