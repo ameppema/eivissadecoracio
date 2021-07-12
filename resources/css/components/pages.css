@@ -51,6 +51,23 @@
 }
 
 @media (min-width: 1280px) {
+    .gallery {
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    
+    .gallery .gallery__image:nth-child(1){
+        grid-column: 3 / span 2;
+    }
+    
+    .gallery .gallery__image:nth-child(4){
+        grid-column: 4 / span 2;
+    }
+    
+    .gallery .gallery__image:nth-child(5){
+        grid-column: 6 / span 2;
+    }
+    
     .text__body {
         margin: 30px 300px;
         font-size: 30px;
