@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+
 use App\Models\Module;
 use App\Models\Menu;
 
@@ -16,7 +17,6 @@ class InterioresController extends Controller
     {
         $interiores = Module::find(3);
         $menus = Menu::orderBy('sort_order', 'ASC')->get();
-
 
         return view('interiores', compact(['interiores', 'menus']));
     }
