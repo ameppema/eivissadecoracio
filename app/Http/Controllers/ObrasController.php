@@ -15,8 +15,9 @@ class ObrasController extends Controller
     public function index()
     {
         $obras = Module::find(1);
+        $gallery = Module::all();
         $menus = Menu::orderBy('sort_order', 'ASC')->get();
 
-        return view('obras', compact(['obras', 'menus']));
+        return view('obras', compact(['obras', 'menus', 'gallery']));
     }
 }

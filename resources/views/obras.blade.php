@@ -6,12 +6,12 @@
     <section id="header" class="header">
         
         <div class="head">
-            <div class="head__image" style="background: url('storage/{{ $obras->imagen }}') no-repeat center top/cover;" data-img-movil="background: url('storage/{{ $obras->imagen_movil }}')">
+            <div class="head__image" style="background: url('storage/{{ $obras->imagen_principal }}') no-repeat center top/cover;" data-img-movil="background: url('storage/{{ $obras->imagen_movil }}')">
                 <div class="slide__info">
                     <h2 class="slide__title">{{ $obras->titulo }}</h2>
         
                     <p class="slide__text">
-                    {{ $obras->descripcion }}
+                    {{ $obras->subtitulo }}
                     </p>
                 </div>
             </div>
@@ -28,9 +28,9 @@
     </section>
 
     <section id="gallery" class="gallery">
-        @foreach ($services as $service)
+        @foreach ($gallery as $item)
             <div class="gallery__image">
-                <img src="storage/{{$service->imagen}}" alt="Imagen Servicios">
+                <img src="storage/{{$item->imagen_principal}}" alt="Imagen Servicios">
             </div>
         @endforeach
     </section>
@@ -40,9 +40,9 @@
     </section>
 
     <section id="gallery" class="gallery">
-        @foreach ($services as $service)
+        @foreach ($gallery as $item)
             <div class="gallery__image">
-                <img src="storage/{{$service->imagen}}" alt="Imagen Servicios">
+                <img src="storage/{{$item->imagen_principal}}" alt="Imagen Servicios">
             </div>
         @endforeach
     </section>
