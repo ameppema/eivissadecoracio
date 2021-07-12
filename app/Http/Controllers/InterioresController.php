@@ -16,8 +16,9 @@ class InterioresController extends Controller
     public function index()
     {
         $interiores = Module::find(3);
+        $gallery = Module::all();
         $menus = Menu::orderBy('sort_order', 'ASC')->get();
 
-        return view('interiores', compact(['interiores', 'menus']));
+        return view('interiores', compact(['interiores', 'menus', 'gallery']));
     }
 }
