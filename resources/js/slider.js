@@ -32,7 +32,7 @@ prev.addEventListener("click", e => {
 
 // Repoblando las imagenes con sus versiones moviles
 $(window).on('DOMContentLoaded', function(){
-    console.log(slides);    
+    // console.log(slides);
 
     //Trabajando con los media querys
     let window_size = window.matchMedia('(max-width: 1280px)');
