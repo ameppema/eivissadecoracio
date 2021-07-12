@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Module;
 use App\Models\Menu;
-use App\Models\Service;
 
 class ObrasController extends Controller
 {
@@ -14,10 +14,9 @@ class ObrasController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all();
-        $services = Service::all();
-        $obras = $services->first();
+        $obras = Module::find(1);
+        $menus = Menu::orderBy('sort_order', 'ASC')->get();
 
-        return view('obras', compact('obras', 'services', 'menus'));
+        return view('obras', compact(['obras', 'menus']));
     }
 }
