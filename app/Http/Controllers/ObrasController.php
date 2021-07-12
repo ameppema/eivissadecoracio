@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Menu;
 use App\Models\Service;
 
 class ObrasController extends Controller
@@ -13,8 +14,10 @@ class ObrasController extends Controller
      */
     public function index()
     {
-        $obras = Service::find(1);
+        $menus = Menu::all();
+        $services = Service::all();
+        $obras = $services->first();
 
-        return view('obras', compact(['obras']));
+        return view('obras', compact('obras', 'services', 'menus'));
     }
 }
