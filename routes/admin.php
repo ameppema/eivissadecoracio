@@ -9,11 +9,12 @@ use App\Http\Controllers\Admin\MenuController;
 
 Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
-/* Slider Routes */
+/* Slider routes */
 Route::get('/slide', [SlideController::class, 'index'])->name('admin.slide');
 Route::post('/slide', [SlideController::class, 'store'])->name('admin.slide.store');
 Route::get('/slide/{slide}/edit', [SlideController::class, 'edit'])->name('admin.slide.edit');
 Route::put('/slide/{slide}', [SlideController::class, 'update'])->name('admin.slide.update');
+Route::delete('/slide/{id}', [SlideController::class, 'destroy'])->name('admin.slide.destroy');
 
 /* Menu routes */
 Route::get('/category_menu', [MenuController::class, 'index'])->name('admin.menu');
