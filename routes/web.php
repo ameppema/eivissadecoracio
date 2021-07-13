@@ -1,18 +1,19 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ObrasController;
 use App\Http\Controllers\InterioresController;
 use App\Http\Controllers\CocinasController;
+use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\RehabilitacionesController;
 use App\Http\Controllers\ParquetsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('historia', function () {
-    return view('historia');
-});
+Route::get('historia',[HistoriaController::class, 'index'])->name('historia');
 
 Route::get('obras', [ObrasController::class, 'index'])->name('obras');
 

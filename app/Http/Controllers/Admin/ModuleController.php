@@ -42,7 +42,7 @@ class ModuleController extends Controller
         $rutaImg = $request['imagen_principal']->store('moduleImg', 'public');
         $rutaImgMovil = $request['imagen_movil']->store('moduleImg', 'public');
 
-        DB::table('services')->insert([
+        DB::table('modules')->insert([
             'titulo'    => $datos['titulo'],
             'subtitulo'=> $datos['subtitulo'],
             'imagen_principal'    => $rutaImg,
@@ -75,6 +75,7 @@ class ModuleController extends Controller
             'third_text' => ['required', 'string'],
         ]);
 
+        
         $module->titulo = $datos['titulo'];
         $module->subtitulo = $datos['subtitulo'];
         $module->texto_principal = $datos['fisrt_text'];
@@ -85,7 +86,11 @@ class ModuleController extends Controller
         {
             Storage::delete('public/' . $module->imagen_principal);
 
-            $rutaImgNueva = $request['imagen-principal']->store('moduleImg', 'public');
+            //Obteniendo el Nombre Original de la imagen
+            $filename = $request->file('imagen-principal')->getClientOriginalName();
+            // Guardar imagen del con nombre original
+            $rutaImgNueva = $request['imagen-principal']->storeAs('slide', $filename, 'public');
+        
 
             $module->imagen_principal = $rutaImgNueva;
         }
@@ -93,7 +98,9 @@ class ModuleController extends Controller
         {
             Storage::delete('public/' . $module->imagen_movil);
 
-            $rutaImgNueva = $request['imagen_movil']->store('moduleImg', 'public');
+            $filenamemobile = $request->file('imagen_movil')->getClientOriginalName();
+
+            $rutaImgNueva = $request['imagen_movil']->storeAs('slide', $filenamemobile, 'public');
 
             $module->imagen_movil = $rutaImgNueva;
         }

@@ -27,7 +27,7 @@ Route::delete('/category_menu/delete/{id}', [MenuController::class, 'destroy'])-
 Route::get('/services', [ServiceController::class, 'index'])->name('admin.service');
 Route::post('/services', [ServiceController::class, 'store'])->name('admin.store');
 
-// Pages managment routes test
+// Pages/modules routes
 Route::get('/module', function(){ return redirect()->route('admin.home');})->name('admin.module.index');
 Route::get('/module/{name}/{id?}', [ModuleController::class, 'index'])->name('admin.module');
 Route::post('/module/{name}', [ModuleController::class, 'store'])->name('admin.module.store');
