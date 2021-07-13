@@ -13,13 +13,17 @@
         <tr>
             <th scope="row">{{$loop->iteration}}</th>
             <td>{{ $slideItem->titulo }}</td>
-            <td class="w-25"><img src="http://eivissadecoracio.test/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
+            <td class="w-25"><img src="/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
             <td>{{$slideItem->descripcion}}</td>
             <td>
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCustom" data-slideid="{{$slideItem->id}}" ><i class="fas fa-pencil-alt" data-slideid="{{$slideItem->id}}"></i></button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                <form action="{{url('admin/slide/' .$slideItem->id)}}" method="POST">
+                    @method('delete')
+                    @csrf
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                </form>
             </td>
         </tr>
         @endforeach

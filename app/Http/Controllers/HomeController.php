@@ -32,12 +32,7 @@ class HomeController extends Controller
         $modules = Module::all();
         $menus = Menu::orderBy('sort_order', 'ASC')->get();
 
-        $dumps = DB::table('Modules')
-                ->join('category_menu', 'modules.category_menu_id', '=', 'category_menu.id')
-                ->get();
-
-        // dd($dumps);
-        // die();
         return view('home', compact(['slider', 'modules', 'menus']));
     }
+
 }

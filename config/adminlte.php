@@ -255,7 +255,7 @@ return [
         ],
         [
             'text' => 'Historia',
-            'url'  => 'admin/module/historia',
+            'url'  => 'admin/module/historia/6',
             'icon' => 'fas fa-book',
         ],
         [

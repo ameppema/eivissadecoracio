@@ -42,6 +42,10 @@
             <label for="imagen" class="form-label">Imagen Principal</label>
             <input class="form-control" type="file" id="imagen-principal" name="imagen-principal">
         </div>
+        <div class="mb-3">
+            <label for="imagen_movil" class="form-label">Imagen Movil</label>
+            <input class="form-control" type="file" id="imagen_movil" name="imagen_movil">
+        </div>
     </div>
     
     <p class="h2">Contenido en la pagina</p>
@@ -53,6 +57,10 @@
     <div class="form-group w-75">
         <label for="second_text">Texto Secundario</label>
         <textarea class="form-control" id="second_text" rows="3" name="second_text">{{$module->texto_secundario}}</textarea>
+    </div>
+    <div class="form-group w-75">
+        <label for="third_text">Texto Tres</label>
+        <textarea class="form-control" id="third_text" rows="3" name="third_text">{{$module->texto_tres}}</textarea>
     </div>
     <br>
         <button type="submit" class="btn btn-primary">Agregar a <span class="text-capitalize">{{$module_name}}</span></button>

@@ -1,31 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\Module;
-use App\Models\Menu;
 
+use Illuminate\Http\Request;
+use App\Models\Menu;
+use App\Models\Module;
 use Illuminate\Support\Facades\DB;
 
-class ObrasController extends Controller
+class HistoriaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    public function index(){
 
         $dumps = DB::table('Modules')
         ->join('category_menu', 'modules.category_menu_id', '=', 'category_menu.id')
-        ->where('enlace','obras')
+        ->where('enlace','historia')
         ->get();
 
         $content = $dumps[0];
+
         $gallery = Module::all();
         $menus = Menu::orderBy('sort_order', 'ASC')->get();
 
-        return view('page', compact(['content', 'menus', 'gallery']));
+
+        return view('page',compact(['content', 'gallery', 'menus']));
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Module;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ModuleController extends Controller
 {
@@ -22,16 +23,6 @@ class ModuleController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -45,42 +36,24 @@ class ModuleController extends Controller
             'imagen-principal' => ['required', 'image'],
             'fisrt_text' => ['required', 'string'],
             'second_text' => ['required', 'string'],
+            'third_text' => ['required', 'string']
         ]);
 
         $rutaImg = $request['imagen_principal']->store('moduleImg', 'public');
+        $rutaImgMovil = $request['imagen_movil']->store('moduleImg', 'public');
 
-        DB::table('services')->insert([
+        DB::table('modules')->insert([
             'titulo'    => $datos['titulo'],
             'subtitulo'=> $datos['subtitulo'],
             'imagen_principal'    => $rutaImg,
+            'imagen_movil'    => $rutaImgMovil,
             'fisrt_text'    => $datos['fisrt_text'],
             'second_text'    => $datos['second_text'],
+            'third_text'    => $datos['third_text'],
         ]);
 
         return redirect('admin/modules/' . $name);
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Module  $module
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Module $module)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Module  $module
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Module $module)
-    {
-        //
     }
 
     /**
@@ -99,20 +72,37 @@ class ModuleController extends Controller
             'subtitulo' => ['required', 'string', 'max:255'],
             'fisrt_text' => ['required', 'string'],
             'second_text' => ['required', 'string'],
+            'third_text' => ['required', 'string'],
         ]);
 
+        
         $module->titulo = $datos['titulo'];
         $module->subtitulo = $datos['subtitulo'];
         $module->texto_principal = $datos['fisrt_text'];
         $module->texto_secundario = $datos['second_text'];
+        $module->texto_tres = $datos['third_text'];
 
         if(request('imagen-principal'))
         {
             Storage::delete('public/' . $module->imagen_principal);
 
-            $rutaImgNueva = $request['imagen_principal']->store('moduleImg', 'public');
+            //Obteniendo el Nombre Original de la imagen
+            $filename = $request->file('imagen-principal')->getClientOriginalName();
+            // Guardar imagen del con nombre original
+            $rutaImgNueva = $request['imagen-principal']->storeAs('slide', $filename, 'public');
+        
 
             $module->imagen_principal = $rutaImgNueva;
+        }
+        if(request('imagen_movil'))
+        {
+            Storage::delete('public/' . $module->imagen_movil);
+
+            $filenamemobile = $request->file('imagen_movil')->getClientOriginalName();
+
+            $rutaImgNueva = $request['imagen_movil']->storeAs('slide', $filenamemobile, 'public');
+
+            $module->imagen_movil = $rutaImgNueva;
         }
 
 

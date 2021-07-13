@@ -17,17 +17,13 @@
         </a>
     </li>
 
-    <li class="menu__item {{ (request()->is('historia')) ? 'selected' : '' }}">
-        <a href="/historia">
-            Historia
-        </a>
-    </li>
-
-    <li class="menu__item {{ (request()->is('obras')) ? 'selected' : '' }}">
-        <a href="/obras">
-            Obras
-        </a>
-    </li>
+    @foreach($menus as $menuItem)
+      <li class="menu__item {{ (request()->is($menuItem->ruta)) ? 'selected' : '' }}">
+          <a href="{{$menuItem->ruta}}">
+              {{$menuItem->nombre}}
+          </a>
+      </li>
+    @endforeach
 
 </ul>
 
@@ -37,12 +33,6 @@
     <li class="menu__item {{ (request()->is('/')) ? 'selected' : '' }}">
         <a href="/">
             Home
-        </a>
-    </li>
-
-    <li class="menu__item {{ (request()->is('historia')) ? 'selected' : '' }}">
-        <a href="/historia">
-            Historia
         </a>
     </li>
 

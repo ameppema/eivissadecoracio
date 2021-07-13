@@ -38,9 +38,15 @@ class SlideController extends Controller
             'imagen-movil' => ['required', 'image'],
         ]);
 
+        //Obteniendo el Nombre Original de la imagen
+        $filename = $request->file('imagen')->getClientOriginalName();
+        $filenamemobile = $request->file('imagen-movil')->getClientOriginalName();
+
+        /* dd($filename);
+        die(); */
         // Guardar imagen del slide
-        $rutaImg = $request['imagen']->store('slide', 'public');
-        $rutaImgMovil = $request['imagen-movil']->store('slide', 'public');
+        $rutaImg = $request['imagen']->storeAs('slide', $filename, 'public');
+        $rutaImgMovil = $request['imagen-movil']->storeAs('slide', $filenamemobile, 'public');
 
         DB::table('slide')->insert([
             'titulo'    => $datos['titulo'],
@@ -107,8 +113,17 @@ class SlideController extends Controller
      * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Slide $slide)
+    public function destroy($id)
     {
-        //
+        $slide = Slide::find($id);
+
+        if(Storage::delete('public/' . $slide->imagen)){
+
+            Slide::destroy($id);
+
+            redirect('admin/slide');
+
+        }
+
     }
 }

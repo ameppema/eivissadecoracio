@@ -9,11 +9,12 @@ use App\Http\Controllers\Admin\MenuController;
 
 Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
-/* Slider Routes */
+/* Slider routes */
 Route::get('/slide', [SlideController::class, 'index'])->name('admin.slide');
 Route::post('/slide', [SlideController::class, 'store'])->name('admin.slide.store');
 Route::get('/slide/{slide}/edit', [SlideController::class, 'edit'])->name('admin.slide.edit');
 Route::put('/slide/{slide}', [SlideController::class, 'update'])->name('admin.slide.update');
+Route::delete('/slide/{id}', [SlideController::class, 'destroy'])->name('admin.slide.destroy');
 
 /* Menu routes */
 Route::get('/category_menu', [MenuController::class, 'index'])->name('admin.menu');
@@ -26,7 +27,7 @@ Route::delete('/category_menu/delete/{id}', [MenuController::class, 'destroy'])-
 Route::get('/services', [ServiceController::class, 'index'])->name('admin.service');
 Route::post('/services', [ServiceController::class, 'store'])->name('admin.store');
 
-// Pages managment routes test
+// Pages/modules routes
 Route::get('/module', function(){ return redirect()->route('admin.home');})->name('admin.module.index');
 Route::get('/module/{name}/{id?}', [ModuleController::class, 'index'])->name('admin.module');
 Route::post('/module/{name}', [ModuleController::class, 'store'])->name('admin.module.store');

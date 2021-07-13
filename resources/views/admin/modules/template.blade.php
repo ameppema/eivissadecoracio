@@ -63,13 +63,27 @@
                         <h1 class="display-4 text"><small class="text-muted">Titulo:</small> {{$module->titulo}}</h1>
                         <h2><small class="text-muted">SubTitulo:</small> {{$module->subtitulo}}</h2>
                         <hr class="my-4">
-                        <p class="h3"><small class="text-muted">Texto Principal:</small> {{ $module->texto_principal }}</p>
+                        <p class="h3"><small class="text-muted">Texto Principal:</small> {{ $module->texto_principal ? $module->texto_principal : 'Sin Texto' }}</p>
                         <hr class="my-4">
-                        <p class="h3"><small class="text-muted">Texto Secundario:</small> {{ $module->texto_secundario }}</p>
+                        <p class="h3"><small class="text-muted">Texto Secundario:</small> {{ $module->texto_secundario ? $module->texto_secundario : 'Sin Texto' }}</p>
+                        <hr class="my-4">
+                        <p class="h3"><small class="text-muted">Texto Tres: </small> {{ $module->texto_tres ? $module->texto_tres : 'Sin Texto' }}</p>
                     </div>
                 </div>
 
-                <img src="/storage/{{$module->imagen_principal}}" alt="{{$module->titulo}} img" class="img-thumbnail w-25">
+                <p class="h3">Imagen</p>
+                @if($module->imagen_principal)
+                    <img src="/storage/{{$module->imagen_principal}}" alt="{{$module->titulo}} img" class="img-thumbnail w-25">
+                @else
+                    <h3 class="text-warning">Sin Imagen Movil</h3>
+                @endif
+                <hr class="my-4">
+                <p class="h3">Imagen Movil</p>
+                @if($module->imagen_movil)
+                    <img src="/storage/{{$module->imagen_movil}}" alt="{{$module->titulo}} img" class="img-thumbnail w-25">
+                @else
+                    <h3 class="text-warning">Sin Imagen Movil</h3>
+                @endif
 
                 </div>
             </div>
