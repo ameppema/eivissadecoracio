@@ -84,20 +84,27 @@ class SlideController extends Controller
         $datos = request();
         $slide->titulo = $datos['titulo'];
         $slide->descripcion = $datos['descripcion'];
+        
 
         if(request('imagenNueva'))
         {
             Storage::delete('public/' . $slide->imagen);
 
-            $rutaImgNueva = $request['imagenNueva']->store('slide', 'public');
+            //Obteniendo el Nombre Original de la imagen
+            $filename = $request->file('imagenNueva')->getClientOriginalName();
 
-            $slide->imagen = $rutaImgNueva;
+            $rutaImgMovil = $request['imagenNueva']->storeAs('slide', $filename, 'public');
+
+
+            $slide->imagen = $rutaImgMovil;
         }
         if(request('imagenMovilNueva'))
         {
             Storage::delete('public/' . $slide->imagen_movil);
 
-            $rutaImgMovilNueva = $request['imagenMovilNueva']->store('slide', 'public');
+            $filenamemobile = $request->file('imagenMovilNueva')->getClientOriginalName();
+
+            $rutaImgMovilNueva = $request['imagenMovilNueva']->storeAs('slide', $filenamemobile,  'public');
 
             $slide->imagen_movil = $rutaImgMovilNueva;
         }
