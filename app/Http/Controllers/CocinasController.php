@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Module;
-use App\Models\Menu;
+use App\Models\Content;
 
 class CocinasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $cocinas = Module::find(4);
-        $gallery = Module::all();
-        $menus = Menu::orderBy('sort_order', 'ASC')->get();
+        $content = Content::getContent('cocinas');
+        $gallery = Content::getGallery();
+        $menus = Content::getMenu();
 
-        return view('cocinas', compact(['cocinas', 'menus', 'gallery']));
+        return view('page', compact(['content', 'menus', 'gallery']));
     }
 }

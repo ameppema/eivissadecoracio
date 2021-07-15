@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Module;
-use App\Models\Menu;
+use App\Models\Content;
 
 class RehabilitacionesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $rehabilitaciones = Module::find(2);
-        $gallery = Module::all();
-        $menus = Menu::orderBy('sort_order', 'ASC')->get();
+        $content = Content::getContent('rehabilitaciones');
+        $gallery = Content::getGallery();
+        $menus = Content::getMenu();
 
-        return view('rehabilitaciones', compact(['rehabilitaciones', 'menus', 'gallery']));
+        return view('page', compact(['content', 'menus', 'gallery']));
     }
 }
