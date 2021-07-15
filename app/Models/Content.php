@@ -34,5 +34,9 @@ class Content extends Model
 
     }
 
+    public function test(){
+        return Module::find(1);
+    }
+
 
 }
