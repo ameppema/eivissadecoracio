@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddMobileImageClumunToSlideTable extends Migration
+class CreateGalleriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddMobileImageClumunToSlideTable extends Migration
      */
     public function up()
     {
-        Schema::table('slide', function (Blueprint $table) {
-            $table->text('imagen_movil');
+        Schema::create('galleries', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('module_id');
+            $table->text('belongs_to');
         });
     }
 
@@ -25,8 +27,6 @@ class AddMobileImageClumunToSlideTable extends Migration
      */
     public function down()
     {
-        Schema::table('slide', function (Blueprint $table) {
-            $table->dropColumn('imagen_movil');
-        });
+        Schema::dropIfExists('galleries');
     }
 }
