@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slide;
-use App\Models\Menu;
-use App\Models\Module;
-use Illuminate\Support\Facades\DB;
+use App\Models\Content;
 
 class HomeController extends Controller
 {
@@ -27,10 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // trayendo el Slide desde el admin
         $slider = Slide::all();
-        $modules = Module::all();
-        $menus = Menu::orderBy('sort_order', 'ASC')->get();
+        $modules = Content::getServices();
+        $menus = Content::getMenu();
 
         return view('home', compact(['slider', 'modules', 'menus']));
     }
