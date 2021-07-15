@@ -43,20 +43,22 @@ class Content extends Model
 }
 
 /* 
-    CREATE table galleries (
-    id BIGINT(20) UNSIGNED NOT NULL auto_increment PRIMARY KEY,
-    gallery_type INT(11) NOT NULL,
-    module_id BIGINT(20) NOT NULL UNSIGNED,
-    CONSTRAINT module_id_fk FOREIGN KEY module_id REFERENCES modules(id);
-    ) ENGINE = InnoDB;
+    CREATE TABLE `galleries` (
+    `id` bigint(20) UNSIGNED NOT NULL,
+    `module_id` bigint(20) UNSIGNED NOT NULL,
+    `belongs_to` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-    CREATE table images (
-    id BIGINT(20) UNSIGNED NOT NULL auto_increment PRIMARY KEY,
-    image_src TEXT NOT NULL,
-    image_alt TEXT NOT NULL,
-    gallery_id BIGINT(20) NOT NULL UNSIGNED,
-    CONSTRAINT gallery_id_fk FOREIGN KEY gallery_id REFERENCES galleries(id);
-    )
+
+    CREATE TABLE `images` (
+    `id` bigint(20) UNSIGNED NOT NULL,
+    `image_src` text COLLATE utf8mb4_unicode_ci NOT NULL,
+    `image_alt` text COLLATE utf8mb4_unicode_ci NOT NULL,
+    `gallery_id` bigint(20) UNSIGNED NOT NULL,
+    `gallery_type` int(11) NOT NULL,
+    `sort_order` int(11) NOT NULL DEFAULT '0'
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
     CREATE TABLE `learn_sql`.`galleries` (
         `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT ,
@@ -71,6 +73,19 @@ class Content extends Model
         `gallery_id` BIGINT(20) NOT NULL , 
         `sort_order` INT(11) NOT NULL ,
         PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+    ALTER TABLE `galleries`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `fk_module_id` (`module_id`);    
+
+    ALTER TABLE `images`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `fk_gallery_id` (`gallery_id`);
+
+    ALTER TABLE `images`
+    ADD CONSTRAINT `fk_gallery_id` FOREIGN KEY (`gallery_id`) REFERENCES `galleries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+    COMMIT;
 
     ALTER TABLE `images` 
     ADD CONSTRAINT `fk_gallery_id` 
