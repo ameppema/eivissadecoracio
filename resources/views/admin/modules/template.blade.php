@@ -54,6 +54,7 @@
                     </div>
                 </div>
             End SlideShow --}}
+
             {{-- Start Main Content --}}
             <div class="card">
                 <div class="card-body">
@@ -90,19 +91,72 @@
 
             {{-- End Jumbotrone --}}
 
-            {{-- Start New Slider Item Form -  --}}
-                <div class="card">
-                    <div class="card-body">
+            {{-- Start New Content Form -  --}}
+            <div class="card">
+                <div class="card-body">
                     {{--Inicia formulario de Contenido--}}
-                        <div>
-                            @include('admin.modules._parts.form')
-                        </div>
-                        <p class="h2">Galerias</p>
+                    <div>
+                        @include('admin.modules._parts.form')
+                    </div>
                     {{--Fin formulario en Contenido--}}
+                    
+                </div>
+            </div>
+            {{-- End New Content Form  --}}
 
+            {{-- Start New Gallery Form -  --}}
+            <div class="card">
+                <div class="card-body">
+                    <p class="h1" >Galerias</p>
+                    <br>
+                    <p class="h2">Galeria 1</p>
+                    <div class="mb-4">
+                        {{-- Formulario para agregar un elemento --}}
+                        @include('admin.modules._parts.formGallery')
+                        {{-- Fin Formulario  --}}
+                    </div>
+                    <div class="row">
+
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Alt</th>
+                                <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($galleryOne as $gallery)
+                                <tr>
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td class="w-50"><img class="w-25" src="/storage/{{$gallery->image_src}}" alt="{{$gallery->image_alt}}"></td>
+                                    <td>{{$gallery->image_alt}}</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        
+                    </div>
+
+                    <hr>
+
+                    <div class="galeria">
+                        <div class="row">
+                            <p class="h2 col-12">Galeria 2</p>
+                        </div>
+                        <div>
+                            {{-- Formulario para agregar un elemento --}}
+                            @include('admin.modules._parts.formGallery2')
+                            {{-- Fin Formulario  --}}
+                        </div>
                     </div>
                 </div>
-            {{-- End New Slider Item Form  --}}
+            </div>
+
+            {{-- End New Gallery Form -  --}}
 
             </div>
         </div>

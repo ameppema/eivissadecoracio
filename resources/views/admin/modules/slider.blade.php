@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="page-header">
-    <h1>Panel de Administración Eivisa | <small>Gestor de Slider</small></h1>
+    <h1>Eivisa | <small>Gestor de Slider</small></h1>
     </div>
 @stop
 

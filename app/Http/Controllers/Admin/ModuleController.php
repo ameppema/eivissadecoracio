@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Module;
 use App\Models\Menu;
+use App\Models\Galleries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,11 +16,19 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, $param, $id = 5){
+    public function index(Request $request, $param, $id){
         $module_name = $param;
-        $module_id = $id;
+        $isModule = Module::select('id')->where('id', '=', $id )->first();
+        if(!$isModule)
+        {
+            return redirect()->route('admin.home');
+        }
         $module = Menu::find($id)->getModule;
-        return view('admin.modules.template', compact(['module_name', 'module', 'module_id']));
+
+        $galleryOne = Galleries::page($id)->gallery(1)->please();
+        $galleryTwo = Galleries::page($id)->gallery(1)->please();
+
+        return view('admin.modules.template', compact(['module_name', 'module', 'galleryOne', 'galleryTwo']));
     }
 
     /**
@@ -53,7 +62,6 @@ class ModuleController extends Controller
         ]);
 
         return redirect('admin/modules/' . $name);
-
     }
 
     /**
@@ -74,8 +82,7 @@ class ModuleController extends Controller
             'second_text' => ['required', 'string'],
             'third_text' => ['required', 'string'],
         ]);
-
-        
+  
         $module->titulo = $datos['titulo'];
         $module->subtitulo = $datos['subtitulo'];
         $module->texto_principal = $datos['fisrt_text'];
@@ -91,7 +98,6 @@ class ModuleController extends Controller
             // Guardar imagen del con nombre original
             $rutaImgNueva = $request['imagen-principal']->storeAs('slide', $filename, 'public');
         
-
             $module->imagen_principal = $rutaImgNueva;
         }
         if(request('imagen_movil'))
@@ -105,11 +111,9 @@ class ModuleController extends Controller
             $module->imagen_movil = $rutaImgNueva;
         }
 
-
         $module->save();
 
         return redirect('admin/module/' . $name . '/' . $id);
-
     }
 
     /**
