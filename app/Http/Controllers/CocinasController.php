@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Content;
+use App\Models\Galleries;
 
 class CocinasController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $content = Content::getContent('cocinas');
-        $gallery = Content::getGallery();
+        $galleryOne = Galleries::page(4)->gallery(1)->get();
+        $galleryTwo = Galleries::page(4)->gallery(2)->get();
         $menus = Content::getMenu();
 
-        return view('page', compact(['content', 'menus', 'gallery']));
+        return view('page', compact(['content', 'menus', 'galleryOne', 'galleryTwo']));
     }
 }
