@@ -28,9 +28,9 @@
     </section>
 
     <section id="gallery" class="gallery">
-        @foreach ($gallery as $item)
+        @foreach ($galleryOne as $item)
             <div class="gallery__image">
-                <img src="storage/{{$item->imagen_principal}}" alt="Imagen Servicios">
+                <img src="storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
             </div>
         @endforeach
     </section>
@@ -40,9 +40,9 @@
     </section>
 
     <section id="gallery" class="gallery">
-        @foreach ($gallery as $item)
+        @foreach ($galleryTwo as $item)
             <div class="gallery__image">
-                <img src="storage/{{$item->imagen_principal}}" alt="Imagen Servicios">
+                <img src="storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
             </div>
         @endforeach
     </section>
