@@ -27,9 +27,10 @@ class HomeController extends Controller
     {
         $slider = Slide::all();
         $modules = Content::getServices();
+        $historyImages = Content::getContent('historia');
         $menus = Content::getMenu();
 
-        return view('home', compact(['slider', 'modules', 'menus']));
+        return view('home', compact(['slider', 'historyImages', 'modules', 'menus']));
     }
 
 }
