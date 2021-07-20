@@ -30,6 +30,9 @@ Route::post('/services', [ServiceController::class, 'store'])->name('admin.store
 
 //Gallery routes
 Route::post('/gallery', [ImagesController::class, 'store'])->name('admin.gallery.image.store');
+Route::get('/gallery/{image}', [ImagesController::class, 'editByAjax'])->name('admin.gallery.image.edit');
+Route::put('/gallery/{id}', [ImagesController::class, 'update'])->name('admin.gallery.image.update');
+Route::delete('/gallery/{id}', [ImagesController::class, 'destroy'])->name('admin.gallery.image.destroy');
 
 // Pages/modules routes
 Route::get('/module', function(){ return redirect()->route('admin.home');})->name('admin.module.index');

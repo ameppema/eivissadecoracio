@@ -25,8 +25,8 @@ class ModuleController extends Controller
         }
         $module = Menu::find($id)->getModule;
 
-        $galleryOne = Galleries::page($id)->gallery(1)->please();
-        $galleryTwo = Galleries::page($id)->gallery(1)->please();
+        $galleryOne = Galleries::page($id)->gallery(1)->get();
+        $galleryTwo = Galleries::page($id)->gallery(2)->get();
 
         return view('admin.modules.template', compact(['module_name', 'module', 'galleryOne', 'galleryTwo']));
     }

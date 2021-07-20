@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Images;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImagesController extends Controller
 {
@@ -55,18 +56,7 @@ class ImagesController extends Controller
             'sort_order' => $request->sort_order ?? 0,
         ]);
 
-        return redirect()->route('admin.home');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Images  $images
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Images $images)
-    {
-        //
+        return back();
     }
 
     /**
@@ -75,9 +65,10 @@ class ImagesController extends Controller
      * @param  \App\Models\Images  $images
      * @return \Illuminate\Http\Response
      */
-    public function edit(Images $images)
+
+    public function editByAjax($image)
     {
-        //
+        return Images::find($image);
     }
 
     /**
@@ -87,9 +78,30 @@ class ImagesController extends Controller
      * @param  \App\Models\Images  $images
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Images $images)
+    public function update(Request $request, Images $images,int $id)
     {
-        //
+        $images = Images::find($id);
+        $data = $request->validate([
+            'nueva_imagen_src' => ['image','required'],
+            'nueva_imagen_alt' => ['required'],
+        ]);
+        
+        if($data['nueva_imagen_src']){
+
+            Storage::delete('public' . $images->image_src);
+            
+            $filename = $request->file('nueva_imagen_src')->getClientOriginalName();
+
+            $rutaImgNueva = $request['nueva_imagen_src']->storeAs('gallery', $filename, 'public');
+
+            $images->image_src = $rutaImgNueva;
+        }
+
+        $images->image_alt = $data['nueva_imagen_alt'];
+
+        $images->save();
+
+        return back();
     }
 
     /**
@@ -98,8 +110,15 @@ class ImagesController extends Controller
      * @param  \App\Models\Images  $images
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Images $images)
+    public function destroy(Images $images,int $id)
     {
-        //
+        $images = Images::find($id);
+
+        if($images){
+            Storage::delete('public', $images->image_src);
+            $images->delete();
+        }
+
+        return back();
     }
 }

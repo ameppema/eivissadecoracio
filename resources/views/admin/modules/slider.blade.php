@@ -58,7 +58,7 @@
                         data: {},
                         type: 'GET',
                         success: function(data){
-                            if(data){//console.log(data[0]); //Debug
+                            if(data){
 
                                 $('#Form-Edit').attr('action', 'slide/' + data[0].id)
 
