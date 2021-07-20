@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ImagesController;
 
 Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
@@ -27,8 +28,14 @@ Route::delete('/category_menu/delete/{id}', [MenuController::class, 'destroy'])-
 Route::get('/services', [ServiceController::class, 'index'])->name('admin.service');
 Route::post('/services', [ServiceController::class, 'store'])->name('admin.store');
 
+//Gallery routes
+Route::post('/gallery', [ImagesController::class, 'store'])->name('admin.gallery.image.store');
+Route::get('/gallery/{image}', [ImagesController::class, 'editByAjax'])->name('admin.gallery.image.edit');
+Route::put('/gallery/{id}', [ImagesController::class, 'update'])->name('admin.gallery.image.update');
+Route::delete('/gallery/{id}', [ImagesController::class, 'destroy'])->name('admin.gallery.image.destroy');
+
 // Pages/modules routes
 Route::get('/module', function(){ return redirect()->route('admin.home');})->name('admin.module.index');
-Route::get('/module/{name}/{id?}', [ModuleController::class, 'index'])->name('admin.module');
+Route::get('/module/{name}/{id}', [ModuleController::class, 'index'])->name('admin.module');
 Route::post('/module/{name}', [ModuleController::class, 'store'])->name('admin.module.store');
 Route::put('/module/{name}/{id}', [ModuleController::class, 'update'])->name('admin.module.update');

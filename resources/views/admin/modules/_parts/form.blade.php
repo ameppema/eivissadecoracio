@@ -21,7 +21,7 @@
 
 <!-- Formulario para agregar un elemento -->
 <p class="h1">Editar Contenido</p>
-<form action="{{$module_id}}" method="POST" enctype="multipart/form-data">
+<form action="{{$module->id}}" method="POST" enctype="multipart/form-data">
     @method('put')
     @csrf
     <div class="row">

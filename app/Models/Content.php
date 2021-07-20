@@ -24,6 +24,19 @@ class Content extends Model
         return $content;
     }
 
+    /**
+     * Muestra los servicios en HomePage
+     * @method static App\Models\Content get(string except)
+     */
+
+    public static function getServices(){
+        $content = DB::table('modules')
+                        ->where('enlace','NOT LIKE','historia')
+                        ->get();
+
+        return $content;
+    }
+    
     public static function getGallery(){
         return Module::all();
     }

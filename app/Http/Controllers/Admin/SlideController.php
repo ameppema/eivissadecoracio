@@ -42,8 +42,6 @@ class SlideController extends Controller
         $filename = $request->file('imagen')->getClientOriginalName();
         $filenamemobile = $request->file('imagen-movil')->getClientOriginalName();
 
-        /* dd($filename);
-        die(); */
         // Guardar imagen del slide
         $rutaImg = $request['imagen']->storeAs('slide', $filename, 'public');
         $rutaImgMovil = $request['imagen-movil']->storeAs('slide', $filenamemobile, 'public');

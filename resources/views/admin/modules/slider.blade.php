@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="page-header">
-    <h1>Panel de Administración Eivisa | <small>Gestor de Slider</small></h1>
+    <h1>Eivisa | <small>Gestor de Slider</small></h1>
     </div>
 @stop
 
@@ -58,7 +58,7 @@
                         data: {},
                         type: 'GET',
                         success: function(data){
-                            if(data){//console.log(data[0]); //Debug
+                            if(data){
 
                                 $('#Form-Edit').attr('action', 'slide/' + data[0].id)
 

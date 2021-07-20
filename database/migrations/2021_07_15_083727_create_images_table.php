@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFkModulesCategoryMenu extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,20 @@ class AddFkModulesCategoryMenu extends Migration
      */
     public function up()
     {
-        Schema::table('modules', function (Blueprint $table) {
-            //Agregando relacion a nivel MySql
-            $table->foreign('category_menu_id')
+        Schema::create('images', function (Blueprint $table) {
+            $table->id();
+            $table->text('image_src');
+            $table->text('image_alt');
+            $table->unsignedBigInteger('gallery_id');
+            $table->integer('gallery_type');
+            $table->integer('sort_order')->default(0);
+
+            $table->foreign('gallery_id')
                     ->references('id')
-                    ->on('category_menu')
+                    ->on('galleries')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
+
         });
     }
 
@@ -30,8 +37,6 @@ class AddFkModulesCategoryMenu extends Migration
      */
     public function down()
     {
-        Schema::table('modules', function (Blueprint $table) {
-            $table->dropForeign('category_menu_id');
-        });
+        Schema::dropIfExists('images');
     }
 }
