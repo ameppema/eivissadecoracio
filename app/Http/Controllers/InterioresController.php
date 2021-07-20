@@ -9,8 +9,8 @@ class InterioresController extends Controller
 {
     public function index(){
         $content = Content::getContent('interiores');
-        $galleryOne = Galleries::page(1)->gallery(1)->get();
-        $galleryTwo = Galleries::page(1)->gallery(2)->get();
+        $galleryOne = Galleries::page(3)->gallery(1)->get();
+        $galleryTwo = Galleries::page(3)->gallery(2)->get();
         $menus = Content::getMenu();
 
         return view('page', compact(['content', 'menus', 'galleryOne', 'galleryTwo']));
