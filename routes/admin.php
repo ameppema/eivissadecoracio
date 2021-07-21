@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ImagesController;
+use App\Http\Controllers\Admin\PartnersController;
 
 Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
@@ -33,6 +34,14 @@ Route::post('/gallery', [ImagesController::class, 'store'])->name('admin.gallery
 Route::get('/gallery/{image}', [ImagesController::class, 'editByAjax'])->name('admin.gallery.image.edit');
 Route::put('/gallery/{id}', [ImagesController::class, 'update'])->name('admin.gallery.image.update');
 Route::delete('/gallery/{id}', [ImagesController::class, 'destroy'])->name('admin.gallery.image.destroy');
+
+// Partners
+Route::get('/module/partners', [PartnersController::class, 'index'])->name('admin.module.partners');
+Route::get('/module/partners/image/{id}', [PartnersController::class, 'showImageData'])->name('admin.module.partners.show');
+Route::post('/module/partners', [PartnersController::class, 'storeImage'])->name('admin.module.partners.store');
+Route::put('/module/partners/order', [PartnersController::class, 'editaOrderByAjax'])->name('admin.module.partners.order');
+Route::put('/module/partners', [PartnersController::class, 'asdqwe'])->name('admin.module.partners.update');
+Route::delete('/module/partners', [PartnersController::class, 'destroy'])->name('admin.module.partners.destroy');
 
 // Pages/modules routes
 Route::get('/module', function(){ return redirect()->route('admin.home');})->name('admin.module.index');
