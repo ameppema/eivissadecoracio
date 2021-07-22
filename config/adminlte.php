@@ -283,6 +283,11 @@ return [
             'url'  => 'admin/module/parquets/5',
             'icon' => 'fas fa-house-user',
         ],
+        [
+            'text' => 'Partners',
+            'url'  => 'admin/module/partners',
+            'icon' => 'fas fa-house-user',
+        ],
         ['header' => 'Cuenta de usuario [En proceso]'],
         [
             'text' => 'profile',

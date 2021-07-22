@@ -44,14 +44,16 @@ class Galleries extends Model
         $this->_galleryAll = $gallery;
         return $this;
     }
+    public function belongs($gellery_belongs_to){
+        $this->_galleryAll->where('galleries.belongs_to', '=' , $gellery_belongs_to);
+        return $this;
+    }
+
+    public function order($table_name){
+
+    }
 
     public function get($columns = 'images.*'){
         return $this->_galleryAll->get($columns);
     }
 }
-
-
-/* $gallery = Galleries::find(5);
-$img = $gallery->getImages;
-
-dd($img); */
