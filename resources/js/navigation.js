@@ -8,11 +8,14 @@ hamburguer_btn.addEventListener('click', () => {
         navigation.classList.toggle('exposed');
         hamburguer_btn.classList.toggle('open');
 
-        // Slider Arrows
-        const prev = document.querySelector('.prev');
-        const next = document.querySelector('.next');
-        prev.classList.toggle('open');
-        next.classList.toggle('open');
+        const sliderElement = document.getElementById("slider");
+        if(!!sliderElement) {
+            // Slider Arrows
+            const prev = document.querySelector('.prev');
+            const next = document.querySelector('.next');
+            prev.classList.toggle('open');
+            next.classList.toggle('open');
+        }
 
         // Menu Slide
         const menu = document.querySelector('.menu-mobile');

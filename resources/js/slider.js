@@ -1,3 +1,4 @@
+const sliderElement = document.getElementById("slider");
 const slides = document.querySelectorAll(".slide");
 const next = document.querySelector("#next");
 const prev = document.querySelector("#prev");
@@ -22,13 +23,15 @@ const prevSlide = () => {
     }
 };
 
-next.addEventListener("click", e => {
-    nextSlide();
-});
-
-prev.addEventListener("click", e => {
-    prevSlide();
-});
+if(!!sliderElement) {
+    next.addEventListener("click", e => {
+        nextSlide();
+    });
+    
+    prev.addEventListener("click", e => {
+        prevSlide();
+    });
+}
 
 // Repoblando las imagenes con sus versiones moviles
 $(window).on('DOMContentLoaded', function(){

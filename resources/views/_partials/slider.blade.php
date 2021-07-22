@@ -1,5 +1,4 @@
 <div class="slider">
-
     @foreach($slider as $sliderItem)
         <div class="slide {{ $loop->first ? 'current' : '' }}" style="background: url('storage/{{ $sliderItem->imagen }}') no-repeat center top/cover;" data-img-movil="background: url('storage/{{ $sliderItem->imagen_movil }}')">
             <div class="slide__info">
@@ -11,7 +10,6 @@
             </div>
         </div>
     @endforeach
-
 </div>
 
 <button id="prev" class="prev">
@@ -21,21 +19,3 @@
 <button id="next" class="next">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.9 1.4L7.4 0l11.9 12L7.4 24l-1.5-1.4L16.5 12 5.9 1.4z"/></svg>
 </button>
-
-
-<!-- <div class="slider">
-
-    <div class="slide current">
-        <div class="slide__overlay"></div>
-
-        <div class="slide__info">
-            <h2 class="slide__title">Leaders in Construction.</h2>
-
-            <p class="slide__text">
-                With more than 40 years in construction we are the leaders in this industry!
-            </p>
-        </div>
-    </div>
-
-</div>
--->

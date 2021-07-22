@@ -1900,12 +1900,17 @@ hamburguer_btn.addEventListener('click', function () {
     // Navigation
     var navigation = document.querySelector('.navigation');
     navigation.classList.toggle('exposed');
-    hamburguer_btn.classList.toggle('open'); // Slider Arrows
+    hamburguer_btn.classList.toggle('open');
+    var sliderElement = document.getElementById("slider");
 
-    var prev = document.querySelector('.prev');
-    var next = document.querySelector('.next');
-    prev.classList.toggle('open');
-    next.classList.toggle('open'); // Menu Slide
+    if (!!sliderElement) {
+      // Slider Arrows
+      var prev = document.querySelector('.prev');
+      var next = document.querySelector('.next');
+      prev.classList.toggle('open');
+      next.classList.toggle('open');
+    } // Menu Slide
+
 
     var menu = document.querySelector('.menu-mobile');
     menu.classList.toggle('open'); // Block Scroll
@@ -1945,6 +1950,7 @@ window.onscroll = function () {
   \********************************/
 /***/ (() => {
 
+var sliderElement = document.getElementById("slider");
 var slides = document.querySelectorAll(".slide");
 var next = document.querySelector("#next");
 var prev = document.querySelector("#prev");
@@ -1971,16 +1977,19 @@ var prevSlide = function prevSlide() {
   }
 };
 
-next.addEventListener("click", function (e) {
-  nextSlide();
-});
-prev.addEventListener("click", function (e) {
-  prevSlide();
-}); // Repoblando las imagenes con sus versiones moviles
+if (!!sliderElement) {
+  next.addEventListener("click", function (e) {
+    nextSlide();
+  });
+  prev.addEventListener("click", function (e) {
+    prevSlide();
+  });
+} // Repoblando las imagenes con sus versiones moviles
+
 
 $(window).on('DOMContentLoaded', function () {
-  console.log(slides); //Trabajando con los media querys
-
+  // console.log(slides);
+  //Trabajando con los media querys
   var window_size = window.matchMedia('(max-width: 1280px)'); // Detectando la vista movil
 
   if (window_size.matches) {
