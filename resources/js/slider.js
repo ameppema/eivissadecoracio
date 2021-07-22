@@ -1,3 +1,5 @@
+const { type } = require("jquery");
+
 const sliderElement = document.getElementById("slider");
 const slides = document.querySelectorAll(".slide");
 const next = document.querySelector("#next");
@@ -33,44 +35,62 @@ if(!!sliderElement) {
     });
 }
 
-// Repoblando las imagenes con sus versiones moviles
 $(window).on('DOMContentLoaded', function(){
-    // console.log(slides);
-
-    //Trabajando con los media querys
-    let window_size = window.matchMedia('(max-width: 1280px)');
-
-    // Detectando la vista movil
-    if(window_size.matches){
-        // alert('usar imagenes responsive!!!')
-        slides.forEach((slide, index) => {
-            //Leyendo al ruta de la imagen movil
-            let imgM = slides[index].getAttribute('data-img-movil');
-            console.log(imgM, index)
-            slides[index].setAttribute( 'style', imgM + ' no-repeat center top/cover;');
-
+    let elementDesktop = document.querySelector('[data-img-movil]');
+    let stylesDesktop = [];
+    if(slides.length > 1){
+        slides.forEach((element, index) =>{
+            stylesDesktop.push(slides[index].getAttribute('style'));
         })
+    }else{ stylesDesktop =  elementDesktop.getAttribute('style')}
+    /* Trabajando con los media querys */
+    let window_size = window.matchMedia('(min-width: 1280px)');
+
+    /* Detectando la vista movil */
+    if(window_size.matches){
+    /* alert('No Usar imagenes responsive!!!') */
     }else{
-        // alert('No usar imagenes responsive!!!')
-        console.log(slides[index].getAttribute('data-img-movil'))
+        /* alert('Usar imagenes responsive!!!') */
+        if(slides.length > 1){
+            slides.forEach((slide, index) => {
+                let imgM = slides[index].getAttribute('data-img-movil');
+                slides[index].setAttribute( 'style', imgM + ' no-repeat center top/cover;');
+            })
+            console.log('Listo Movil slide');
+        }
+        else {
+            let stylesMovil = document.querySelector('[data-img-movil]').getAttribute('data-img-movil');
+            elementDesktop.setAttribute('style', stylesMovil);
+            console.log('Listo Movil');
+        }
     }
 
-    // En caso de que se Redimensione la pantalla
-    $(window).on('resize', function(){
-        if(window_size.matches){
-            // alert('usar imagenes responsive!!!')
+/* En caso de que se Redimensione la pantalla */
+$(window).on('resize', function(){
+    if(window_size.matches){
+        /* alert('No Usar imagenes responsive!!!') */
+        if(slides.length > 1){
             slides.forEach((slide, index) => {
-                //Leyendo al ruta de la imagen movil
-                let imgM = slides[index].getAttribute('data-img-movil');
-                console.log(imgM, index)
-                slides[index].setAttribute( 'style', imgM + ' no-repeat center top/cover;');
-    
+                slides[index].setAttribute( 'style', stylesDesktop[index] + ' no-repeat center top/cover;');
+                console.log(stylesDesktop)
             })
-        }else{
-            // alert('No usar imagenes responsive!!!')
-            
-        console.log(slides[0].getAttribute('data-img-movil'))
         }
-    })
-
+        else {
+            elementDesktop.setAttribute('style', stylesDesktop);
+            console.log('Listo Movil')
+        }
+    }else{
+        /* alert('Usar imagenes responsive!!!') */
+        if(slides.length > 1){
+            slides.forEach((slide, index) => {
+                let imgM = slides[index].getAttribute('data-img-movil');
+                slides[index].setAttribute( 'style', imgM + ' no-repeat center top/cover;');
+            })
+        }
+        else {
+            let stylesMovil = document.querySelector('[data-img-movil]').getAttribute('data-img-movil');
+            elementDesktop.setAttribute('style', stylesMovil + ' no-repeat center top/cover;');
+        }
+    }
+})
 })
