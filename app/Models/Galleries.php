@@ -15,16 +15,8 @@ class Galleries extends Model
     public $msg;
     public $_galleryAll;
 
-    public function getImages(){
+    public function getImagesAll(){
         return $this->hasMany('App\Models\Images', 'gallery_id', 'id');
-    }
-
-    public static function getGallery($gallery_type = 1){
-        $gallery = DB::table('images')
-                        ->join('galleries', 'galleries.id', '=', 'images.gallery_id', 'right')
-                        ->where('images.gallery_id', '=' , $gallery_type)->get();
-
-        return $gallery;
     }
 
     public static function page(int $id){
@@ -49,8 +41,9 @@ class Galleries extends Model
         return $this;
     }
 
-    public function order($table_name){
-
+    public function inOrder($direcction = 'ASC',$column = 'sort_order'){
+        $this->_galleryAll->orderBy($column, $direcction);
+        return $this;
     }
 
     public function get($columns = 'images.*'){

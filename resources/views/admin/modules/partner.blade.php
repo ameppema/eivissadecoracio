@@ -88,8 +88,8 @@
                                     <td class="w-50" ><img src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}" class="w-50"></td>
                                     <td class="text-capitalize" >{{$item->image_alt}}</td>
                                     <td>
-                                        <button title="Editar"  class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="1"><i class="fas fa-edit"></i></button>
-                                        <form action="{{url('admin/category_menu'.'/delete/' . $item->id )}}" method="POST" class="d-inline">
+                                        <button title="Editar"  class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$item->id}}"><i class="fas fa-edit"></i></button>
+                                        <form action="{{route('admin.gallery.image.destroy' , [$item->id] )}}" method="POST" class="d-inline">
                                         @csrf
                                         @method('delete')
                                             <button title="Eliminar"  class="btn btn-danger delete-category"><i class="fas fa-times"></i></button>
@@ -130,19 +130,19 @@
                 <div class="form-row mb-4">
 
                     <div class="custom-file col-5">
-                        <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" type="file" id="imagen_src" name="nueva_imagen_src" id="customFileLangHTML" aria-describedby="validationServer03Feedback">
+                        <input class="custom-file-input @error('imagen_src') is-invalid @enderror" type="file" id="imagen_src" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
                         <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Imagen Nueva</label>
-                        @if($errors->test->first('imagen_src'))
+                        @error('imagen_src')
                         <div id="validationServer03Feedback" class="invalid-feedback">
                             Este Campo es Requerido
                         </div>
-                        @endif
+                        @enderror
 
                     </div>
 
                     <div class="custom-file col-7">
-                        <input type="text" class="form-control" id="imagen_alt" 
-                        placeholder="Texto Alterno | alt='' ''" name="nueva_imagen_alt" value="{{old('imagen_alt')}}">
+                        <input type="text" class="form-control @error('imagen_src') is-invalid @enderror" id="modalAlt" 
+                        placeholder="Texto Alterno | alt='' ''" name="nueva_imagen_alt">
                         @error('imagen_alt')
                             {{$message}}
                         @enderror
@@ -155,7 +155,7 @@
 
             <div class="h1">Imagen Anterior:</div>
 
-            <img id="modalImage" src="" alt="" class="img-fluid">
+            <img id="modalImage" class="img-fluid">
       </div>
 
     <div class="modal-footer">
@@ -195,10 +195,10 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'PUT',
-            url: 'admin/module/partners/order',
+            url: '/admin/module/partners/order',
             data: {data: JSON.stringify(orderUpdated), _token: '{{csrf_token()}}'},
             success: (data) => console.log('%c Orden Cambiado Correctamente','background-color:green'),
-            error: (err) => console.log('Not Succes')
+            error: (err) => console.error('Not Succes')
         })
     }
 
@@ -213,7 +213,7 @@ $(document).ready(() => {
                 type: 'GET',
                 success: function(data){
                     $('#modalImage').attr('src' , '/storage/' + data.image_src);
-                    $('#imagen_alt').val(data.image_alt);
+                    $('#modalAlt').val(data.image_alt);
                 },
                 error: function(error){ console.log(error);}
             });
