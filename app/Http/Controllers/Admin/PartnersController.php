@@ -102,7 +102,7 @@ class PartnersController extends Controller
             $i++;
         }
         $i=null;
-        $newOrder = Galleries::page(7)->gallery()->inOrder()->get();;
+        $newOrder = Galleries::page(7)->gallery()->inOrder()->get();
 
         return response(json_encode($newOrder),201);
     }
