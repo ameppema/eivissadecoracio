@@ -149,13 +149,13 @@
                 <div class="form-row mb-4">
 
                     <div class="custom-file col-5">
-                        <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" type="file" id="imagen_src" name="nueva_imagen_src" id="customFileLangHTML" aria-describedby="validationServer03Feedback">
+                        <input class="custom-file-input @error('imagen_src') is-invalid @enderror" type="file" id="imagen_src" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
                         <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Imagen Nueva</label>
-                        @if($errors->test->first('imagen_src'))
+                        @error('imagen_src')
                         <div id="validationServer03Feedback" class="invalid-feedback">
                             Este Campo es Requerido
                         </div>
-                        @endif
+                        @enderror
 
                     </div>
 
