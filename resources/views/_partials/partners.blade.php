@@ -7,7 +7,6 @@
 </div>
 
 <div class="partners__brands">
-    <img src="/images/brands/titanlux.png" alt="Titanlux">
      @foreach($galleryPartners as $partnerImage)
         <img src="storage/{{ $partnerImage->image_src }}" alt="{{ $partnerImage->image_alt }}">
     @endforeach
