@@ -28,7 +28,7 @@
             <div class="card">
                 <div class="card-body">
                 <p class="h2">Agregar Imagen</p>
-                <form action="{{route('admin.gallery.image.store')}}" method="POST" enctype="multipart/form-data" class="mt-4" id="modalFormUpdate">
+                <form action="{{route('admin.gallery.image.store')}}" method="POST" enctype="multipart/form-data" class="mt-4">
                     @method('post')
                     @csrf
 
