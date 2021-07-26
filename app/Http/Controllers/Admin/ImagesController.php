@@ -44,7 +44,7 @@ class ImagesController extends Controller
             'image_alt' => $data['imagen_alt'],
             'gallery_type' => $data['gallery_type'],
             'gallery_id' => $data['gallery_id'],
-            'sort_order' => $this->storeInOrder($data['gallery_id']) ?? 0,
+            'sort_order' => $this->storeInOrder($data['gallery_id']),
         ]);
 
         return back();
@@ -54,7 +54,7 @@ class ImagesController extends Controller
     {
         $isOrdered = Galleries::page($gallery_id)->gallery()->inOrder()->get();
 
-        return count($isOrdered) > 1 ? count($isOrdered) + 1 : null;
+        return count($isOrdered) > 1 ? count($isOrdered) + 1 : 1;
     }
 
     /**
