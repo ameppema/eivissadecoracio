@@ -31,10 +31,6 @@
     border-bottom: 2px solid #d6d6d6;
 }
 
-.menu-mobile li:last-child {
-    display: none;
-}
-
 .menu-mobile .selected {
     color: #535353;
     border-bottom: 2px solid #535353;

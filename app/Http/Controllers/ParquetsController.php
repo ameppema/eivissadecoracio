@@ -11,8 +11,8 @@ class ParquetsController extends Controller
         $content = Content::getContent('parquets');
         $galleryOne = Galleries::page(5)->gallery(1)->get();
         $galleryTwo = Galleries::page(5)->gallery(2)->get();
-        $menus = Content::getMenu();
+        $menu = Content::getMenu();
 
-        return view('page', compact(['content', 'menus', 'galleryOne', 'galleryTwo']));
+        return view('page', compact(['content', 'menu', 'galleryOne', 'galleryTwo']));
     }
 }

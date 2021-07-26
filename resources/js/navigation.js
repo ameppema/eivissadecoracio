@@ -8,8 +8,8 @@ hamburguer_btn.addEventListener('click', () => {
         navigation.classList.toggle('exposed');
         hamburguer_btn.classList.toggle('open');
 
-        const sliderElement = document.getElementById("slider");
-        if(!!sliderElement) {
+        const sliderContainer = document.getElementById("slider");
+        if(!!sliderContainer) {
             // Slider Arrows
             const prev = document.querySelector('.prev');
             const next = document.querySelector('.next');

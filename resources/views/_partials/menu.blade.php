@@ -17,7 +17,7 @@
         </a>
     </li>
 
-    @foreach($menus as $menuItem)
+    @foreach($menu as $menuItem)
       <li class="menu__item {{ (request()->is($menuItem->ruta)) ? 'selected' : '' }}">
           <a href="{{$menuItem->ruta}}">
               {{$menuItem->nombre}}
@@ -36,7 +36,7 @@
         </a>
     </li>
 
-    @foreach($menus as $menuItem)
+    @foreach($menu as $menuItem)
       <li class="menu__item {{ (request()->is($menuItem->ruta)) ? 'selected' : '' }}">
           <a href="{{$menuItem->ruta}}">
               {{$menuItem->nombre}}

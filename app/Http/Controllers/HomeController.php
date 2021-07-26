@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $slider = Slide::all();
+        $menu = Content::getMenu();
         $modules = Content::getServices();
         $historyImages = Content::getContent('historia');
         $menus = Content::getMenu();
