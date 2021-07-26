@@ -58,7 +58,7 @@ $(window).on('DOMContentLoaded', function(){
         }
         else {
             let stylesMovil = document.querySelector('[data-img-movil]').getAttribute('data-img-movil');
-            elementDesktop.setAttribute('style', stylesMovil);
+            elementDesktop.setAttribute('style', stylesMovil + ' no-repeat center top/cover;');
             console.log('Listo Movil');
         }
     }
