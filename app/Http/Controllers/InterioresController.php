@@ -11,8 +11,8 @@ class InterioresController extends Controller
         $content = Content::getContent('interiores');
         $galleryOne = Galleries::page(3)->gallery(1)->get();
         $galleryTwo = Galleries::page(3)->gallery(2)->get();
-        $menus = Content::getMenu();
+        $menu = Content::getMenu();
 
-        return view('page', compact(['content', 'menus', 'galleryOne', 'galleryTwo']));
+        return view('page', compact(['content', 'menu', 'galleryOne', 'galleryTwo']));
     }
 }

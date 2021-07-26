@@ -11,8 +11,8 @@ class ObrasController extends Controller
         $content = Content::getContent('obras');
         $galleryOne = Galleries::page(1)->gallery(1)->get();
         $galleryTwo = Galleries::page(1)->gallery(2)->get();
-        $menus = Content::getMenu();
+        $menu = Content::getMenu();
 
-        return view('page', compact(['content', 'menus', 'galleryOne', 'galleryTwo']));
+        return view('page', compact(['content', 'menu', 'galleryOne', 'galleryTwo']));
     }
 }
