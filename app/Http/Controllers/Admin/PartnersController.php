@@ -20,7 +20,7 @@ class PartnersController extends Controller
     {
         $menu = Content::getMenu();
         $partnerData = Partners::all()->first();
-        $gallery = Galleries::page(7)->gallery()->inOrder()->get();
+        $gallery = Galleries::page(7)->gallery()->inOrder('desc')->get();
 
         // dd($this->getgalleryOrder(7));/*  */
 
@@ -95,7 +95,7 @@ class PartnersController extends Controller
     public function editOrderByAjax(Request $request, Images $images)
     {
         $data = json_decode($request->data);
-        $images = Galleries::page(7)->gallery()->inOrder()->get();
+        $images = Galleries::page(7)->gallery()->inOrder('desc')->get();
         $i = 0;
         foreach($images as $itemMenu)
         {   

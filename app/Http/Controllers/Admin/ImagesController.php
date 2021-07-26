@@ -119,8 +119,4 @@ class ImagesController extends Controller
 
         return back();
     }
-
-    public function getOrder($gallery_id){
-
-    }
 }

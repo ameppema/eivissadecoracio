@@ -187,12 +187,12 @@ $(document).ready(() => {
 
     function getOrder(){
         let ordered = SortList.sortable('toArray');
+        ordered.reverse();
         let orderUpdated = [];
         ordered.forEach((id, index) => {
             index += 1;
             orderUpdated.push({index, id});
         });
-
         $.ajax({
             type: 'PUT',
             url: '/admin/module/partners/order',
