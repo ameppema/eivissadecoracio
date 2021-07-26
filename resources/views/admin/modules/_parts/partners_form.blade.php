@@ -23,6 +23,7 @@
 <p class="h1">Partners</p>
 <form action="" method="post" enctype="multipart/form-data">
     @csrf
+    @method('put')
     <div class="row">
 
         <div class="mb-3 col-4">

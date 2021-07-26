@@ -1,4 +1,4 @@
-<img class="history__image" src="/images/sections/history_01.jpg" alt="">
+<img class="history__image" src="storage/{{$historyImages->imagen_principal}}" alt="">
 
 <div class="history__info">
     <a class="history__link" href="/">

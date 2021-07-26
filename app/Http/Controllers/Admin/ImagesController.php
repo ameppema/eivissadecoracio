@@ -72,11 +72,11 @@ class ImagesController extends Controller
     {
         $images = Images::find($id);
         $data = $request->validate([
-            'nueva_imagen_src' => ['image','required'],
-            'nueva_imagen_alt' => ['required'],
+            'nueva_imagen_src' => ['nullable','image'],
+            'nueva_imagen_alt' => ['nullable', 'string'],
         ]);
         
-        if($data['nueva_imagen_src']){
+        if(isset($data['nueva_imagen_src'])){
 
             Storage::delete('public' . $images->image_src);
             

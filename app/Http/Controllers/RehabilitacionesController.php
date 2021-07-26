@@ -7,13 +7,12 @@ use App\Models\Galleries;
 
 class RehabilitacionesController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $content = Content::getContent('rehabilitaciones');
-        $galleryOne = Galleries::page(1)->gallery(1)->get();
-        $galleryTwo = Galleries::page(1)->gallery(2)->get();
-        $menus = Content::getMenu();
+        $galleryOne = Galleries::page(2)->gallery(1)->get();
+        $galleryTwo = Galleries::page(2)->gallery(2)->get();
+        $menu = Content::getMenu();
 
-        return view('page', compact(['content', 'menus', 'galleryOne', 'galleryTwo']));
+        return view('page', compact(['content', 'menu', 'galleryOne', 'galleryTwo']));
     }
 }

@@ -137,14 +137,14 @@ button:focus {
 
     .prev {
         top: 47%;
-        left: 80px;
+        left: 160px;
         width: 45px;
         height: 45px;
     }
 
     .next {
         top: 47%;
-        right: 80px;
+        right: 160px;
         width: 45px;
         height: 45px;
     }

@@ -4,7 +4,6 @@
 
 @section('content')
     <section id="header" class="header">
-        
         <div class="head">
             <div class="head__image" style="background: url('storage/{{ $content->imagen_principal }}') no-repeat center top/cover;" data-img-movil="background: url('storage/{{ $content->imagen_movil }}')">
                 <div class="slide__info">

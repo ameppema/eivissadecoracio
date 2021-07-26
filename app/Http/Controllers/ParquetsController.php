@@ -7,13 +7,12 @@ use App\Models\Galleries;
 
 class ParquetsController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $content = Content::getContent('parquets');
-        $galleryOne = Galleries::page(1)->gallery(1)->get();
-        $galleryTwo = Galleries::page(1)->gallery(2)->get();
-        $menus = Content::getMenu();
+        $galleryOne = Galleries::page(5)->gallery(1)->get();
+        $galleryTwo = Galleries::page(5)->gallery(2)->get();
+        $menu = Content::getMenu();
 
-        return view('page', compact(['content', 'menus', 'galleryOne', 'galleryTwo']));
+        return view('page', compact(['content', 'menu', 'galleryOne', 'galleryTwo']));
     }
 }

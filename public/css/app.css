@@ -161,14 +161,14 @@ button:focus {
 
   .prev {
     top: 47%;
-    left: 80px;
+    left: 160px;
     width: 45px;
     height: 45px;
   }
 
   .next {
     top: 47%;
-    right: 80px;
+    right: 160px;
     width: 45px;
     height: 45px;
   }
@@ -350,10 +350,6 @@ button:focus {
   border-bottom: 2px solid #d6d6d6;
 }
 
-.menu-mobile li:last-child {
-  display: none;
-}
-
 .menu-mobile .selected {
   color: #535353;
   border-bottom: 2px solid #535353;
@@ -500,7 +496,6 @@ button:focus {
   padding: 20px;
   font-family: 'Montserrat';
   text-align: center;
-  background-color: #00000060;
 }
 
 .service__title {
@@ -553,7 +548,7 @@ button:focus {
 
 @media (min-width: 1280px) {
   .services {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: 1fr 1fr;
     grid-gap: 20px;
   }
@@ -566,28 +561,37 @@ button:focus {
     height: 400px;
   }
 
+  .service__card a {
+    height: 100%;
+  }
+
+  .service__image {
+    width: 100%;
+    height: 100%;
+  }
+
   .service__card:nth-child(1n) {
-    grid-column: 1 / 4;
+    grid-column: 2 / 5;
     grid-row: 1 / 2;
   }
 
   .service__card:nth-child(2n) {
-    grid-column: 4 / 7;
+    grid-column: 5 / 8;
     grid-row: 1 / 2;
   }
 
   .service__card:nth-child(3n) {
-    grid-column: 1 / 3;
+    grid-column: 2 / 4;
     grid-row: 2 / 3;
   }
 
   .service__card:nth-child(4n) {
-    grid-column: 3 / 5;
+    grid-column: 4 / 6;
     grid-row: 2 / 3;
   }
 
   .service__card:nth-child(5n) {
-    grid-column: 5 / 7;
+    grid-column: 6 / 8;
     grid-row: 2 / 3;
   }
 
@@ -610,7 +614,6 @@ button:focus {
   height: 100%;
   font-family: 'Montserrat';
   text-align: center;
-  background-color: #0000005a;
 }
 
 .history__link {

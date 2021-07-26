@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Slide;
 use App\Models\Content;
+use App\Models\Galleries;
 
 class HomeController extends Controller
 {
@@ -26,10 +27,14 @@ class HomeController extends Controller
     public function index()
     {
         $slider = Slide::all();
+        $menu = Content::getMenu();
         $modules = Content::getServices();
-        $menus = Content::getMenu();
+        $historyImages = Content::getContent('historia');
+        $partnersImages = Galleries::page(7)->gallery()->inOrder()->get();
 
-        return view('home', compact(['slider', 'modules', 'menus']));
+        // dd($partnersImages);
+
+        return view('home', compact(['slider', 'historyImages', 'modules', 'menu']));
     }
 
 }
