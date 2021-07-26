@@ -35,7 +35,7 @@ class HomeController extends Controller
         $galleryPartners = Galleries::page(7)->gallery()->inOrder()->get();
         $partnersData = Partners::all()->first();
 
-        return view('home', compact(['slider', 'historyImages', 'modules', 'menus', 'galleryPartners', 'partnersData']));
+        return view('home', compact(['slider', 'historyImages', 'modules', 'menu', 'galleryPartners', 'partnersData']));
     }
 
 }
