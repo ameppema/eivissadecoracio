@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Galleries;
 use App\Models\Images;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -43,10 +44,17 @@ class ImagesController extends Controller
             'image_alt' => $data['imagen_alt'],
             'gallery_type' => $data['gallery_type'],
             'gallery_id' => $data['gallery_id'],
-            'sort_order' => $request->sort_order ?? 0,
+            'sort_order' => $this->storeInOrder($data['gallery_id']),
         ]);
 
         return back();
+    }
+
+    public function storeInOrder($gallery_id)
+    {
+        $isOrdered = Galleries::page($gallery_id)->gallery()->inOrder()->get();
+
+        return count($isOrdered) > 1 ? count($isOrdered) + 1 : 1;
     }
 
     /**
@@ -110,5 +118,9 @@ class ImagesController extends Controller
         }
 
         return back();
+    }
+
+    public function getOrder($gallery_id){
+
     }
 }
