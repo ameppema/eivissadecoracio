@@ -7,7 +7,6 @@ use App\Models\Partners;
 use App\Models\Content;
 use App\Models\Galleries;
 use App\Models\Images;
-use Faker\Provider\Image;
 use Illuminate\Http\Request;
 
 class PartnersController extends Controller
@@ -22,6 +21,8 @@ class PartnersController extends Controller
         $menu = Content::getMenu();
         $partnerData = Partners::all()->first();
         $gallery = Galleries::page(7)->gallery()->inOrder()->get();
+
+        // dd($this->getgalleryOrder(7));/*  */
 
         return view('admin.modules.partner', compact(['gallery', 'partnerData']));
     }
@@ -105,5 +106,11 @@ class PartnersController extends Controller
         $newOrder = Galleries::page(7)->gallery()->inOrder()->get();
 
         return response(json_encode($newOrder),201);
+    }
+
+    public function getgalleryOrder(){
+        $isOrdered = Galleries::page(7)->gallery()->inOrder()->get();
+
+        return count($isOrdered) + 1;
     }
 }
