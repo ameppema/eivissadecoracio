@@ -1,6 +1,4 @@
-const { type } = require("jquery");
-
-const sliderElement = document.getElementById("slider");
+const sliderContainer = document.getElementById("slider");
 const slides = document.querySelectorAll(".slide");
 const next = document.querySelector("#next");
 const prev = document.querySelector("#prev");
@@ -25,7 +23,7 @@ const prevSlide = () => {
     }
 };
 
-if(!!sliderElement) {
+if(!!sliderContainer) {
     next.addEventListener("click", e => {
         nextSlide();
     });
