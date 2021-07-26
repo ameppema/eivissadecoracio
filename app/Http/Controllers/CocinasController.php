@@ -9,6 +9,7 @@ class CocinasController extends Controller
 {
     public function index(){
         $content = Content::getContent('cocinas');
+
         $galleryOne = Galleries::page(4)->gallery(1)->get();
         $galleryTwo = Galleries::page(4)->gallery(2)->get();
         $menu = Content::getMenu();
