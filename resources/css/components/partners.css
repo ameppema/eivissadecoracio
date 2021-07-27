@@ -71,6 +71,10 @@
         width: 300px;
     }
 
+    .partners__brands {
+        padding: 10px 350px;
+    }
+    
     .partners__brands img {
         width: 170px;
         height: 80px;
