@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="page-header" style="margin-left: 7.5px;">
-        <h1>Control Panel | <small>Eivissa Decoracio</small></h1>
+        <h1>Admin Panel | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
 
