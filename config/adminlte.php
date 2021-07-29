@@ -46,8 +46,8 @@ return [
     img-classes  img-circle elevation-3
     */
 
-    'logo' => '<b>Eivissa</b>ADM',
-    'logo_img' => 'images\navbar\ibiza_decoracio.png',
+    'logo' => 'Control Panel',
+    // 'logo_img' => 'images\navbar\ibizaDecoracio_white_small.png',
     'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -239,7 +239,7 @@ return [
         [
             'text'        => 'Dashborad',
             'url'         => 'admin',
-            'icon'        => 'fas fa-landmark',
+            'icon'        => 'fas fa-home',
             'label_color' => 'success',
         ],
         ['header' => 'Modulos'],
@@ -256,7 +256,7 @@ return [
         [
             'text' => 'Historia',
             'url'  => 'admin/module/historia/6',
-            'icon' => 'fas fa-book',
+            'icon' => 'fas fa-landmark',
         ],
         [
             'text' => 'Obras',
@@ -266,7 +266,7 @@ return [
         [
             'text' => 'Rehabilitaciones',
             'url'  => 'admin/module/rehabilitaciones/2',
-            'icon' => 'fas fa-hard-hat',
+            'icon' => 'fas fa-toolbox',
         ],
         [
             'text' => 'Interiores',
@@ -276,17 +276,17 @@ return [
         [
             'text' => 'Cocinas',
             'url'  => 'admin/module/cocinas/4',
-            'icon' => 'fas fa-house-user',
+            'icon' => 'fas fa-utensils',
         ],
         [
             'text' => 'Parquets',
             'url'  => 'admin/module/parquets/5',
-            'icon' => 'fas fa-house-user',
+            'icon' => 'fas fa-briefcase',
         ],
         [
             'text' => 'Partners',
             'url'  => 'admin/module/partners',
-            'icon' => 'fas fa-house-user',
+            'icon' => 'fas fa-handshake',
         ],
         ['header' => 'Cuenta de usuario [En proceso]'],
         [
@@ -299,44 +299,44 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
-        ],
+        // [
+        //     'text'    => 'multilevel',
+        //     'icon'    => 'fas fa-fw fa-share',
+        //     'submenu' => [
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //         [
+        //             'text'    => 'level_one',
+        //             'url'     => '#',
+        //             'submenu' => [
+        //                 [
+        //                     'text' => 'level_two',
+        //                     'url'  => '#',
+        //                 ],
+        //                 [
+        //                     'text'    => 'level_two',
+        //                     'url'     => '#',
+        //                     'submenu' => [
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                         [
+        //                             'text' => 'level_three',
+        //                             'url'  => '#',
+        //                         ],
+        //                     ],
+        //                 ],
+        //             ],
+        //         ],
+        //         [
+        //             'text' => 'level_one',
+        //             'url'  => '#',
+        //         ],
+        //     ],
+        // ],
     ],
 
     /*
