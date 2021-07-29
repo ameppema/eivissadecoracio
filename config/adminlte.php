@@ -46,8 +46,7 @@ return [
     img-classes  img-circle elevation-3
     */
 
-    'logo' => 'Control Panel',
-    // 'logo_img' => 'images\navbar\ibizaDecoracio_white_small.png',
+    'logo' => 'Admin Panel',
     'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -239,19 +238,19 @@ return [
         [
             'text'        => 'Dashborad',
             'url'         => 'admin',
-            'icon'        => 'fas fa-home',
+            'icon'        => 'fas fa-globe',
             'label_color' => 'success',
         ],
-        ['header' => 'Modulos'],
-        [
-            'text' => 'Slider',
-            'url'  => 'admin/slide',
-            'icon' => 'far fa-images',
-        ],
+        ['header' => 'Secciones'],
         [
             'text' => 'Menu',
             'url'  => 'admin/category_menu',
             'icon' => 'fas fa-list-ul',
+        ],
+        [
+            'text' => 'Slider',
+            'url'  => 'admin/slide',
+            'icon' => 'far fa-images',
         ],
         [
             'text' => 'Historia',
