@@ -1,7 +1,6 @@
 @import "components/template";
 
 @import "components/slider";
-/* @import "components/slider_images"; */
 @import "components/navigation";
 @import "components/menu";
 @import "components/services";
@@ -9,11 +8,9 @@
 @import "components/partners";
 @import "components/contact";
 @import "components/footer";
-@import "components/pages";
-
-/* BORRAR */
-/* @import "components/test"; */
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+@import "admin/sidebar-image";

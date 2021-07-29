@@ -33,6 +33,19 @@ if(!!sliderContainer) {
     });
 }
 
+
+// Capture window size
+// function reportWindowSize() {
+//   heightOutput = window.innerHeight;
+//   widthOutput = window.innerWidth;
+
+//   console.log(widthOutput, heightOutput);
+// }
+
+// window.onresize = reportWindowSize;
+// window.addEventListener('resize', reportWindowSize);
+
+
 $(window).on('DOMContentLoaded', function(){
     let elementDesktop = document.querySelector('[data-img-movil]');
     let stylesDesktop = [];
@@ -70,7 +83,7 @@ $(window).on('resize', function(){
         if(slides.length > 1){
             slides.forEach((slide, index) => {
                 slides[index].setAttribute( 'style', stylesDesktop[index] + ' no-repeat center top/cover;');
-                console.log(stylesDesktop)
+                // console.log(stylesDesktop)
             })
         }
         else {
