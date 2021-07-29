@@ -1,26 +1,5 @@
-{{-- Mostrando Errores 
-@if($errors->any())
-<div class="alert alert-danger d-flex flex-column  alert-dismissible fade show" role="alert">
-    <div class="h3 d-block"> 
-        <i class="fas fa-exclamation-circle"></i>
-        <span> Error en el Formulario </span>
-    </div>
-    <div class="d-block">
-        <ul class="d-block">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-@endif
---}}
-
-<p style="font-weight: 700; margin-bottom: .5rem;" class="form-label col-12">Agregar imagen a la Galería Nº 2</p>
+{{-- Formulario para agregar un elemento --}}
+<p style="font-weight: 700; margin-bottom: .5rem;" class="form-label col-12">Agregar imagen a la Galería Nº 1</p>
 
 <form action="{{route('admin.gallery.image.store')}}" method="POST" enctype="multipart/form-data">
     @method('post')
@@ -28,7 +7,7 @@
 
     <div class="form-row">
         <input type="hidden" name="gallery_id" value="{{$module->id}}">
-        <input type="hidden" name="gallery_type" value="2">
+        <input type="hidden" name="gallery_type" value="1">
     </div>
 
     <div class="form-row mb-4">

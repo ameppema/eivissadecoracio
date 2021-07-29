@@ -3,8 +3,8 @@
 @section('title', ' Eivissa Slider')
 
 @section('content_header')
-    <div class="page-header">
-    <h1>Eivisa | <small>Gestor de Menu</small></h1>
+    <div class="page-header" style="margin-left: 7.5px;">
+        <h1>Eivissa Decoracio | Sección de Partners</h1>
     </div>
 @stop
 
@@ -13,157 +13,140 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-            {{-- Start New Item Form - main_form  --}}
+                {{-- Form Items Section --}}
                 <div class="card">
                     <div class="card-body">
-
                         @include('admin.modules._parts.partners_form')
-
                     </div>
                 </div>
-            {{-- End New Item Form  --}}
 
-            {{-- Start - Add Image Form --}}
-
-            <div class="card">
-                <div class="card-body">
-                <p class="h2">Agregar Imagen</p>
-                <form action="{{route('admin.gallery.image.store')}}" method="POST" enctype="multipart/form-data" class="mt-4">
-                    @method('post')
-                    @csrf
-
-                    <div class="form-row">
-                        <input type="hidden" name="gallery_id" value="7">
-                        <input type="hidden" name="gallery_type" value="1">
-                    </div>
-
-                    <div class="form-row mb-4">
-
-                        <div class="custom-file col-5">
-                            <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" type="file" id="imagen_src" name="imagen_src" aria-describedby="validationServer03Feedback">
-                            <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Imagen Nueva</label>
-                            @if($errors->test->first('imagen_src'))
-                            <div id="validationServer03Feedback" class="invalid-feedback">
-                                Este Campo es Requerido
-                            </div>
-                            @endif
-
-                        </div>
-
-                        <div class="custom-file col-7">
-                            <input type="text" class="form-control" id="imagen_alt" 
-                            placeholder="Texto Alterno | alt='' ''" name="imagen_alt">
-                            @error('imagen_alt')
-                                {{$message}}
-                            @enderror
-                        </div>
-
-                    </div>
-
-                        <button type="submit" class="btn btn-primary">Agregar a <span class="text-capitalize">Galeria</span></button>
-                </form>
-                </div>
-            </div>
-
-            {{-- End - Add Image Form --}}
-            {{-- Start SlideShow - main_table --}}
+                {{-- Form Galleries --}}
                 <div class="card">
                     <div class="card-body">
-                        
-                         <!-- Tabla -->
+                        <div style="margin-bottom: 50px;">
+                            <p style="font-weight: 700;" class="form-label col-12">Agregar imagen a sección Partners</p>
+    
+                            <form action="{{route('admin.gallery.image.store')}}" method="POST" enctype="multipart/form-data">
+                                @method('post')
+                                @csrf
+    
+                                <div class="form-row">
+                                    <input type="hidden" name="gallery_id" value="7">
+                                    <input type="hidden" name="gallery_type" value="1">
+                                </div>
+    
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px;">
+                                    <div class="custom-file">
+                                        <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" type="file" id="imagen_src" name="imagen_src" aria-describedby="validationServer03Feedback">
+                                        <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Seleccionar imagen</label>
+                                        @if($errors->test->first('imagen_src'))
+                                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                                Este campo es requerido
+                                            </div>
+                                        @endif
+                                    </div>
+    
+                                    <div class="custom-file">
+                                        <input type="text" class="form-control" id="imagen_alt" placeholder="Descripción de la imagen" name="imagen_alt" value="{{old('imagen_alt')}}">
+                                        @error('imagen_alt')
+                                            {{$message}}
+                                        @enderror
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary">Agregar imagen a la sección</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        {{-- Start SlideShow - main_table --}}
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Orden</th>
-                                    <th scope="col">Imagen</th>
-                                    <th scope="col">Alt Imagen</th>
-                                    <th scope="col">Acciones</th>
+                                    <th width="10%" style="border-top: none;">Orden</th>
+                                    <th width="40%" style="border-top: none;">Imagen</th>
+                                    <th width="30%" style="border-top: none;">Nombre del Partner</th>
+                                    <th width="20%" style="border-top: none;">Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody id="mylist">
-                            @foreach($gallery as $item)
-                                <tr data-id="{{$item->id}}">
-                                    <td data-id="{{$item->id}}">{{$item->sort_order}}</td>
 
-                                    <td class="w-50" ><img src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}" class="w-50"></td>
-                                    <td class="text-capitalize" >{{$item->image_alt}}</td>
-                                    <td>
-                                        <button title="Editar"  class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$item->id}}"><i class="fas fa-edit"></i></button>
-                                        <form action="{{route('admin.gallery.image.destroy' , [$item->id] )}}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('delete')
-                                            <button title="Eliminar"  class="btn btn-danger delete-category"><i class="fas fa-times"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
+                            <tbody id="mylist">
+                                @foreach($gallery as $item)
+                                    <tr data-id="{{$item->id}}">
+                                        <td style="vertical-align: middle;" data-id="{{$item->id}}">{{$item->sort_order}}</td>
+                                        <td style="vertical-align: middle;">
+                                            <img style="width: 150px;" src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
+                                        </td>
+                                        <td style="vertical-align: middle;" class="text-capitalize" >{{$item->image_alt}}</td>
+                                        <td style="vertical-align: middle;">
+                                            <button title="Editar" style="margin-right: 20px;" class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$item->id}}"><i class="fas fa-edit"></i></button>
+                                            <form action="{{route('admin.gallery.image.destroy' , [$item->id] )}}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button title="Eliminar"  class="btn btn-danger delete-category"><i class="fas fa-times"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
-            {{-- End SlideShow --}}
             </div>
         </div>
     </div>
 </section>
 
-{{-- Formulario Modal para agregar un elemento --}}
+{{-- Partner Modal --}}
 <div class="modal fade" id="editImageModal" tabindex="-1" aria-labelledby="editImageModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="exampleModalLabel">Actualizar Imagen</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Actulizar Imagen</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data" id="modalFormUpdate">
+                    @method('put')
+                    @csrf
 
-      <div class="modal-body">
-
-            <p class="h2 col-12">Actualizar Imagen</p>
-
-            <form method="POST" enctype="multipart/form-data" class="mt-4" id="modalFormUpdate">
-                @method('put')
-                @csrf
-
-                <div class="form-row mb-4">
-
-                    <div class="custom-file col-5">
-                        <input class="custom-file-input @error('imagen_src') is-invalid @enderror" type="file" id="imagen_src" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
-                        <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Imagen Nueva</label>
-                        @error('imagen_src')
-                        <div id="validationServer03Feedback" class="invalid-feedback">
-                            Este Campo es Requerido
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px;">
+                        <div class="custom-file">
+                            <input class="custom-file-input @error('imagen_src') is-invalid @enderror" type="file" id="imagen_src" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
+                            <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Imagen Nueva</label>
+                            
+                            @error('imagen_src')
+                                <div id="validationServer03Feedback" class="invalid-feedback">
+                                    Este campo es requerido
+                                </div>
+                            @enderror
                         </div>
-                        @enderror
 
+                        <div class="custom-file">
+                            <input type="text" class="form-control @error('imagen_src') is-invalid @enderror" id="modalAlt" 
+                            placeholder="Texto Alterno | alt='' ''" name="nueva_imagen_alt">
+                            
+                            @error('imagen_alt')
+                                {{$message}}
+                            @enderror
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Agregar a <span class="text-capitalize">Galeria</span></button>
                     </div>
+                </form>
 
-                    <div class="custom-file col-7">
-                        <input type="text" class="form-control @error('imagen_src') is-invalid @enderror" id="modalAlt" 
-                        placeholder="Texto Alterno | alt='' ''" name="nueva_imagen_alt">
-                        @error('imagen_alt')
-                            {{$message}}
-                        @enderror
-                    </div>
+                <div style="text-align: center; font-weight: 700; margin-top: 50px;">Imagen actual</div>
 
-                </div>
+                <img id="modalImage" class="img-fluid" style="width: 400px; display: block; margin: 0 auto;">
+            </div>
 
-                    <button type="submit" class="btn btn-primary">Agregar a <span class="text-capitalize">Galeria</span></button>
-            </form>
-
-            <div class="h1">Imagen Anterior:</div>
-
-            <img id="modalImage" class="img-fluid">
-      </div>
-
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <div class="modal-footer" style="display: flex; justify-content: center;">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
     </div>
-    
-    </div>
-  </div>
 </div>
 @stop
 

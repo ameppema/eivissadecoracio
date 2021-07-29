@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="page-header">
-    <h1>Panel de Administración Eivisa | <small>Gestor de la Pagina</small></h1>
+    <h1>Control Panel | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
 

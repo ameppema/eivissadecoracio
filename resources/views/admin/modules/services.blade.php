@@ -17,23 +17,16 @@
                 <div class="card">
                     <div class="card-body">
                         <p class="h1">Home</p>
-                    {{--Inicia formulario en Home--}}
-                    <div class="">
-                        @include('admin.modules._services.form')
-                    </div>
-                    
-                    {{--Fin formulario en Home--}}
-                    
-                    {{--Inicia formulario en Pagina--}}
+                        {{--Inicia formulario en Home--}}
+                        <div class="">
+                            @include('admin.modules._services.form')
+                        </div>
 
-                    <p class="h1">Contenido de la Pagina</p>
-                    {{--Fin formulario en pagina--}}
-
+                        <p class="h1">Contenido de la Pagina</p>
                     </div>
                 </div>
-            {{-- End New Slider Item Form  --}}
 
-            {{-- Start SlideShow -  --}}
+                {{-- Start SlideShow -  --}}
                 <div class="card">
                     <div class="card-body">
 

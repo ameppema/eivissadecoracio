@@ -3,8 +3,8 @@
 @section('title', ' Eivissa Slider')
 
 @section('content_header')
-    <div class="page-header">
-    <h1>Eivisa | <small>Gestor de Slider</small></h1>
+    <div class="page-header" style="margin-left: 7.5px;">
+        <h1>Eivissa Decoracio | Home Slider</h1>
     </div>
 @stop
 
@@ -13,17 +13,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-            {{-- Start New Slider Item Form - main_form  --}}
+                {{-- Start New Slider Item Form - main_form  --}}
                 <div class="card">
                     <div class="card-body">
-
                         @include('admin.modules.slider_parts.main_form')
-
                     </div>
                 </div>
-            {{-- End New Slider Item Form  --}}
 
-            {{-- Start SlideShow - main_table --}}
+                {{-- Start SlideShow - main_table --}}
                 <div class="card">
                     <div class="card-body">
                         
@@ -42,8 +39,7 @@
 @stop
 
 @section('js')
-<script type="application/javascript">
-
+    <script type="application/javascript">
         $(document).ready(() => {
             // Obteniendo datos a actualizar
             $('#table-edit').on('click', function(e) {
@@ -59,9 +55,7 @@
                         type: 'GET',
                         success: function(data){
                             if(data){
-
                                 $('#Form-Edit').attr('action', 'slide/' + data[0].id)
-
                                 $('#modal-titulo').val(data[0].titulo);
                                 $('#modal-desc').val(data[0].descripcion);
                                 $('#oldImgDesk').attr('src' , '/storage/' + data[0].imagen);
@@ -79,5 +73,5 @@
                 $('#Form-Edit').submit();
             })
         })
-</script>
+    </script>
 @stop

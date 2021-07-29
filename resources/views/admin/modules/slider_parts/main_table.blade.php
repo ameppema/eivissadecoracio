@@ -1,24 +1,27 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Titulo</th>
-            <th scope="col">Imagen</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Acciones</th>
+            <th style="border-bottom: none;" scope="col">#</th>
+            <th style="border-bottom: none;" scope="col">Título</th>
+            <th style="border-bottom: none;" scope="col">Imagen</th>
+            <th style="border-bottom: none;" scope="col">Descripción</th>
+            <th style="border-bottom: none;" scope="col">Acciones</th>
         </tr>
     </thead>
+    
     <tbody id="table-edit">
         @foreach($slide as $slideItem)
         <tr>
-            <th scope="row">{{$loop->iteration}}</th>
-            <td>{{ $slideItem->titulo }}</td>
-            <td class="w-25"><img src="/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
-            <td>{{$slideItem->descripcion}}</td>
-            <td>
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCustom" data-slideid="{{$slideItem->id}}" ><i class="fas fa-pencil-alt" data-slideid="{{$slideItem->id}}"></i></button>
+            <th style="vertical-align: middle;" scope="row">{{$loop->iteration}}</th>
+            <td style="vertical-align: middle;">{{ $slideItem->titulo }}</td>
+            <td style="width: 150px;"><img src="/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
+            <td style="vertical-align: middle;">{{$slideItem->descripcion}}</td>
+            <td style="vertical-align: middle; padding: 0 .75rem;">
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCustom" data-slideid="{{$slideItem->id}}">
+                    <i class="fas fa-pencil-alt" data-slideid="{{$slideItem->id}}"></i>
+                </button>
             </td>
-            <td>
+            <td style="vertical-align: middle; padding: 0;">
                 <form action="{{url('admin/slide/' .$slideItem->id)}}" method="POST">
                     @method('delete')
                     @csrf
