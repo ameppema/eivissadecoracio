@@ -1,11 +1,11 @@
 <ul class="menu-mobile">
     <li class="language">
-        <a class="spanish active" href="/">
+        <a class="spanish active" href="lang/es">
             <img src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Language">
             <p>ES</p>
         </a>
 
-        <a class="english" href="/">
+        <a class="english" href="lang/en">
             <img src="/images/navbar/lang_en.png" alt="Eivissa Decoracio Language">
             <p>EN</p>
         </a>
@@ -45,12 +45,12 @@
     @endforeach
 
     <li class="language">
-        <a class="spanish active" href="/">
+        <a class="spanish active" href="lang/es">
             <img src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Language">
             <p>ES</p>
         </a>
 
-        <a class="english inactive" href="/">
+        <a class="english inactive" href="lang/en">
             <img src="/images/navbar/lang_en.png" alt="Eivissa Decoracio Language">
             <p>EN</p>
         </a>

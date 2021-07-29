@@ -18,6 +18,7 @@ class CreateSlideTable extends Migration
             $table->text('titulo');
             $table->text('descripcion');
             $table->text('imagen');
+            $table->text('imagen_movil');
         });
     }
 

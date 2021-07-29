@@ -9,6 +9,10 @@ use App\Http\Controllers\CocinasController;
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\RehabilitacionesController;
 use App\Http\Controllers\ParquetsController;
+use App\Http\Controllers\LocalizationController;
+
+/* Language Implementation */
+Route::get('lang/{locale}', [LocalizationController::class, 'lang'])->name('lang');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('historia',[HistoriaController::class, 'index'])->name('historia');
