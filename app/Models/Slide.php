@@ -8,17 +8,16 @@ use App\Models\Mutators\SlideMutators;
 
 class Slide extends Model
 {
-    use HasFactory, SlideMutators;
+    use HasFactory, 
+        SlideMutators;
 
     protected $table = 'slide';
     protected $fillable = [
-
         'titulo',
         'descripcion',
         'imagen',
         'imagen',
         'imagen_movil'
-
     ];
 
     public $timestamps = false;

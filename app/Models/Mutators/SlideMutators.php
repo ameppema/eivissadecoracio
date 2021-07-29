@@ -9,12 +9,12 @@ trait SlideMutators
 
 	use Translation;
 
-	public function getTitleAttribute($value)
+	public function getTituloAttribute($value)
 	{
 		return $this->translate('titulo', $value);
 	}
 
-	public function getContentAttribute($value)
+	public function getDescripcionAttribute($value)
 	{
 		return $this->translate('descripcion', $value);
 	}
