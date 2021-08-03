@@ -3,13 +3,6 @@
         <form action="" method="post" enctype="multipart/form-data" id="Form-Edit">
             @csrf
             @method('put')
-
-            {{-- <div class="row">
-                <x-adminlte-input name="titulo" label="Título del Slide" placeholder="Escribir título del Slide" fgroup-class="col-6" disable-feedback value="{{old('titulo')}}" id="modal-titulo"/>
-
-                <x-adminlte-input name="descripcion" label="Descripción del Slide" placeholder="Escribir descripción del Slide" fgroup-class="col-6" disable-feedback value="{{old('descripcion')}}" id="modal-desc" />
-            </div> --}}
-
             {{-- Modal Title & Description in Spanish --}}
             <div class="modal__spanish">
                 <div class="modal__title">
