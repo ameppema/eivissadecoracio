@@ -1,18 +1,18 @@
 <ul class="menu-mobile">
     <li class="language">
-        <a class="spanish active" href="lang/es">
+        <a class="spanish {{session()->get('locale') == 'es' ? 'active' : '' }}" href="{{route('lang', ['es'])}}">
             <img src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Language">
             <p>ES</p>
         </a>
 
-        <a class="english" href="lang/en">
+        <a class="english {{session()->get('locale') == 'en' ? 'active' : '' }}" href="{{route('lang', ['en'])}}">
             <img src="/images/navbar/lang_en.png" alt="Eivissa Decoracio Language">
             <p>EN</p>
         </a>
     </li>
 
     <li class="menu__item {{ (request()->is('/')) ? 'selected' : '' }}">
-        <a href="/">
+        <a href="route('home')">
             Home
         </a>
     </li>
@@ -31,7 +31,7 @@
 
 <ul class="menu-desktop">
     <li class="menu__item {{ (request()->is('/')) ? 'selected' : '' }}">
-        <a href="/">
+        <a href="route('home')">
             Home
         </a>
     </li>
@@ -45,12 +45,12 @@
     @endforeach
 
     <li class="language">
-        <a class="spanish active" href="lang/es">
+        <a class="spanish {{session()->get('locale') == 'es' ? 'active' : 'inactive' }}" href="{{route('lang', ['es'])}}">
             <img src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Language">
             <p>ES</p>
         </a>
 
-        <a class="english inactive" href="lang/en">
+        <a class="english {{session()->get('locale') == 'en' ? 'active' : 'inactive' }}" href="{{route('lang', ['en'])}}">
             <img src="/images/navbar/lang_en.png" alt="Eivissa Decoracio Language">
             <p>EN</p>
         </a>
