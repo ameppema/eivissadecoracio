@@ -3,7 +3,7 @@
 @section('title', ' Eivissa')
 
 @section('content_header')
-    <div class="page-header" style="margin-left: 7.5px;">
+    <div class="page-header section__title">
         <h1>Admin Panel | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
@@ -82,6 +82,10 @@
 
 @section('css')
     <style>
+        .section__title {
+            margin-left: 7.5px;
+        }
+        
         .card {
             justify-content: center;
             align-items: center;
