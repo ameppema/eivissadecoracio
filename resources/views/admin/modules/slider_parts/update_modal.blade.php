@@ -4,10 +4,40 @@
             @csrf
             @method('put')
 
-            <div class="row">
+            {{-- <div class="row">
                 <x-adminlte-input name="titulo" label="Título del Slide" placeholder="Escribir título del Slide" fgroup-class="col-6" disable-feedback value="{{old('titulo')}}" id="modal-titulo"/>
 
                 <x-adminlte-input name="descripcion" label="Descripción del Slide" placeholder="Escribir descripción del Slide" fgroup-class="col-6" disable-feedback value="{{old('descripcion')}}" id="modal-desc" />
+            </div> --}}
+
+            {{-- Modal Title & Description in Spanish --}}
+            <div class="modal__spanish">
+                <div class="modal__title">
+                    <img class="title__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                    <label class="title__label" for="ModalTitle_ES">Título</label>
+                    <x-adminlte-input id="ModalTitle_ES" name="titulo" placeholder="Título en Español" disable-feedback value="{{old('titulo')}}"/>
+                </div>
+                
+                <div class="modal__description">
+                    <img class="description__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                    <label class="description__label" for="ModalDescription_ES">Descripción</label>
+                    <x-adminlte-input id="ModalDescription_ES" name="descripcion" placeholder="Descripción en Español" disable-feedback value="{{old('descripcion')}}"/>
+                </div>
+            </div>
+            
+            {{-- Modal Title & Description in English --}}
+            <div class="modal__english">
+                <div class="modal__title">
+                    <img class="title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                    <label class="title__label" for="ModalTitle_EN">Título</label>
+                    <x-adminlte-input id="ModalTitle_EN" name="titulo" placeholder="Título en Ingles" disable-feedback value="{{old('titulo')}}"/>
+                </div>
+                
+                <div class="modal__description">
+                    <img class="description__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                    <label class="description__label" for="ModalDescription_EN">Descripción</label>
+                    <x-adminlte-input id="ModalDescription_EN" name="descripcion" placeholder="Descripción en Ingles" disable-feedback value="{{old('descripcion')}}"/>
+                </div>
             </div>
                 
             <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px; height: 500px;">

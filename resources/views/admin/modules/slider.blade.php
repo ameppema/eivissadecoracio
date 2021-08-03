@@ -3,7 +3,7 @@
 @section('title', ' Eivissa Slider')
 
 @section('content_header')
-    <div class="page-header" style="margin-left: 7.5px;">
+    <div class="page-header section__title">
         <h1>Eivissa Decoracio | Home Slider</h1>
     </div>
 @stop
@@ -13,29 +13,92 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                {{-- Start New Slider Item Form - main_form  --}}
+                {{-- Section new Slider --}}
                 <div class="card">
                     <div class="card-body">
                         @include('admin.modules.slider_parts.main_form')
+                        {{-- @include('admin.section.slider.slideNew') --}}
                     </div>
                 </div>
 
-                {{-- Start SlideShow - main_table --}}
+                {{-- Section edit Slider --}}
                 <div class="card">
                     <div class="card-body">
-                        
                          @include('admin.modules.slider_parts.main_table')
-                        
+                         {{-- @include('admin.section.slider.slideEdit') --}}
                     </div>
                 </div>
-            {{-- End SlideShow --}}
             </div>
         </div>
     </div>
 </section>
 
-{{-- Modal para editar slide - update_modal --}}
+{{-- Modal edit Slide --}}
 @include('admin.modules.slider_parts.update_modal')
+@stop
+
+@section('css')
+    <style>
+        .section__title {
+            margin-left: 7.5px;
+        }
+
+        .slider__spanish,
+        .slider__english,
+        .modal__spanish,
+        .modal__english {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .slider__title,
+        .slider__description,
+        .modal__title,
+        .modal__description {
+            display: flex;
+            align-items: center;
+        }
+        
+        .title__image,
+        .description__image {
+            width: 30px;
+            height: 21px;
+        }
+        
+        .title__label,
+        .description__label {
+            margin: 0 10px 0 5px;
+        }
+        
+        .section__test {
+            margin-bottom: 0;
+            display: block;
+            width: 100%;
+            height: calc(2.25rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            box-shadow: inset 0 0 0 transparent;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+
+        .slider__title > .form-group,
+        .slider__description > .form-group,
+        .modal__title > .form-group,
+        .modal__description > .form-group {
+            width: 100%;
+            margin-bottom: 0;
+        }
+    </style>
 @stop
 
 @section('js')

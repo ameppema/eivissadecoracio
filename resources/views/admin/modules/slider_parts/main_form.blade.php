@@ -1,4 +1,4 @@
-{{-- Mostrando Errores --}}
+{{-- inputs errors --}}
 @if($errors->any())
     <x-adminlte-alert class="bg-red " icon="fa-lg fas fa-exclamation-circle" title="Error en el Formulario" dismissable>
         <ul>
@@ -9,15 +9,41 @@
     </x-adminlte-alert> 
 @endif
 
-<!-- Formulario para agregar un Slide -->
+<!-- Form new Slide -->
 <form action="" method="post" enctype="multipart/form-data">
     @csrf
-    <div class="row">
-        <x-adminlte-input name="titulo" label="Título" placeholder="Título del Slide" fgroup-class="col-6" disable-feedback value="{{old('titulo')}}"/>
 
-        <x-adminlte-input name="descripcion" label="Descripción" placeholder="Descripción del Slide" fgroup-class="col-6" disable-feedback value="{{old('descripcion')}}"/>
+    {{-- Section Title & Description in Spanish --}}
+    <div class="slider__spanish">
+        <div class="slider__title">
+            <img class="title__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+            <label class="title__label" for="SlideTitle_ES">Título</label>
+            <x-adminlte-input id="SlideTitle_ES" name="titulo" placeholder="Título en Español" disable-feedback value="{{old('titulo')}}"/>
+        </div>
+        
+        <div class="slider__description">
+            <img class="description__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+            <label class="description__label" for="SlideDescription_ES">Descripción</label>
+            <x-adminlte-input id="SlideDescription_ES" name="descripcion" placeholder="Descripción en Español" disable-feedback value="{{old('descripcion')}}"/>
+        </div>
+    </div>
+    
+    {{-- Section Title & Description in English --}}
+    <div class="slider__english">
+        <div class="slider__title">
+            <img class="title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+            <label class="title__label" for="SlideTitle_EN">Título</label>
+            <x-adminlte-input id="SlideTitle_EN" name="titulo" placeholder="Título en Ingles" disable-feedback value="{{old('titulo')}}"/>
+        </div>
+        
+        <div class="slider__description">
+            <img class="description__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+            <label class="description__label" for="SlideDescription_EN">Descripción</label>
+            <x-adminlte-input id="SlideDescription_EN" name="descripcion" placeholder="Descripción en Ingles" disable-feedback value="{{old('descripcion')}}"/>
+        </div>
     </div>
 
+    {{-- Section Add images --}}
     <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px; margin-bottom: 20px;">
         <div style="display: flex; flex-direction: column;">
             <label for="imagen" class="form-label">Imagen Grande <span style="font-weight: 200">(Desktop)</span></label>

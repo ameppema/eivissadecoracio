@@ -1,26 +1,59 @@
 <table class="table">
     <thead>
         <tr>
-            <th style="border-bottom: none;" scope="col">#</th>
-            <th style="border-bottom: none;" scope="col">Título</th>
-            <th style="border-bottom: none;" scope="col">Imagen</th>
-            <th style="border-bottom: none;" scope="col">Descripción</th>
-            <th style="border-bottom: none;" scope="col">Acciones</th>
+            <th style="border-bottom: none;">#</th>
+
+            <th style="border-bottom: none;">Imagen</th>
+
+            <th style="border-bottom: none;">
+                <img class="title__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                Título
+            </th>
+
+            <th style="border-bottom: none;">
+                <img class="title__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                Descripción
+            </th>
+
+            <th style="border-bottom: none;">
+                <img class="title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                Título
+            </th>
+
+            <th style="border-bottom: none;">
+                <img class="title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                Descripción
+            </th>
+
+            <th style="border-bottom: none;">Acciones</th>
         </tr>
     </thead>
     
     <tbody id="table-edit">
         @foreach($slide as $slideItem)
         <tr>
+            {{-- Order Slide --}}
             <th style="vertical-align: middle;" scope="row">{{$loop->iteration}}</th>
-            <td style="vertical-align: middle;">{{ $slideItem->titulo }}</td>
+            
+            {{-- Image Slide --}}
             <td style="width: 150px;"><img src="/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
+            
+            {{-- Title & Description in Spanish --}}
+            <td style="vertical-align: middle;">{{ $slideItem->titulo }}</td>
             <td style="vertical-align: middle;">{{$slideItem->descripcion}}</td>
+            
+            {{-- Title & Description in English --}}
+            <td style="vertical-align: middle;">{{ $slideItem->titulo }}</td>
+            <td style="vertical-align: middle;">{{$slideItem->descripcion}}</td>
+
+            {{-- Edit Slide --}}
             <td style="vertical-align: middle; padding: 0 .75rem;">
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modalCustom" data-slideid="{{$slideItem->id}}">
                     <i class="fas fa-pencil-alt" data-slideid="{{$slideItem->id}}"></i>
                 </button>
             </td>
+            
+            {{-- Remove Slide --}}
             <td style="vertical-align: middle; padding: 0;">
                 <form action="{{url('admin/slide/' .$slideItem->id)}}" method="POST">
                     @method('delete')
