@@ -12,7 +12,7 @@
     </li>
 
     <li class="menu__item {{ (request()->is('/')) ? 'selected' : '' }}">
-        <a href="route('home')">
+        <a href="{{route('home')}}">
             Home
         </a>
     </li>
@@ -31,7 +31,7 @@
 
 <ul class="menu-desktop">
     <li class="menu__item {{ (request()->is('/')) ? 'selected' : '' }}">
-        <a href="route('home')">
+        <a href="{{route('home')}}">
             Home
         </a>
     </li>
