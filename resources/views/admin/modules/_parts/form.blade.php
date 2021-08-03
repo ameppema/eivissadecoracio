@@ -25,19 +25,86 @@
     @method('put')
     @csrf
 
-    <div class="row">
-        <div class="col-6">
-            <label for="titulo" class="form-label">Título de la página</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribir título de la página" value="{{old('titulo') ?? $module->titulo}}">
+    {{-- Section in Spanish --}}
+    <div class="section__spanish">
+        {{-- Section Page: Title & Description --}}
+        <div class="section__header">
+            <div class="header-title__items">
+                <img class="header-title__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                <label class="form-label header-title__label" for="pageTitle_ES">Título</label>
+                <input class="form-control header-title__input" id="pageTitle_ES" name="pageTitle_ES" type="text" placeholder="Escribir título en Español" value="{{old('titulo') ?? $module->titulo}}">
+            </div>
+            
+            <div class="header-subtitle__items">
+                <img class="header-subtitle__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                <label class="form-label header-subtitle__label" for="pageSubtitle_ES">Descripción</label>
+                <input class="form-control header-subtitle__input" id="pageSubtitle_ES" name="pageSubtitle_ES" type="text" placeholder="Escribir subtitulo en Español" value="{{old('subtitulo') ?? $module->subtitulo}}">
+            </div>
         </div>
-
-        <div class="col-6">
-            <label for="subtitulo" class="form-label">Descripción de la página</label>
-            <input type="text" class="form-control" id="subtitulo" name="subtitulo" placeholder="Escribir descripción de la página" value="{{old('subtitulo') ?? $module->subtitulo}}">
+    
+        {{-- Section Paragraph --}}
+        <div class="section__paragraph">
+            <div class="form-group paragraph__items">
+                <img class="paragraph__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                <label class="paragraph__label" for="first_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 1</label>
+                <textarea class="form-control paragraph__text" id="first_text" rows="10" name="first_text" >{{$module->texto_principal}}</textarea>
+            </div>
+            
+            <div class="form-group paragraph__items">
+                <img class="paragraph__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                <label class="paragraph__label" for="second_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 2</label>
+                <textarea class="form-control paragraph__text" id="second_text" rows="10" name="second_text" >{{$module->texto_principal}}</textarea>
+            </div>
+            
+            <div class="form-group paragraph__items">
+                <img class="paragraph__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                <label class="paragraph__label" for="third_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 3</label>
+                <textarea class="form-control paragraph__text" id="third_text" rows="10" name="third_text" >{{$module->texto_principal}}</textarea>
+            </div>
+        </div>
+    </div>
+    
+    {{-- Section in English --}}
+    <div class="section__english">
+        {{-- Section Page: Title & Description --}}
+        <div class="section__header">
+            <div class="header-title__items">
+                <img class="header-title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                <label class="form-label header-title__label" for="pageTitle_EN">Título</label>
+                <input class="form-control header-title__input" id="pageTitle_EN" name="pageTitle_EN" type="text" placeholder="Escribir título en Ingles" value="{{old('titulo') ?? $module->titulo}}">
+            </div>
+            
+            <div class="header-subtitle__items">
+                <img class="header-subtitle__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                <label class="form-label header-subtitle__label" for="pageSubtitle_EN">Descripción</label>
+                <input class="form-control header-subtitle__input" id="pageSubtitle_EN" name="pageSubtitle_EN" type="text" placeholder="Escribir subtitulo en Ingles" value="{{old('subtitulo') ?? $module->subtitulo}}">
+            </div>
+        </div>
+        
+        {{-- Section Paragraph --}}
+        <div class="section__paragraph">
+            <div class="form-group paragraph__items">
+                <img class="paragraph__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                <label class="paragraph__label" for="first_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 1</label>
+                <textarea class="form-control paragraph__text" id="first_text" rows="10" name="first_text" >{{$module->texto_principal}}</textarea>
+            </div>
+            
+            <div class="form-group paragraph__items">
+                <img class="paragraph__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                <label class="paragraph__label" for="second_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 2</label>
+                <textarea class="form-control paragraph__text" id="second_text" rows="10" name="second_text" >{{$module->texto_principal}}</textarea>
+            </div>
+            
+            <div class="form-group paragraph__items">
+                <img class="paragraph__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                <label class="paragraph__label" for="third_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 3</label>
+                <textarea class="form-control paragraph__text" id="third_text" rows="10" name="third_text" >{{$module->texto_principal}}</textarea>
+            </div>
         </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px; margin: 20px 0;">
+    {{-- Section Images --}}
+    <div class="section__images">
         <div style="display: flex; flex-direction: column;">
             <label for="imagen" class="form-label">Imagen Grande <span style="font-weight: 200">(Desktop)</span></label>
             <input class="form-control" type="file" id="imagen-principal" name="imagen-principal" style="height: auto; padding: .400rem;">
@@ -46,23 +113,6 @@
         <div style="display: flex; flex-direction: column;">
             <label for="imagen_movil" class="form-label">Imagen Pequeña <span style="font-weight: 200">(Móvil)</span></label>
             <input class="form-control" type="file" id="imagen_movil" name="imagen_movil" style="height: auto; padding: .400rem;">
-        </div>
-    </div>
-    
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr; grid-gap: 20px;">
-        <div class="form-group">
-            <label for="fisrt_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 1</label>
-            <textarea class="form-control" id="fisrt_text" rows="10" name="fisrt_text" >{{$module->texto_principal}}</textarea>
-        </div>
-    
-        <div class="form-group">
-            <label for="second_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 2</label>
-            <textarea class="form-control" id="second_text" rows="10" name="second_text">{{$module->texto_secundario}}</textarea>
-        </div>
-    
-        <div class="form-group">
-            <label for="third_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 3</label>
-            <textarea class="form-control" id="third_text" rows="10" name="third_text">{{$module->texto_tres}}</textarea>
         </div>
     </div>
 

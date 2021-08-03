@@ -3,7 +3,7 @@
 @section('title', ' Eivissa Modules')
 
 @section('content_header')
-    <div class="page-header" style="margin-left: 7.5px;">
+    <div class="page-header section__title">
         <h1 class="text-capitalize">Eivissa Decoracio | Página {{$module_name}}</h1>
     </div>
 @stop
@@ -124,54 +124,132 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actulizar Imagen</h5>
+                    <h4 class="modal-title" id="exampleModalLabel">Actualizar imagen de Galería</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
                 <div class="modal-body">
-                    {{-- Formulario Modal para agregar un elemento --}}
-                    <p class="h2 col-12">Actualizar Imagen</p>
-
-                    <form method="POST" enctype="multipart/form-data" class="mt-4" id="modalFormUpdate">
+                    {{-- Modal add new Image --}}
+                    <form class="mt-4 modal__container" id="modalFormUpdate" method="POST" enctype="multipart/form-data">
                         @method('put')
                         @csrf
 
                         <div class="form-row mb-4">
-                            <div class="custom-file col-5">
+                            <div class="custom-file col-6">
                                 <input class="custom-file-input @error('imagen_src') is-invalid @enderror" type="file" id="imagen_src" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
-                                <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Imagen Nueva</label>
+                                
+                                <label class="custom-file-label modal__label" for="imagen_src" data-browse="Elegir Imagen">Imagen Nueva</label>
+                                
                                 @error('imagen_src')
-                                <div id="validationServer03Feedback" class="invalid-feedback">
-                                    Este Campo es Requerido
-                                </div>
+                                    <div id="validationServer03Feedback" class="invalid-feedback">
+                                        Este Campo es Requerido
+                                    </div>
                                 @enderror
                             </div>
 
-                            <div class="custom-file col-7">
-                                <input type="text" class="form-control" id="imagen_alt" 
-                                placeholder="Texto Alterno | alt='' ''" name="nueva_imagen_alt" value="{{old('imagen_alt')}}">
+                            <div class="custom-file col-6">
+                                <input type="text" class="form-control" id="imagen_alt" placeholder="Descripción de la imagen" name="nueva_imagen_alt" value="{{old('imagen_alt')}}">
                                 @error('imagen_alt')
                                     {{$message}}
                                 @enderror
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Agregar a <span class="text-capitalize">Galeria</span></button>
+                        <img class="img-fluid modal__image" id="modalImage" src="" alt="">
+
+                        <div class="modal__subtitle">Imagen actual</div>
+
+                        <button class="btn btn-success modal__button" type="submit">Agregar a Galeria</button>
+                        <button class="btn btn-danger modal__button" type="button" data-dismiss="modal">Cancelar</button>
                     </form>
-
-                    <div class="h1">Imagen Anterior:</div>
-
-                    <img id="modalImage" src="" alt="" class="img-fluid">
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
+@stop
+
+@section('css')
+    <style>
+        .section__title {
+            margin-left: 7.5px;
+        }
+
+        .section__header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header-title__items,
+        .header-subtitle__items {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-title__image,
+        .header-subtitle__image,
+        .paragraph__image {
+            width: 30px;
+            height: 21px;
+        }
+        
+        .header-title__label,
+        .header-subtitle__label {
+            margin: 0 10px 0 5px;
+        }
+
+        .header-title__items > .form-control,
+        .header-subtitle__items > .form-control {
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .section__paragraph {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            grid-gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .paragraph__image {
+            margin-bottom: 3px;
+        }
+        
+        .section__images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal__container {
+            text-align: center;
+            margin: 50px;
+        }
+        
+        .modal__image {
+            width: 400px;
+        }
+        
+        .modal__label {
+            text-align: left;
+        }
+        
+        .modal__subtitle {
+            font-size: 25px;
+            margin: 20px 0;
+        }
+        
+        .modal__button {
+            margin: 0 20px;
+        }
+    </style>
 @stop
 
 @section('js')
