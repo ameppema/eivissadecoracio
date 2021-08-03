@@ -10,11 +10,12 @@ use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\RehabilitacionesController;
 use App\Http\Controllers\ParquetsController;
 use App\Http\Controllers\LocalizationController;
+use App\Http\Middleware\Localization;
 
 /* Language Implementation */
-Route::get('lang/{locale}', [LocalizationController::class, 'lang'])->name('lang');
+Route::get('lang/{locale}', [LocalizationController::class, 'lang'])->name('lang')->withoutMiddleware(Localization::class);
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/{locale?}', [HomeController::class, 'index'])->name('home');
 Route::get('historia',[HistoriaController::class, 'index'])->name('historia');
 Route::get('obras', [ObrasController::class, 'index'])->name('obras');
 Route::get('interiores', [InterioresController::class, 'index'])->name('interiores');

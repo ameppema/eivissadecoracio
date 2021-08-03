@@ -17,12 +17,25 @@ class Localization
      */
     public function handle(Request $request, Closure $next)
     {
-        if(session()->has('locale')){
-            App::setLocale(session()->get('locale'));
-        }else {
-            session()->put('locale', 'es');
-            App::setLocale(session()->get('locale'));
+        $locale = 'es';
+        if(isset($request->route()->parameters()['locale'])){
+            $locale = $request->route()->parameters()['locale'];
         }
+        dump($locale);
+
+        $this->isDefinedInSession('locale');
+
+        $request->route()->forgetParameter('locale');
         return $next($request);
+    }
+
+    public function isDefinedInSession($session_var, $default_value = 'es'){
+        if(session()->has($session_var)){
+            App::setLocale(session()->get($session_var));
+        }else {
+            session()->put($session_var, $default_value);
+            App::setLocale(session()->get($session_var));
+        }
+        return;
     }
 }
