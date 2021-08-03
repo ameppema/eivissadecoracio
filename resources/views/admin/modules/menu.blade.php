@@ -3,7 +3,7 @@
 @section('title', ' Eivissa Menu')
 
 @section('content_header')
-    <div class="page-header" style="margin-left: 7.5px;">
+    <div class="page-header section__title">
         <h1>Eivissa Decoracio | Barra de navegación</h1>
     </div>
 @stop
@@ -13,23 +13,31 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                {{-- Start New Item Form - main_form  --}}
+                {{-- Menu new item --}}
                 <div class="card">
                     <div class="card-body">
                         @include('admin.modules._parts.menu_form')
                     </div>
                 </div>
 
-                {{-- Start SlideShow - main_table --}}
+                {{-- Menu edit item --}}
                 <div class="card">
                     <div class="card-body">
-                        
-                         <!-- Tabla -->
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th width="20%">Orden</th>
-                                    <th width="60%">Nombre de enlace</th>
+                                    
+                                    <th width="30%">
+                                        <img style="width: 30px; height: 21px; margin-bottom: 3px;" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+                                        Enlace en Español
+                                    </th>
+                                    
+                                    <th width="30%">
+                                        <img style="width: 30px; height: 21px; margin-bottom: 3px;" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+                                        Enlace en Ingles
+                                    </th>
+                                    
                                     <th width="20%">Acciones</th>
                                 </tr>
                             </thead>
@@ -37,11 +45,13 @@
                             <tbody id="mylist">
                                 @foreach($menu as $item)
                                     <tr data-id="{{$item->id}}">
-                                        <td data-id="{{$item->id}}">{{$item->sort_order}}</td>
+                                        <td style="vertical-align: middle;" data-id="{{$item->id}}">{{$item->sort_order}}</td>
                                         
-                                        <td class="text-capitalize collapse show thisone" >{{$item->nombre}}</td>
+                                        <td style="vertical-align: middle;" class="text-capitalize collapse show thisone" >{{$item->nombre}}</td>
+
+                                        <td style="vertical-align: middle;" class="text-capitalize collapse show thisone" >{{$item->nombre}}</td>
                                         
-                                        <td class="text-capitalize collapse editinput w-25">
+                                        <td style="vertical-align: middle;" class="text-capitalize collapse editinput w-25">
                                             <form action="{{url('admin/category_menu'. '/edit/' . $item->id )}}" method="POST">
                                                 @csrf
                                                 @method('put')
@@ -72,6 +82,14 @@
 
 {{-- Modal para editar slide - update_modal --}}
 @include('admin.modules.slider_parts.update_modal')
+@stop
+
+@section('css')
+    <style>
+        .section__title {
+            margin-left: 7.5px;
+        }
+    </style>
 @stop
 
 @section('js')

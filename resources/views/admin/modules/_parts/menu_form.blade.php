@@ -23,10 +23,17 @@
 <form action="" method="post" enctype="multipart/form-data">
     @csrf
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px; margin-bottom: 5px;">
-        <div>
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribir nombre del nuevo enlace" value="{{old('nombre')}}">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px;">
+        <div style="display: flex; align-items: center;">
+            <img style="width: 30px; height: 21px;" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+            <label for="nombre" class="form-label" style="margin: 0 10px 0 3px;">Nombre</label>
+            <input type="text" class="form-control" style="display: inline; width: 100%;" id="nombre" name="nombre" placeholder="Agregar nuevo enlace en Español" value="{{old('nombre')}}">
+        </div>
+        
+        <div style="display: flex; align-items: center;">
+            <img style="width: 30px; height: 21px;" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+            <label for="nombre" class="form-label" style="margin: 0 10px 0 3px;">Nombre</label>
+            <input type="text" class="form-control" style="display: inline; width: 100%;" id="nombre" name="nombre" placeholder="Agregar nuevo enlace en Ingles" value="{{old('nombre')}}">
         </div>
         
         <button style="height: 38px; align-self: end;" type="submit" class="btn btn-primary">Agregar a la Barra de Navegación</span></button>
