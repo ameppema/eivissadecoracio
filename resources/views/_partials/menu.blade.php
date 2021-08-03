@@ -11,14 +11,14 @@
         </a>
     </li>
 
-    <li class="menu__item {{ (request()->is('/')) ? 'selected' : '' }}">
+    <li class="menu__item {{ (request()->routeIs('home')) ? 'selected' : '' }}">
         <a href="{{route('home')}}">
             Home
         </a>
     </li>
 
     @foreach($menu as $menuItem)
-      <li class="menu__item {{ (request()->is($menuItem->ruta)) ? 'selected' : '' }}">
+      <li class="menu__item {{ (request()->is('*/' . $menuItem->ruta)) ? 'selected' : '' }}">
           <a href="{{$menuItem->ruta}}">
               {{$menuItem->nombre}}
           </a>
@@ -30,14 +30,14 @@
 <!-- Inicia Menu de Escritorio -->
 
 <ul class="menu-desktop">
-    <li class="menu__item {{ (request()->is('/')) ? 'selected' : '' }}">
+    <li class="menu__item {{ (request()->routeIs('home')) ? 'selected' : '' }}">
         <a href="{{route('home')}}">
             Home
         </a>
     </li>
 
     @foreach($menu as $menuItem)
-      <li class="menu__item {{ (request()->is($menuItem->ruta)) ? 'selected' : '' }}">
+      <li class="menu__item {{ (request()->is('*/'.$menuItem->ruta)) ? 'selected' : '' }}">
           <a href="{{$menuItem->ruta}}">
               {{$menuItem->nombre}}
           </a>

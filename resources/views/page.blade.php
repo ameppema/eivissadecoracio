@@ -5,7 +5,7 @@
 @section('content')
     <section id="header" class="header">
         <div class="head">
-            <div class="head__image" style="background: url('storage/{{ $content->imagen_principal }}') no-repeat center top/cover;" data-img-movil="background: url('storage/{{ $content->imagen_movil }}')">
+            <div class="head__image" style="background: url('/storage/{{ $content->imagen_principal }}') no-repeat center top/cover;" data-img-movil="background: url('storage/{{ $content->imagen_movil }}')">
                 <div class="slide__info">
                     <h2 class="slide__title">{{ $content->titulo }}</h2>
         
@@ -29,7 +29,7 @@
     <section id="gallery" class="gallery">
         @foreach ($galleryOne as $item)
             <div class="gallery__image">
-                <img src="storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
+                <img src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
             </div>
         @endforeach
     </section>
@@ -41,7 +41,7 @@
     <section id="gallery" class="gallery">
         @foreach ($galleryTwo as $item)
             <div class="gallery__image">
-                <img src="storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
+                <img src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
             </div>
         @endforeach
     </section>
