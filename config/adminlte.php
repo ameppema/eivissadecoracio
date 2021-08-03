@@ -265,12 +265,12 @@ return [
         [
             'text' => 'Rehabilitaciones',
             'url'  => 'admin/module/rehabilitaciones/2',
-            'icon' => 'fas fa-toolbox',
+            'icon' => 'fas fa-tools',
         ],
         [
             'text' => 'Interiores',
             'url'  => 'admin/module/interiores/3',
-            'icon' => 'fas fa-house-user',
+            'icon' => 'fas fa-couch',
         ],
         [
             'text' => 'Cocinas',
