@@ -36,7 +36,7 @@
             <th style="vertical-align: middle;" scope="row">{{$loop->iteration}}</th>
             
             {{-- Image Slide --}}
-            <td style="width: 150px;"><img src="/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
+            <td style="width: 150px;"><img style="width: inherit;" src="/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
             
             {{-- Title & Description in Spanish --}}
             <td style="vertical-align: middle;">{{ $slideItem->titulo }}</td>
