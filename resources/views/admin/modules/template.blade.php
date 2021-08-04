@@ -244,7 +244,7 @@
         }
         
         .modal__image {
-            width: 400px;
+            width: 50%;
         }
         
         .modal__label {
