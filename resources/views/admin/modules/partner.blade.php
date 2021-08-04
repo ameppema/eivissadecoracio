@@ -23,8 +23,9 @@
                 {{-- Form Galleries --}}
                 <div class="card">
                     <div class="card-body">
-                        <div style="margin-bottom: 50px;">
-                            <p style="font-weight: 700;" class="form-label col-12">Agregar imagen a sección Partners</p>
+                        {{-- Inputs for new Partner --}}
+                        <div class="partner-new">
+                            <p class="form-label col-12 partner-new__title">Agregar nuevo Partner a la sección</p>
     
                             <form action="{{route('admin.gallery.image.store')}}" method="POST" enctype="multipart/form-data">
                                 @method('post')
@@ -35,10 +36,12 @@
                                     <input type="hidden" name="gallery_type" value="1">
                                 </div>
     
-                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px;">
+                                <div class="partner-new__inputs">
                                     <div class="custom-file">
-                                        <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" type="file" id="imagen_src" name="imagen_src" aria-describedby="validationServer03Feedback">
-                                        <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Seleccionar imagen</label>
+                                        <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" id="imagen_src" type="file" name="imagen_src" aria-describedby="validationServer03Feedback">
+
+                                        <label class="custom-file-label" for="imagen_src" data-browse="Elegir Imagen">Seleccionar imagen</label>
+
                                         @if($errors->test->first('imagen_src'))
                                             <div id="validationServer03Feedback" class="invalid-feedback">
                                                 Este campo es requerido
@@ -47,42 +50,48 @@
                                     </div>
     
                                     <div class="custom-file">
-                                        <input type="text" class="form-control" id="imagen_alt" placeholder="Descripción de la imagen" name="imagen_alt" value="{{old('imagen_alt')}}">
+                                        <input class="form-control" id="imagen_alt" type="text" placeholder="Nombre del nuevo Partner" name="imagen_alt" value="{{old('imagen_alt')}}">
                                         @error('imagen_alt')
                                             {{$message}}
                                         @enderror
                                     </div>
                                     
-                                    <button type="submit" class="btn btn-primary">Agregar imagen a la sección</button>
+                                    <button type="submit" class="btn btn-primary">Agregar nuevo Partner</button>
                                 </div>
                             </form>
                         </div>
 
-                        {{-- Start SlideShow - main_table --}}
-                        <table class="table table-hover">
+                        {{-- Partners listing --}}
+                        <table class="table partner-list">
                             <thead>
                                 <tr>
-                                    <th width="10%" style="border-top: none;">Orden</th>
-                                    <th width="40%" style="border-top: none;">Imagen</th>
-                                    <th width="30%" style="border-top: none;">Nombre del Partner</th>
-                                    <th width="20%" style="border-top: none;">Acciones</th>
+                                    <th>Orden</th>
+                                    <th>Imagen</th>
+                                    <th>Nombre del Partner</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
 
                             <tbody id="mylist">
                                 @foreach($gallery as $item)
                                     <tr data-id="{{$item->id}}">
-                                        <td style="vertical-align: middle;" data-id="{{$item->id}}">{{$item->sort_order}}</td>
-                                        <td style="vertical-align: middle;">
+                                        <td data-id="{{$item->id}}">{{$item->sort_order}}</td>
+                                        <td>
                                             <img style="width: 150px;" src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
                                         </td>
-                                        <td style="vertical-align: middle;" class="text-capitalize" >{{$item->image_alt}}</td>
-                                        <td style="vertical-align: middle;">
-                                            <button title="Editar" style="margin-right: 20px;" class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$item->id}}"><i class="fas fa-edit"></i></button>
+                                        <td class="text-capitalize">{{$item->image_alt}}</td>
+                                        <td>
+                                            <button class="btn btn-warning edit-category" title="Editar" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$item->id}}">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+
                                             <form action="{{route('admin.gallery.image.destroy' , [$item->id] )}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
-                                                <button title="Eliminar"  class="btn btn-danger delete-category"><i class="fas fa-times"></i></button>
+
+                                                <button class="btn btn-danger delete-category" title="Eliminar">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
@@ -101,9 +110,9 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="exampleModalLabel">Actualizar Imagen</h2>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <h2 class="modal-title" id="exampleModalLabel">Editar Partner</h2>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 
@@ -111,11 +120,11 @@
                 <form method="POST" enctype="multipart/form-data" id="modalFormUpdate">
                     @method('put')
                     @csrf
-
-                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px;">
+                    
+                    <div class="form-row partner-modal__inputs">
                         <div class="custom-file">
-                            <input class="custom-file-input @error('imagen_src') is-invalid @enderror" type="file" id="imagen_src" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
-                            <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Imagen Nueva</label>
+                            <input class="custom-file-input @error('imagen_src') is-invalid @enderror" id="imagen_src" type="file" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
+                            <label class="custom-file-label" for="imagen_src" data-browse="Elegir Imagen">Imagen Nueva</label>
                             
                             @error('imagen_src')
                                 <div id="validationServer03Feedback" class="invalid-feedback">
@@ -125,25 +134,25 @@
                         </div>
 
                         <div class="custom-file">
-                            <input type="text" class="form-control @error('imagen_src') is-invalid @enderror" id="modalAlt" 
-                            placeholder="Texto Alterno | alt='' ''" name="nueva_imagen_alt">
+                            <input class="form-control @error('imagen_src') is-invalid @enderror" id="modalAlt" type="text"
+                            placeholder="Nombre del Partner" name="nueva_imagen_alt">
                             
                             @error('imagen_alt')
                                 {{$message}}
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Agregar a <span class="text-capitalize">Galeria</span></button>
+                        <button class="btn btn-primary" type="submit">Actualizar</button>
                     </div>
                 </form>
 
-                <div style="text-align: center; font-weight: 700; margin-top: 50px;">Imagen actual</div>
+                <div class="partner-modal__subtitle">Imagen actual</div>
 
-                <img id="modalImage" class="img-fluid" style="width: 400px; display: block; margin: 0 auto;">
+                <img class="img-fluid partner-modal__image" id="modalImage">
             </div>
 
-            <div class="modal-footer" style="display: flex; justify-content: center;">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <div class="modal-footer partner-modal__button">
+                <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
@@ -154,6 +163,61 @@
     <style>
         .section__title {
             margin-left: 7.5px;
+        }
+
+        .partner-new {
+            margin-bottom: 50px;
+        }
+        
+        .partner-new__title {
+            font-weight: 700;
+        }
+        
+        .partner-new__inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 20px;
+        }
+        
+        .partner-list thead tr th {
+            border-top: none;
+        }
+
+        .partner-list tbody tr:hover {
+            background-color: rgba(0,0,0,.075);
+        }
+
+        .partner-list tbody tr td {
+            vertical-align: middle;
+        }
+        
+        .partner-list tbody tr td button {
+            margin-right: 20px;
+        }
+        
+        .partner-modal__inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 20px;
+        }
+        
+        .partner-modal__subtitle {
+            margin-top: 50px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .partner-modal__image {
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        .partner-modal__button {
+            display: flex;
+            justify-content: center;
         }
 
         .partner__spanish,

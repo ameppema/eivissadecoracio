@@ -54,5 +54,5 @@
         </div>
     </div>
 
-    <button class="btn btn-primary partner__button" type="submit">Agregar nuevo Partner</button>
+    <button class="btn btn-primary partner__button" type="submit">Actualizar sección Partner</button>
 </form>
