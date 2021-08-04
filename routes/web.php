@@ -22,6 +22,7 @@ Route::get('{locale?}/interiores', [InterioresController::class, 'index'])->name
 Route::get('{locale?}/cocinas', [CocinasController::class, 'index'])->name('cocinas');
 Route::get('{locale?}/rehabilitaciones', [RehabilitacionesController::class, 'index'])->name('rehabilitaciones');
 Route::get('{locale?}/parquets', [ParquetsController::class, 'index'])->name('parquets');
-Route::post('contact', [ContactController::class, 'send'])->name('contact.send');
+
+Route::post('contact', [ContactController::class, 'send'])->name('contact.send')->withoutMiddleware(Localization::class);
 
 Auth::routes();

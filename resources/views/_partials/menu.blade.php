@@ -12,7 +12,7 @@
     </li>
 
     <li class="menu__item {{ (request()->routeIs('home')) ? 'selected' : '' }}">
-        <a href="{{route('home')}}">
+        <a href="{{route('home', session()->get('locale')) }}">
             Home
         </a>
     </li>
@@ -31,14 +31,14 @@
 
 <ul class="menu-desktop">
     <li class="menu__item {{ (request()->routeIs('home')) ? 'selected' : '' }}">
-        <a href="{{route('home')}}">
+        <a href="{{route('home', session()->get('locale'))}}">
             Home
         </a>
     </li>
 
     @foreach($menu as $menuItem)
       <li class="menu__item {{ (request()->is('*/'.$menuItem->ruta)) ? 'selected' : '' }}">
-          <a href="{{$menuItem->ruta}}">
+          <a href="{{route($menuItem->ruta, ['locale'=> session()->get('locale')])}}">
               {{$menuItem->nombre}}
           </a>
       </li>
