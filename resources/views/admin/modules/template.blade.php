@@ -184,6 +184,12 @@
             margin-bottom: 30px;
         }
         
+        .section__spanish,
+        .section__english {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f2f2f2;
+        }
+        
         .header-title__items,
         .header-subtitle__items {
             display: flex;
@@ -214,6 +220,10 @@
             grid-template-rows: 1fr;
             grid-gap: 20px;
             margin-bottom: 30px;
+        }
+        
+        .section__paragraph > .form-group {
+            margin-bottom: 0;
         }
         
         .paragraph__image {
