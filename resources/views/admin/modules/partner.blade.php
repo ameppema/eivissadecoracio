@@ -3,7 +3,7 @@
 @section('title', ' Eivissa Slider')
 
 @section('content_header')
-    <div class="page-header" style="margin-left: 7.5px;">
+    <div class="page-header section__title">
         <h1>Eivissa Decoracio | Sección de Partners</h1>
     </div>
 @stop
@@ -150,58 +150,95 @@
 </div>
 @stop
 
+@section('css')
+    <style>
+        .section__title {
+            margin-left: 7.5px;
+        }
+
+        .partner__spanish,
+        .partner__english {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .partner__title,
+        .partner__description {
+            display: flex;
+            align-items: center;
+        }
+        
+        .title__image,
+        .description__image {
+            width: 30px;
+            height: 21px;
+        }
+        
+        .title__label,
+        .description__label {
+            margin: 0 10px 0 5px;
+        }
+
+        .partner__button {
+            height: 38px;
+            align-self: end;
+        }
+    </style>
+@stop
+
 @section('js')
-<!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
 
-<script type="application/javascript" defer>
-
-$(document).ready(() => {
-    /* Sorteable */
-    const SortList = $('#mylist'); 
-    SortList.sortable({
-        animation: 150,
-        easing: "cubic-bezier(1, 0, 0, 1)",
-        ghostClass : 'bg-light',
-        chosenClass : 'bg-light',
-        onEnd: getOrder
-    });
-
-    function getOrder(){
-        let ordered = SortList.sortable('toArray');
-        ordered.reverse();
-        let orderUpdated = [];
-        ordered.forEach((id, index) => {
-            index += 1;
-            orderUpdated.push({index, id});
-        });
-        $.ajax({
-            type: 'PUT',
-            url: '/admin/module/partners/order',
-            data: {data: JSON.stringify(orderUpdated), _token: '{{csrf_token()}}'},
-            success: (data) => console.log('%c Orden Cambiado Correctamente','background-color:green'),
-            error: (err) => console.error('Not Succes')
-        })
-    }
-
-    /* Modal Content */
-
-    $('#editImageModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var dataId = button.data('image-id');
-        $('#modalFormUpdate').attr('action', '/admin/gallery/' + dataId);
-            $.ajax({
-                url: '/admin/gallery/' + dataId,
-                type: 'GET',
-                success: function(data){
-                    $('#modalImage').attr('src' , '/storage/' + data.image_src);
-                    $('#modalAlt').val(data.image_alt);
-                },
-                error: function(error){ console.log(error);}
+    <script type="application/javascript" defer>
+        $(document).ready(() => {
+            /* Sorteable */
+            const SortList = $('#mylist'); 
+            SortList.sortable({
+                animation: 150,
+                easing: "cubic-bezier(1, 0, 0, 1)",
+                ghostClass : 'bg-light',
+                chosenClass : 'bg-light',
+                onEnd: getOrder
             });
 
-    })
-})
-</script>
+            function getOrder(){
+                let ordered = SortList.sortable('toArray');
+                ordered.reverse();
+                let orderUpdated = [];
+                ordered.forEach((id, index) => {
+                    index += 1;
+                    orderUpdated.push({index, id});
+                });
+                $.ajax({
+                    type: 'PUT',
+                    url: '/admin/module/partners/order',
+                    data: {data: JSON.stringify(orderUpdated), _token: '{{csrf_token()}}'},
+                    success: (data) => console.log('%c Orden Cambiado Correctamente','background-color:green'),
+                    error: (err) => console.error('Not Succes')
+                })
+            }
+
+            /* Modal Content */
+            $('#editImageModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var dataId = button.data('image-id');
+                $('#modalFormUpdate').attr('action', '/admin/gallery/' + dataId);
+                    $.ajax({
+                        url: '/admin/gallery/' + dataId,
+                        type: 'GET',
+                        success: function(data){
+                            $('#modalImage').attr('src' , '/storage/' + data.image_src);
+                            $('#modalAlt').val(data.image_alt);
+                        },
+                        error: function(error){ console.log(error);}
+                    });
+
+            })
+        })
+    </script>
 @stop

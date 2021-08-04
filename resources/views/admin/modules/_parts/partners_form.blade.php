@@ -24,23 +24,35 @@
     @csrf
     @method('put')
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px;">
-        <div>
-            <label for="titulo" class="form-label">Título de la sección</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Title..." value="{{$partnerData->titulo ?? old('titulo')}}">
-        </div>
-
-        <div>
-            <label for="subtitulo" class="form-label">Descripción de la sección</label>
-            <input type="text" class="form-control" id="subtitulo" name="subtitulo" placeholder="Sub..." value="{{$partnerData->subtitulo ?? old('subtitulo')}}">
+    {{-- Section Title & Description in Spanish --}}
+    <div class="partner__spanish">
+        <div class="partner__title">
+            <img class="title__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+            <label class="title__label" for="PartnerTitle_ES">Título</label>
+            <input class="form-control" id="PartnerTitle_ES" name="titulo" type="text" placeholder="Título en Español" value="{{$partnerData->titulo ?? old('titulo')}}">
         </div>
         
-        <button type="submit" class="btn btn-primary" style="height: 38px; align-self: end;">Actualizar sección Partners</button>
+        <div class="partner__description">
+            <img class="description__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
+            <label class="description__label" for="PartnerDescription_ES">Descripción</label>
+            <input class="form-control" id="PartnerDescription_ES" name="descripcion" placeholder="Descripción en Español" disable-feedback value="{{old('descripcion')}}"/>
+        </div>
     </div>
-</form>
+    
+    {{-- Section Title & Description in English --}}
+    <div class="partner__english">
+        <div class="partner__title">
+            <img class="title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+            <label class="title__label" for="PartnerTitle_EN">Título</label>
+            <input class="form-control" id="PartnerTitle_EN" name="titulo" type="text" placeholder="Título en Ingles" value="{{$partnerData->titulo ?? old('titulo')}}">
+        </div>
+        
+        <div class="partner__description">
+            <img class="description__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
+            <label class="description__label" for="PartnerDescription_EN">Descripción</label>
+            <input class="form-control" id="PartnerDescription_EN" name="descripcion" placeholder="Descripción en Ingles" disable-feedback value="{{old('descripcion')}}"/>
+        </div>
+    </div>
 
-@section('css')
-    <style>
-        .partners {}
-    </style>
-@stop
+    <button class="btn btn-primary partner__button" type="submit">Agregar nuevo Partner</button>
+</form>
