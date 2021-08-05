@@ -12,18 +12,20 @@ use App\Http\Controllers\ParquetsController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Middleware\Localization;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 /* Language Implementation */
-Route::get('lang/{locale}', [LocalizationController::class, 'lang'])->name('lang')->withoutMiddleware(Localization::class);
-
-Route::get('/', function(){return redirect()->route('lang',App::getLocale());});
-Route::get('/{locale?}', [HomeController::class, 'index'])->name('home');
-Route::get('{locale?}/historia',[HistoriaController::class, 'index'])->name('historia');
-Route::get('{locale?}/obras', [ObrasController::class, 'index'])->name('obras');
-Route::get('{locale?}/interiores', [InterioresController::class, 'index'])->name('interiores');
-Route::get('{locale?}/cocinas', [CocinasController::class, 'index'])->name('cocinas');
-Route::get('{locale?}/rehabilitaciones', [RehabilitacionesController::class, 'index'])->name('rehabilitaciones');
-Route::get('{locale?}/parquets', [ParquetsController::class, 'index'])->name('parquets');
-
-Route::post('contact', [ContactController::class, 'send'])->name('contact.send')->withoutMiddleware(Localization::class);
-
 Auth::routes();
+Route::get('lang/{locale}', [LocalizationController::class, 'lang'])->name('lang');
+
+Route::middleware('locale')->group(function(){
+    Route::get('/', function(){return redirect()->route('lang',App::getLocale());});
+    Route::get('/{locale}', [HomeController::class, 'index'])->name('home');
+    Route::get('{locale}/historia',[HistoriaController::class, 'index'])->name('historia');
+    Route::get('{locale}/obras', [ObrasController::class, 'index'])->name('obras');
+    Route::get('{locale}/interiores', [InterioresController::class, 'index'])->name('interiores');
+    Route::get('{locale}/cocinas', [CocinasController::class, 'index'])->name('cocinas');
+    Route::get('{locale}/rehabilitaciones', [RehabilitacionesController::class, 'index'])->name('rehabilitaciones');
+    Route::get('{locale}/parquets', [ParquetsController::class, 'index'])->name('parquets');
+
+});
+Route::post('contact', [ContactController::class, 'send'])->name('contact.send')->withoutMiddleware(Localization::class);

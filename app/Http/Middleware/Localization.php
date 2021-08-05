@@ -17,6 +17,9 @@ class Localization
      */
     public function handle(Request $request, Closure $next)
     {
+        if($request->segments()[0] === 'admin'){
+            return $next($request);
+        }
         $locale = $request->route()->parameters()['locale'] ?? $this->sessionLocale();
         if(in_array($locale, ['es','en'])){
             session()->put('locale', $locale);
