@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-
 class LocalizationController extends Controller
 {
     public function lang($locale = 'es'){
-        if(in_array($locale, ['es','en'])){
-            App::setLocale($locale);
-            session()->put('locale', $locale);
-            return redirect()->back();
-        } else {
-            return redirect()->back();
-        }
+
+        $prev_url = url()->previous();
+        $prev_req = app('request')->create($prev_url);
+        $prev_segmets = $prev_req->segments();
+
+        $prev_segmets[0] = $locale;
+        return redirect()->to(implode('/', $prev_segmets));
     }
 }
