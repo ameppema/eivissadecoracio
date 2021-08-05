@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\PartnersController;
 
-Route::get('/', [HomeController::class, 'index'])->name('admin.home');
+Route::get('/home', [HomeController::class, 'index'])->name('admin.home')->withoutMiddleware('locale');
 
 /* Slider routes */
 Route::get('/slide', [SlideController::class, 'index'])->name('admin.slide');
