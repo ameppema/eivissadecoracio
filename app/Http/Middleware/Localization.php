@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Route;
 
 class Localization
 {
@@ -23,10 +22,8 @@ class Localization
             session()->put('locale', $locale);
             App::setLocale($locale);
         }else {
-            session()->put('locale', 'es');
-            App::setLocale('es');
+            return redirect()->back();
         }
-        dump($locale);
         $request->route()->forgetParameter('locale');
         return $next($request);
     }

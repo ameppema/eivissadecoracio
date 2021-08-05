@@ -11,10 +11,11 @@ use App\Http\Controllers\RehabilitacionesController;
 use App\Http\Controllers\ParquetsController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Middleware\Localization;
-
+use Illuminate\Support\Facades\App;
 /* Language Implementation */
 Route::get('lang/{locale}', [LocalizationController::class, 'lang'])->name('lang')->withoutMiddleware(Localization::class);
 
+Route::get('/', function(){return redirect()->route('lang',App::getLocale());});
 Route::get('/{locale?}', [HomeController::class, 'index'])->name('home');
 Route::get('{locale?}/historia',[HistoriaController::class, 'index'])->name('historia');
 Route::get('{locale?}/obras', [ObrasController::class, 'index'])->name('obras');
