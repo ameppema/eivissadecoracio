@@ -35,7 +35,7 @@ class MenuController extends Controller
 
         Menu::create([
             'nombre' => strtolower($datos['nombre']),
-            'ruta' => strtolower($datos['ruta']),
+            'ruta' => strtolower($datos['nombre']),
         ]);
 
         return redirect('admin/category_menu');

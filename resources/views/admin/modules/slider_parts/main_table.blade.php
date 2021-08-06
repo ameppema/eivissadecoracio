@@ -43,8 +43,8 @@
             <td style="vertical-align: middle;">{{$slideItem->descripcion}}</td>
             
             {{-- Title & Description in English --}}
-            <td style="vertical-align: middle;">{{ $slideItem->titulo }}</td>
-            <td style="vertical-align: middle;">{{$slideItem->descripcion}}</td>
+            <td style="vertical-align: middle;">{{ $slide_en[$loop->iteration - 1]->titulo }}</td>
+            <td style="vertical-align: middle;">{{$slide_en[$loop->iteration - 1]->titulo}}</td>
 
             {{-- Edit Slide --}}
             <td style="vertical-align: middle; padding: 0 .75rem;">

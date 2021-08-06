@@ -33,7 +33,7 @@
         <div style="display: flex; align-items: center;">
             <img style="width: 30px; height: 21px;" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
             <label for="nombre" class="form-label" style="margin: 0 10px 0 3px;">Nombre</label>
-            <input type="text" class="form-control" style="display: inline; width: 100%;" id="nombre" name="nombre" placeholder="Agregar nuevo enlace en Ingles" value="{{old('nombre')}}">
+            <input type="text" class="form-control" style="display: inline; width: 100%;" id="nombre" name="nombre_en" placeholder="Agregar nuevo enlace en Ingles" value="{{old('nombre_en')}}">
         </div>
         
         <button style="height: 38px; align-self: end;" type="submit" class="btn btn-primary">Agregar a la Barra de Navegación</span></button>

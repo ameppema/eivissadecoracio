@@ -7,9 +7,14 @@ use App\Models\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\Translation;
+use Illuminate\Support\Facades\App;
 
 class SlideController extends Controller
 {
+    public $table = 'slide';
+    public $local = 'es';
+    use Translation;
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +22,16 @@ class SlideController extends Controller
      */
     public function index()
     {
-        $slide = DB::select('SELECT * FROM slide');
+        App::setLocale('en');
+        $slide = Slide::all();
+        $slide_en = Slide::all();
+        $translation = DB::table('translations')
+        ->where('table', 'slide')
+        ->get(['column', 'translation']);
+        $trans = Slide::all();
+        // dd($slide[1]->full_info);
 
-        return view('admin.modules.slider')->with(['slide' => $slide]);
+        return view('admin.modules.slider', compact(['slide', 'slide_en']));
     }
 
     /**
@@ -130,5 +142,18 @@ class SlideController extends Controller
 
         }
 
+    }
+
+    public function change_key( $array, $old_key, $new_key ) {
+
+        if( ! property_exists( $array, $old_key, ) )
+        {
+            return $array;
+        }
+    
+        $keys = array_keys( $array );
+        $keys[ array_search( $old_key, $keys ) ] = $new_key;
+    
+        return array_combine( $keys, $array );
     }
 }
