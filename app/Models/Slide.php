@@ -19,6 +19,7 @@ class Slide extends Model
         'imagen',
         'imagen_movil'
     ];
+    protected $appends = ['full_info'];
 
     public $timestamps = false;
 }

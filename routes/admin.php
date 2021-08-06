@@ -9,7 +9,8 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\PartnersController;
 
-Route::get('/home', [HomeController::class, 'index'])->name('admin.home')->withoutMiddleware('locale');
+Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
+Route::get('/', function(){return redirect('es/historia');})->name('admin');
 
 /* Slider routes */
 Route::get('/slide', [SlideController::class, 'index'])->name('admin.slide');

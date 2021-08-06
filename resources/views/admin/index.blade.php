@@ -16,55 +16,55 @@
             </p>
 
             <div class="container__card">
-                <a class="card__items" href="admin/category_menu">
+                <a class="card__items" href="category_menu">
                     <i class="card__logo fas fa-list-ul"></i>
                     <p class="card__text">Menu</p>
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="admin/slide">
+                <a class="card__items" href="slide">
                     <i class="card__logo far fa-images"></i>
                     <p class="card__text">Slider</p>
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="admin/module/historia/6">
+                <a class="card__items" href="module/historia/6">
                     <i class="card__logo fas fa-landmark"></i>
                     <p class="card__text">Historia</p>
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="admin/module/obras/1">
+                <a class="card__items" href="module/obras/1">
                     <i class="card__logo fas fa-hard-hat"></i>
                     <p class="card__text">Obras</p>
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="admin/module/rehabilitaciones/2">
+                <a class="card__items" href="module/rehabilitaciones/2">
                     <i class="card__logo fas fa-tools"></i>
                     <p class="card__text">Rehabilitaciones</p>
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="admin/module/interiores/3">
+                <a class="card__items" href="module/interiores/3">
                     <i class="card__logo fas fa-couch"></i>
                     <p class="card__text">Interiores</p>
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="admin/module/cocinas/4">
+                <a class="card__items" href="module/cocinas/4">
                     <i class="card__logo fas fa-utensils"></i>
                     <p class="card__text">Cocinas</p>
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="admin/module/parquets/5">
+                <a class="card__items" href="module/parquets/5">
                     <i class="card__logo fas fa-briefcase"></i>
                     <p class="card__text">Parquets</p>
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="admin/module/partners">
+                <a class="card__items" href="module/partners">
                     <i class="card__logo fas fa-handshake"></i>
                     <p class="card__text">Partners</p>
                     <button class="card__button">Click</button>

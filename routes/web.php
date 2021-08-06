@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('lang/{locale}', [LocalizationController::class, 'lang'])->name('lang');
 
 Route::middleware('locale')->group(function(){
-    Route::get('/', function(){return redirect()->route('lang',App::getLocale());});
+    Route::get('/', function(){return redirect()->route('lang',App::getLocale());})->name('index');
     Route::get('/{locale}', [HomeController::class, 'index'])->name('home');
     Route::get('{locale}/historia',[HistoriaController::class, 'index'])->name('historia');
     Route::get('{locale}/obras', [ObrasController::class, 'index'])->name('obras');
