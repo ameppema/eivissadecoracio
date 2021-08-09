@@ -19,7 +19,7 @@ class Slide extends Model
         'imagen',
         'imagen_movil'
     ];
-    protected $appends = ['full_info'];
+    protected $appends = ['translation'];
 
     public $timestamps = false;
 }

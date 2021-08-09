@@ -29,7 +29,26 @@ trait Translation
 		}else{
 			return $default;
 		}
-		
 	}
+	public function getTranslate($default = '', $lang = 'es')
+	{
 
+		$locale = App::getLocale();
+
+		if($this->local == $locale){
+			return $default;
+		}
+
+		$translation = DB::table('translations')
+			->where('table', $this->table)
+			->where('locale', $lang)
+			->where('row_id', $this->id)
+			->get();
+
+		if($translation){
+			return ['titulo_es' => $translation[0]->translation, 'descripcion_es'=>$translation[1]->translation];
+		}else{
+			return $default;
+		}
+	}
 }

@@ -29,7 +29,7 @@ class SlideController extends Controller
         ->where('table', 'slide')
         ->get(['column', 'translation']);
         $trans = Slide::all();
-        // dd($slide[1]->full_info);
+        // dd($slide[0]->full_info);
 
         return view('admin.modules.slider', compact(['slide', 'slide_en']));
     }
