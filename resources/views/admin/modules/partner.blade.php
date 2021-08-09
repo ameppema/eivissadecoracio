@@ -160,11 +160,13 @@
 @stop
 
 @section('css')
+    {{-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> --}}
+
     <style>
         .section__title {
             margin-left: 7.5px;
         }
-
+    
         .partner-new {
             margin-bottom: 50px;
         }
