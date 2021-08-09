@@ -49,4 +49,5 @@ Route::post('/module/{name}', [ModuleController::class, 'store'])->name('admin.m
 Route::put('/module/{name}/{id}', [ModuleController::class, 'update'])->name('admin.module.update');
 
 // Users
-Route::get('users', [UsersController::class, 'index'])->name('admin.users');
+Route::get('users', [UsersController::class, 'index'])->name('users');
+Route::get('profile', [UsersController::class, 'show'])->name('profile');
