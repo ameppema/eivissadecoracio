@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="page-header section__title">
-        <h1>Eivissa Decoracio | Sección de Partners</h1>
+        <h1>Sección de Partners | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
 
