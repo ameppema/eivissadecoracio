@@ -23,13 +23,13 @@
                 <div class="modal__title">
                     <img class="title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
                     <label class="title__label" for="ModalTitle_EN">Título</label>
-                    <x-adminlte-input id="ModalTitle_EN" name="titulo" placeholder="Título en Ingles" disable-feedback value="{{old('titulo')}}"/>
+                    <x-adminlte-input id="ModalTitle_EN" name="titulo_en" placeholder="Título en Ingles" disable-feedback value="{{old('titulo')}}"/>
                 </div>
                 
                 <div class="modal__description">
                     <img class="description__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
                     <label class="description__label" for="ModalDescription_EN">Descripción</label>
-                    <x-adminlte-input id="ModalDescription_EN" name="descripcion" placeholder="Descripción en Ingles" disable-feedback value="{{old('descripcion')}}"/>
+                    <x-adminlte-input id="ModalDescription_EN" name="descripcion_en" placeholder="Descripción en Ingles" disable-feedback value="{{old('descripcion')}}"/>
                 </div>
             </div>
                 

@@ -101,8 +101,8 @@
                         success: function(data){
                             if(data){
                                 $('#Form-Edit').attr('action', 'slide/' + data[0].id)
-                                $('#modal-titulo').val(data[0].titulo);
-                                $('#modal-desc').val(data[0].descripcion);
+                                $('#ModalTitle_ES').val(data[0].titulo);
+                                $('#ModalDescription_ES').val(data[0].descripcion);
                                 $('#oldImgDesk').attr('src' , '/storage/' + data[0].imagen);
                                 $('#oldImgMovil').attr('src' , '/storage/' + data[0].imagen_movil);
                             }

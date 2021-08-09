@@ -86,7 +86,7 @@ class ImagesController extends Controller
         
         if(isset($data['nueva_imagen_src'])){
 
-            Storage::delete('public' . $images->image_src);
+            Storage::delete('public/' . $images->image_src);
             
             $filename = $request->file('nueva_imagen_src')->getClientOriginalName();
 
