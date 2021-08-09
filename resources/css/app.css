@@ -13,9 +13,5 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-<<<<<<< HEAD
-@import "admin/adm_styles";
-=======
 @import "admin/adm_styles";
 @import "admin/partners";
->>>>>>> fcc4f88b23cbed1ba34ca75580caa4e7fe39d512

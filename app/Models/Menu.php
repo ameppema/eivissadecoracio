@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Mutators\menuMutators;
 
 class Menu extends Model
 {
-    use HasFactory;
+    use HasFactory, menuMutators;
 
     protected $table = 'category_menu'; 
 
