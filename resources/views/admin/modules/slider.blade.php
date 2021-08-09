@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="page-header section__title">
-        <h1>Eivissa Decoracio | Home Slider</h1>
+        <h1>Home Slider | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
 

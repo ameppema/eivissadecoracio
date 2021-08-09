@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="page-header section__title">
-        <h1>Eivissa Decoracio | Sección de Partners</h1>
+        <h1>Sección de Partners | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
 
@@ -160,11 +160,13 @@
 @stop
 
 @section('css')
+    {{-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> --}}
+
     <style>
         .section__title {
             margin-left: 7.5px;
         }
-
+    
         .partner-new {
             margin-bottom: 50px;
         }

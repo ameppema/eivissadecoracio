@@ -70,9 +70,15 @@
                     <button class="card__button">Click</button>
                 </a>
                 
+                <a class="card__items" href="users">
+                    <i class="card__logo fas fa-address-book"></i>
+                    <p class="card__text">Usuarios</p>
+                    <button class="card__button">Click</button>
+                </a>
+                
                 <a class="card__items" href="#">
                     <i class="card__logo fas fa-user"></i>
-                    <p class="card__text">Users</p>
+                    <p class="card__text">Perfil</p>
                     <button class="card__button">Click</button>
                 </a>
             </div>

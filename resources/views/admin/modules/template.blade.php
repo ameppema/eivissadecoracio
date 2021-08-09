@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', ' Eivissa Modules')
+@section('title', 'Section Page')
 
 @section('content_header')
     <div class="page-header section__title">
-        <h1 class="text-capitalize">Eivissa Decoracio | Página {{$module_name}}</h1>
+        <h1>Página {{$module_name}} | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
 
