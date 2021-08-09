@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ModuleController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\PartnersController;
+use App\Http\Controllers\Admin\UsersController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
 Route::get('/', function(){return redirect('es/historia');})->name('admin');
@@ -46,3 +47,6 @@ Route::get('/module', function(){ return redirect()->route('admin.home');})->nam
 Route::get('/module/{name}/{id}', [ModuleController::class, 'index'])->name('admin.module');
 Route::post('/module/{name}', [ModuleController::class, 'store'])->name('admin.module.store');
 Route::put('/module/{name}/{id}', [ModuleController::class, 'update'])->name('admin.module.update');
+
+// Users
+Route::get('users', [UsersController::class, 'index'])->name('admin.users');
