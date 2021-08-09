@@ -287,16 +287,16 @@ return [
             'url'  => 'admin/module/partners',
             'icon' => 'fas fa-handshake',
         ],
-        ['header' => 'Cuenta de usuario [En proceso]'],
+        ['header' => 'Cuenta de usuario'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Usuarios',
+            'url'  => 'admin/users',
+            'icon' => 'fas fa-address-book',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Perfil',
+            'url'  => 'admin/profile',
+            'icon' => 'fas fa-fw fa-user',
         ],
         // [
         //     'text'    => 'multilevel',
