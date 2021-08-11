@@ -690,6 +690,82 @@ button:focus {
   }
 }
 
+.head__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text__body {
+  margin: 30px 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: black;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  justify-content: center;
+  position: relative;
+  top: 0;
+  width: 100vw;
+  height: auto;
+  padding: 20px;
+}
+
+.gallery__image {
+  grid-column: span 2;
+}
+
+.gallery__image:nth-child(5) {
+  grid-column: 2 / span 2;
+}
+
+.gallery__image img {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .text__body {
+    margin: 30px 120px;
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .gallery {
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .gallery .gallery__image:nth-child(1){
+    grid-column: 3 / span 2;
+  }
+
+  .gallery .gallery__image:nth-child(4){
+    grid-column: 4 / span 2;
+  }
+
+  .gallery .gallery__image:nth-child(5){
+    grid-column: 6 / span 2;
+  }
+
+  .text__body {
+    margin: 30px 300px;
+    font-size: 30px;
+  }
+}
+
 .partners__brands {
   display: flex;
   flex-wrap: wrap;
@@ -1052,13 +1128,6 @@ button:focus {
   }
 }
 
-.sidebar-image {
-  text-align: center;
-  opacity: 1 !important;
-}
-.section__title h1 {
-  color: green;
-}
 /*! tailwindcss v2.0.3 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
@@ -184976,4 +185045,3 @@ video {
             animation: bounce 1s infinite;
   }
 }
-

@@ -5,6 +5,7 @@
 @import "components/menu";
 @import "components/services";
 @import "components/history";
+@import "components/pages";
 @import "components/partners";
 @import "components/contact";
 @import "components/footer";
@@ -12,6 +13,3 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-
-@import "admin/adm_styles";
-@import "admin/partners";
