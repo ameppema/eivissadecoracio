@@ -137,23 +137,10 @@ class SlideController extends Controller
         if(Storage::delete('public/' . $slide->imagen)){
 
             Slide::destroy($id);
-
             redirect('admin/slide');
-
+            
         }
-
-    }
-
-    public function change_key( $array, $old_key, $new_key ) {
-
-        if( ! property_exists( $array, $old_key, ) )
-        {
-            return $array;
-        }
-    
-        $keys = array_keys( $array );
-        $keys[ array_search( $old_key, $keys ) ] = $new_key;
-    
-        return array_combine( $keys, $array );
+        Slide::destroy($id);
+        redirect('admin/slide');
     }
 }
