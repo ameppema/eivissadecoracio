@@ -100,11 +100,12 @@
                         type: 'GET',
                         success: function(data){
                             if(data){
-                                $('#Form-Edit').attr('action', 'slide/' + data[0].id)
-                                $('#ModalTitle_ES').val(data[0].titulo);
-                                $('#ModalDescription_ES').val(data[0].descripcion);
-                                $('#oldImgDesk').attr('src' , '/storage/' + data[0].imagen);
-                                $('#oldImgMovil').attr('src' , '/storage/' + data[0].imagen_movil);
+                                console.log(data);
+                                $('#Form-Edit').attr('action', 'slide/' + data.id)
+                                $('#ModalTitle_ES').val(data.titulo);
+                                $('#ModalDescription_ES').val(data.descripcion);
+                                $('#oldImgDesk').attr('src' , '/storage/' + data.imagen);
+                                $('#oldImgMovil').attr('src' , '/storage/' + data.imagen_movil);
                             }
                         },
                         error: function(error){

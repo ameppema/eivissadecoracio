@@ -74,10 +74,10 @@ class SlideController extends Controller
      * @param  \App\Models\Slide  $slide
      * @return \Illuminate\Http\Response
      */
-    public function edit(Slide $slide)
+    public function edit($id)
     {
         //Devuelve la informacion del modal
-        $slide = Slide::find($slide);
+        $slide = Slide::find($id);
 
         return $slide;
     }

@@ -16,7 +16,7 @@ Route::get('/', function(){return redirect('es/historia');})->name('admin');
 /* Slider routes */
 Route::get('/slide', [SlideController::class, 'index'])->name('admin.slide');
 Route::post('/slide', [SlideController::class, 'store'])->name('admin.slide.store');
-Route::get('/slide/{slide}/edit', [SlideController::class, 'edit'])->name('admin.slide.edit');
+Route::get('/slide/{id}/edit', [SlideController::class, 'edit'])->name('admin.slide.edit');
 Route::put('/slide/{slide}', [SlideController::class, 'update'])->name('admin.slide.update');
 Route::delete('/slide/{id}', [SlideController::class, 'destroy'])->name('admin.slide.destroy');
 
