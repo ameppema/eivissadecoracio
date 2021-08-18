@@ -33,13 +33,13 @@
         <div class="slider__title">
             <img class="title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
             <label class="title__label" for="titulo_en">Título</label>
-            <x-adminlte-input id="titulo_en" name="titulo_en" placeholder="Título en Ingles" disable-feedback value="{{old('titulo')}}"/>
+            <x-adminlte-input id="titulo_en" name="titulo_en" placeholder="Título en Ingles" disable-feedback value="{{old('titulo_en')}}"/>
         </div>
         
         <div class="slider__description">
             <img class="description__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
             <label class="description__label" for="descripcion_en">Descripción</label>
-            <x-adminlte-input id="descripcion_en" name="descripcion_en" placeholder="Descripción en Ingles" disable-feedback value="{{old('descripcion')}}"/>
+            <x-adminlte-input id="descripcion_en" name="descripcion_en" placeholder="Descripción en Ingles" disable-feedback value="{{old('descripcion_en')}}"/>
         </div>
     </div>
 
