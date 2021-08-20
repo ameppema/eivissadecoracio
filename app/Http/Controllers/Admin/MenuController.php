@@ -19,7 +19,6 @@ class MenuController extends Controller
     {
         App::setLocale('es');
         $menu = $menu = Menu::orderBy('sort_order', 'ASC')->get();
-        // dd($menu[0]->translation['nombre_en']);
         return view('admin.modules.menu', compact(['menu']));
     }
 
@@ -32,17 +31,20 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $datos = $request->validate([
-            'nombre' => ['required']
+            'nombre' => ['required'],
+            'nombre_en' => ['required']
         ]);
 
-        $datos['ruta'] = $datos['ruta'] ?? '#' ;
+        $datos['ruta'] = $datos['ruta'] ?? 'index' ;
 
-        Menu::create([
+        $newMenu = Menu::create([
             'nombre' => strtolower($datos['nombre']),
-            'ruta' => strtolower($datos['nombre']),
+            'ruta' => strtolower($datos['ruta']) ?? 'index',
         ]);
 
-        return redirect('admin/category_menu');
+        (new TranslationController)->store($datos['nombre_en'],'category_menu','nombre',$newMenu->id,'en');
+
+        return redirect()->route('admin.menu');
     }
 
     /**
