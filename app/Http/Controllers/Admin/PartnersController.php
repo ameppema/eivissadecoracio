@@ -8,6 +8,7 @@ use App\Models\Partners;
 use App\Models\Galleries;
 use App\Models\Images;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class PartnersController extends Controller
 {
@@ -18,6 +19,7 @@ class PartnersController extends Controller
      */
     public function index()
     {
+        App::setLocale('es');
         $partnerData = Partners::all()->first();
         $gallery = Galleries::page(7)->gallery()->inOrder('desc')->get();
 
