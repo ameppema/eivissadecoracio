@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Translation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TranslationController extends Controller
 {
@@ -18,24 +19,25 @@ class TranslationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  string  $table
+     * @param  string column
+     * @param  string | number  $row_id
+     * @param  string  $locale
+     * @return void
      */
-    public function store(Request $request)
+    public function store($translation, $table, $column, $row_id, $locale)
     {
-        //
+        Translation::create([
+            'locale' => $locale,
+            'table' => $table,
+            'column' => $column,
+            'row_id' => $row_id,
+            'translation' => $translation,
+        ]);
+        return;
     }
 
     /**
@@ -67,9 +69,13 @@ class TranslationController extends Controller
      * @param  \App\Models\Translation  $translation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Translation $translation)
+    public function update($column,$translation,$row_id)
     {
-        //
+        $trans = DB::table('translations')
+                        ->where('row_id', $row_id)
+                        ->where('column', $column)
+                        ->update(['translation' => $translation]);
+        return;
     }
 
     /**
@@ -78,8 +84,14 @@ class TranslationController extends Controller
      * @param  \App\Models\Translation  $translation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Translation $translation)
+    public function destroy( $row_id)
     {
-        //
+        $translations = DB::table('translations')
+        ->where('row_id', $row_id);
+
+        foreach($translations as $translation){
+            DB::table('translations')->where('row_id', $row_id)->delete();
+        }
+        return;
     }
 }

@@ -22,19 +22,7 @@ class PartnersController extends Controller
         $partnerData = Partners::all()->first();
         $gallery = Galleries::page(7)->gallery()->inOrder('desc')->get();
 
-        // dd($this->getgalleryOrder(7));/*  */
-
         return view('admin.modules.partner', compact(['gallery', 'partnerData']));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -55,14 +43,6 @@ class PartnersController extends Controller
         $imgRoute = $request['partners_imagen_src']->storeAs('gallery', $imgName, 'public');
 
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Partners  $partners
-     * @return \Illuminate\Http\Response
-     */
-
     /**
      * Update the specified resource in storage.
      *
@@ -106,11 +86,5 @@ class PartnersController extends Controller
         $newOrder = Galleries::page(7)->gallery()->inOrder()->get();
 
         return response(json_encode($newOrder),201);
-    }
-
-    public function getgalleryOrder(){
-        $isOrdered = Galleries::page(7)->gallery()->inOrder()->get();
-
-        return count($isOrdered) + 1;
     }
 }

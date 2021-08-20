@@ -168,6 +168,7 @@
             </div>
         </div>
     </div>
+    <!-- End Modal -->
 @stop
 
 @section('css')

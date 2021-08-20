@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TranslationController;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class MenuController extends Controller
 {
@@ -15,8 +17,10 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = $menu = Menu::orderBy('sort_order', 'ASC')->get();;
-        return view('admin.modules.menu', compact('menu'));
+        App::setLocale('es');
+        $menu = $menu = Menu::orderBy('sort_order', 'ASC')->get();
+        // dd($menu[0]->translation['nombre_en']);
+        return view('admin.modules.menu', compact(['menu']));
     }
 
     /**
@@ -50,7 +54,8 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        Menu::where('id','=',$request['id'])->update(['nombre' => $request['nombre']]);
+        Menu::where('id',$request['id'])->update(['nombre' => $request['menu_nombre-es']]);
+        (new TranslationController)->update('nombre', $request['menu_nombre-en'], $request['id']);
         return redirect('admin/category_menu');
     }
     public function sortMenu(Request $request, Menu $menu)
@@ -68,6 +73,11 @@ class MenuController extends Controller
 
         return response(json_encode($newOrder),201);
     }
+    public function getDataByAjax($id){
+        App::setLocale('es');
+        $menu = Menu::find($id);
+        return $menu;
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -78,6 +88,7 @@ class MenuController extends Controller
     public function destroy(Menu $menu,  $id)
     {
         Menu::destroy($id);
-        return redirect('admin/category_menu');
+        (new TranslationController)->destroy($id);
+        return redirect()->route('admin.menu');
     }
 }

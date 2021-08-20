@@ -46,7 +46,7 @@ trait Translation
 			->get();
 
 		if($translation){
-			return ['titulo_es' => $translation[0]->translation, 'descripcion_es'=>$translation[1]->translation];
+			return $translation;
 		}else{
 			return $default;
 		}

@@ -32,13 +32,13 @@
             <div class="header-title__items">
                 <img class="header-title__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
                 <label class="form-label header-title__label" for="pageTitle_ES">Título</label>
-                <input class="form-control header-title__input" id="pageTitle_ES" name="pageTitle_ES" type="text" placeholder="Escribir título en Español" value="{{old('titulo') ?? $module->titulo}}">
+                <input class="form-control header-title__input" id="pageTitle_ES" name="titulo" type="text" placeholder="Escribir título en Español" value="{{old('titulo') ?? $module->titulo}}">
             </div>
             
             <div class="header-subtitle__items">
                 <img class="header-subtitle__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
                 <label class="form-label header-subtitle__label" for="pageSubtitle_ES">Descripción</label>
-                <input class="form-control header-subtitle__input" id="pageSubtitle_ES" name="pageSubtitle_ES" type="text" placeholder="Escribir subtitulo en Español" value="{{old('subtitulo') ?? $module->subtitulo}}">
+                <input class="form-control header-subtitle__input" id="pageSubtitle_ES" name="subtitulo" type="text" placeholder="Escribir subtitulo en Español" value="{{old('subtitulo') ?? $module->subtitulo}}">
             </div>
         </div>
     
@@ -47,13 +47,13 @@
             <div class="form-group paragraph__items">
                 <img class="paragraph__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
                 <label class="paragraph__label" for="first_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 1</label>
-                <textarea class="form-control paragraph__text" id="first_text" rows="10" name="first_text" >{{$module->texto_principal}}</textarea>
+                <textarea class="form-control paragraph__text" id="first_text" rows="10" name="first_text">{{$module->texto_principal}}</textarea>
             </div>
             
             <div class="form-group paragraph__items">
                 <img class="paragraph__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
                 <label class="paragraph__label" for="second_text">Texto <span class="text-capitalize">{{$module_name}}</span> Nº 2</label>
-                <textarea class="form-control paragraph__text" id="second_text" rows="10" name="second_text" >{{$module->texto_principal}}</textarea>
+                <textarea class="form-control paragraph__text" id="second_text" rows="10" name="second_text" >{{$module->texto_secundario}}</textarea>
             </div>
             
             <div class="form-group paragraph__items">

@@ -3,18 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TranslationController;
 use App\Models\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use App\Traits\Translation;
 use Illuminate\Support\Facades\App;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class SlideController extends Controller
 {
-    public $table = 'slide';
-    public $local = 'es';
-    use Translation;
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +27,6 @@ class SlideController extends Controller
         ->where('table', 'slide')
         ->get(['column', 'translation']);
         $trans = Slide::all();
-        // dd($slide[0]->full_info);
 
         return view('admin.modules.slider', compact(['slide', 'slide_en']));
     }
@@ -42,30 +39,37 @@ class SlideController extends Controller
      */
     public function store(Request $request)
     {
-        // Validar datos
         $datos = request()->validate([
             'titulo' => ['required', 'string', 'max:255'],
+            'titulo_en' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
+            'descripcion_en' => ['required', 'string', 'max:255'],
             'imagen' => ['required', 'image'],
             'imagen-movil' => ['required', 'image'],
         ]);
 
-        //Obteniendo el Nombre Original de la imagen
         $filename = $request->file('imagen')->getClientOriginalName();
         $filenamemobile = $request->file('imagen-movil')->getClientOriginalName();
 
-        // Guardar imagen del slide
         $rutaImg = $request['imagen']->storeAs('slide', $filename, 'public');
         $rutaImgMovil = $request['imagen-movil']->storeAs('slide', $filenamemobile, 'public');
 
-        DB::table('slide')->insert([
-            'titulo'    => $datos['titulo'],
-            'descripcion'=> $datos['descripcion'],
+        $row_id = DB::table('slide')->insertGetId([
+            'titulo'    => $datos['titulo_en'],
+            'descripcion'=> $datos['descripcion_en'],
+            'locale'=> 'en',
             'imagen'    => $rutaImg,
             'imagen_movil'    => $rutaImgMovil
         ]);
+        $i = 0;
+        $atttributes = ['titulo', 'descripcion'];
+        $translations = [$datos['titulo'],$datos['descripcion']];
+        foreach($translations as $translation){
+            (new TranslationController)->store($translation, 'slide',$atttributes[$i++], $row_id, 'es');
+        }
+        $i=null;
 
-        return redirect('admin/slide');
+        return redirect()->route('admin.slide');
     }
 
     /**
@@ -76,9 +80,8 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
-        //Devuelve la informacion del modal
+        //Devuelve la informacion al modal
         $slide = Slide::find($id);
-
         return $slide;
     }
 
@@ -93,35 +96,34 @@ class SlideController extends Controller
     {
         $datos = request();
         $slide->titulo = $datos['titulo'];
-        $slide->descripcion = $datos['descripcion'];
-        
+        $slide->descripcion = $datos['descripcion'];   
 
         if(request('imagenNueva'))
         {
             Storage::delete('public/' . $slide->imagen);
 
-            //Obteniendo el Nombre Original de la imagen
             $filename = $request->file('imagenNueva')->getClientOriginalName();
-
             $rutaImgMovil = $request['imagenNueva']->storeAs('slide', $filename, 'public');
-
 
             $slide->imagen = $rutaImgMovil;
         }
         if(request('imagenMovilNueva'))
         {
             Storage::delete('public/' . $slide->imagen_movil);
-
             $filenamemobile = $request->file('imagenMovilNueva')->getClientOriginalName();
-
             $rutaImgMovilNueva = $request['imagenMovilNueva']->storeAs('slide', $filenamemobile,  'public');
-
             $slide->imagen_movil = $rutaImgMovilNueva;
         }
 
         $slide->save();
 
-        return redirect('admin/slide');
+        $columns = ['titulo', 'descripcion'];
+        $translations = [$datos['titulo_es'] ,$datos['descripcion_es']];
+        for($i = 0; $i < count($columns); $i++){
+            (new TranslationController)->update($columns[$i],$translations[$i],$slide->id);
+        }
+
+        return redirect()->route('admin.slide');
     }
 
     /**
@@ -135,12 +137,12 @@ class SlideController extends Controller
         $slide = Slide::find($id);
 
         if(Storage::delete('public/' . $slide->imagen)){
-
             Slide::destroy($id);
-            redirect('admin/slide');
-            
+            (new TranslationController)->destroy($id);
+            return redirect()->route('admin.slide');
         }
+        (new TranslationController)->destroy($id);
         Slide::destroy($id);
-        redirect('admin/slide');
+        return redirect()->route('admin.slide');
     }
 }
