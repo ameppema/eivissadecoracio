@@ -19,7 +19,7 @@ trait SlideMutators
 	}
 	public function getTranslationAttribute($value)
 	{
-		return $this->getTranslate($value);
+		return ['titulo_es' => $this->getTranslate($value)[0]->translation, 'descripcion_es'=>$this->getTranslate($value)[1]->translation];
 	}
 
 }

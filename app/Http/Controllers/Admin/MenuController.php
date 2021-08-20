@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TranslationController;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = $menu = Menu::orderBy('sort_order', 'ASC')->get();;
-        return view('admin.modules.menu', compact('menu'));
+        $menu = $menu = Menu::orderBy('sort_order', 'ASC')->get();
+        
+        return view('admin.modules.menu', compact(['menu']));
     }
 
     /**
@@ -50,7 +52,8 @@ class MenuController extends Controller
      */
     public function update(Request $request, Menu $menu)
     {
-        Menu::where('id','=',$request['id'])->update(['nombre' => $request['nombre']]);
+        Menu::where('id',$request['id'])->update(['nombre' => $request['nombre']]);
+        (new TranslationController)->update('nombre', $request['nombre_en'], $request['id']);
         return redirect('admin/category_menu');
     }
     public function sortMenu(Request $request, Menu $menu)
