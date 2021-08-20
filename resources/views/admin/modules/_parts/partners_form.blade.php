@@ -35,7 +35,7 @@
         <div class="partner__description">
             <img class="description__image" src="/images/navbar/lang_es.png" alt="Eivissa Decoracio Spanish">
             <label class="description__label" for="PartnerDescription_ES">Descripción</label>
-            <input class="form-control" id="PartnerDescription_ES" name="descripcion" placeholder="Descripción en Español" disable-feedback value="{{old('descripcion')}}"/>
+            <input class="form-control" id="PartnerDescription_ES" name="subtitulo" placeholder="Descripción en Español" disable-feedback value="{{$partnerData->subtitulo ?? old('descripcion')}}"/>
         </div>
     </div>
     
@@ -44,13 +44,13 @@
         <div class="partner__title">
             <img class="title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
             <label class="title__label" for="PartnerTitle_EN">Título</label>
-            <input class="form-control" id="PartnerTitle_EN" name="titulo" type="text" placeholder="Título en Ingles" value="{{$partnerData->titulo ?? old('titulo')}}">
+            <input class="form-control" id="PartnerTitle_EN" name="titulo_en" type="text" placeholder="Título en Ingles" value="{{$partnerData->translation['titulo_en'] ?? old('titulo')}}">
         </div>
         
         <div class="partner__description">
             <img class="description__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
             <label class="description__label" for="PartnerDescription_EN">Descripción</label>
-            <input class="form-control" id="PartnerDescription_EN" name="descripcion" placeholder="Descripción en Ingles" disable-feedback value="{{old('descripcion')}}"/>
+            <input class="form-control" id="PartnerDescription_EN" name="subtitulo_en" placeholder="Descripción en Ingles" disable-feedback value="{{$partnerData->translation['subtitulo_en'] ?? old('subtitulo')}}"/>
         </div>
     </div>
 

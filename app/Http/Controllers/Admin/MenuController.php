@@ -57,7 +57,7 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menu)
     {
         Menu::where('id',$request['id'])->update(['nombre' => $request['menu_nombre-es']]);
-        (new TranslationController)->update('nombre', $request['menu_nombre-en'], $request['id']);
+        (new TranslationController)->update('nombre', $request['menu_nombre-en'], $request['id'], 'category_menu');
         return redirect('admin/category_menu');
     }
     public function sortMenu(Request $request, Menu $menu)
@@ -87,10 +87,10 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu,  $id)
+    public function destroy($id)
     {
         Menu::destroy($id);
-        (new TranslationController)->destroy($id);
+        (new TranslationController)->destroy($id, 'category_menu');
         return redirect()->route('admin.menu');
     }
 }

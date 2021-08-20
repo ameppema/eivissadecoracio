@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\App;
-use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class SlideController extends Controller
 {
@@ -22,13 +21,8 @@ class SlideController extends Controller
     {
         App::setLocale('en');
         $slide = Slide::all();
-        $slide_en = Slide::all();
-        $translation = DB::table('translations')
-        ->where('table', 'slide')
-        ->get(['column', 'translation']);
-        $trans = Slide::all();
 
-        return view('admin.modules.slider', compact(['slide', 'slide_en']));
+        return view('admin.modules.slider', compact(['slide']));
     }
 
     /**
@@ -120,7 +114,7 @@ class SlideController extends Controller
         $columns = ['titulo', 'descripcion'];
         $translations = [$datos['titulo_es'] ,$datos['descripcion_es']];
         for($i = 0; $i < count($columns); $i++){
-            (new TranslationController)->update($columns[$i],$translations[$i],$slide->id);
+            (new TranslationController)->update($columns[$i],$translations[$i],$slide->id,'slide');
         }
 
         return redirect()->route('admin.slide');
@@ -138,10 +132,10 @@ class SlideController extends Controller
 
         if(Storage::delete('public/' . $slide->imagen)){
             Slide::destroy($id);
-            (new TranslationController)->destroy($id);
+            (new TranslationController)->destroy($id, 'slide');
             return redirect()->route('admin.slide');
         }
-        (new TranslationController)->destroy($id);
+        (new TranslationController)->destroy($id, 'slide');
         Slide::destroy($id);
         return redirect()->route('admin.slide');
     }

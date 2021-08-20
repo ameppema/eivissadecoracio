@@ -17,6 +17,7 @@ class AddPartnersTable extends Migration
             $table->id();
             $table->text('titulo');
             $table->text('subtitulo');
+            $table->string('locale', 11)->default('es');
         });
     }
 
