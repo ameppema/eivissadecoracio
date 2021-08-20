@@ -43,7 +43,7 @@ class ModuleController extends Controller
             'titulo' => ['required', 'string', 'max:255'],
             'subtitulo' => ['required', 'string', 'max:255'],
             'imagen-principal' => ['required', 'image'],
-            'fisrt_text' => ['required', 'string'],
+            'first_text' => ['required', 'string'],
             'second_text' => ['required', 'string'],
             'third_text' => ['required', 'string']
         ]);
@@ -56,7 +56,7 @@ class ModuleController extends Controller
             'subtitulo'=> $datos['subtitulo'],
             'imagen_principal'    => $rutaImg,
             'imagen_movil'    => $rutaImgMovil,
-            'fisrt_text'    => $datos['fisrt_text'],
+            'fisrt_text'    => $datos['first_text'],
             'second_text'    => $datos['second_text'],
             'third_text'    => $datos['third_text'],
         ]);
@@ -78,14 +78,14 @@ class ModuleController extends Controller
         $datos = request()->validate([
             'titulo' => ['required', 'string', 'max:255'],
             'subtitulo' => ['required', 'string', 'max:255'],
-            'fisrt_text' => ['required', 'string'],
+            'first_text' => ['required', 'string'],
             'second_text' => ['required', 'string'],
             'third_text' => ['required', 'string'],
         ]);
   
         $module->titulo = $datos['titulo'];
         $module->subtitulo = $datos['subtitulo'];
-        $module->texto_principal = $datos['fisrt_text'];
+        $module->texto_principal = $datos['first_text'];
         $module->texto_secundario = $datos['second_text'];
         $module->texto_tres = $datos['third_text'];
 

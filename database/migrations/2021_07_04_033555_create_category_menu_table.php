@@ -18,6 +18,7 @@ class CreateCategoryMenuTable extends Migration
             $table->text('nombre');
             $table->text('ruta');
             $table->integer('sort_order')->default(0);
+            $table->string('locale', 11)->default('es');
         });
     }
 

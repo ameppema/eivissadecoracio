@@ -17,4 +17,9 @@ trait menuMutators
 	{
 		return $this->translate('ruta', $value);
 	}
+
+	public function getTranslationAttribute($value)
+	{
+		return ['nombre_en' => $this->getTranslate($value, 'en')[0]->translation];
+	}
 }

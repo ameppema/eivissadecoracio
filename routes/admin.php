@@ -24,6 +24,7 @@ Route::delete('/slide/{id}', [SlideController::class, 'destroy'])->name('admin.s
 Route::get('/category_menu', [MenuController::class, 'index'])->name('admin.menu');
 Route::post('/category_menu', [MenuController::class, 'store'])->name('admin.menu.store');
 Route::put('/category_menu/sort', [MenuController::class, 'sortMenu'])->name('admin.menu.sort');
+Route::get('/category_menu/getDataByAjax/{id}', [MenuController::class, 'getDataByAjax'])->name('admin.menu.ajax');
 Route::put('/category_menu/edit/{id}', [MenuController::class, 'update'])->name('admin.menu.update');
 Route::delete('/category_menu/delete/{id}', [MenuController::class, 'destroy'])->name('admin.menu.destroy');
 

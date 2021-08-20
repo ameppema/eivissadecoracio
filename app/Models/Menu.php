@@ -8,14 +8,15 @@ use App\Models\Mutators\menuMutators;
 
 class Menu extends Model
 {
-    use HasFactory, menuMutators;
+    use HasFactory, 
+        menuMutators;
 
     protected $table = 'category_menu'; 
+    public $timestamps = false;
 
     protected $fillable = ['nombre', 'ruta', 'sort_order'];
 
-    public $timestamps = false;
-
+    protected $appends = ['translation'];
     public function getModule(){
         return $this->hasOne('App\Models\Module', 'category_menu_id');
     }

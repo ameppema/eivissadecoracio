@@ -47,22 +47,12 @@
                                     <tr data-id="{{$item->id}}">
                                         <td style="vertical-align: middle;" data-id="{{$item->id}}">{{$item->sort_order}}</td>
                                         
-                                        <td style="vertical-align: middle;" class="text-capitalize collapse show thisone" >{{$item->nombre}}</td>
+                                        <td style="vertical-align: middle;" class="text-capitalize">{{$item->nombre}}</td>
 
-                                        <td style="vertical-align: middle;" class="text-capitalize collapse show thisone" >{{$item->nombre}}</td>
+                                        <td style="vertical-align: middle;" class="text-capitalize">{{$item->translation['nombre_en']}}</td>
                                         
-                                        <td style="vertical-align: middle;" class="text-capitalize collapse editinput w-25">
-                                            <form action="{{url('admin/category_menu'. '/edit/' . $item->id )}}" method="POST">
-                                                @csrf
-                                                @method('put')
-                                                <input type="text" name="nombre" value="{{$item->nombre}}" class="text-capitalize">
-                                                <button title="Guardar" type="submit" class="btn btn-info"><i class="fas fa-check-square"></i></button>
-                                            </form>
-                                        </td>
-
                                         <td>
-                                            <button title="Editar"  class="btn btn-warning edit-category" style="margin-right: 20px;"><i class="fas fa-edit"></i></button>
-                                            
+                                            <button title="Editar"  class="btn btn-warning" id="btn_edit" data-toggle="modal" data-target="#editMenuModal" data-menu-item-id="{{$item->id}}" style="margin-right: 20px;"><i class="fas fa-edit"></i></button>
                                             <form action="{{url('admin/category_menu'.'/delete/' . $item->id )}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
@@ -80,8 +70,8 @@
     </div>
 </section>
 
-{{-- Modal para editar slide - update_modal --}}
-@include('admin.modules.slider_parts.update_modal')
+{{-- Modal para editar menu - update_modal --}}
+@include('admin.modules._parts.menu_modal')
 @stop
 
 @section('css')
@@ -93,7 +83,6 @@
 @stop
 
 @section('js')
-    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
 
@@ -124,15 +113,25 @@
                 url: 'category_menu/sort',
                 data: {data: JSON.stringify(orderUpdated), _token: '{{csrf_token()}}'},
                 success: (data) => console.log('%c Orden Cambiado Correctamente','background-color:green'),
-                error: (err) => console.log('Not Succes')
+                error: (err) => console.log({status: 'Not Succes', err})
             })
         }
 
-        /* Editable */
-        let btnEdit = $('.edit-category');
-        btnEdit.on('click', function(){
-            $('.editinput').toggleClass('collapse');
-            $('.thisone').toggleClass('show');
+        /* Modal Content */
+        $('#editMenuModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var dataId = button.attr('data-menu-item-id');
+        $('#modalFormUpdate').attr('action', '/admin/category_menu/edit/' + dataId);
+        $.ajax({
+            url: '/admin/category_menu/getDataByAjax/' + dataId,
+            type: 'GET',
+            success: function(data){
+                console.log(data)
+                $('#menu_nombre_en').val(data.translation.nombre_en);
+                $('#menu_nombre_es').val(data.nombre);
+            },
+            error: function(error){ console.log(error);}
+        });        
         })
     })
     </script>
