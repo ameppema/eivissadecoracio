@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\TranslationController;
+use App\Models\Images;
 use App\Models\Partners;
 use App\Models\Galleries;
-use App\Models\Images;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Http\Controllers\TranslationController;
 
 class PartnersController extends Controller
 {
