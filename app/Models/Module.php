@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\Mutators\ModuleMutators;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Mutators\ModuleMutators;
 
 class Module extends Model
 {
     use HasFactory,
-        ModuleMutators;
+    ModuleMutators;
 
     public $timestamps = false;
 
