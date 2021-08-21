@@ -89,12 +89,9 @@ class ImagesController extends Controller
             Storage::delete('public/' . $images->image_src);
             
             $filename = $request->file('nueva_imagen_src')->getClientOriginalName();
-
             $rutaImgNueva = $request['nueva_imagen_src']->storeAs('gallery', $filename, 'public');
-
             $images->image_src = $rutaImgNueva;
         }
-
         $images->image_alt = $data['nueva_imagen_alt'];
 
         $images->save();

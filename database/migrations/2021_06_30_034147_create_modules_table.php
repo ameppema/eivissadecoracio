@@ -24,6 +24,7 @@ class CreateModulesTable extends Migration
             $table->text('texto_tres');
             $table->unsignedBigInteger('category_menu_id');
             $table->text('enlace');
+            $table->string('locale',11)->default('es');
         });
     }
 

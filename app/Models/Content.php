@@ -16,11 +16,7 @@ class Content extends Model
     }
 
     public static function getContent($page){
-        $content = DB::table('Modules')
-        ->join('category_menu', 'modules.category_menu_id', '=', 'category_menu.id')
-        ->where('enlace', $page)
-        ->first();
-
+        $content = Module::where('enlace',$page)->first();
         return $content;
     }
 

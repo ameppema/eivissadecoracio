@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TranslationController;
 use App\Models\Module;
 use App\Models\Menu;
 use App\Models\Galleries;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 class ModuleController extends Controller
@@ -17,6 +19,7 @@ class ModuleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request, $param, $id){
+        App::setLocale('es');
         $module_name = $param;
         $isModule = Module::select('id')->where('id', '=', $id )->first();
         if(!$isModule)
@@ -81,6 +84,11 @@ class ModuleController extends Controller
             'first_text' => ['required', 'string'],
             'second_text' => ['required', 'string'],
             'third_text' => ['required', 'string'],
+            'titulo_en' => ['required', 'string'],
+            'subtitulo_en' => ['required', 'string'],
+            'first_text_en' => ['required', 'string'],
+            'second_text_en' => ['required', 'string'],
+            'third_text_en' => ['required', 'string'],
         ]);
   
         $module->titulo = $datos['titulo'];
@@ -112,6 +120,11 @@ class ModuleController extends Controller
         }
 
         $module->save();
+        $props = ['titulo','subtitulo','texto_principal','texto_secundario','texto_tres'];
+        $translations = [$datos['titulo_en'],$datos['subtitulo_en'],$datos['first_text_en'],$datos['second_text_en'],$datos['third_text_en']];
+        for($i = 0; $i < count($props); $i++){
+            (new TranslationController)->update($props[$i],$translations[$i], $id,'modules');
+        }
 
         return redirect('admin/module/' . $name . '/' . $id);
     }

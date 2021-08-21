@@ -19,7 +19,6 @@ class MenuController extends Controller
     {
         App::setLocale('es');
         $menu = $menu = Menu::orderBy('sort_order', 'ASC')->get();
-        // dd($menu[0]->translation['nombre_en']);
         return view('admin.modules.menu', compact(['menu']));
     }
 
@@ -32,17 +31,20 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $datos = $request->validate([
-            'nombre' => ['required']
+            'nombre' => ['required'],
+            'nombre_en' => ['required']
         ]);
 
-        $datos['ruta'] = $datos['ruta'] ?? '#' ;
+        $datos['ruta'] = $datos['ruta'] ?? 'index' ;
 
-        Menu::create([
+        $newMenu = Menu::create([
             'nombre' => strtolower($datos['nombre']),
-            'ruta' => strtolower($datos['nombre']),
+            'ruta' => strtolower($datos['ruta']) ?? 'index',
         ]);
 
-        return redirect('admin/category_menu');
+        (new TranslationController)->store($datos['nombre_en'],'category_menu','nombre',$newMenu->id,'en');
+
+        return redirect()->route('admin.menu');
     }
 
     /**
@@ -55,7 +57,7 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menu)
     {
         Menu::where('id',$request['id'])->update(['nombre' => $request['menu_nombre-es']]);
-        (new TranslationController)->update('nombre', $request['menu_nombre-en'], $request['id']);
+        (new TranslationController)->update('nombre', $request['menu_nombre-en'], $request['id'], 'category_menu');
         return redirect('admin/category_menu');
     }
     public function sortMenu(Request $request, Menu $menu)
@@ -85,10 +87,10 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu,  $id)
+    public function destroy($id)
     {
         Menu::destroy($id);
-        (new TranslationController)->destroy($id);
+        (new TranslationController)->destroy($id, 'category_menu');
         return redirect()->route('admin.menu');
     }
 }

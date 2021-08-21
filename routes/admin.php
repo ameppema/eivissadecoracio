@@ -52,3 +52,7 @@ Route::put('/module/{name}/{id}', [ModuleController::class, 'update'])->name('ad
 // Users
 Route::get('users', [UsersController::class, 'index'])->name('users');
 Route::get('profile', [UsersController::class, 'show'])->name('profile');
+
+// Generators
+Route::get('/generate',['App\Http\Controllers\Admin\GeneratorController', 'CreateTranslation'])->name('generator');
+Route::get('/generate-delete',['App\Http\Controllers\Admin\GeneratorController', 'DeleteTranslation'])->name('generator.delete');
