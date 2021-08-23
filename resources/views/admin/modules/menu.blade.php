@@ -79,6 +79,56 @@
         .section__title {
             margin-left: 7.5px;
         }
+
+        .modal__inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-gap: 30px;
+        }
+
+        .input__spanish,
+        .input__english {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .input__label {
+            margin: 0 7px;
+        }
+
+        .input__text {
+            display: inline;
+            flex-grow: 1;
+            width: auto;
+            height: calc(2.25rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            box-shadow: inset 0 0 0 transparent;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .input__img {
+            width: 30px;
+            height: 21px;
+        }
+        
+        .modal__buttons {
+            text-align: center;
+            margin: 30px 0px 20px;
+        }
+        
+        .modal__buttons button {
+            margin: 0 10px;
+        }
     </style>
 @stop
 

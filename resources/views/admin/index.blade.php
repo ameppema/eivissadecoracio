@@ -12,7 +12,7 @@
     <section class="content">
         <div class="card">
             <p class="card__intro">
-                Aquí puedes tener acceso para modificar todas las secciones de la web
+                Acceso para modificar todas las secciones y páginas de la web
             </p>
 
             <div class="container__card">

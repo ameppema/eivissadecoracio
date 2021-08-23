@@ -156,13 +156,15 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <img class="img-fluid modal__image" id="modalImage" src="" alt="">
-
+                        
                         <div class="modal__subtitle">Imagen actual</div>
+                        
+                        <img class="modal__image img-fluid" id="modalImage" src="" alt="">
 
-                        <button class="btn btn-success modal__button" type="submit">Agregar a Galeria</button>
-                        <button class="btn btn-danger modal__button" type="button" data-dismiss="modal">Cancelar</button>
+                        <div class="modal__buttons">
+                            <button class="btn btn-success modal__button" type="submit">Agregar a Galeria</button>
+                            <button class="btn btn-danger modal__button" type="button" data-dismiss="modal">Cancelar</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -245,7 +247,9 @@
         }
         
         .modal__image {
+            display: block;
             width: 50%;
+            margin: 0 auto;
         }
         
         .modal__label {
@@ -258,7 +262,7 @@
         }
         
         .modal__button {
-            margin: 0 20px;
+            margin: 50px 20px 0;
         }
     </style>
 @stop
