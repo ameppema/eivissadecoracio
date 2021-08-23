@@ -19,7 +19,7 @@ class SlideController extends Controller
      */
     public function index()
     {
-        App::setLocale('en');
+        App::setLocale('es');
         $slide = Slide::all();
 
         return view('admin.modules.slider', compact(['slide']));
@@ -35,9 +35,9 @@ class SlideController extends Controller
     {
         $datos = request()->validate([
             'titulo' => ['required', 'string', 'max:255'],
-            'titulo_en' => ['required', 'string', 'max:255'],
+            'titulo' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
-            'descripcion_en' => ['required', 'string', 'max:255'],
+            'descripcion' => ['required', 'string', 'max:255'],
             'imagen' => ['required', 'image'],
             'imagen-movil' => ['required', 'image'],
         ]);
@@ -48,7 +48,7 @@ class SlideController extends Controller
         $rutaImg = $request['imagen']->storeAs('slide', $filename, 'public');
         $rutaImgMovil = $request['imagen-movil']->storeAs('slide', $filenamemobile, 'public');
 
-        $row_id = DB::table('slide')->insertGetId([
+        $row_id = DB::table('slides')->insertGetId([
             'titulo'    => $datos['titulo_en'],
             'descripcion'=> $datos['descripcion_en'],
             'locale'=> 'en',
@@ -57,9 +57,9 @@ class SlideController extends Controller
         ]);
         $i = 0;
         $atttributes = ['titulo', 'descripcion'];
-        $translations = [$datos['titulo'],$datos['descripcion']];
+        $translations = [$datos['titulo_en'],$datos['descripcion_en']];
         foreach($translations as $translation){
-            (new TranslationController)->store($translation, 'slide',$atttributes[$i++], $row_id, 'es');
+            (new TranslationController)->store($translation, 'slides',$atttributes[$i++], $row_id, 'en');
         }
         $i=null;
 
@@ -74,6 +74,7 @@ class SlideController extends Controller
      */
     public function edit($id)
     {
+        App::setLocale('es');
         //Devuelve la informacion al modal
         $slide = Slide::find($id);
         return $slide;
@@ -88,6 +89,7 @@ class SlideController extends Controller
      */
     public function update(Request $request, Slide $slide)
     {
+        App::setLocale('es');
         $datos = request();
         $slide->titulo = $datos['titulo'];
         $slide->descripcion = $datos['descripcion'];   
@@ -112,9 +114,9 @@ class SlideController extends Controller
         $slide->save();
 
         $columns = ['titulo', 'descripcion'];
-        $translations = [$datos['titulo_es'] ,$datos['descripcion_es']];
+        $translations = [$datos['titulo_en'] ,$datos['descripcion_en']];
         for($i = 0; $i < count($columns); $i++){
-            (new TranslationController)->update($columns[$i],$translations[$i],$slide->id,'slide');
+            (new TranslationController)->update($columns[$i],$translations[$i],$slide->id,'slides');
         }
 
         return redirect()->route('admin.slide');
@@ -132,10 +134,10 @@ class SlideController extends Controller
 
         if(Storage::delete('public/' . $slide->imagen)){
             Slide::destroy($id);
-            (new TranslationController)->destroy($id, 'slide');
+            (new TranslationController)->destroy($id, 'slides');
             return redirect()->route('admin.slide');
         }
-        (new TranslationController)->destroy($id, 'slide');
+        (new TranslationController)->destroy($id, 'slides');
         Slide::destroy($id);
         return redirect()->route('admin.slide');
     }

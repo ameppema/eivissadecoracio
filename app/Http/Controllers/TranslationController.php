@@ -60,7 +60,7 @@ class TranslationController extends Controller
                             ->where('row_id', $row_id);
 
         foreach($translations as $translation){
-            DB::table('translations')->where('row_id', $row_id)->delete();
+            $translations->delete();
         }
         return;
     }

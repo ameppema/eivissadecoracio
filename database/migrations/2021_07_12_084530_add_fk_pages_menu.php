@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFkModulesCategoryMenu extends Migration
+class AddFkPagesMenu extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class AddFkModulesCategoryMenu extends Migration
      */
     public function up()
     {
-        Schema::table('modules', function (Blueprint $table) {
+        Schema::table('pages', function (Blueprint $table) {
             //Agregando relacion a nivel MySql
-            $table->foreign('category_menu_id')
+            $table->foreign('menu_id')
                     ->references('id')
-                    ->on('category_menu')
+                    ->on('menu')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
         });
@@ -30,8 +30,8 @@ class AddFkModulesCategoryMenu extends Migration
      */
     public function down()
     {
-        Schema::table('modules', function (Blueprint $table) {
-            $table->dropForeign('category_menu_id');
+        Schema::table('pages', function (Blueprint $table) {
+            $table->dropForeign('menu_id');
         });
     }
 }

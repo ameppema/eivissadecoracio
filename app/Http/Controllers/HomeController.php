@@ -31,7 +31,6 @@ class HomeController extends Controller
         $menu = Content::getMenu();
         $modules = Content::getServices();
         $historyImages = Content::getContent('historia');
-        $menus = Content::getMenu();
         $galleryPartners = Galleries::page(7)->gallery()->inOrder()->get();
         $partnersData = Partners::all()->first();
 

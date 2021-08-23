@@ -3,9 +3,8 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 use App\Models\Menu;
-use App\Models\Module;
+use App\Models\Pages;
 
 class Content extends Model
 {
@@ -16,7 +15,7 @@ class Content extends Model
     }
 
     public static function getContent($page){
-        $content = Module::where('enlace',$page)->first();
+        $content = Pages::where('enlace',$page)->first();
         return $content;
     }
 
@@ -26,14 +25,11 @@ class Content extends Model
      */
 
     public static function getServices(){
-        $content = DB::table('modules')
-                        ->where('enlace','NOT LIKE','historia')
-                        ->get();
-
+        $content = Pages::where('enlace','NOT LIKE', 'historia')->get();
         return $content;
     }
     
     public static function getGallery(){
-        return Module::all();
+        return Pages::all();
     }
 }

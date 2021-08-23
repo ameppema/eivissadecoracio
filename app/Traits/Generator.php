@@ -12,37 +12,35 @@ Trait Generator
             return 1;
         }
     }
-    public static function CreateTranslationRegisters($props, $repetitions){
+    public static function CreateTranslationRegisters($props, $repetitions, $text = false){
     for($i = 0; $i < count($repetitions); $i++){
         foreach($props as $prop){
-            DB::table('translations')
+            if($prop == 'titulo' || $prop == 'subtitulo'){
+                DB::table('translations')
                 ->insert([
-                    'table'=>'modules',
+                    'table'=>'pages',
                     'column'=> $prop,
                     'row_id'=> $repetitions[$i],
                     'locale'=> 'en',
-                    'translation'=>'Some Text test',
+                    'translation'=> 'Some Text test',
+                ]);
+                continue;
+            }
+            DB::table('translations')
+                ->insert([
+                    'table'=>'pages',
+                    'column'=> $prop,
+                    'row_id'=> $repetitions[$i],
+                    'locale'=> 'en',
+                    'translation'=> $text ?? 'Some Text test',
                 ]);
         }
     }
     }
 
-    public static function DeleteTranslationRegisters(){
+    public function DeleteTranslationRegisters(){
         $deleted = DB::table('translations')
-                    ->where('table','modules')
+                    ->where('table','pages')
                     ->delete();
     }
 }
-
-/*
-ModuleTranlationColumn = [
-    'titulo',
-    'subtiutlo',
-    'texto_principal',
-    'texto_secundario',
-    'texto_tercero',
-]
-ModuleTranlationRow_id = [
-    1,2,3,4,5,6
-]
-*/

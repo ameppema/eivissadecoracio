@@ -1,3 +1,4 @@
+@if(count($slide))
 <table class="table">
     <thead>
         <tr>
@@ -46,16 +47,16 @@
             <td style="width: 150px;"><img style="width: inherit;" src="/storage/{{$slideItem->imagen}}" class="card-img" alt="Slide Item"></td>
             
             {{-- Slide Title Spanish --}}
-            <td style="vertical-align: middle;">{{ $slideItem->translation['titulo_es'] }}</td>
+            <td style="vertical-align: middle;">{{ $slideItem->titulo }}</td>
             
             {{-- Slide Description Spanish --}}
-            <td style="vertical-align: middle;">{{$slideItem->translation['descripcion_es']}}</td>
+            <td style="vertical-align: middle;">{{$slideItem->descripcion}}</td>
             
             {{-- Slide Title English --}}
-            <td style="vertical-align: middle;">{{ $slideItem->titulo }}</td>
+            <td style="vertical-align: middle;">{{ $slideItem->translation['titulo_en'] }}</td>
 
             {{-- Slide Description English --}}
-            <td style="vertical-align: middle;">{{$slideItem->descripcion}}</td>
+            <td style="vertical-align: middle;">{{$slideItem->translation['descripcion_en']}}</td>
 
             {{-- Slide Actions --}}
             <td style="vertical-align: middle; padding: 0 .75rem;">
@@ -75,3 +76,10 @@
         @endforeach
     </tbody>
 </table>
+@else
+    <div class="card">
+        <div class="card-body">
+            <h2 class="text-center text-muted">No Slide Items</h2>
+        </div>
+    </div>
+@endif

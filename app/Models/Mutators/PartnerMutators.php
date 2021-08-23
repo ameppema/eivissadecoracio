@@ -20,6 +20,6 @@ trait PartnerMutators
 
 	public function getTranslationAttribute($value)
 	{
-		return ['titulo_en' => $this->getTranslate($value, 'en')[0]->translation, 'subtitulo_en' => $this->getTranslate($value, 'en')[1]->translation];
+		return ['titulo_en' => $this->getTranslate($value)[0]->translation, 'subtitulo_en' => $this->getTranslate($value)[1]->translation];
 	}
 }

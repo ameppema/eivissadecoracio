@@ -30,7 +30,7 @@ trait Translation
 			return $default;
 		}
 	}
-	public function getTranslate($default = '', $lang = 'es')
+	public function getTranslate($default = '', $lang = 'eN')
 	{
 
 		$locale = App::getLocale();

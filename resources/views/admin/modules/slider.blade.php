@@ -102,10 +102,10 @@
                             if(data){
                                 console.log(data);
                                 $('#Form-Edit').attr('action', 'slide/' + data.id)
-                                $('#ModalTitle_ES').val(data.translation.titulo_es);
-                                $('#ModalDescription_ES').val(data.translation.descripcion_es);
-                                $('#ModalTitle_EN').val(data.titulo);
-                                $('#ModalDescription_EN').val(data.descripcion);
+                                $('#ModalTitle_ES').val(data.titulo);
+                                $('#ModalDescription_ES').val(data.descripcion);
+                                $('#ModalTitle_EN').val(data.translation.titulo_en);
+                                $('#ModalDescription_EN').val(data.translation.descripcion_en);
                                 $('#oldImgDesk').attr('src' , '/storage/' + data.imagen);
                                 $('#oldImgMovil').attr('src' , '/storage/' + data.imagen_movil);
                             }

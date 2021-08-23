@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\ModuleController;
+use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\PartnersController;
@@ -45,9 +45,9 @@ Route::put('/module/partners/{id?}', [PartnersController::class, 'update'])->nam
 
 // Pages/modules routes
 Route::get('/module', function(){ return redirect()->route('admin.home');})->name('admin.module.index');
-Route::get('/module/{name}/{id}', [ModuleController::class, 'index'])->name('admin.module');
-Route::post('/module/{name}', [ModuleController::class, 'store'])->name('admin.module.store');
-Route::put('/module/{name}/{id}', [ModuleController::class, 'update'])->name('admin.module.update');
+Route::get('/module/{name}/{id}', [PagesController::class, 'index'])->name('admin.module');
+Route::post('/module/{name}', [PagesController::class, 'store'])->name('admin.module.store');
+Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('admin.module.update');
 
 // Users
 Route::get('users', [UsersController::class, 'index'])->name('users');

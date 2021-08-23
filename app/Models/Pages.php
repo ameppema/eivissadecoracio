@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Mutators\ModuleMutators;
 
-class Module extends Model
+class Pages extends Model
 {
     use HasFactory,
     ModuleMutators;
@@ -24,6 +24,6 @@ class Module extends Model
     protected $appends = ['translation'];
 
     public function getCategory(){
-        return $this->belongsTo('App\Models\Menu', 'category_menu_id');
+        return $this->belongsTo('App\Models\Menu', 'menu_id');
     }
 }

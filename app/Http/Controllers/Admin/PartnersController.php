@@ -43,7 +43,7 @@ class PartnersController extends Controller
      * @param  \App\Models\Partners  $partners
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Partners $partners, int $id = 1)
+    public function update(Request $request, $id = 1)
     {
         $partners = Partners::find($id);
         $data = $request->validate([
@@ -70,7 +70,7 @@ class PartnersController extends Controller
      * @param  \App\Models\Partners  $partners
      * @return \Illuminate\Http\Response
      */
-    public function editOrderByAjax(Request $request, Images $images)
+    public function editOrderByAjax(Request $request)
     {
         $data = json_decode($request->data);
         $images = Galleries::page(7)->gallery()->inOrder('desc')->get();
