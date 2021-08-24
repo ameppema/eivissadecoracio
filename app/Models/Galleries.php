@@ -19,25 +19,26 @@ class Galleries extends Model
         return $this->hasMany('App\Models\Images', 'gallery_id', 'id');
     }
 
-    public static function page(int $id){
+    public static function page($id){
         self::$gallery_id = $id;
+        return self::$_this = new self;
+    }
+
+    public static function getImages($gellery_belongs_to){
+        self::$_galleryAll = DB::table('')->where('galleries.belongs_to', $gellery_belongs_to);
         return self::$_this = new self;
     }
 
     public function gallery($gallery_type = false){
         $gallery = DB::table('images')
         ->join('galleries','images.gallery_id', '=', 'galleries.id')
-        ->where('images.gallery_id', '=' , self::$gallery_id);
+        ->where('images.gallery_id', self::$gallery_id);
 
         if($gallery_type !== false){
-            $gallery->where('images.gallery_type', '=' , $gallery_type);
+            $gallery->where('images.gallery_type', $gallery_type);
         }
 
         $this->_galleryAll = $gallery;
-        return $this;
-    }
-    public function belongs($gellery_belongs_to){
-        $this->_galleryAll->where('galleries.belongs_to', '=' , $gellery_belongs_to);
         return $this;
     }
 

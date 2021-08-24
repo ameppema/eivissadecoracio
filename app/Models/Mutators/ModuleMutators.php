@@ -31,11 +31,11 @@ trait ModuleMutators
 	}
 	public function getTranslationAttribute($value)
 	{
-		return ['titulo_en' => $this->getTranslate($value,'en')[0]->translation,
-                'descripcion_en'=>$this->getTranslate($value,'en')[1]->translation,
-                'texto_principal_en'=>$this->getTranslate($value,'en')[2]->translation,
-                'texto_secundario_en'=>$this->getTranslate($value,'en')[3]->translation,
-                'texto_tres_en'=>$this->getTranslate($value,'en')[4]->translation,
+		return ['titulo_en' => $this->getTranslate($value)[0]->translation,
+                'subtitulo_en'=>$this->getTranslate($value)[1]->translation,
+                'texto_principal_en'=>$this->getTranslate($value)[2]->translation,
+                'texto_secundario_en'=>$this->getTranslate($value)[3]->translation,
+                'texto_tres_en'=>$this->getTranslate($value)[4]->translation,
             ];
 	}
 

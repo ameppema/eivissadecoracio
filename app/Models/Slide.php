@@ -11,7 +11,6 @@ class Slide extends Model
     use HasFactory, 
         SlideMutators;
 
-    protected $table = 'slide';
     protected $fillable = [
         'titulo',
         'descripcion',

@@ -71,13 +71,13 @@
             <div class="header-title__items">
                 <img class="header-title__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
                 <label class="form-label header-title__label" for="pageTitle_EN">Título</label>
-                <input class="form-control header-title__input" id="pageTitle_EN" name="titulo_en" type="text" placeholder="Escribir título en Ingles" value="{{old('titulo') ?? $module->translation['titulo_en']}}">
+                <input class="form-control header-title__input" id="pageTitle_EN" name="titulo_en" type="text" placeholder="Escribir título en Ingles" value="{{old('titulo_en') ?? $module->translation['titulo_en']}}">
             </div>
             
             <div class="header-subtitle__items">
                 <img class="header-subtitle__image" src="/images/navbar/lang_en.png" alt="Eivissa Decoracio English">
                 <label class="form-label header-subtitle__label" for="pageSubtitle_EN">Descripción</label>
-                <input class="form-control header-subtitle__input" id="pageSubtitle_EN" name="subtitulo_en" type="text" placeholder="Escribir subtitulo en Ingles" value="{{old('subtitulo') ?? $module->translation['titulo_en']}}">
+                <input class="form-control header-subtitle__input" id="pageSubtitle_EN" name="subtitulo_en" type="text" placeholder="Escribir subtitulo en Ingles" value="{{old('subtitulo_en') ?? $module->translation['subtitulo_en']}}">
             </div>
         </div>
         

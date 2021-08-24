@@ -20,6 +20,6 @@ trait menuMutators
 
 	public function getTranslationAttribute($value)
 	{
-		return ['nombre_en' => $this->getTranslate($value, 'en')[0]->translation];
+		return ['nombre_en' => $this->getTranslate($value)[0]->translation];
 	}
 }

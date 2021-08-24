@@ -42,7 +42,7 @@ class MenuController extends Controller
             'ruta' => strtolower($datos['ruta']) ?? 'index',
         ]);
 
-        (new TranslationController)->store($datos['nombre_en'],'category_menu','nombre',$newMenu->id,'en');
+        (new TranslationController)->store($datos['nombre_en'],'menu','nombre',$newMenu->id,'en');
 
         return redirect()->route('admin.menu');
     }
@@ -54,10 +54,10 @@ class MenuController extends Controller
      * @param  \App\Models\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Menu $menu)
+    public function update(Request $request)
     {
         Menu::where('id',$request['id'])->update(['nombre' => $request['menu_nombre-es']]);
-        (new TranslationController)->update('nombre', $request['menu_nombre-en'], $request['id'], 'category_menu');
+        (new TranslationController)->update('nombre', $request['menu_nombre-en'], $request['id'], 'menu');
         return redirect('admin/category_menu');
     }
     public function sortMenu(Request $request, Menu $menu)

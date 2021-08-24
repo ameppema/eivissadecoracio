@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\TranslationController;
-use App\Models\Module;
+use App\Models\Pages;
 use App\Models\Menu;
 use App\Models\Galleries;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
-class ModuleController extends Controller
+class PagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,12 +21,12 @@ class ModuleController extends Controller
     public function index(Request $request, $param, $id){
         App::setLocale('es');
         $module_name = $param;
-        $isModule = Module::select('id')->where('id', '=', $id )->first();
+        $isModule = Pages::select('id')->where('id', '=', $id )->first();
         if(!$isModule)
         {
             return redirect()->route('admin.home');
         }
-        $module = Menu::find($id)->getModule;
+        $module = Menu::find($id)->getPage;
 
         $galleryOne = Galleries::page($id)->gallery(1)->get();
         $galleryTwo = Galleries::page($id)->gallery(2)->get();
@@ -54,7 +54,7 @@ class ModuleController extends Controller
         $rutaImg = $request['imagen_principal']->store('moduleImg', 'public');
         $rutaImgMovil = $request['imagen_movil']->store('moduleImg', 'public');
 
-        DB::table('modules')->insert([
+        DB::table('pages')->insert([
             'titulo'    => $datos['titulo'],
             'subtitulo'=> $datos['subtitulo'],
             'imagen_principal'    => $rutaImg,
@@ -71,12 +71,12 @@ class ModuleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Module  $module
+     * @param  \App\Models\Pages  $module
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Module $module, $name, $id)
+    public function update(Request $request, Pages $module, $name, $id)
     {
-        $module =  Module::find($id);
+        $module =  Pages::find($id);
 
         $datos = request()->validate([
             'titulo' => ['required', 'string', 'max:255'],
@@ -121,22 +121,11 @@ class ModuleController extends Controller
 
         $module->save();
         $props = ['titulo','subtitulo','texto_principal','texto_secundario','texto_tres'];
-        $translations = [$datos['titulo_en'],$datos['subtitulo_en'],$datos['first_text_en'],$datos['second_text_en'],$datos['third_text_en']];
+        $translations = [$datos['titulo_en'], $datos['subtitulo_en'], $datos['first_text_en'], $datos['second_text_en'], $datos['third_text_en']];
         for($i = 0; $i < count($props); $i++){
-            (new TranslationController)->update($props[$i],$translations[$i], $id,'modules');
+            (new TranslationController)->update($props[$i],$translations[$i], $id,'pages');
         }
 
         return redirect('admin/module/' . $name . '/' . $id);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Module  $module
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Module $module)
-    {
-        //
     }
 }

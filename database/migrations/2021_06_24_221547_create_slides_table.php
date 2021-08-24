@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModulesTable extends Migration
+class CreateSlidesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateModulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('slides', function (Blueprint $table) {
             $table->id();
             $table->text('titulo');
-            $table->text('subtitulo');
-            $table->text('imagen_principal');
+            $table->text('descripcion');
+            $table->text('imagen');
             $table->text('imagen_movil');
-            $table->text('texto_principal');
-            $table->text('texto_secundario');
-            $table->text('texto_tres');
-            $table->unsignedBigInteger('category_menu_id');
-            $table->text('enlace');
             $table->string('locale',11)->default('es');
         });
     }
@@ -35,6 +30,6 @@ class CreateModulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('slides');
     }
 }

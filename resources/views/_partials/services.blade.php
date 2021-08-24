@@ -1,6 +1,6 @@
 @foreach($modules as $moduleItem)
     <div class="service__card">
-        <a href="{{$moduleItem->enlace}}">
+        <a href="{{session()->get('locale').'/'. $moduleItem->enlace}}">
             <img class="service__image" src="storage/{{$moduleItem->imagen_principal}}" alt="{{$moduleItem->titulo}}">
 
             <div class="service__info">
