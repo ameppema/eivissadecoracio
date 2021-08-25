@@ -4,7 +4,7 @@
 
 @section('content_header')
     <div class="page-header section__title">
-        <h1>Perfil de Usuario | <small>Eivissa Decoracio</small></h1>
+        <h1>Perfil de Usuario | Role : @role('Admin') Administrador @else Usuario @endrole | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
 
