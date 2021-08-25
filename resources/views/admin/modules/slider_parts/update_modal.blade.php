@@ -51,7 +51,7 @@
 
     <x-slot name="footerSlot">
         <div style="width: 100%; text-align: center; padding: 15px;">
-            <x-adminlte-button style="margin-right: 15px" type="submit" theme="success" label="Aceptar" id="EnviarModalEditar"/>
+            <x-adminlte-button style="margin-right: 15px" type="submit" theme="success" label="Actualizar" id="EnviarModalEditar"/>
             <x-adminlte-button style="margin-left: 15px" theme="danger" label="Cancelar" data-dismiss="modal"/>
         </div>
     </x-slot>
