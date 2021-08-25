@@ -17,7 +17,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Nombre</th>
-                            <th>Nick</th>
+                            <th>Nickname</th>
                             <th>Correo</th>
                             <th>Rol</th>
                             <th>Sesión</th>
