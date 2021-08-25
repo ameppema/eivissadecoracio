@@ -2,10 +2,10 @@
 
 <div class="history__info">
     <a class="history__link" href="/">
-        <h3 class="history__title">Nuestra historia.</h3>
+        <h3 class="history__title">{{__('translations.historyTitle')}}</h3>
 
         <p class="history__text">
-            Phasellus consequat sed dui a dapibus. Aliquam erat volutpat.
+        {{__('translations.historyDescription')}}
         </p>
 
         <button class="history__button">Click</button>
