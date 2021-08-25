@@ -3,17 +3,17 @@
 <div class="contact__overlay"></div>
 
 <div class="contact__info">
-    <h3 class="contact__title">Contacto.</h3>
+    <h3 class="contact__title">{{__('translations.contactTitle')}}</h3>
 
     <p class="contact__text">
-        Phasellus consequat sed dui a dapibus.
+    {{__('translations.contactDescription')}}
     </p>
 
     <form class="contact__form" action="{{route('contact.send')}}" method="POST">
         @csrf
 
         <div class="form__name">
-            <input type="text" id="name" name="name" placeholder="Nombre:">
+            <input type="text" id="name" name="name" placeholder="{{__('translations.contactName')}}:">
 
             @error('name')
             {{$message}}
@@ -21,7 +21,7 @@
         </div>
 
         <div class="form__email">
-            <input type="text" id="email" name="email" placeholder="Correo:">
+            <input type="text" id="email" name="email" placeholder="{{__('translations.contactMail')}}:">
 
             @error('email')
                 {{$message}}
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form__phone">
-            <input type="text" id="phone" name="phone" placeholder="Télefono:">
+            <input type="text" id="phone" name="phone" placeholder="{{__('translations.contactPhone')}}:">
 
             @error('phone')
                 {{$message}}
@@ -37,7 +37,7 @@
         </div>
 
         <div class="form__message">
-            <textarea id="message" name="message" placeholder="Mensaje:"></textarea>
+            <textarea id="message" name="message" placeholder="{{__('translations.contactMessage')}}:"></textarea>
 
             @error('message')
                 {{$message}}
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form__button">
-            <button type="submit">Enviar</button>
+            <button type="submit">{{__('translations.contactSubmit')}}</button>
         </div>
     </form>
 

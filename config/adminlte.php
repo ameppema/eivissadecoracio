@@ -292,6 +292,7 @@ return [
             'text' => 'Usuarios',
             'url'  => 'admin/users',
             'icon' => 'fas fa-address-book',
+            'can' => 'admin.users'
         ],
         [
             'text' => 'Perfil',

@@ -50,7 +50,7 @@ Route::post('/module/{name}', [PagesController::class, 'store'])->name('admin.mo
 Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('admin.module.update');
 
 // Users
-Route::get('users', [UsersController::class, 'index'])->name('users');
+Route::get('users', [UsersController::class, 'index'])->name('admin.users');
 Route::get('profile', [UsersController::class, 'show'])->name('profile');
 
 // Generators
