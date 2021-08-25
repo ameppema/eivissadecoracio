@@ -44,24 +44,27 @@
 
                                     <tbody>
                                         @foreach($galleryOne as $gallery)
-                                        <tr>
-                                            <th style="vertical-align: middle;" scope="row">{{$loop->iteration}}</th>
-                                            <td style="width: 150px; vertical-align: middle;"><img class="w-50" src="/storage/{{$gallery->image_src}}" alt="{{$gallery->image_alt}}"></td>
-                                            <td style="vertical-align: middle;">{{$gallery->image_alt}}</td>
-                                            <!-- #acciones -->
-                                            <td style="vertical-align: middle; padding: 0 .75rem;">
-                                                <button title="Editar" style="margin-right: 20px;" class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$gallery->id}}">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
+                                            <tr>
+                                                <td style="vertical-align: middle;">{{$loop->iteration}}</td>
+                                                
+                                                <td style="width: 150px; vertical-align: middle;"><img class="w-50" src="/storage/{{$gallery->image_src}}" alt="{{$gallery->image_alt}}"></td>
+                                                
+                                                <td style="vertical-align: middle;">{{$gallery->image_alt}}</td>
 
-                                                <form action="{{route('admin.gallery.image.update', ['id' => $gallery->id])}}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
-                                                    
-                                                    <button title="Eliminar" class="btn btn-danger delete-category"><i class="fas fa-times"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                                <!-- #acciones -->
+                                                <td style="vertical-align: middle; padding: 0 .75rem;">
+                                                    <button title="Editar" style="margin-right: 20px;" class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$gallery->id}}">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+
+                                                    <form action="{{route('admin.gallery.image.update', ['id' => $gallery->id])}}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        
+                                                        <button title="Eliminar" class="btn btn-danger delete-category"><i class="fas fa-times"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -90,24 +93,27 @@
 
                                     <tbody>
                                         @foreach($galleryTwo as $gallery)
-                                        <tr>
-                                            <th style="vertical-align: middle;" scope="row">{{$loop->iteration}}</th>
-                                            <td style="width: 150px; vertical-align: middle;"><img class="w-50" src="/storage/{{$gallery->image_src}}" alt="{{$gallery->image_alt}}"></td>
-                                            <td style="vertical-align: middle;">{{$gallery->image_alt}}</td>
-                                            <!-- #acciones -->
-                                            <td style="vertical-align: middle; padding: 0 .75rem;">
-                                                <button title="Editar" style="margin-right: 20px;" class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$gallery->id}}">
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
+                                            <tr>
+                                                <td style="vertical-align: middle;" scope="row">{{$loop->iteration}}</td>
 
-                                                <form action="{{route('admin.gallery.image.update', ['id' => $gallery->id])}}" method="POST" class="d-inline">
-                                                    @csrf
-                                                    @method('delete')
-                                                    
-                                                    <button title="Eliminar" class="btn btn-danger delete-category"><i class="fas fa-times"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                                <td style="width: 150px; vertical-align: middle;"><img class="w-50" src="/storage/{{$gallery->image_src}}" alt="{{$gallery->image_alt}}"></td>
+                                                
+                                                <td style="vertical-align: middle;">{{$gallery->image_alt}}</td>
+                                                
+                                                <!-- #acciones -->
+                                                <td style="vertical-align: middle; padding: 0 .75rem;">
+                                                    <button title="Editar" style="margin-right: 20px;" class="btn btn-warning edit-category" data-toggle="modal" data-target="#editImageModal" data-image-id="{{$gallery->id}}">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+
+                                                    <form action="{{route('admin.gallery.image.update', ['id' => $gallery->id])}}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        @method('delete')
+                                                        
+                                                        <button title="Eliminar" class="btn btn-danger delete-category"><i class="fas fa-times"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -125,18 +131,20 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">Actualizar imagen de Galería</h4>
+                    
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
+                {{-- Modal add new Image --}}
                 <div class="modal-body">
-                    {{-- Modal add new Image --}}
                     <form class="mt-4 modal__container" id="modalFormUpdate" method="POST" enctype="multipart/form-data">
                         @method('put')
                         @csrf
 
                         <div class="form-row mb-4">
+                            {{-- Choose new image --}}
                             <div class="custom-file col-6">
                                 <input class="custom-file-input @error('imagen_src') is-invalid @enderror" type="file" id="imagen_src" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
                                 
@@ -149,6 +157,7 @@
                                 @enderror
                             </div>
 
+                            {{-- Description image - ALT --}}
                             <div class="custom-file col-6">
                                 <input type="text" class="form-control" id="imagen_alt" placeholder="Descripción de la imagen" name="nueva_imagen_alt" value="{{old('imagen_alt')}}">
                                 @error('imagen_alt')
@@ -170,7 +179,6 @@
             </div>
         </div>
     </div>
-    <!-- End Modal -->
 @stop
 
 @section('css')
