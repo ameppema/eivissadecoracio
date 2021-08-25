@@ -14,11 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create(['name'=>'Test User','email'=>'test@test.com','password'=> Hash::make('12345678')]);
-        \App\Models\Partners::create(['titulo'=>'Partners','subtitulo'=>'Phasellus consequat sed dui a dapibus.','locale'=>'es']);
         $this->call([
             MenuSeeder::class,
-            SlideSeeder::class
+            GalleriesSeeder::class,
+            SlideSeeder::class,
+            RolesSeeder::class,
         ]);
+        \App\Models\User::create(['name'=>'Test User','email'=>'test@test.com','password'=> Hash::make('12345678')])->assignRole('Admin');
+        \App\Models\Partners::create(['titulo'=>'Partners','subtitulo'=>'Phasellus consequat sed dui a dapibus.','locale'=>'es']);
     }
 }

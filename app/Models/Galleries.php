@@ -12,8 +12,13 @@ class Galleries extends Model
 
     private static $_this = null;
     private static $gallery_id = null;
-    public $msg;
     public $_galleryAll;
+
+    protected $fillable = [
+        'module_id',
+        'belongs_to'
+    ];
+    public $timestamps = false;
 
     public function getImagesAll(){
         return $this->hasMany('App\Models\Images', 'gallery_id', 'id');

@@ -12,8 +12,7 @@ class RolesSeeder extends Seeder
         $roleAdmin = Role::create(['name'=>'Admin']);
         $roleEdit = Role::create(['name'=>'Editor']);
 
-        Permission::create(['name'=>'admin.users']);
-
+        Permission::create(['name'=>'admin.users'])->assignRole($roleAdmin);
 
     }
 }
