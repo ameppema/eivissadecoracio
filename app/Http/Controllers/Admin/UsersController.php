@@ -47,9 +47,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $userID = User::where('id', $request->user()->id)->first();
+        
+        return view('admin.modules.profile', compact('userID'));
     }
 
     /**
