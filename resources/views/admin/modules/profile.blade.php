@@ -9,192 +9,88 @@
 @stop
 
 @section('content')
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table users-container">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Nick</th>
-                                        <th>Correo</th>
-                                        <th>Estado</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                </thead>
+    <section class="content user__profile">
+        <div class="profile__name">
+            <section class="name__titles">
+                <!-- Title ID -->
+                <div>ID</div>
 
-                                <tbody>
-                                    <tr>
-                                        <!-- ID -->
-                                        <th style="vertical-align: middle;">1</th>
+                <!-- Title Full Name -->
+                <div>Nombre completo</div>
+                
+                <!-- Title Nickname -->
+                <div>Nickname</div>
+            </section>
+            
+            <section class="name__items">
+                <!-- Item ID -->
+                <div>1</div>
 
-                                        <!-- Nombre -->
-                                        <td style="vertical-align: middle;">Paul Marquez</td>
-                                        
-                                        <!-- Nick -->
-                                        <td style="vertical-align: middle;">Paul</td>
-                                        
-                                        <!-- Correo -->
-                                        <td style="vertical-align: middle;">ameppema@hotmail.com</td>
-                                        <!-- Estado -->
-                                        <td style="vertical-align: middle;">Activo</td>
-                                        
-                                        <!-- Acciones -->
-                                        <td style="vertical-align: middle; padding: 0 .75rem;">
-                                            <button title="Editar" class="btn btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
+                <!-- Item Full Name -->
+                <div>Paul Marquez</div>
+                
+                <!-- Item Nickname -->
+                <div>Paul</div>
+            </section>
+        </div>
+        
+        <div class="profile__mail">
+            <section class="mail__titles">
+                <!-- Title Mail -->
+                <div>Correo</div>
 
-                                            <button title="Eliminar" class="btn btn-danger">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <!-- ID -->
-                                        <th style="vertical-align: middle;">2</th>
+                <!-- Title Password -->
+                <div>Password</div>
+                
+                <!-- Title Confirmation -->
+                <div>Confirmación</div>
+            </section>
+            
+            <section class="mail__items">
+                <!-- Item Mail -->
+                <div>ameppema@hotmail.com</div>
 
-                                        <!-- Nombre -->
-                                        <td style="vertical-align: middle;">Juan Perez</td>
-                                        
-                                        <!-- Nick -->
-                                        <td style="vertical-align: middle;">Juan</td>
-                                        
-                                        <!-- Correo -->
-                                        <td style="vertical-align: middle;">juanito_power@gmail.com</td>
-                                        <!-- Estado -->
-                                        <td style="vertical-align: middle;">Inactivo</td>
-                                        
-                                        <!-- Acciones -->
-                                        <td style="vertical-align: middle; padding: 0 .75rem;">
-                                            <button title="Editar" class="btn btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
+                <!-- Item Password -->
+                <div>***************</div>
+                
+                <!-- Item Confirmation -->
+                <div>***************</div>
+            </section>
+        </div>
+        
+        <div class="profile__action">
+            <section class="action__titles">
+                <!-- Title Action -->
+                <div>Rol</div>
 
-                                            <button title="Eliminar" class="btn btn-danger">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <!-- ID -->
-                                        <th style="vertical-align: middle;">3</th>
+                <!-- Title Action -->
+                <div>Estado</div>
+                
+                <!-- Title Action -->
+                <div>Última sesión</div>
+            </section>
+            
+            <section class="action__items">
+                <!-- Item Action -->
+                <div>Editor</div>
 
-                                        <!-- Nombre -->
-                                        <td style="vertical-align: middle;">Andres Iglesias</td>
-                                        
-                                        <!-- Nick -->
-                                        <td style="vertical-align: middle;">Andrew</td>
-                                        
-                                        <!-- Correo -->
-                                        <td style="vertical-align: middle;">andrewmaster@yahoo.com</td>
-                                        <!-- Estado -->
-                                        <td style="vertical-align: middle;">Activo</td>
-                                        
-                                        <!-- Acciones -->
-                                        <td style="vertical-align: middle; padding: 0 .75rem;">
-                                            <button title="Editar" class="btn btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
+                <!-- Item Action -->
+                <div>Activo</div>
+                
+                <!-- Item Action -->
+                <div>27/08/2021 - 13:00</div>
+            </section>
+        </div>
 
-                                            <button title="Eliminar" class="btn btn-danger">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <!-- ID -->
-                                        <th style="vertical-align: middle;">4</th>
+        <div class="profile__buttons">
+            <!-- Acciones -->
+            <button title="Actualizar" class="btn btn-success">
+                Actualizar
+            </button>
 
-                                        <!-- Nombre -->
-                                        <td style="vertical-align: middle;">Maria Santos</td>
-                                        
-                                        <!-- Nick -->
-                                        <td style="vertical-align: middle;">Mary</td>
-                                        
-                                        <!-- Correo -->
-                                        <td style="vertical-align: middle;">mari280585@hotmail.com</td>
-                                        <!-- Estado -->
-                                        <td style="vertical-align: middle;">Activo</td>
-                                        
-                                        <!-- Acciones -->
-                                        <td style="vertical-align: middle; padding: 0 .75rem;">
-                                            <button title="Editar" class="btn btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-
-                                            <button title="Eliminar" class="btn btn-danger">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <!-- ID -->
-                                        <th style="vertical-align: middle;">5</th>
-
-                                        <!-- Nombre -->
-                                        <td style="vertical-align: middle;">Sara Montero</td>
-                                        
-                                        <!-- Nick -->
-                                        <td style="vertical-align: middle;">Sarita</td>
-                                        
-                                        <!-- Correo -->
-                                        <td style="vertical-align: middle;">sara_montero@universidad.com</td>
-                                        <!-- Estado -->
-                                        <td style="vertical-align: middle;">Inactivo</td>
-                                        
-                                        <!-- Acciones -->
-                                        <td style="vertical-align: middle; padding: 0 .75rem;">
-                                            <button title="Editar" class="btn btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-
-                                            <button title="Eliminar" class="btn btn-danger">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <!-- ID -->
-                                        <th style="vertical-align: middle;">6</th>
-
-                                        <!-- Nombre -->
-                                        <td style="vertical-align: middle;">Silvio Paredes</td>
-                                        
-                                        <!-- Nick -->
-                                        <td style="vertical-align: middle;">Silvio</td>
-                                        
-                                        <!-- Correo -->
-                                        <td style="vertical-align: middle;">emprendedor@hotmail.com</td>
-                                        <!-- Estado -->
-                                        <td style="vertical-align: middle;">Activo</td>
-                                        
-                                        <!-- Acciones -->
-                                        <td style="vertical-align: middle; padding: 0 .75rem;">
-                                            <button title="Editar" class="btn btn-warning">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-
-                                            <button title="Eliminar" class="btn btn-danger">
-                                                <i class="fas fa-times"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>                        
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button title="Cancelar" class="btn btn-danger">
+                Cancelar
+            </button>
         </div>
     </section>
 @stop
@@ -203,6 +99,51 @@
     <style>
         .section__title {
             margin-left: 7.5px;
+        }
+
+        .profile__name,
+        .profile__mail,
+        .profile__action {
+            margin-bottom: 1rem;
+            padding: 1.25rem;
+            border-radius: .25rem;
+            background-color: #fff;
+            box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+        }
+        
+        .name__titles,
+        .mail__titles,
+        .action__titles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            font-weight: bold;
+            padding: .75rem;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .name__items,
+        .mail__items,
+        .action__items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
+            padding: .75rem;
+        }
+        
+        .name__items div,
+        .mail__items div,
+        .action__items div {
+            vertical-align: middle;
+        }
+
+        .profile__buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .profile__buttons button {
+            margin: 0 10px;
         }
     </style>
 @stop
