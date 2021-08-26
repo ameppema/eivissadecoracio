@@ -9,6 +9,15 @@
 @stop
 
 @section('content')
+{{--Alert Success--}}
+@if(session()->has('success'))
+    <div class="error-notice" id="close-alert">
+        <div class="oaerror success">
+        <strong>Muy Bien!</strong> - {{session()->get('success')}}
+        </div> 
+    </div>
+@endif
+<div id="alert"></div>    
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -38,9 +47,9 @@
     
                                 <div class="partner-new__inputs">
                                     <div class="custom-file">
-                                        <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" id="imagen_src" type="file" name="imagen_src" aria-describedby="validationServer03Feedback">
+                                        <input id="newPartnerImg" class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" type="file" name="imagen_src">
 
-                                        <label class="custom-file-label" for="imagen_src" data-browse="Elegir Imagen">Seleccionar imagen</label>
+                                        <label id="parterImgLabel" class="custom-file-label" for="imagen_src" data-browse="Elegir Imagen">Seleccionar imagen</label>
 
                                         @if($errors->test->first('imagen_src'))
                                             <div id="validationServer03Feedback" class="invalid-feedback">
@@ -123,8 +132,8 @@
                     
                     <div class="form-row partner-modal__inputs">
                         <div class="custom-file">
-                            <input class="custom-file-input @error('imagen_src') is-invalid @enderror" id="imagen_src" type="file" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
-                            <label class="custom-file-label" for="imagen_src" data-browse="Elegir Imagen">Imagen Nueva</label>
+                            <input class="custom-file-input @error('imagen_src') is-invalid @enderror" id="updatePartnerImg" type="file" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
+                            <label id="updateParterImgLabel" class="custom-file-label" for="imagen_src" data-browse="Elegir Imagen">Imagen Nueva</label>
                             
                             @error('imagen_src')
                                 <div id="validationServer03Feedback" class="invalid-feedback">
@@ -161,6 +170,7 @@
 
 @section('css')
     {{-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> --}}
+    <link rel="stylesheet" href="{{asset('css/alert.css')}}">
 
     <style>
         .section__title {
@@ -259,8 +269,12 @@
     <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <script src="{{asset('js/utils.js')}}"></script>
 
     <script type="application/javascript" defer>
+        FeedBackImg('#newPartnerImg',false,'#parterImgLabel');
+        FeedBackImg('#updatePartnerImg','#modalImage','#updateParterImgLabel');
+
         $(document).ready(() => {
             /* Sorteable */
             const SortList = $('#mylist'); 
@@ -284,7 +298,21 @@
                     type: 'PUT',
                     url: '/admin/module/partners/order',
                     data: {data: JSON.stringify(orderUpdated), _token: '{{csrf_token()}}'},
-                    success: (data) => console.log('%c Orden Cambiado Correctamente','background-color:green'),
+                    success: (data) => {
+                        let Alert = $('#alert');
+                        let alertHtml = `
+                        <div class="error-notice" id="close-alert">
+                            <div class="oaerror success">
+                            <strong>Exito</strong> - Orden Actualizado Correctamente
+                            </div> 
+                        </div>
+                        `;
+                        Alert.html(alertHtml);
+                        setTimeout(() => {
+                            Alert.toggle('slow');
+                        }, 2000);
+                        // console.log('%c Orden Cambiado Correctamente','background-color:green')
+                    },
                     error: (err) => console.error('Not Succes')
                 })
             }

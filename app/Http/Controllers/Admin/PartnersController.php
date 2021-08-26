@@ -61,7 +61,7 @@ class PartnersController extends Controller
         (new TranslationController)->update('titulo', $data['titulo_en'] , $id,'partners');
         (new TranslationController)->update('subtitulo', $data['subtitulo_en'] , $id,'partners');
 
-        return back();
+        return back()->with(['success'=>'!Informacion Actuzalizada!']);
     }
 
     /**

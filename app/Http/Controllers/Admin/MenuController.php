@@ -44,7 +44,7 @@ class MenuController extends Controller
 
         (new TranslationController)->store($datos['nombre_en'],'menu','nombre',$newMenu->id,'en');
 
-        return redirect()->route('admin.menu');
+        return redirect()->route('admin.menu')->with(['succes'=>'!Elemento Agregado Exitosamente!']);
     }
 
     /**
@@ -58,7 +58,7 @@ class MenuController extends Controller
     {
         Menu::where('id',$request['id'])->update(['nombre' => $request['menu_nombre-es']]);
         (new TranslationController)->update('nombre', $request['menu_nombre-en'], $request['id'], 'menu');
-        return redirect('admin/category_menu');
+        return redirect('admin/category_menu')->with(['success'=>'!Elemento Actualizado!']);
     }
     public function sortMenu(Request $request, Menu $menu)
     {
