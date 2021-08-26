@@ -9,14 +9,19 @@ $(document).on('DOMContentLoaded', function(){
 
 
 /* IMAGES FEEDBACK */
-function FeedBackImg(InputImage, placeHolderImg){
+function FeedBackImg(InputImage, placeHolderImg, placeHolderText = false){
     console.log(InputImage);
-    let preview = $(placeHolderImg);
+    let preview = $(placeHolderImg) ?? placeHolderImg;
     $(InputImage).on('change',function(){
-        console.log(InputImage);
         let file = $(InputImage)[0].files[0];
-        let url = URL.createObjectURL(file);
-        preview.attr('src', url);
-        preview.text(file.name);
+        if(preview != false){
+            let url = URL.createObjectURL(file);
+            preview.attr('src', url);
+        }
+        if(placeHolderText != false){
+            $(placeHolderText).text(file.name);
+        }else{
+            preview.text(file.name);
+        }
     })
 }

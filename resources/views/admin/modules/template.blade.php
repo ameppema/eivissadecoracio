@@ -9,6 +9,14 @@
 @stop
 
 @section('content')
+{{--Alert Success--}}
+@if(session()->has('success'))
+    <div class="error-notice" id="close-alert">
+        <div class="oaerror success">
+        <strong>Muy Bien!</strong> - {{session()->get('success')}}
+        </div> 
+    </div>
+@endif
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -146,14 +154,9 @@
                         <div class="form-row mb-4">
                             {{-- Choose new image --}}
                             <div class="custom-file col-6">
-                                <input type="file" class="custom-file-input @error('imagen_src') is-invalid @enderror" id="imagen_src" name="nueva_imagen_src">
+                                <input type="file" class="custom-file-input @error('imagen_src') is-invalid @enderror" id="new_imagen_src" name="nueva_imagen_src">
                                 
-                                <label class="custom-file-label modal__label" for="imagen_src" data-browse="Elegir Imagen">Imagen Nueva</label>
-
-                                <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-                                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-                                </div>
+                                <label class="custom-file-label modal__label" for="imagen_src" data-browse="Elegir Imagen" id="ImageTitle">Imagen Nueva</label>
                                 
                                 @error('imagen_src')
                                     <div id="validationServer03Feedback" class="invalid-feedback">
@@ -187,6 +190,7 @@
 @stop
 
 @section('css')
+<link rel="stylesheet" href="{{asset('css/alert.css')}}">
     <style>
         .section__title {
             margin-left: 7.5px;
@@ -285,7 +289,11 @@
 
     <script type="application/javascript">
     
-        FeedBackImg('#imagen_src','#modalImage');
+        FeedBackImg('#nueva-imagen-principal','#imgDeskShow');
+        FeedBackImg('#nueva-imagen_movil','#imgMobileShow');
+        FeedBackImg('#new_imagen_src','#modalImage','#ImageTitle');
+        FeedBackImg('#galleryForm-1',false,'#galleryLabel-1');
+        FeedBackImg('#galleryForm-2',false,'#galleryLabel-2');
         var alertList = document.querySelectorAll('.alert')
             alertList.forEach(function (alert) {
             new bootstrap.Alert(alert)

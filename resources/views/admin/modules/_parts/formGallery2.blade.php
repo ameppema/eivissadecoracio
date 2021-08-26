@@ -33,8 +33,8 @@
 
     <div class="form-row mb-4">
         <div class="custom-file col-4">
-            <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" type="file" id="imagen_src" name="imagen_src" id="customFileLangHTML" aria-describedby="validationServer03Feedback">
-            <label for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Seleccionar imagen</label>
+            <input class="custom-file-input @if($errors->test->first('imagen_src')) is-invalid @endif" type="file" id="galleryForm-2" name="imagen_src" id="customFileLangHTML" aria-describedby="validationServer03Feedback">
+            <label id="galleryLabel-2" for="imagen_src" class="custom-file-label" data-browse="Elegir Imagen">Seleccionar imagen</label>
 
             @if($errors->test->first('imagen_src'))
                 <div id="validationServer03Feedback" class="invalid-feedback">

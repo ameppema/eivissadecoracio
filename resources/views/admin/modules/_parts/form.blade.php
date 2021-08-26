@@ -20,7 +20,6 @@
     </div>
 @endif
 
-<!-- Formulario para agregar un elemento -->
 <form action="{{$module->id}}" method="POST" enctype="multipart/form-data">
     @method('put')
     @csrf
@@ -107,12 +106,14 @@
     <div class="section__images">
         <div style="display: flex; flex-direction: column;">
             <label for="imagen" class="form-label">Imagen Grande <span style="font-weight: 200">(Desktop)</span></label>
-            <input class="form-control" type="file" id="imagen-principal" name="imagen-principal" style="height: auto; padding: .400rem;">
+            <input class="form-control" type="file" id="nueva-imagen-principal" name="imagen-principal" style="height: auto; padding: .400rem;">
+            <img class="rounded mx-auto d-block mt-4" id="imgDeskShow" src="/storage/{{$module->imagen_principal}}" alt="Desktop Image" width="350" height="200">
         </div>
 
         <div style="display: flex; flex-direction: column;">
             <label for="imagen_movil" class="form-label">Imagen Pequeña <span style="font-weight: 200">(Móvil)</span></label>
-            <input class="form-control" type="file" id="imagen_movil" name="imagen_movil" style="height: auto; padding: .400rem;">
+            <input class="form-control" type="file" id="nueva-imagen_movil" name="imagen_movil" style="height: auto; padding: .400rem;">
+            <img class="rounded mx-auto d-block mt-4" id="imgMobileShow" src="/storage/{{$module->imagen_movil}}" alt="Mobile Image" height="200">
         </div>
     </div>
 

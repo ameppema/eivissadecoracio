@@ -8,6 +8,7 @@
     </div>
 @stop
 @section('content')
+{{--Alert Success--}}
 @if(session()->has('success'))
     <div class="error-notice" id="close-alert">
         <div class="oaerror success">
