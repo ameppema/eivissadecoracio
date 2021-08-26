@@ -146,9 +146,14 @@
                         <div class="form-row mb-4">
                             {{-- Choose new image --}}
                             <div class="custom-file col-6">
-                                <input class="custom-file-input @error('imagen_src') is-invalid @enderror" type="file" id="imagen_src" name="nueva_imagen_src" aria-describedby="validationServer03Feedback">
+                                <input type="file" class="custom-file-input @error('imagen_src') is-invalid @enderror" id="imagen_src" name="nueva_imagen_src">
                                 
                                 <label class="custom-file-label modal__label" for="imagen_src" data-browse="Elegir Imagen">Imagen Nueva</label>
+
+                                <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+                                <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                                </div>
                                 
                                 @error('imagen_src')
                                     <div id="validationServer03Feedback" class="invalid-feedback">
@@ -276,7 +281,11 @@
 @stop
 
 @section('js')
+    <script src="{{asset('js/utils.js')}}"></script>
+
     <script type="application/javascript">
+    
+        FeedBackImg('#imagen_src','#modalImage');
         var alertList = document.querySelectorAll('.alert')
             alertList.forEach(function (alert) {
             new bootstrap.Alert(alert)

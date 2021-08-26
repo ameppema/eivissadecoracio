@@ -35,9 +35,9 @@ class SlideController extends Controller
     {
         $datos = request()->validate([
             'titulo' => ['required', 'string', 'max:255'],
-            'titulo' => ['required', 'string', 'max:255'],
+            'titulo_en' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
-            'descripcion' => ['required', 'string', 'max:255'],
+            'descripcion_en' => ['required', 'string', 'max:255'],
             'imagen' => ['required', 'image'],
             'imagen-movil' => ['required', 'image'],
         ]);
@@ -119,7 +119,7 @@ class SlideController extends Controller
             (new TranslationController)->update($columns[$i],$translations[$i],$slide->id,'slides');
         }
 
-        return redirect()->route('admin.slide');
+        return redirect()->route('admin.slide')->with(['success'=>'Se ha Actualizado el Registro']);
     }
 
     /**
