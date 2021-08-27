@@ -235,6 +235,13 @@
             </div>
         </div>
     </section>
+
+    <div class="users__buttons">
+        <!-- Acciones -->
+        <button title="Actualizar" class="btn btn-success">
+            Agregar Nuevo usuario
+        </button>
+    </div>
 @stop
 
 @section('css')
@@ -249,6 +256,15 @@
 
         .item__actions {
             padding: 0 .75rem;
+        }
+
+        .users__buttons {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .users__buttons button {
+            margin: 0 10px;
         }
     </style>
 @stop
