@@ -135,10 +135,11 @@ button:focus {
   }
 
   .slide__info {
-    margin: 0 400px;
+    margin: 0 25em;
   }
 
-  .prev, .next {
+  .prev,
+    .next {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,28 +147,31 @@ button:focus {
     background-color: #ffffff;
   }
 
-  .prev:hover, .next:hover {
+  .prev:hover,
+    .next:hover {
     background-color: black;
   }
 
-  .prev svg, .next svg {
+  .prev svg,
+    .next svg {
     width: 35px;
     fill: #535353;
   }
 
-  .prev:hover svg, .next:hover svg {
+  .prev:hover svg,
+    .next:hover svg {
     fill: #ffffff;
   }
 
   .prev {
-    top: 47%;
+    top: 50%;
     left: 160px;
     width: 45px;
     height: 45px;
   }
 
   .next {
-    top: 47%;
+    top: 50%;
     right: 160px;
     width: 45px;
     height: 45px;
@@ -211,7 +215,7 @@ button:focus {
 }
 
 .logo-mobile {
-  width: 100px;
+  width: 6em;
 }
 
 .logo-desktop {
@@ -313,7 +317,7 @@ button:focus {
 
   .logo-desktop {
     display: inline-block;
-    width: 300px;
+    width: 18em;
   }
 }
 
@@ -522,7 +526,7 @@ button:focus {
 
 @media (min-width: 768px) {
   .service__title {
-    width: 200px;
+    /* width: 200px; */
     margin: 0 auto;
     padding-bottom: 5px;
     font-size: 30px;
@@ -554,11 +558,7 @@ button:focus {
   }
 
   .service__card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: 400px;
+    height: 25em;
   }
 
   .service__card a {
@@ -797,8 +797,8 @@ button:focus {
 }
 
 .partners__brands img {
-  width: 80px;
-  margin: 5px 10px;
+  width: 5em;
+  margin: 10px;
 }
 
 .partners__brands img:last-child {
@@ -807,7 +807,7 @@ button:focus {
 
 @media (min-width: 768px) {
   .partners__info {
-    margin: 45px auto 5px;
+    margin: 45px auto 20px;
     width: 200px;
   }
 
@@ -829,8 +829,8 @@ button:focus {
   }
 
   .partners__brands img {
-    width: 120px;
-    margin: 10px 30px;
+    width: 8em;
+    margin: 20px 30px;
   }
 }
 
@@ -844,9 +844,8 @@ button:focus {
   }
 
   .partners__brands img {
-    width: 170px;
-    height: 80px;
-    margin: 20px 40px;
+    width: 10em;
+    margin: 15px 40px;
   }
 }
 
