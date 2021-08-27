@@ -76,7 +76,13 @@
                     <button class="card__button">Click</button>
                 </a>
                 
-                <a class="card__items" href="#">
+                <a class="card__items" href="permissions">
+                    <i class="card__logo fas fa-key"></i>
+                    <p class="card__text">Permisos</p>
+                    <button class="card__button">Click</button>
+                </a>
+                
+                <a class="card__items" href="profile">
                     <i class="card__logo fas fa-user"></i>
                     <p class="card__text">Perfil</p>
                     <button class="card__button">Click</button>
