@@ -28,75 +28,75 @@
         </section>
         
         <section class="permission__users">
-            <!-- Title Role -->
+            <!-- User Role -->
             <div>Administrador</div>
 
-            <!-- Title Read -->
+            <!-- User Read -->
             <div class="permission">
                 <input id="permission__read" type="checkbox" checked>
             </div>
 
-            <!-- Title Update -->
+            <!-- User Update -->
             <div class="permission">
                 <input id="permission__update" type="checkbox" checked>
             </div>
             
-            <!-- Title Create -->
+            <!-- User Create -->
             <div class="permission">
                 <input id="permission__create" type="checkbox" checked>
             </div>
             
-            <!-- Title Delete -->
+            <!-- User Delete -->
             <div class="permission">
                 <input id="permission__delete" type="checkbox" checked>
             </div>
         </section>    
         
         <section class="permission__users">
-            <!-- Title Role -->
+            <!-- User Role -->
             <div>Editor</div>
 
-            <!-- Title Read -->
+            <!-- User Read -->
             <div class="permission">
                 <input id="permission__read" type="checkbox" checked>
             </div>
 
-            <!-- Title Update -->
+            <!-- User Update -->
             <div class="permission">
                 <input id="permission__update" type="checkbox" checked>
             </div>
             
-            <!-- Title Create -->
+            <!-- User Create -->
             <div class="permission">
                 <input id="permission__create" type="checkbox" checked>
             </div>
             
-            <!-- Title Delete -->
+            <!-- User Delete -->
             <div class="permission">
                 <input id="permission__delete" type="checkbox">
             </div>
         </section>    
         
         <section class="permission__users">
-            <!-- Title Role -->
+            <!-- User Role -->
             <div>Invitado</div>
 
-            <!-- Title Read -->
+            <!-- User Read -->
             <div class="permission">
                 <input id="permission__read" type="checkbox" checked>
             </div>
 
-            <!-- Title Update -->
+            <!-- User Update -->
             <div class="permission">
                 <input id="permission__update" type="checkbox">
             </div>
             
-            <!-- Title Create -->
+            <!-- User Create -->
             <div class="permission">
                 <input id="permission__create" type="checkbox">
             </div>
             
-            <!-- Title Delete -->
+            <!-- User Delete -->
             <div class="permission">
                 <input id="permission__delete" type="checkbox">
             </div>
