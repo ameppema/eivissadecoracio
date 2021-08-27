@@ -53,6 +53,19 @@ class UsersController extends Controller
         
         return view('admin.modules.profile', compact('userID'));
     }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function permissions(Request $request)
+    {
+        $userID = User::where('id', $request->user()->id)->first();
+        
+        return view('admin.modules.permissions', compact('userID'));
+    }
 
     /**
      * Show the form for editing the specified resource.
