@@ -29,8 +29,8 @@
 }
 
 .partners__brands img {
-    width: 80px;
-    margin: 5px 10px;
+    width: 5em;
+    margin: 10px;
 }
 
 .partners__brands img:last-child {
@@ -39,7 +39,7 @@
 
 @media (min-width: 768px) {
     .partners__info {
-        margin: 45px auto 5px;
+        margin: 45px auto 20px;
         width: 200px;
     }
 
@@ -61,8 +61,8 @@
     }
 
     .partners__brands img {
-        width: 120px;
-        margin: 10px 30px;
+        width: 8em;
+        margin: 20px 30px;
     }
 }
 
@@ -76,8 +76,7 @@
     }
     
     .partners__brands img {
-        width: 170px;
-        height: 80px;
-        margin: 20px 40px;
+        width: 10em;
+        margin: 15px 40px;
     }
 }

@@ -61,7 +61,7 @@
 
 @media (min-width: 768px) {
     .service__title {
-        width: 200px;
+        /* width: 200px; */
         margin: 0 auto;
         padding-bottom: 5px;
         font-size: 30px;
@@ -93,11 +93,7 @@
     }
 
     .service__card {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        height: 400px;
+        height: 25em;
     }
     
     .service__card a {

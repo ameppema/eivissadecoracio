@@ -111,10 +111,11 @@ button:focus {
     }
 
     .slide__info {
-        margin: 0 400px;
+        margin: 0 25em;
     }
 
-    .prev, .next {
+    .prev,
+    .next {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -122,29 +123,32 @@ button:focus {
         background-color: #ffffff;
     }
 
-    .prev:hover, .next:hover {
+    .prev:hover,
+    .next:hover {
         background-color: black;
     }
 
-    .prev svg, .next svg {
+    .prev svg,
+    .next svg {
         width: 35px;
         fill: #535353;
     }
 
-    .prev:hover svg, .next:hover svg {
+    .prev:hover svg,
+    .next:hover svg {
         fill: #ffffff;
     }
 
     .prev {
-        top: 47%;
-        left: 80px;
+        top: 50%;
+        left: 160px;
         width: 45px;
         height: 45px;
     }
 
     .next {
-        top: 47%;
-        right: 80px;
+        top: 50%;
+        right: 160px;
         width: 45px;
         height: 45px;
     }
