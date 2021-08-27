@@ -9,6 +9,15 @@
 @stop
 
 @section('content')
+{{--Alert Success--}}
+@if(session()->has('success'))
+    <div class="error-notice" id="close-alert">
+        <div class="oaerror success">
+        <strong>Muy Bien!</strong> - {{session()->get('success')}}
+        </div> 
+    </div>
+@endif
+<div id="alert"></div>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -75,6 +84,7 @@
 @stop
 
 @section('css')
+<link rel="stylesheet" href="{{asset('css/alert.css')}}">
     <style>
         .section__title {
             margin-left: 7.5px;
@@ -135,7 +145,7 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
-
+    <script src="{{asset('js/utils.js')}}"></script>
     <script type="application/javascript" defer>
 
     $(document).ready(() => {
@@ -162,7 +172,20 @@
                 type: 'PUT',
                 url: 'category_menu/sort',
                 data: {data: JSON.stringify(orderUpdated), _token: '{{csrf_token()}}'},
-                success: (data) => console.log('%c Orden Cambiado Correctamente','background-color:green'),
+                success: (data) => {
+                    let Alert = $('#alert');
+                        let alertHtml = `
+                        <div class="error-notice" id="close-alert">
+                            <div class="oaerror success">
+                            <strong>Exito</strong> - Orden Actualizado Correctamente
+                            </div> 
+                        </div>
+                        `;
+                        Alert.html(alertHtml);
+                        setTimeout(() => {
+                            Alert.toggle('slow');
+                        }, 2000);
+                },
                 error: (err) => console.log({status: 'Not Succes', err})
             })
         }

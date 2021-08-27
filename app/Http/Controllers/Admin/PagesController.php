@@ -13,11 +13,6 @@ use Illuminate\Support\Facades\Storage;
 
 class PagesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request, $param, $id){
         App::setLocale('es');
         $module_name = $param;
@@ -34,12 +29,6 @@ class PagesController extends Controller
         return view('admin.modules.template', compact(['module_name', 'module', 'galleryOne', 'galleryTwo']));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request,$name)
     {
         $datos = request()->validate([
@@ -55,25 +44,18 @@ class PagesController extends Controller
         $rutaImgMovil = $request['imagen_movil']->store('moduleImg', 'public');
 
         DB::table('pages')->insert([
-            'titulo'    => $datos['titulo'],
-            'subtitulo'=> $datos['subtitulo'],
-            'imagen_principal'    => $rutaImg,
-            'imagen_movil'    => $rutaImgMovil,
+            'titulo'        => $datos['titulo'],
+            'subtitulo'     => $datos['subtitulo'],
+            'imagen_principal'=> $rutaImg,
+            'imagen_movil'   => $rutaImgMovil,
             'fisrt_text'    => $datos['first_text'],
-            'second_text'    => $datos['second_text'],
+            'second_text'   => $datos['second_text'],
             'third_text'    => $datos['third_text'],
         ]);
 
-        return redirect('admin/modules/' . $name);
+        return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pages  $module
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Pages $module, $name, $id)
     {
         $module =  Pages::find($id);
@@ -101,9 +83,8 @@ class PagesController extends Controller
         {
             Storage::delete('public/' . $module->imagen_principal);
 
-            //Obteniendo el Nombre Original de la imagen
             $filename = $request->file('imagen-principal')->getClientOriginalName();
-            // Guardar imagen del con nombre original
+
             $rutaImgNueva = $request['imagen-principal']->storeAs('slide', $filename, 'public');
         
             $module->imagen_principal = $rutaImgNueva;
@@ -126,6 +107,6 @@ class PagesController extends Controller
             (new TranslationController)->update($props[$i],$translations[$i], $id,'pages');
         }
 
-        return redirect('admin/module/' . $name . '/' . $id);
+        return redirect()->back()->with(['success'=>'Informacion Actualizada Exitosamente']);
     }
 }

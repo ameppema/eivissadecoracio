@@ -7,8 +7,15 @@
         <h1>Home Slider | <small>Eivissa Decoracio</small></h1>
     </div>
 @stop
-
 @section('content')
+{{--Alert Success--}}
+@if(session()->has('success'))
+    <div class="error-notice" id="close-alert">
+        <div class="oaerror success">
+        <strong>Muy Bien!</strong> - {{session()->get('success')}}
+        </div> 
+    </div>
+@endif
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -38,6 +45,7 @@
 @stop
 
 @section('css')
+    <link rel="stylesheet" href="{{asset('css/alert.css')}}">
     <style>
         .section__title {
             margin-left: 7.5px;
@@ -141,6 +149,7 @@
 @stop
 
 @section('js')
+<script src="{{asset('js/utils.js')}}"></script>
     <script type="application/javascript">
         $(document).ready(() => {
             // Obteniendo datos a actualizar
@@ -177,6 +186,9 @@
             $('#EnviarModalEditar').on('click', function(){
                 $('#Form-Edit').submit();
             })
+
+            FeedBackImg("[data-src-img='1']","[data-old-img='1']")
+            FeedBackImg("[data-src-img='2']","[data-old-img='2']")
         })
     </script>
 @stop

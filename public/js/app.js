@@ -1984,14 +1984,8 @@ if (!!sliderContainer) {
   prev.addEventListener("click", function (e) {
     prevSlide();
   });
-} // Capture window size
-// function reportWindowSize() {
-//   heightOutput = window.innerHeight;
-//   widthOutput = window.innerWidth;
-//   console.log(widthOutput, heightOutput);
-// }
-// window.onresize = reportWindowSize;
-// window.addEventListener('resize', reportWindowSize);
+}
+/* RESPONSIVE IMAGES */
 
 
 $(window).on('DOMContentLoaded', function () {
@@ -2005,50 +1999,51 @@ $(window).on('DOMContentLoaded', function () {
   } else {
     stylesDesktop = elementDesktop.getAttribute('style');
   }
-  /* Trabajando con los media querys */
+  /* Media Querys Size definition */
 
 
   var window_size = window.matchMedia('(min-width: 1280px)');
-  /* Detectando la vista movil */
+  /* Detecting Mobile Size*/
 
   if (window_size.matches) {
-    /* alert('No Usar imagenes responsive!!!') */
+    /*'keep Desktop images */
   } else {
-    /* alert('Usar imagenes responsive!!!') */
+    /*'Load Slide Mobile Images */
     if (slides.length > 1) {
       slides.forEach(function (slide, index) {
         var imgM = slides[index].getAttribute('data-img-movil');
         slides[index].setAttribute('style', imgM + ' no-repeat center top/cover;');
       });
-      console.log('Listo Movil slide');
+      console.log('Done Mobile Slide Images');
     } else {
       var stylesMovil = document.querySelector('[data-img-movil]').getAttribute('data-img-movil');
       elementDesktop.setAttribute('style', stylesMovil + ' no-repeat center top/cover;');
-      console.log('Listo Movil');
+      console.log('Done Mobile Singular Image');
     }
   }
-  /* En caso de que se Redimensione la pantalla */
+  /* Redimension Window Event */
 
 
   $(window).on('resize', function () {
     if (window_size.matches) {
-      /* alert('No Usar imagenes responsive!!!') */
       if (slides.length > 1) {
+        /*Slide Images Desktop */
         slides.forEach(function (slide, index) {
-          slides[index].setAttribute('style', stylesDesktop[index] + ' no-repeat center top/cover;'); // console.log(stylesDesktop)
+          slides[index].setAttribute('style', stylesDesktop[index] + ' no-repeat center top/cover;');
         });
       } else {
         elementDesktop.setAttribute('style', stylesDesktop);
-        console.log('Listo Movil');
+        /*Singular Images Desktop */
       }
     } else {
-      /* alert('Usar imagenes responsive!!!') */
       if (slides.length > 1) {
         slides.forEach(function (slide, index) {
+          /*Load Slide Mobile Images*/
           var imgM = slides[index].getAttribute('data-img-movil');
           slides[index].setAttribute('style', imgM + ' no-repeat center top/cover;');
         });
       } else {
+        /*Load Mobile Singular Image*/
         var _stylesMovil = document.querySelector('[data-img-movil]').getAttribute('data-img-movil');
 
         elementDesktop.setAttribute('style', _stylesMovil + ' no-repeat center top/cover;');

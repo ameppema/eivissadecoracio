@@ -36,14 +36,14 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; grid-gap: 20px; height: 500px;">
                 <div class="image_large" style="display: flex; justify-content: space-between; flex-direction: column; align-items: center; padding: 30px 0;">
                     <p style="font-size: 30px; font-weight: 700;">Imagen Grande <span style="font-weight: 200">(Desktop)</span></p>
-                    <img style="width: 400px;" src="" alt="Imagen anterior Slide" id="oldImgDesk">
-                    <input style="padding: .50rem; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: .25rem; box-shadow: inset 0 0 0 transparent; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;" type="file" id="imagen-slide-modal" name="imagenNueva">
+                    <img data-old-img="1" style="width: 400px;" src="" alt="Imagen anterior Slide" id="oldImgDesk">
+                    <input data-src-img="1" style="padding: .50rem; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: .25rem; box-shadow: inset 0 0 0 transparent; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;" type="file" id="imagen-slide-modal" name="imagenNueva">
                 </div>
 
                 <div class="image_small" style="display: flex; justify-content: space-between; flex-direction: column; align-items: center; padding: 30px 0;">
                     <p style="font-size: 30px; font-weight: 700;">Imagen Pequeña <span style="font-weight: 200">(Móvil)</span></p>
-                    <img style="width: 150px;" src="" alt="Imagen anterior Slide" id="oldImgMovil">
-                    <input style="padding: .50rem; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: .25rem; box-shadow: inset 0 0 0 transparent; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;" type="file" id="imagen-slide-movil-modal" name="imagenMovilNueva">
+                    <img style="width: 150px;" src="" alt="Imagen anterior Slide" id="oldImgMovil" data-old-img="2">
+                    <input data-src-img="2" style="padding: .50rem; background-color: #fff; background-clip: padding-box; border: 1px solid #ced4da; border-radius: .25rem; box-shadow: inset 0 0 0 transparent; transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;" type="file" id="imagen-slide-movil-modal" name="imagenMovilNueva">
                 </div>
             </div>
         </form>

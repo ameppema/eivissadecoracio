@@ -86,7 +86,7 @@ class ImagesController extends Controller
 
         $images->save();
 
-        return back();
+        return back()->with(['success'=>'¡Imagen Actualizada!']);
     }
 
     /**
