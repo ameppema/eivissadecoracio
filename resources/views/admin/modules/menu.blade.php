@@ -61,7 +61,10 @@
                                         <td style="vertical-align: middle;" class="text-capitalize">{{$item->translation['nombre_en']}}</td>
                                         
                                         <td>
-                                            <button title="Editar"  class="btn btn-warning" id="btn_edit" data-toggle="modal" data-target="#editMenuModal" data-menu-item-id="{{$item->id}}" style="margin-right: 20px;"><i class="fas fa-edit"></i></button>
+                                            <button title="Editar"  class="btn btn-warning" id="btn_edit" data-toggle="modal" data-target="#editMenuModal" data-menu-item-id="{{$item->id}}" style="margin-right: 20px;">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+
                                             <form action="{{url('admin/category_menu'.'/delete/' . $item->id )}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('delete')
