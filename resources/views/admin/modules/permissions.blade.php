@@ -55,55 +55,55 @@
             </div>
 
             <div class="admin__menu">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__menu" type="checkbox">
             </div>
             
             <div class="admin__slider">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__slider" type="checkbox">
             </div>
             
             <div class="admin__history">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__history" type="checkbox">
             </div>
 
             <div class="admin__construction">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__construction" type="checkbox">
             </div>
             
             <div class="admin__restorations">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__restorations" type="checkbox">
             </div>
 
             <div class="admin__interiors">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__interiors" type="checkbox">
             </div>
 
             <div class="admin__kitchens">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__kitchens" type="checkbox">
             </div>
 
             <div class="admin__hardwood">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__hardwood" type="checkbox">
             </div>
 
             <div class="admin__partners">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__partners" type="checkbox">
             </div>
 
             <div class="admin__users">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__users" type="checkbox">
             </div>
 
             <div class="admin__roles">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__roles" type="checkbox">
             </div>
 
             <div class="admin__permissions">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__permissions" type="checkbox">
             </div>
 
             <div class="admin__profile">
-                <input id="admin__dashboard" type="checkbox">
+                <input id="admin__profile" type="checkbox">
             </div>
 
             <div class="admin__actions">
@@ -128,55 +128,55 @@
             </div>
 
             <div class="editor__menu">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__menu" type="checkbox">
             </div>
             
             <div class="editor__slider">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__slider" type="checkbox">
             </div>
             
             <div class="editor__history">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__history" type="checkbox">
             </div>
 
             <div class="editor__construction">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__construction" type="checkbox">
             </div>
             
             <div class="editor__restorations">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__restorations" type="checkbox">
             </div>
 
             <div class="editor__interiors">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__interiors" type="checkbox">
             </div>
 
             <div class="editor__kitchens">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__kitchens" type="checkbox">
             </div>
 
             <div class="editor__hardwood">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__hardwood" type="checkbox">
             </div>
 
             <div class="editor__partners">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__partners" type="checkbox">
             </div>
 
             <div class="editor__users">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__users" type="checkbox">
             </div>
 
             <div class="editor__roles">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__roles" type="checkbox">
             </div>
 
             <div class="editor__permissions">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__permissions" type="checkbox">
             </div>
 
             <div class="editor__profile">
-                <input id="editor__dashboard" type="checkbox">
+                <input id="editor__profile" type="checkbox">
             </div>
 
             <div class="editor__actions">
@@ -201,55 +201,55 @@
             </div>
 
             <div class="guest__menu">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__menu" type="checkbox">
             </div>
             
             <div class="guest__slider">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__slider" type="checkbox">
             </div>
             
             <div class="guest__history">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__history" type="checkbox">
             </div>
 
             <div class="guest__construction">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__construction" type="checkbox">
             </div>
             
             <div class="guest__restorations">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__restorations" type="checkbox">
             </div>
 
             <div class="guest__interiors">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__interiors" type="checkbox">
             </div>
 
             <div class="guest__kitchens">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__kitchens" type="checkbox">
             </div>
 
             <div class="guest__hardwood">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__hardwood" type="checkbox">
             </div>
 
             <div class="guest__partners">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__partners" type="checkbox">
             </div>
 
             <div class="guest__users">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__users" type="checkbox">
             </div>
 
             <div class="guest__roles">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__roles" type="checkbox">
             </div>
 
             <div class="guest__permissions">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__permissions" type="checkbox">
             </div>
 
             <div class="guest__profile">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__profile" type="checkbox">
             </div>
 
             <div class="guest__actions">
@@ -274,55 +274,55 @@
             </div>
 
             <div class="special__menu">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__menu" type="checkbox">
             </div>
             
             <div class="special__slider">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__slider" type="checkbox">
             </div>
             
             <div class="special__history">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__history" type="checkbox">
             </div>
 
             <div class="special__construction">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__construction" type="checkbox">
             </div>
             
             <div class="special__restorations">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__restorations" type="checkbox">
             </div>
 
             <div class="special__interiors">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__interiors" type="checkbox">
             </div>
 
             <div class="special__kitchens">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__kitchens" type="checkbox">
             </div>
 
             <div class="special__hardwood">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__hardwood" type="checkbox">
             </div>
 
             <div class="special__partners">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__partners" type="checkbox">
             </div>
 
             <div class="special__users">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__users" type="checkbox">
             </div>
 
             <div class="special__roles">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__roles" type="checkbox">
             </div>
 
             <div class="special__permissions">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__permissions" type="checkbox">
             </div>
 
             <div class="special__profile">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__profile" type="checkbox">
             </div>
 
             <div class="special__actions">
@@ -347,7 +347,6 @@
         .permissions {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            margin-bottom: 1rem;
             padding: 1.25rem;
             border-radius: .25rem;
             background-color: #fff;
