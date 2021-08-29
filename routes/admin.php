@@ -54,6 +54,7 @@ Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('adm
 // Users
 Route::get('users', [UsersController::class, 'index'])->name('admin.users');
 Route::get('permissions', [UsersController::class, 'permissions'])->name('permissions');
+Route::get('roles', [UsersController::class, 'roles'])->name('roles');
 Route::get('profile', [UsersController::class, 'show'])->name('profile');
 
 // Generators

@@ -265,7 +265,7 @@ return [
         [
             'text' => 'Rehabilitaciones',
             'url'  => 'admin/module/rehabilitaciones/2',
-            'icon' => 'fas fa-tools',
+            'icon' => 'fas fa-hammer',
         ],
         [
             'text' => 'Interiores',
@@ -287,12 +287,17 @@ return [
             'url'  => 'admin/module/partners',
             'icon' => 'fas fa-handshake',
         ],
-        ['header' => 'Cuenta de usuario'],
+        ['header' => 'Gestion de usuarios'],
         [
             'text' => 'Usuarios',
             'url'  => 'admin/users',
             'icon' => 'fas fa-address-book',
             'can' => 'admin.users'
+        ],
+        [
+            'text' => 'Roles',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-lock'
         ],
         [
             'text' => 'Permisos',
