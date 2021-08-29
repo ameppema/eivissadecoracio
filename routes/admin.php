@@ -1,5 +1,8 @@
 <?php
 
+use Spatie\Permission\Models\Role;
+use App\Models\User;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SlideController;
@@ -11,7 +14,6 @@ use App\Http\Controllers\Admin\PartnersController;
 use App\Http\Controllers\Admin\UsersController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
-Route::get('/', function(){return redirect('es/historia');})->name('admin');
 
 /* Slider routes */
 Route::get('/slide', [SlideController::class, 'index'])->name('admin.slide');
