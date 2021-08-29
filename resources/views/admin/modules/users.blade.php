@@ -12,6 +12,16 @@
     <section class="content">
         <div class="card">
             <div class="card-body">
+                @foreach($users as $user)
+                {{$user->roles->pluck('name')}}
+                @if(isset($user->roles[0]))
+                    @php dump($user->roles) @endphp
+                @endif
+                @endforeach
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
                 <table class="table users-container">
                     <thead class="users__title">
                         <tr>
