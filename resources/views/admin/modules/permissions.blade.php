@@ -50,61 +50,7 @@
 
             <div class="admin__title">Admin</div>
             
-            <div class="admin__dashboard">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__menu">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-            
-            <div class="admin__slider">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-            
-            <div class="admin__history">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__construction">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-            
-            <div class="admin__restorations">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__interiors">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__kitchens">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__hardwood">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__partners">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__users">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__roles">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__permissions">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__profile">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
+                @include('admin.modules._parts.permissions-rows')
 
             <div class="admin__actions">
                 <button title="save" class="button__save">
@@ -123,62 +69,8 @@
 
             <div class="editor__title">Editor</div>
             
-            <div class="editor__dashboard">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__menu">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-            
-            <div class="editor__slider">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-            
-            <div class="editor__history">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__construction">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-            
-            <div class="editor__restorations">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__interiors">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__kitchens">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__hardwood">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__partners">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__users">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__roles">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__permissions">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__profile">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
+            <!-- Seccion Permisos -->
+            @include('admin.modules._parts.permissions-rows')
             <div class="editor__actions">
                 <button title="save" class="button__save">
                     <i class="fas fa-save"></i>

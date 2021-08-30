@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 class UsersController extends Controller
 {
     /**
@@ -63,8 +64,9 @@ class UsersController extends Controller
     public function permissions(Request $request)
     {
         $userID = User::where('id', $request->user()->id)->first();
+        $permissionsAll = Permission::all()->pluck('name');
         
-        return view('admin.modules.permissions', compact('userID'));
+        return view('admin.modules.permissions', compact(['userID', 'permissionsAll']));
     }
     
     /**
@@ -75,9 +77,10 @@ class UsersController extends Controller
      */
     public function roles(Request $request)
     {
-        $userID = User::where('id', $request->user()->id)->first();
+        $rolesAll = Role::all()->pluck('name');
+        $users = User::with('roles')->get();
         
-        return view('admin.modules.roles', compact('userID'));
+        return view('admin.modules.roles', compact(['rolesAll', 'users']));
     }
 
     /**

@@ -32,12 +32,14 @@ class GeneratorController extends Controller{
                 Permission::create(['name'=>'admin.obras'])->assignRole($roleAdmin);
                 Permission::create(['name'=>'admin.rehabilitaciones'])->assignRole($roleAdmin);
                 Permission::create(['name'=>'admin.cocinas'])->assignRole($roleAdmin);
+                Permission::create(['name'=>'admin.interiores'])->assignRole($roleAdmin);
                 Permission::create(['name'=>'admin.parquets'])->assignRole($roleAdmin);
                 Permission::create(['name'=>'admin.partners'])->assignRole($roleAdmin);
+                Permission::create(['name'=>'admin.roles'])->assignRole($roleAdmin);
                 Permission::create(['name'=>'admin.premisos'])->assignRole($roleAdmin);
-                Permission::create(['name'=>'admin.perfil'])->assignRole($roleAdmin);
-        
-                Permission::create(['name'=>'admin.users'])->assignRole($roleAdmin);
+                Permission::create(['name'=>'admin.perfil'])->assignRole($roleAdmin);   
+
+                // \App\Models\User::create(['name'=>'Test User','email'=>'test@test.com','password'=> Hash::make('12345678')])->assignRole('Admin');
                 
                 return redirect()->route('admin.home');
     }

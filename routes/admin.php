@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\PartnersController;
 use App\Http\Controllers\Admin\UsersController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
@@ -54,8 +55,14 @@ Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('adm
 
 // Users
 Route::get('users', [UsersController::class, 'index'])->name('admin.users');
-Route::get('permissions', [UsersController::class, 'permissions'])->name('admin.permissions');  
+
+Route::get('permissions', [UsersController::class, 'permissions'])->name('admin.permissions');
+
 Route::get('roles', [UsersController::class, 'roles'])->name('admin.roles');
+Route::put('set-role', function(Request $req){
+    return $req->all();
+})->name('admin.setroles');
+
 Route::get('profile', [UsersController::class, 'show'])->name('admin.profile');
 
 //Roles & Permissions
@@ -63,7 +70,7 @@ Route::get('profile', [UsersController::class, 'show'])->name('admin.profile');
 //     $user = User::permission('admin.users')->get();
 //     $info = User::with('roles')->get();
 //     $info2 = User::with('permissions')->get();
-//     $info3 = Role::all()->pluck('name'); 
+//     $rolesAll = Role::all()->pluck('name'); 
 //     $info4 = User::doesntHave('roles')->get();
 //     $info5 = Role::whereNotIn('name', ['Admin'])->get();
 //     $authUser = Auth::user()->permissions->pluck('name');

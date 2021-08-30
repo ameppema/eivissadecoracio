@@ -9,6 +9,14 @@
 @stop
 
 @section('content')
+    <div class="card">
+        <div class="card-body">
+            <div class="h3">User Names</div>
+            @foreach($users as $user)
+                {{$user->name}}
+            @endforeach
+        </div>
+    </div>
     <section class="roles">
         <div class="role__titles">
             <div class="title__role">Permisos</div>
@@ -24,29 +32,16 @@
             <div class="title__actions">Acciones</div>
         </div>
         
-        <form action="#" class="role__admin" method="POST">
+        <form action="/admin/set-role" class="role__admin" method="POST">
             @csrf
-            @method('update')
+            @method('put')
+            <input type="hidden" name="">
 
             <div class="admin__title">
                 Admin
             </div>
             
-            <div class="admin__read">
-                <input id="admin__read" type="checkbox" checked>
-            </div>
-
-            <div class="admin__update">
-                <input id="admin__update" type="checkbox" checked>
-            </div>
-            
-            <div class="admin__create">
-                <input id="admin__create" type="checkbox" checked>
-            </div>
-
-            <div class="admin__delete">
-                <input id="admin__delete" type="checkbox" checked>
-            </div>
+            @include('admin.modules._parts.roles-rows')
             
             <div class="admin__buttons">
                 <button title="save" class="button__save">
@@ -59,9 +54,9 @@
             </div>
         </form>
         
-        <form action="#" class="role__editor" method="POST">
+        <form action="/admin/set-role" class="role__editor" method="POST">
             @csrf
-            @method('update')
+            @method('put')
 
             <div class="editor__title">
                 Editor
@@ -94,9 +89,9 @@
             </div>
         </form>
         
-        <form action="#" class="role__guest" method="POST">
+        <form action="/admin/set-role" class="role__guest" method="POST">
             @csrf
-            @method('update')
+            @method('put')
 
             <div class="guest__title">
                 Guest
@@ -129,9 +124,9 @@
             </div>
         </form>
         
-        <form action="#" class="role__special" method="POST">
+        <form action="/admin/set-role" class="role__special" method="POST">
             @csrf
-            @method('update')
+            @method('put')
 
             <div class="special__title">
                 Special
