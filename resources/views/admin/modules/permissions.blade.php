@@ -50,7 +50,8 @@
 
             <div class="admin__title">Admin</div>
             
-                @include('admin.modules._parts.permissions-rows')
+            @include('admin.modules._parts.permissions-rows')
+
 
             <div class="admin__actions">
                 <button title="save" class="button__save">
@@ -71,6 +72,7 @@
             
             <!-- Seccion Permisos -->
             @include('admin.modules._parts.permissions-rows')
+
             <div class="editor__actions">
                 <button title="save" class="button__save">
                     <i class="fas fa-save"></i>
@@ -93,55 +95,55 @@
             </div>
 
             <div class="guest__menu">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__menu" type="checkbox">
             </div>
             
             <div class="guest__slider">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__slider" type="checkbox">
             </div>
             
             <div class="guest__history">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__history" type="checkbox">
             </div>
 
             <div class="guest__construction">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__construction" type="checkbox">
             </div>
             
             <div class="guest__restorations">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__restorations" type="checkbox">
             </div>
 
             <div class="guest__interiors">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__interiors" type="checkbox">
             </div>
 
             <div class="guest__kitchens">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__kitchens" type="checkbox">
             </div>
 
             <div class="guest__hardwood">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__hardwood" type="checkbox">
             </div>
 
             <div class="guest__partners">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__partners" type="checkbox">
             </div>
 
             <div class="guest__users">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__users" type="checkbox">
             </div>
 
             <div class="guest__roles">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__roles" type="checkbox">
             </div>
 
             <div class="guest__permissions">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__permissions" type="checkbox">
             </div>
 
             <div class="guest__profile">
-                <input id="guest__dashboard" type="checkbox">
+                <input id="guest__profile" type="checkbox">
             </div>
 
             <div class="guest__actions">
@@ -166,55 +168,55 @@
             </div>
 
             <div class="special__menu">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__menu" type="checkbox">
             </div>
             
             <div class="special__slider">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__slider" type="checkbox">
             </div>
             
             <div class="special__history">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__history" type="checkbox">
             </div>
 
             <div class="special__construction">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__construction" type="checkbox">
             </div>
             
             <div class="special__restorations">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__restorations" type="checkbox">
             </div>
 
             <div class="special__interiors">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__interiors" type="checkbox">
             </div>
 
             <div class="special__kitchens">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__kitchens" type="checkbox">
             </div>
 
             <div class="special__hardwood">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__hardwood" type="checkbox">
             </div>
 
             <div class="special__partners">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__partners" type="checkbox">
             </div>
 
             <div class="special__users">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__users" type="checkbox">
             </div>
 
             <div class="special__roles">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__roles" type="checkbox">
             </div>
 
             <div class="special__permissions">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__permissions" type="checkbox">
             </div>
 
             <div class="special__profile">
-                <input id="special__dashboard" type="checkbox">
+                <input id="special__profile" type="checkbox">
             </div>
 
             <div class="special__actions">
@@ -239,7 +241,6 @@
         .permissions {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            margin-bottom: 1rem;
             padding: 1.25rem;
             border-radius: .25rem;
             background-color: #fff;
