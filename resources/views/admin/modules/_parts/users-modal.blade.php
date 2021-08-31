@@ -13,8 +13,8 @@
             {{-- Modal Update User Info --}}
             <div class="modal-body">
                 <form class="mt-4 modal__container" id="modalUserUpdate" method="POST">
-                    @method('put')
                     @csrf
+                    @method('put')
 
                     <div class="form-row mb-4">
                         {{-- Update Role --}}
@@ -23,7 +23,7 @@
                                 <option value="" disabled selected>--- Selecciona un nuevo Rol ---</option>
                                 <option value="Admin">Admin</option>
                                 <option value="Editor">Editor</option>
-                                <option value="Editor">Editor</option>
+                                <option value="Guest">Guest</option>
                                 <option value="Especial">Especial</option>
                             </select>
                         </div>
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="modal__buttons">
-                        <button class="btn btn-success modal__button" type="submit">Guardar</button>
+                        <input class="btn btn-success modal__button" type="submit">
                         <button class="btn btn-danger modal__button" type="button" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>

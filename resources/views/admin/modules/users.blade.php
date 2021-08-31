@@ -9,6 +9,24 @@
 @stop
 
 @section('content')
+{{--Alert Error--}}
+@if($errors->any())
+    <x-adminlte-alert class="bg-red " icon="fa-lg fas fa-exclamation-circle" title="Error en el Formulario" dismissable>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </x-adminlte-alert> 
+@endif
+{{--Alert response--}}
+@if(session()->has('message'))
+    <div class="error-notice" id="close-alert">
+        <div class="oaerror {{session()->get('alert-result')}}">
+        <strong>Muy Bien!</strong> - {{session()->get('message')}}
+        </div> 
+    </div>
+@endif
     <section class="content">
         <div class="card">
             <div class="card-body">
@@ -81,6 +99,7 @@
 @stop
 
 @section('css')
+<link rel="stylesheet" href="{{asset('css/alert.css')}}">
     <style>
         .section__title {
             margin-left: 7.5px;
@@ -106,6 +125,7 @@
 @stop
 
 @section('js')
+    <script src="{{asset('js/utils.js')}}"></script>
     <script type="text/javascript" defer>
 
         $('[data-clickModal]').on('click', getDataByAjax)
@@ -121,8 +141,8 @@
                 url: url,
                 type: 'GET',
                 success: function(data){
+                    $('#modalUserUpdate').attr('action', '/admin/user/' + data.id);
                     console.log(data);
-                    UserForm.attr('action', '/admin/users/' + userId);
                     UserFormName.text(data.name);
 
                 },

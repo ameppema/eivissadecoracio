@@ -39,7 +39,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -105,13 +105,24 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $data = $request->validate([
-            'status' => ['required'],
-            'role' => ['required', 'numeric'],
+        $data = request()->validate([
+            'role'=>['nullable','string'],
+            'status'=>['nullable','numeric'],
         ]);
-        return response()->json($data);
+
+        $user = User::where('id',$id)->with('roles')->first();
+
+        $user->status = $data['status'] ?? $user->status;
+        if(isset($data['role'])){
+            $user->removeRole($user->roles[0]['name']);
+            $user->assignRole($data['role']);
+        }
+
+        $user->save();
+
+        return redirect()->back()->with(['message'=>'Informacion de usuario actualizada!','alert-result'=>'success']);
     }
 
     /**
@@ -122,6 +133,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect()->back();
     }
 }

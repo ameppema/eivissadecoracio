@@ -1,8 +1,4 @@
 <?php
-
-use Spatie\Permission\Models\Role;
-use App\Models\User;
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SlideController;
@@ -13,7 +9,6 @@ use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\PartnersController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
 
@@ -56,7 +51,8 @@ Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('adm
 // Users
 Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
 Route::get('/users-roles/{user}', [UsersController::class, 'userRole'])->name('admin.users.roles');
-Route::put('/users/{id}', [UsersController::class, 'update'])->name('admin.users.update');
+
+Route::put('/user/{id}', [UsersController::class, 'update'])->name('admin.users.update');
 
 Route::get('permissions', [UsersController::class, 'permissions'])->name('admin.permissions');
 Route::get('/roles', [UsersController::class, 'roles'])->name('admin.roles');
