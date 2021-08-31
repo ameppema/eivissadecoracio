@@ -18,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $this->middleware(['can:admin.users']);
+        $users = User::with('roles')->get();
         return view('admin.modules.users', compact(['users']));
     }
 
