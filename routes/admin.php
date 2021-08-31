@@ -54,11 +54,12 @@ Route::post('/module/{name}', [PagesController::class, 'store'])->name('admin.mo
 Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('admin.module.update');
 
 // Users
-Route::get('users', [UsersController::class, 'index'])->name('admin.users');
+Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+Route::get('/users-roles/{user}', [UsersController::class, 'userRole'])->name('admin.users.roles');
+Route::put('/users/{id}', [UsersController::class, 'update'])->name('admin.users.update');
 
 Route::get('permissions', [UsersController::class, 'permissions'])->name('admin.permissions');
-
-Route::get('roles', [UsersController::class, 'roles'])->name('admin.roles');
+Route::get('/roles', [UsersController::class, 'roles'])->name('admin.roles');
 Route::put('set-role', function(Request $req){
     return $req->all();
 })->name('admin.setroles');

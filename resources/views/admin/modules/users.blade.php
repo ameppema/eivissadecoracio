@@ -12,16 +12,6 @@
     <section class="content">
         <div class="card">
             <div class="card-body">
-                @foreach($users as $user)
-                {{$user->roles->pluck('name')}}
-                @if(isset($user->roles[0]))
-                    @php dump($user->roles) @endphp
-                @endif
-                @endforeach
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
                 <table class="table users-container">
                     <thead class="users__title">
                         <tr>
@@ -37,32 +27,33 @@
                     </thead>
 
                     <tbody class="users__items">
+                        @foreach($users as $user) 
                         <tr>
                             <!-- ID -->
-                            <td>1</td>
+                            <td>{{$user->id}}</td>
 
                             <!-- Nombre -->
-                            <td>Paul Marquez</td>
+                            <td>{{$user->name}}</td>
                             
                             <!-- Nick -->
-                            <td>Paul</td>
+                            <td>{{$user->nickname}}</td>
                             
                             <!-- Correo -->
-                            <td>ameppema@hotmail.com</td>
+                            <td>{{$user->email}}</td>
                             
                             <!-- Rol -->
-                            <td>Administrador</td>
+                            <td>{{$user->roles[0]->name}}</td>
 
                             <!-- Sesión -->
-                            <td>27/08/2021</td>
+                            <td>{{$user->last_login_at}}</td>
 
                             <!-- Estado -->
-                            <td>Activo</td>
+                            <td>{{$user->status == 1 ? 'Activo'  :'Inactivo'}}</td>
                             
                             <!-- Acciones -->
                             <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
+                                <button title="Editar"  data-clickModal="{{$user->id}}" data-toggle="modal" data-target="#editUserModal"  class="btn btn-warning">
+                                    <i data-clickModal="{{$user->id}}" class="fas fa-edit"></i>
                                 </button>
 
                                 <button title="Eliminar" class="btn btn-danger">
@@ -70,176 +61,7 @@
                                 </button>
                             </td>
                         </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>2</td>
-
-                            <!-- Nombre -->
-                            <td>Juan Perez</td>
-                            
-                            <!-- Nick -->
-                            <td>Juan</td>
-                            
-                            <!-- Correo -->
-                            <td>juanito_power@gmail.com</td>
-
-                            <!-- Rol -->
-                            <td>Editor</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Inactivo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>3</td>
-
-                            <!-- Nombre -->
-                            <td>Andres Iglesias</td>
-                            
-                            <!-- Nick -->
-                            <td>Andrew</td>
-                            
-                            <!-- Correo -->
-                            <td>andrewmaster@yahoo.com</td>
-
-                            <!-- Rol -->
-                            <td>Editor</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Activo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>4</td>
-
-                            <!-- Nombre -->
-                            <td>Maria Santos</td>
-                            
-                            <!-- Nick -->
-                            <td>Mary</td>
-                            
-                            <!-- Correo -->
-                            <td>mari280585@hotmail.com</td>
-
-                            <!-- Rol -->
-                            <td>Editor</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Activo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>5</td>
-
-                            <!-- Nombre -->
-                            <td>Sara Montero</td>
-                            
-                            <!-- Nick -->
-                            <td>Sarita</td>
-                            
-                            <!-- Correo -->
-                            <td>sara_montero@universidad.com</td>
-
-                            <!-- Rol -->
-                            <td>Editor</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Inactivo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>6</td>
-
-                            <!-- Nombre -->
-                            <td>Silvio Paredes</td>
-                            
-                            <!-- Nick -->
-                            <td>Silvio</td>
-                            
-                            <!-- Correo -->
-                            <td>emprendedor@hotmail.com</td>
-
-                            <!-- Rol -->
-                            <td>Administrador</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Activo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>                        
             </div>
@@ -252,6 +74,10 @@
             Agregar Nuevo usuario
         </button>
     </div>
+
+{{--Modal--}}
+    @include('admin.modules._parts.users-modal')
+{{--End Modal--}}
 @stop
 
 @section('css')
@@ -277,4 +103,33 @@
             margin: 0 10px;
         }
     </style>
+@stop
+
+@section('js')
+    <script type="text/javascript" defer>
+
+        $('[data-clickModal]').on('click', getDataByAjax)
+
+        function getDataByAjax(e){
+            const userId = e.target.getAttribute('data-clickModal');
+            const url = '/admin/users-roles/' + userId;
+            const UserForm = $('#modalUserUpdate');
+            const UserFormName = $('#userNamePlaceHolder');
+            
+            /* Ajax */
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(data){
+                    console.log(data);
+                    UserForm.attr('action', '/admin/users/' + userId);
+                    UserFormName.text(data.name);
+
+                },
+                error: function(err){
+                    console.error(err)
+                }
+            });
+        }
+    </script>
 @stop

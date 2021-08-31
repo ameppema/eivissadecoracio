@@ -16,23 +16,24 @@ class RolesSeeder extends Seeder
         $roleEspecial = Role::create(['name'=>'Especial']);
 
         /* Actions Permissions */
-        Permission::create(['name'=>'create']);
-        Permission::create(['name'=>'read']);
-        Permission::create(['name'=>'update']);
-        Permission::create(['name'=>'delete']);
+        Permission::create(['name'=>'create'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'read'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'update'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'delete'])->assignRole($roleAdmin);
 
-        /* Route Permissions */
-        Permission::create(['name'=>'admin.menu']);
-        Permission::create(['name'=>'admin.slider']);
-        Permission::create(['name'=>'admin.historia']);
-        Permission::create(['name'=>'admin.obras']);
-        Permission::create(['name'=>'admin.rehabilitaciones']);
-        Permission::create(['name'=>'admin.cocinas']);
-        Permission::create(['name'=>'admin.parquets']);
-        Permission::create(['name'=>'admin.partners']);
-        Permission::create(['name'=>'admin.usuarios']);
-        Permission::create(['name'=>'admin.premisos']);
-        Permission::create(['name'=>'admin.perfil']);
+        /* Routes Permissions */
+        Permission::create(['name'=>'admin.menu'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.slider'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.historia'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.obras'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.rehabilitaciones'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.cocinas'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.interiores'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.parquets'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.partners'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.roles'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.premisos'])->assignRole($roleAdmin);
+        Permission::create(['name'=>'admin.perfil'])->assignRole($roleAdmin);  
 
         Permission::create(['name'=>'admin.users'])->assignRole($roleAdmin);
 

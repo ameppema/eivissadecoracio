@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Carbon;
 
 class LoginController extends Controller
 {
@@ -41,4 +42,13 @@ class LoginController extends Controller
     protected function loggedOut(Request $request) {
         return redirect()->route('home', 'es');
     }
+    /**
+     * Actualizando automaticamente la ultima Session Activa
+     */
+    function authenticated(Request $request, $user)
+{
+    $user->update([
+        'last_login_at' => Carbon::now()->toDateTimeString()
+    ]);
+}
 }

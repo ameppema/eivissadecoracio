@@ -82,6 +82,10 @@ class UsersController extends Controller
         
         return view('admin.modules.roles', compact(['rolesAll', 'users']));
     }
+    public function userRole($id)
+    {
+        return response()->json(User::where('id',$id)->with('roles')->first());
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -103,7 +107,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'status' => ['required'],
+            'role' => ['required', 'numeric'],
+        ]);
+        return response()->json($data);
     }
 
     /**
