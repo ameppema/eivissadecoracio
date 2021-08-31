@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\App;
 
 class SlideController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['can:admin.slider']);
+    }
     /**
      * Display a listing of the resource.
      *

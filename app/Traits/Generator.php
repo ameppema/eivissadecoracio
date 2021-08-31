@@ -59,6 +59,9 @@ Trait Generator
         $user = User::with('roles')->get();
         return $user;
     }
+    public function givePermissionRole(){
+        
+    }
     public static function createPermission($permissionName, $role = 'Admin'){
         Permission::create(['name'=> $permissionName])->assignRole($role);
         return Permission::all();

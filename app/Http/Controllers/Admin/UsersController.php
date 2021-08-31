@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['can:admin.users']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->get();
-
+        $this->middleware(['can:admin.users']);
         return view('admin.modules.users', compact(['users']));
     }
 
@@ -50,9 +51,7 @@ class UsersController extends Controller
      */
     public function show(Request $request)
     {
-        $userID = User::where('id', $request->user()->id)->first();
-        
-        return view('admin.modules.profile', compact('userID'));
+        //
     }
     
     /**
@@ -60,28 +59,7 @@ class UsersController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
-    public function permissions(Request $request)
-    {
-        $userID = User::where('id', $request->user()->id)->first();
-        $permissionsAll = Permission::all()->pluck('name');
-        
-        return view('admin.modules.permissions', compact(['userID', 'permissionsAll']));
-    }
-    
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function roles(Request $request)
-    {
-        $rolesAll = Role::all()->pluck('name');
-        $users = User::with('roles')->get();
-        
-        return view('admin.modules.roles', compact(['rolesAll', 'users']));
-    }
+     */    
     public function userRole($id)
     {
         return response()->json(User::where('id',$id)->with('roles')->first());

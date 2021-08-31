@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ImagesController;
 use App\Http\Controllers\Admin\PartnersController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RolesController;
 use Illuminate\Http\Request;
 
 Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
@@ -51,28 +54,16 @@ Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('adm
 // Users
 Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
 Route::get('/users-roles/{user}', [UsersController::class, 'userRole'])->name('admin.users.roles');
-
 Route::put('/user/{id}', [UsersController::class, 'update'])->name('admin.users.update');
 
-Route::get('permissions', [UsersController::class, 'permissions'])->name('admin.permissions');
-Route::get('/roles', [UsersController::class, 'roles'])->name('admin.roles');
+// Roles & Permissions
+Route::get('/permissions', [PermissionsController::class, 'index'])->name('admin.permissions');
+Route::get('/roles', [RolesController::class, 'index'])->name('admin.roles');
 Route::put('set-role', function(Request $req){
     return $req->all();
 })->name('admin.setroles');
 
-Route::get('profile', [UsersController::class, 'show'])->name('admin.profile');
-
-//Roles & Permissions
-// Route::get('/roles', function(){
-//     $user = User::permission('admin.users')->get();
-//     $info = User::with('roles')->get();
-//     $info2 = User::with('permissions')->get();
-//     $rolesAll = Role::all()->pluck('name'); 
-//     $info4 = User::doesntHave('roles')->get();
-//     $info5 = Role::whereNotIn('name', ['Admin'])->get();
-//     $authUser = Auth::user()->permissions->pluck('name');
-//     return response()->json($authUser);
-// });
+Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
 
 // Generators
 Route::get('/generate-translations',['App\Http\Controllers\Admin\GeneratorController', 'CreateTranslation'])->name('generator');

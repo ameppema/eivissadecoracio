@@ -12,6 +12,10 @@ use App\Http\Controllers\TranslationController;
 
 class PartnersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['can:admin.partners']);
+    }
     /**
      * Display a listing of the resource.
      *

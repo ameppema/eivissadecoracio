@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\App;
 
 class MenuController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['can:admin.menu']);
+    }
     /**
      * Display a listing of the resource.
      *
