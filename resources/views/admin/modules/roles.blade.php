@@ -11,15 +11,9 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <div class="h3">User Names</div>
-            @roleCan('Especial','create')
-                <h1>Si tiene permisos de crear</h1>
-                @else
-                <h1>No tiene Permisos de Crear</h1>
-            @endroleCan('create')
+            <div id="infoFeedback"></div>
         </div>
     </div>
-    {{--Testing area--}}
     <section class="roles" id="permisionsContainer">
         <div class="role__titles">
             <div class="title__role">Permisos</div>
@@ -317,6 +311,11 @@
             data: {data: JSON.stringify(values), _token: '{{csrf_token()}}'},
             success: function success(data){
                 let response = JSON.parse(data)
+                let canOrCant = response.isChecked == true ? 'asignado' : 'revocado';
+                let html = `
+                    <h2>Permiso : ${response.permission} ${canOrCant} a ${response.role}</h2>
+                `;
+                $('#infoFeedback').html(html);
                 console.log(response)
             },  
             error: function error(err){
