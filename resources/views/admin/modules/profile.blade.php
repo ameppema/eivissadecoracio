@@ -24,13 +24,13 @@
             
             <section class="name__items">
                 <!-- Item ID -->
-                <div>1</div>
+                <div>{{$userData->id}}</div>
 
                 <!-- Item Full Name -->
-                <div>Paul Marquez</div>
+                <div>{{$userData->name}}</div>
                 
                 <!-- Item Nickname -->
-                <div>Paul</div>
+                <div>{{$userData->nickname}}</div>
             </section>
         </div>
         
@@ -48,7 +48,7 @@
             
             <section class="mail__items">
                 <!-- Item Mail -->
-                <div>ameppema@hotmail.com</div>
+                <div>{{$userData->email}}</div>
 
                 <!-- Item Password -->
                 <div>***************</div>
@@ -72,13 +72,13 @@
             
             <section class="action__items">
                 <!-- Item Action -->
-                <div>Editor</div>
+                <div>{{$userData->roles[0]->name ?? "Sin Rol"}}</div>
 
                 <!-- Item Action -->
-                <div>Activo</div>
+                <div>{{$userData->status == 1 ? "Activo" : "Inactivo"}}</div>
                 
                 <!-- Item Action -->
-                <div>27/08/2021 - 13:00</div>
+                <div>{{$userData->last_login_at}}</div>
             </section>
         </div>
 

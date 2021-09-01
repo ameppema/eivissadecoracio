@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index(Request $request){
-        $userID = User::where('id', $request->user()->id)->first();
+        $userData = User::where('id', $request->user()->id)->with('roles')->first();
         
-        return view('admin.modules.profile', compact('userID'));
+        return view('admin.modules.profile', compact('userData'));
     }
 }
