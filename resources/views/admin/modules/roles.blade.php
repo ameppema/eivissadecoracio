@@ -297,7 +297,6 @@
         target = event.target;
 
         if(!target.getAttribute('type') || target.getAttribute('type') != 'checkbox'){
-
             console.log('Not a Checkbox');
             return null;
         }
@@ -307,11 +306,11 @@
         console.log(event.target);
     }
 
-    function putByAjax(url){
+    function putByAjax(url = '', values = {}){
         $.ajax({
             url: url,
             type: 'PUT',
-            data: {data: JSON.stringify({some:'data'}), _token: '{{csrf_token()}}'},
+            data: {data: JSON.stringify(values), _token: '{{csrf_token()}}'},
             success: function success(data){
                 console.log(data)
             },  
