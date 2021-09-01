@@ -60,7 +60,7 @@
                             <td>{{$user->email}}</td>
                             
                             <!-- Rol -->
-                            <td>{{$user->roles[0]->name}}</td>
+                            <td>{{$user->roles[0]->name ?? 'Sin role' }}</td>
 
                             <!-- Sesión -->
                             <td>{{$user->last_login_at ?? 'Aun no ha iniciado session'}}</td>

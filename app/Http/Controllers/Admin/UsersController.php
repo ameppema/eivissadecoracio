@@ -111,7 +111,7 @@ class UsersController extends Controller
 
         $user->status = $data['status'] ?? $user->status;
         if(isset($data['role'])){
-            $user->removeRole($user->roles[0]['name']);
+            if(isset($user->roles[0]['name'])) $user->removeRole($user->roles[0]['name']);
             $user->assignRole($data['role']);
         }
 

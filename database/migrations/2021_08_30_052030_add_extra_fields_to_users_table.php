@@ -16,7 +16,7 @@ class AddExtraFieldsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('nickname')->after('email')->nullable();
             $table->datetime('last_login_at')->after('password')->nullable();
-            $table->integer('status')->after('last_login_at');
+            $table->integer('status')->after('last_login_at')->default(1);
         });
     }
 

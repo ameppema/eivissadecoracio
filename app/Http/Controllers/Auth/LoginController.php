@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Carbon;
 
 class LoginController extends Controller
 {
@@ -39,16 +41,29 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    protected function loggedOut(Request $request) {
+
+    protected function loggedOut(Request $request){
         return redirect()->route('home', 'es');
     }
     /**
-     * Actualizando automaticamente la ultima Session Activa
+     * Update automatically last LogIn
      */
-    function authenticated(Request $request, $user)
-{
-    $user->update([
-        'last_login_at' => Carbon::now()->toDateTimeString()
-    ]);
-}
+    function authenticated(Request $request, $user){
+        $user->update([
+            'last_login_at' => Carbon::now()->toDateTimeString()
+        ]);
+    }
+    /**
+     * Deny LogIn if user account is inactive
+     */
+    protected function validateLogin(Request $request){
+        $user = User::where($this->username(), '=', $request->input($this->username()))->first();
+        if ($user && ! $user->status) {
+            throw ValidationException::withMessages([$this->username() => __('The account is inactive')]);
+        }
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
 }
