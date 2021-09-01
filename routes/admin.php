@@ -17,18 +17,18 @@ Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
 
 /* Slider routes */
 Route::get('/slide', [SlideController::class, 'index'])->name('admin.slide');
-Route::post('/slide', [SlideController::class, 'store'])->name('admin.slide.store')->middleware('can:create');
+Route::post('/slide', [SlideController::class, 'store'])->name('admin.slide.store')->middleware('can: create');
 Route::get('/slide/{id}/edit', [SlideController::class, 'edit'])->name('admin.slide.edit');
-Route::put('/slide/{slide}', [SlideController::class, 'update'])->name('admin.slide.update')->middleware('can:update');
-Route::delete('/slide/{id}', [SlideController::class, 'destroy'])->name('admin.slide.destroy')->middleware('can:delete');
+Route::put('/slide/{slide}', [SlideController::class, 'update'])->name('admin.slide.update')->middleware('can: update');
+Route::delete('/slide/{id}', [SlideController::class, 'destroy'])->name('admin.slide.destroy')->middleware('can: delete');
 
 /* Menu routes */
 Route::get('/category_menu', [MenuController::class, 'index'])->name('admin.menu');
-Route::post('/category_menu', [MenuController::class, 'store'])->name('admin.menu.store')->middleware('can:create');
+Route::post('/category_menu', [MenuController::class, 'store'])->name('admin.menu.store')->middleware('can: create');
 Route::put('/category_menu/sort', [MenuController::class, 'sortMenu'])->name('admin.menu.sort');
 Route::get('/category_menu/getDataByAjax/{id}', [MenuController::class, 'getDataByAjax'])->name('admin.menu.ajax');
-Route::put('/category_menu/edit/{id}', [MenuController::class, 'update'])->name('admin.menu.update')->middleware('can:update');
-Route::delete('/category_menu/delete/{id}', [MenuController::class, 'destroy'])->name('admin.menu.destroy')->middleware('can:delete');
+Route::put('/category_menu/edit/{id}', [MenuController::class, 'update'])->name('admin.menu.update')->middleware('can: update');
+Route::delete('/category_menu/delete/{id}', [MenuController::class, 'destroy'])->name('admin.menu.destroy')->middleware('can: delete');
 
 /* Services routes */
 Route::get('/services', [ServiceController::class, 'index'])->name('admin.service');
@@ -49,7 +49,7 @@ Route::put('/module/partners/{id?}', [PartnersController::class, 'update'])->nam
 Route::get('/module', function(){ return redirect()->route('admin.home');})->name('admin.module.index');
 Route::get('/module/{name}/{id}', [PagesController::class, 'index'])->name('admin.module');
 Route::post('/module/{name}', [PagesController::class, 'store'])->name('admin.module.store');
-Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('admin.module.update')->middleware('can:udpate');
+Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('admin.module.update');
 
 // Users
 Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
@@ -68,6 +68,7 @@ Route::put('set-role', function(Request $req){
 })->name('admin.setroles');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
+Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('admin.profile.update');
 
 // Generators
 Route::get('/generate-translations',['App\Http\Controllers\Admin\GeneratorController', 'CreateTranslation'])->name('generator');

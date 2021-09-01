@@ -9,6 +9,9 @@
 @stop
 
 @section('content')
+<form action="{{route('admin.profile.update',['user'=> $userData->id])}}" method="POST">
+    @csrf
+    @method('put')
     <section class="content user__profile">
         <div class="profile__name">
             <section class="name__titles">
@@ -22,15 +25,19 @@
                 <div>Nickname</div>
             </section>
             
-            <section class="name__items">
+            <section class="mt-2 form-row">
                 <!-- Item ID -->
-                <div>{{$userData->id}}</div>
+                <div class="col-4">{{$userData->id}}</div>
 
                 <!-- Item Full Name -->
-                <div>{{$userData->name}}</div>
+                <div class="col-4">
+                    <input name="name" class="form-control" type="text" value="{{$userData->name}}">
+                </div>
                 
                 <!-- Item Nickname -->
-                <div>{{$userData->nickname}}</div>
+                <div class="col-4">
+                    <input name="nickname" class="form-control" type="text" value="{{$userData->nickname ?? 'Sin Nickname aun'}}">
+                </div>
             </section>
         </div>
         
@@ -46,15 +53,21 @@
                 <div>Confirmación</div>
             </section>
             
-            <section class="mail__items">
+            <section class="mt-2 form-row">
                 <!-- Item Mail -->
-                <div>{{$userData->email}}</div>
+                <div class="col-4">
+                    <input name="email" class="form-control" type="email" value="{{$userData->email}}">
+                </div>
 
                 <!-- Item Password -->
-                <div>***************</div>
+                <div class="col">
+                    <input name="password" class="form-control" type="password" value="">
+                </div>
                 
                 <!-- Item Confirmation -->
-                <div>***************</div>
+                <div class="col">
+                    <input name="password_confirmation" class="form-control" type="password" value="***************">
+                </div>
             </section>
         </div>
         
@@ -72,19 +85,23 @@
             
             <section class="action__items">
                 <!-- Item Action -->
-                <div>{{$userData->roles[0]->name ?? "Sin Rol"}}</div>
+                <div class="col-4">
+                    {{$userData->roles[0]->name ?? "Sin Rol"}}
+                </div>
 
                 <!-- Item Action -->
-                <div>{{$userData->status == 1 ? "Activo" : "Inactivo"}}</div>
+                <div class="col">
+                    {{$userData->status == 1 ? "Activo" : "Inactivo"}}
+                </div>
                 
                 <!-- Item Action -->
-                <div>{{$userData->last_login_at}}</div>
+                <div class="col">{{$userData->last_login_at}}</div>
             </section>
         </div>
 
         <div class="profile__buttons">
             <!-- Acciones -->
-            <button title="Actualizar" class="btn btn-success">
+            <button  type="submit" title="Actualizar" class="btn btn-success">
                 Actualizar
             </button>
 
@@ -93,6 +110,7 @@
             </button>
         </div>
     </section>
+</form>
 @stop
 
 @section('css')

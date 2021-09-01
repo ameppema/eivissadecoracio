@@ -58,6 +58,9 @@ class PagesController extends Controller
 
     public function update(Request $request, Pages $module, $name, $id)
     {
+        if ($request->user()->cannot('update', $module)) {
+            abort(403);
+        }
         $module =  Pages::find($id);
 
         $datos = request()->validate([
