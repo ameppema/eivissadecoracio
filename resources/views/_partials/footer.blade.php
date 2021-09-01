@@ -32,4 +32,8 @@
     <a class="social__instagram" href="/">
         <img src="/images/footer/icon_instagram.png" alt="Instagram">
     </a>
+    
+    <a class="social__login" href="/admin">
+        <img src="/images/footer/icon_login.png" alt="Login">
+    </a>
 </div>
