@@ -12,11 +12,14 @@
     <div class="card">
         <div class="card-body">
             <div class="h3">User Names</div>
-            @foreach($users as $user)
-                {{$user->name}}
-            @endforeach
+            @roleCan('Especial','create')
+                <h1>Si tiene permisos de crear</h1>
+                @else
+                <h1>No tiene Permisos de Crear</h1>
+            @endroleCan('create')
         </div>
     </div>
+    {{--Testing area--}}
     <section class="roles" id="permisionsContainer">
         <div class="role__titles">
             <div class="title__role">Permisos</div>
@@ -292,18 +295,21 @@
 
 
     function getCheckData(event){
-        let role, permission, target;
-
+        let role, permission, target, isChecked;
         target = event.target;
 
         if(!target.getAttribute('type') || target.getAttribute('type') != 'checkbox'){
-            console.log('Not a Checkbox');
             return null;
         }
+        let checkboxData = {
+            "role": target.name,
+            "permission": target.value,
+            "isChecked": target.checked
+        }
 
-        putByAjax(urlController);
+        putByAjax(urlController,checkboxData);
         
-        console.log(event.target);
+        console.log(event.target.checked);
     }
 
     function putByAjax(url = '', values = {}){
@@ -312,7 +318,8 @@
             type: 'PUT',
             data: {data: JSON.stringify(values), _token: '{{csrf_token()}}'},
             success: function success(data){
-                console.log(data)
+                let response = JSON.parse(data)
+                console.log(response)
             },  
             error: function error(err){
                 console.error(err);

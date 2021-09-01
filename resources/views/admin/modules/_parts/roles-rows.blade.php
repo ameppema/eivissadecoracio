@@ -9,7 +9,7 @@
 
 @foreach($permissionsCRUD as $permission)
     <div class="" data-role="{{$role}}">
-        <input value="{{$permission->name}}" name="{{$role}}" id="editor__read" type="checkbox">
+        <input value="{{$permission->name}}" name="{{$role}}" id="editor__read" type="checkbox" @roleCan($role,$permission) checked @endroleCan>
     </div>
 @endforeach
 

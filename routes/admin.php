@@ -59,7 +59,7 @@ Route::put('/user/{id}', [UsersController::class, 'update'])->name('admin.users.
 // Roles & Permissions
 Route::get('/permissions', [PermissionsController::class, 'index'])->name('admin.permissions');
 Route::get('/roles', [RolesController::class, 'index'])->name('admin.roles');
-Route::put('/roles/update', [RolesController::class, 'updateByAjax'])->name('admin.roles');
+Route::put('/roles/update', [RolesController::class, 'updateByAjax'])->name('admin.roles.update');
 Route::put('set-role', function(Request $req){
     return $req->all();
 })->name('admin.setroles');
