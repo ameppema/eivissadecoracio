@@ -9,6 +9,24 @@
 @stop
 
 @section('content')
+{{--Alert error--}}
+@if($errors->any())
+    <x-adminlte-alert class="bg-red " icon="fa-lg fas fa-exclamation-circle" title="Error en el Formulario" dismissable>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </x-adminlte-alert> 
+@endif
+{{--Alert response--}}
+@if(session()->has('message'))
+    <div class="error-notice" id="close-alert">
+        <div class="oaerror {{session()->get('alertStatus')}}">
+        <strong>Muy Bien!</strong> - {{session()->get('message')}}
+        </div> 
+    </div>
+@endif
 <form action="{{route('admin.profile.update',['user'=> $userData->id])}}" method="POST">
     @csrf
     @method('put')
@@ -61,12 +79,18 @@
 
                 <!-- Item Password -->
                 <div class="col">
-                    <input name="password" class="form-control" type="password" value="">
+                    <input name="password" class="form-control" type="password" placeholder="">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                    ¡Aviso: Solo si quiere cambiar su contraseña llene este campo!
+                    </small>
                 </div>
                 
                 <!-- Item Confirmation -->
                 <div class="col">
-                    <input name="password_confirmation" class="form-control" type="password" value="***************">
+                    <input name="password_confirmation" class="form-control" type="password" placeholder="">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                    ¡Aviso: Solo si quiere cambiar su contraseña llene este campo!
+                    </small>
                 </div>
             </section>
         </div>
@@ -114,6 +138,7 @@
 @stop
 
 @section('css')
+    <link rel="stylesheet" href="{{asset('css/alert.css')}}">
     <style>
         .section__title {
             margin-left: 7.5px;
@@ -164,4 +189,7 @@
             margin: 0 10px;
         }
     </style>
+@stop
+@section('js')
+    <script src="{{asset('js/utils.js')}}"></script>
 @stop
