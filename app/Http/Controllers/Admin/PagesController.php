@@ -20,6 +20,7 @@ class PagesController extends Controller
         if(!$isModule){
             return redirect()->route('admin.home');
         }
+        $this->authorize('admin.' . $module_name, $isModule);
         $module = Menu::find($id)->getPage;
 
         $galleryOne = Galleries::page($id)->gallery(1)->get();
