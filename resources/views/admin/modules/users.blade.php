@@ -74,9 +74,13 @@
                                     <i data-clickModal="{{$user->id}}" class="fas fa-edit"></i>
                                 </button>
 
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
+                                <form method="POST" action="{{route('admin.users.destroy',['id'=> $user->id])}}" class="d-inline">
+                                    @csrf
+                                    @method('delete')
+                                    <button title="Eliminar" class="btn btn-danger">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

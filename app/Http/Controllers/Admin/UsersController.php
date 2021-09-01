@@ -25,16 +25,6 @@ class UsersController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,17 +49,6 @@ class UsersController extends Controller
                         ->assignRole($newUser['role']);
         return redirect()->back()->with(['message'=>'Usuario Creado!','alertStatus'=>'success']);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
-    {
-        //
-    }
     
     /**
      * Display the specified resource.
@@ -80,17 +59,6 @@ class UsersController extends Controller
     public function userRole($id)
     {
         return response()->json(User::where('id',$id)->with('roles')->first());
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -117,7 +85,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->back()->with(['message'=>'Informacion de usuario actualizada!','alert-result'=>'success']);
+        return redirect()->back()->with(['message'=>'Informacion de usuario actualizada!','alertStatus'=>'success']);
     }
 
     /**
@@ -129,6 +97,6 @@ class UsersController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
-        return redirect()->back();
+        return redirect()->back()->with(['message'=>'Usuario Elimido!', 'alertStatus'=>'warning']);
     }
 }
