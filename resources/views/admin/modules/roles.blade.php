@@ -308,8 +308,6 @@
         }
 
         putByAjax(urlController,checkboxData);
-        
-        console.log(event.target.checked);
     }
 
     function putByAjax(url = '', values = {}){
