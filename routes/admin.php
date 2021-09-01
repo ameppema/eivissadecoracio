@@ -53,6 +53,7 @@ Route::put('/module/{name}/{id}', [PagesController::class, 'update'])->name('adm
 
 // Users
 Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
+Route::post('/users', [UsersController::class, 'store'])->name('admin.users.create');
 Route::get('/users-roles/{user}', [UsersController::class, 'userRole'])->name('admin.users.roles');
 Route::put('/user/{id}', [UsersController::class, 'update'])->name('admin.users.update')->middleware('can:update');
 

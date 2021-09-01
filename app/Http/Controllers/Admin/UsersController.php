@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 class UsersController extends Controller
 {
     public function __construct()
@@ -40,7 +42,22 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $newUser = $request->validate([
+            'password'=> ['required','confirmed','min:6'],
+            'name' => ['required','string'],
+            'email'=> ['email'],
+            'status' => ['required','numeric'],
+            'nickname'=> ['required','string'],
+            'role'  => ['required','string']
+        ]);
+        User::create([  'name'=>$newUser['name'],
+                        'email'=>$newUser['email'],
+                        'password'=> Hash::make($newUser['password']),
+                        'nickname' => $newUser['nickname'],
+                        'status' => $newUser['status'],
+                        ])
+                        ->assignRole($newUser['role']);
+        return redirect()->back()->with(['message'=>'Usuario Creado!','alertStatus'=>'success']);
     }
 
     /**

@@ -22,7 +22,7 @@
 {{--Alert response--}}
 @if(session()->has('message'))
     <div class="error-notice" id="close-alert">
-        <div class="oaerror {{session()->get('alert-result')}}">
+        <div class="oaerror {{session()->get('alertStatus')}}">
         <strong>Muy Bien!</strong> - {{session()->get('message')}}
         </div> 
     </div>
@@ -63,7 +63,7 @@
                             <td>{{$user->roles[0]->name}}</td>
 
                             <!-- Sesión -->
-                            <td>{{$user->last_login_at}}</td>
+                            <td>{{$user->last_login_at ?? 'Aun no ha iniciado session'}}</td>
 
                             <!-- Estado -->
                             <td>{{$user->status == 1 ? 'Activo'  :'Inactivo'}}</td>
@@ -88,13 +88,16 @@
 
     <div class="users__buttons">
         <!-- Acciones -->
-        <button title="Actualizar" class="btn btn-success">
+        <button title="Actualizar" data-toggle="modal" data-target="#newUserModal" class="btn btn-success">
             Agregar Nuevo usuario
         </button>
     </div>
 
-{{--Modal--}}
-    @include('admin.modules._parts.users-modal')
+{{--Modal Update User--}}
+    @include('admin.modules._parts.users-update-modal')
+{{--End Modal--}}
+{{--Modal New USer--}}
+    @include('admin.modules._parts.users-create-modal')
 {{--End Modal--}}
 @stop
 
