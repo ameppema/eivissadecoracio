@@ -1,7 +1,9 @@
 <?php
 namespace App\Traits;
 
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
 
 Trait Generator
 {
@@ -42,5 +44,26 @@ Trait Generator
         $deleted = DB::table('translations')
                     ->where('table','pages')
                     ->delete();
+    }
+
+    
+    public static function giveRole($userName,$roleName){
+        $user = User::where('name', $userName)->first();
+        $user->assignRole($roleName);
+        $user = User::with('roles')->get();
+        return $user;
+    }
+    public static function removeRole($userName,$roleName){
+        $user = User::where('name', $userName)->first();
+        $user->removeRole($roleName);
+        $user = User::with('roles')->get();
+        return $user;
+    }
+    public function givePermissionRole(){
+        
+    }
+    public static function createPermission($permissionName, $role = 'Admin'){
+        Permission::create(['name'=> $permissionName])->assignRole($role);
+        return Permission::all();
     }
 }

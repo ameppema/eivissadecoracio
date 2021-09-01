@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
         ]);
         \App\Models\User::create(['name'=>'Test User','email'=>'test@test.com','password'=> Hash::make('12345678')])->assignRole('Admin');
+        \App\Models\User::create(['name'=>'Test User2','email'=>'test2@test.com','password'=> Hash::make('12345678')])->assignRole('Guest');
         \App\Models\Partners::create(['titulo'=>'Partners','subtitulo'=>'Phasellus consequat sed dui a dapibus.','locale'=>'es']);
     }
 }

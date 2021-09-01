@@ -70,11 +70,13 @@
                     <button class="card__button">Click</button>
                 </a>
                 
+                @can('admin.users')
                 <a class="card__items" href="users">
                     <i class="card__logo fas fa-address-book"></i>
                     <p class="card__text">Usuarios</p>
                     <button class="card__button">Click</button>
                 </a>
+                @endcan
                 
                 <a class="card__items" href="permissions">
                     <i class="card__logo fas fa-lock"></i>

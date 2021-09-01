@@ -9,11 +9,9 @@
 @stop
 
 @section('content')
-    <section class="permissions">     
-        <div class="permission__titles">
+    <section class="permissions" id="permisionsContainer_2">     
+        <div class="permission__titles" >
             <div class="title__section">Secciones</div>
-            
-            <div class="title__dashboard">Dashboard</div>
 
             <div class="title__menu">Menú</div>
             
@@ -25,316 +23,27 @@
             
             <div class="title__restorations">Rehabilitaciones</div>
 
-            <div class="title__interiors">Interiores</div>
-
             <div class="title__kitchens">Cocinas</div>
+            
+            <div class="title__interiors">Interiores</div>
 
             <div class="title__hardwood">Parquets</div>
 
             <div class="title__partners">Partners</div>
 
-            <div class="title__users">Usuarios</div>
-
             <div class="title__roles">Roles</div>
-
+            
             <div class="title__permissions">Permisos</div>
-
+            
             <div class="title__profile">Perfil</div>
+            
+            <div class="title__users">Usuarios</div>
 
             <div class="title__actions">Acciones</div>
         </div>
+
+        @include('admin.modules._parts.permissions-rows')
         
-        <form action="#" class="permission__admin" method="POST">
-            @csrf
-            @method('update')
-
-            <div class="admin__title">Admin</div>
-            
-            <div class="admin__dashboard">
-                <input id="admin__dashboard" type="checkbox">
-            </div>
-
-            <div class="admin__menu">
-                <input id="admin__menu" type="checkbox">
-            </div>
-            
-            <div class="admin__slider">
-                <input id="admin__slider" type="checkbox">
-            </div>
-            
-            <div class="admin__history">
-                <input id="admin__history" type="checkbox">
-            </div>
-
-            <div class="admin__construction">
-                <input id="admin__construction" type="checkbox">
-            </div>
-            
-            <div class="admin__restorations">
-                <input id="admin__restorations" type="checkbox">
-            </div>
-
-            <div class="admin__interiors">
-                <input id="admin__interiors" type="checkbox">
-            </div>
-
-            <div class="admin__kitchens">
-                <input id="admin__kitchens" type="checkbox">
-            </div>
-
-            <div class="admin__hardwood">
-                <input id="admin__hardwood" type="checkbox">
-            </div>
-
-            <div class="admin__partners">
-                <input id="admin__partners" type="checkbox">
-            </div>
-
-            <div class="admin__users">
-                <input id="admin__users" type="checkbox">
-            </div>
-
-            <div class="admin__roles">
-                <input id="admin__roles" type="checkbox">
-            </div>
-
-            <div class="admin__permissions">
-                <input id="admin__permissions" type="checkbox">
-            </div>
-
-            <div class="admin__profile">
-                <input id="admin__profile" type="checkbox">
-            </div>
-
-            <div class="admin__actions">
-                <button title="save" class="button__save">
-                    <i class="fas fa-save"></i>
-                </button>
-
-                <button title="close" class="button__cancel">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-        </form>
-        
-        <form action="#" class="permission__editor" method="POST">
-            @csrf
-            @method('update')
-
-            <div class="editor__title">Editor</div>
-            
-            <div class="editor__dashboard">
-                <input id="editor__dashboard" type="checkbox">
-            </div>
-
-            <div class="editor__menu">
-                <input id="editor__menu" type="checkbox">
-            </div>
-            
-            <div class="editor__slider">
-                <input id="editor__slider" type="checkbox">
-            </div>
-            
-            <div class="editor__history">
-                <input id="editor__history" type="checkbox">
-            </div>
-
-            <div class="editor__construction">
-                <input id="editor__construction" type="checkbox">
-            </div>
-            
-            <div class="editor__restorations">
-                <input id="editor__restorations" type="checkbox">
-            </div>
-
-            <div class="editor__interiors">
-                <input id="editor__interiors" type="checkbox">
-            </div>
-
-            <div class="editor__kitchens">
-                <input id="editor__kitchens" type="checkbox">
-            </div>
-
-            <div class="editor__hardwood">
-                <input id="editor__hardwood" type="checkbox">
-            </div>
-
-            <div class="editor__partners">
-                <input id="editor__partners" type="checkbox">
-            </div>
-
-            <div class="editor__users">
-                <input id="editor__users" type="checkbox">
-            </div>
-
-            <div class="editor__roles">
-                <input id="editor__roles" type="checkbox">
-            </div>
-
-            <div class="editor__permissions">
-                <input id="editor__permissions" type="checkbox">
-            </div>
-
-            <div class="editor__profile">
-                <input id="editor__profile" type="checkbox">
-            </div>
-
-            <div class="editor__actions">
-                <button title="save" class="button__save">
-                    <i class="fas fa-save"></i>
-                </button>
-
-                <button title="close" class="button__cancel">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-        </form>
-        
-        <form action="#" class="permission__guest" method="POST">
-            @csrf
-            @method('update')
-
-            <div class="guest__title">Guest</div>
-            
-            <div class="guest__dashboard">
-                <input id="guest__dashboard" type="checkbox">
-            </div>
-
-            <div class="guest__menu">
-                <input id="guest__menu" type="checkbox">
-            </div>
-            
-            <div class="guest__slider">
-                <input id="guest__slider" type="checkbox">
-            </div>
-            
-            <div class="guest__history">
-                <input id="guest__history" type="checkbox">
-            </div>
-
-            <div class="guest__construction">
-                <input id="guest__construction" type="checkbox">
-            </div>
-            
-            <div class="guest__restorations">
-                <input id="guest__restorations" type="checkbox">
-            </div>
-
-            <div class="guest__interiors">
-                <input id="guest__interiors" type="checkbox">
-            </div>
-
-            <div class="guest__kitchens">
-                <input id="guest__kitchens" type="checkbox">
-            </div>
-
-            <div class="guest__hardwood">
-                <input id="guest__hardwood" type="checkbox">
-            </div>
-
-            <div class="guest__partners">
-                <input id="guest__partners" type="checkbox">
-            </div>
-
-            <div class="guest__users">
-                <input id="guest__users" type="checkbox">
-            </div>
-
-            <div class="guest__roles">
-                <input id="guest__roles" type="checkbox">
-            </div>
-
-            <div class="guest__permissions">
-                <input id="guest__permissions" type="checkbox">
-            </div>
-
-            <div class="guest__profile">
-                <input id="guest__profile" type="checkbox">
-            </div>
-
-            <div class="guest__actions">
-                <button title="save" class="button__save">
-                    <i class="fas fa-save"></i>
-                </button>
-
-                <button title="close" class="button__cancel">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-        </form>
-        
-        <form action="#" class="permission__special" method="POST">
-            @csrf
-            @method('update')
-
-            <div class="special__title">Special</div>
-            
-            <div class="special__dashboard">
-                <input id="special__dashboard" type="checkbox">
-            </div>
-
-            <div class="special__menu">
-                <input id="special__menu" type="checkbox">
-            </div>
-            
-            <div class="special__slider">
-                <input id="special__slider" type="checkbox">
-            </div>
-            
-            <div class="special__history">
-                <input id="special__history" type="checkbox">
-            </div>
-
-            <div class="special__construction">
-                <input id="special__construction" type="checkbox">
-            </div>
-            
-            <div class="special__restorations">
-                <input id="special__restorations" type="checkbox">
-            </div>
-
-            <div class="special__interiors">
-                <input id="special__interiors" type="checkbox">
-            </div>
-
-            <div class="special__kitchens">
-                <input id="special__kitchens" type="checkbox">
-            </div>
-
-            <div class="special__hardwood">
-                <input id="special__hardwood" type="checkbox">
-            </div>
-
-            <div class="special__partners">
-                <input id="special__partners" type="checkbox">
-            </div>
-
-            <div class="special__users">
-                <input id="special__users" type="checkbox">
-            </div>
-
-            <div class="special__roles">
-                <input id="special__roles" type="checkbox">
-            </div>
-
-            <div class="special__permissions">
-                <input id="special__permissions" type="checkbox">
-            </div>
-
-            <div class="special__profile">
-                <input id="special__profile" type="checkbox">
-            </div>
-
-            <div class="special__actions">
-                <button title="save" class="button__save">
-                    <i class="fas fa-save"></i>
-                </button>
-
-                <button title="close" class="button__cancel">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-        </form>
     </section>
 @stop
 
@@ -459,4 +168,47 @@
             border: 1px solid transparent;
         }
     </style>
+@stop
+@section('js')
+<script type="application/javascript">
+    const urlController = '/admin/permissions/update';
+    const DataContainer = $('#permisionsContainer_2');
+
+    DataContainer.on('click', getCheckData)
+
+
+    function getCheckData(event){
+        let role, permission, target, isChecked;
+        target = event.target;
+
+        if(!target.getAttribute('type') || target.getAttribute('type') != 'checkbox'){
+            return null;
+        }
+        
+        let checkboxData = {
+            "role": target.name,
+            "permission": target.value,
+            "isChecked": target.checked
+        }
+
+        putByAjax(urlController,checkboxData);
+        
+        console.log(checkboxData);
+    }
+
+    function putByAjax(url = '', values = {}){
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            data: {data: JSON.stringify(values), _token: '{{csrf_token()}}'},
+            success: function success(data){
+                let response = JSON.parse(data)
+                console.log(response)
+            },  
+            error: function error(err){
+                console.error(err);
+            }
+        });
+    }
+</script>
 @stop

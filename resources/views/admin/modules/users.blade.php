@@ -9,6 +9,24 @@
 @stop
 
 @section('content')
+{{--Alert Error--}}
+@if($errors->any())
+    <x-adminlte-alert class="bg-red " icon="fa-lg fas fa-exclamation-circle" title="Error en el Formulario" dismissable>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </x-adminlte-alert> 
+@endif
+{{--Alert response--}}
+@if(session()->has('message'))
+    <div class="error-notice" id="close-alert">
+        <div class="oaerror {{session()->get('alertStatus')}}">
+        <strong>Muy Bien!</strong> - {{session()->get('message')}}
+        </div> 
+    </div>
+@endif
     <section class="content">
         <div class="card">
             <div class="card-body">
@@ -27,32 +45,33 @@
                     </thead>
 
                     <tbody class="users__items">
+                        @foreach($users as $user) 
                         <tr>
                             <!-- ID -->
-                            <td>1</td>
+                            <td>{{$user->id}}</td>
 
                             <!-- Nombre -->
-                            <td>Paul Marquez</td>
+                            <td>{{$user->name}}</td>
                             
                             <!-- Nick -->
-                            <td>Paul</td>
+                            <td>{{$user->nickname}}</td>
                             
                             <!-- Correo -->
-                            <td>ameppema@hotmail.com</td>
+                            <td>{{$user->email}}</td>
                             
                             <!-- Rol -->
-                            <td>Administrador</td>
+                            <td>{{$user->roles[0]->name ?? 'Sin role' }}</td>
 
                             <!-- Sesión -->
-                            <td>27/08/2021</td>
+                            <td>{{$user->last_login_at ?? 'Aun no ha iniciado session'}}</td>
 
                             <!-- Estado -->
-                            <td>Activo</td>
+                            <td>{{$user->status == 1 ? 'Activo'  :'Inactivo'}}</td>
                             
                             <!-- Acciones -->
                             <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
+                                <button title="Editar"  data-clickModal="{{$user->id}}" data-toggle="modal" data-target="#editUserModal"  class="btn btn-warning">
+                                    <i data-clickModal="{{$user->id}}" class="fas fa-edit"></i>
                                 </button>
 
                                 <button title="Eliminar" class="btn btn-danger">
@@ -60,176 +79,7 @@
                                 </button>
                             </td>
                         </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>2</td>
-
-                            <!-- Nombre -->
-                            <td>Juan Perez</td>
-                            
-                            <!-- Nick -->
-                            <td>Juan</td>
-                            
-                            <!-- Correo -->
-                            <td>juanito_power@gmail.com</td>
-
-                            <!-- Rol -->
-                            <td>Editor</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Inactivo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>3</td>
-
-                            <!-- Nombre -->
-                            <td>Andres Iglesias</td>
-                            
-                            <!-- Nick -->
-                            <td>Andrew</td>
-                            
-                            <!-- Correo -->
-                            <td>andrewmaster@yahoo.com</td>
-
-                            <!-- Rol -->
-                            <td>Editor</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Activo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>4</td>
-
-                            <!-- Nombre -->
-                            <td>Maria Santos</td>
-                            
-                            <!-- Nick -->
-                            <td>Mary</td>
-                            
-                            <!-- Correo -->
-                            <td>mari280585@hotmail.com</td>
-
-                            <!-- Rol -->
-                            <td>Editor</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Activo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>5</td>
-
-                            <!-- Nombre -->
-                            <td>Sara Montero</td>
-                            
-                            <!-- Nick -->
-                            <td>Sarita</td>
-                            
-                            <!-- Correo -->
-                            <td>sara_montero@universidad.com</td>
-
-                            <!-- Rol -->
-                            <td>Editor</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Inactivo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <!-- ID -->
-                            <td>6</td>
-
-                            <!-- Nombre -->
-                            <td>Silvio Paredes</td>
-                            
-                            <!-- Nick -->
-                            <td>Silvio</td>
-                            
-                            <!-- Correo -->
-                            <td>emprendedor@hotmail.com</td>
-
-                            <!-- Rol -->
-                            <td>Administrador</td>
-
-                            <!-- Sesión -->
-                            <td>27/08/2021</td>
-
-                            <!-- Estado -->
-                            <td>Activo</td>
-                            
-                            <!-- Acciones -->
-                            <td class="item__actions">
-                                <button title="Editar" class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-
-                                <button title="Eliminar" class="btn btn-danger">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>                        
             </div>
@@ -238,13 +88,21 @@
 
     <div class="users__buttons">
         <!-- Acciones -->
-        <button title="Actualizar" class="btn btn-success">
+        <button title="Actualizar" data-toggle="modal" data-target="#newUserModal" class="btn btn-success">
             Agregar Nuevo usuario
         </button>
     </div>
+
+{{--Modal Update User--}}
+    @include('admin.modules._parts.users-update-modal')
+{{--End Modal--}}
+{{--Modal New USer--}}
+    @include('admin.modules._parts.users-create-modal')
+{{--End Modal--}}
 @stop
 
 @section('css')
+<link rel="stylesheet" href="{{asset('css/alert.css')}}">
     <style>
         .section__title {
             margin-left: 7.5px;
@@ -267,4 +125,34 @@
             margin: 0 10px;
         }
     </style>
+@stop
+
+@section('js')
+    <script src="{{asset('js/utils.js')}}"></script>
+    <script type="text/javascript" defer>
+
+        $('[data-clickModal]').on('click', getDataByAjax)
+
+        function getDataByAjax(e){
+            const userId = e.target.getAttribute('data-clickModal');
+            const url = '/admin/users-roles/' + userId;
+            const UserForm = $('#modalUserUpdate');
+            const UserFormName = $('#userNamePlaceHolder');
+            
+            /* Ajax */
+            $.ajax({
+                url: url,
+                type: 'GET',
+                success: function(data){
+                    $('#modalUserUpdate').attr('action', '/admin/user/' + data.id);
+                    console.log(data);
+                    UserFormName.text(data.name);
+
+                },
+                error: function(err){
+                    console.error(err)
+                }
+            });
+        }
+    </script>
 @stop

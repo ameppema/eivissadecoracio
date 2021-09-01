@@ -23,6 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'last_login_at',
+        'nickame',
+        'status',
     ];
 
     /**
@@ -45,6 +48,6 @@ class User extends Authenticatable
     ];
 
     public function adminlte_desc(){
-        return 'Administrador';
+        return $this->roles->pluck('name')[0] ?? 'Invitado';
     }
 }

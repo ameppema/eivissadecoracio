@@ -19,7 +19,6 @@ class Localization
     {
         if(isset($request->segments()[0]) && $request->segments()[0] == 'admin'){
             return redirect()->route('admin.home');
-            // return $next($request);
         }
         $locale = $request->route()->parameters()['locale'] ?? $this->sessionLocale();
         if(in_array($locale, ['es','en'])){

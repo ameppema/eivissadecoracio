@@ -9,6 +9,27 @@
 @stop
 
 @section('content')
+{{--Alert error--}}
+@if($errors->any())
+    <x-adminlte-alert class="bg-red " icon="fa-lg fas fa-exclamation-circle" title="Error en el Formulario" dismissable>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </x-adminlte-alert> 
+@endif
+{{--Alert response--}}
+@if(session()->has('message'))
+    <div class="error-notice" id="close-alert">
+        <div class="oaerror {{session()->get('alertStatus')}}">
+        <strong>Muy Bien!</strong> - {{session()->get('message')}}
+        </div> 
+    </div>
+@endif
+<form action="{{route('admin.profile.update',['user'=> $userData->id])}}" method="POST">
+    @csrf
+    @method('put')
     <section class="content user__profile">
         <div class="profile__name">
             <section class="name__titles">
@@ -22,15 +43,19 @@
                 <div>Nickname</div>
             </section>
             
-            <section class="name__items">
+            <section class="mt-2 form-row">
                 <!-- Item ID -->
-                <div>1</div>
+                <div class="col-4">{{$userData->id}}</div>
 
                 <!-- Item Full Name -->
-                <div>Paul Marquez</div>
+                <div class="col-4">
+                    <input name="name" class="form-control" type="text" value="{{$userData->name}}">
+                </div>
                 
                 <!-- Item Nickname -->
-                <div>Paul</div>
+                <div class="col-4">
+                    <input name="nickname" class="form-control" type="text" value="{{$userData->nickname ?? 'Sin Nickname aun'}}">
+                </div>
             </section>
         </div>
         
@@ -46,15 +71,27 @@
                 <div>Confirmación</div>
             </section>
             
-            <section class="mail__items">
+            <section class="mt-2 form-row">
                 <!-- Item Mail -->
-                <div>ameppema@hotmail.com</div>
+                <div class="col-4">
+                    <input name="email" class="form-control" type="email" value="{{$userData->email}}">
+                </div>
 
                 <!-- Item Password -->
-                <div>***************</div>
+                <div class="col">
+                    <input name="password" class="form-control" type="password" placeholder="">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                    ¡Aviso: Solo si quiere cambiar su contraseña llene este campo!
+                    </small>
+                </div>
                 
                 <!-- Item Confirmation -->
-                <div>***************</div>
+                <div class="col">
+                    <input name="password_confirmation" class="form-control" type="password" placeholder="">
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                    ¡Aviso: Solo si quiere cambiar su contraseña llene este campo!
+                    </small>
+                </div>
             </section>
         </div>
         
@@ -72,19 +109,23 @@
             
             <section class="action__items">
                 <!-- Item Action -->
-                <div>Editor</div>
+                <div class="col-4">
+                    {{$userData->roles[0]->name ?? "Sin Rol"}}
+                </div>
 
                 <!-- Item Action -->
-                <div>Activo</div>
+                <div class="col">
+                    {{$userData->status == 1 ? "Activo" : "Inactivo"}}
+                </div>
                 
                 <!-- Item Action -->
-                <div>27/08/2021 - 13:00</div>
+                <div class="col">{{$userData->last_login_at}}</div>
             </section>
         </div>
 
         <div class="profile__buttons">
             <!-- Acciones -->
-            <button title="Actualizar" class="btn btn-success">
+            <button  type="submit" title="Actualizar" class="btn btn-success">
                 Actualizar
             </button>
 
@@ -93,9 +134,11 @@
             </button>
         </div>
     </section>
+</form>
 @stop
 
 @section('css')
+    <link rel="stylesheet" href="{{asset('css/alert.css')}}">
     <style>
         .section__title {
             margin-left: 7.5px;
@@ -146,4 +189,7 @@
             margin: 0 10px;
         }
     </style>
+@stop
+@section('js')
+    <script src="{{asset('js/utils.js')}}"></script>
 @stop

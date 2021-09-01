@@ -9,59 +9,33 @@
 @stop
 
 @section('content')
-    <section class="roles">
+    <div class="card">
+        <div class="card-body">
+            <div id="infoFeedback"></div>
+        </div>
+    </div>
+    <section class="roles" id="permisionsContainer">
         <div class="role__titles">
             <div class="title__role">Permisos</div>
+            
+            <div class="title__create">Crear</div>
             
             <div class="title__read">Ver</div>
             
             <div class="title__update">Editar</div>
             
-            <div class="title__create">Crear</div>
             
             <div class="title__delete">Borrar</div>
             
             <div class="title__actions">Acciones</div>
         </div>
         
-        <form action="#" class="role__admin" method="POST">
-            @csrf
-            @method('update')
-
-            <div class="admin__title">
-                Admin
-            </div>
-            
-            <div class="admin__read">
-                <input id="admin__read" type="checkbox" checked>
-            </div>
-
-            <div class="admin__update">
-                <input id="admin__update" type="checkbox" checked>
-            </div>
-            
-            <div class="admin__create">
-                <input id="admin__create" type="checkbox" checked>
-            </div>
-
-            <div class="admin__delete">
-                <input id="admin__delete" type="checkbox" checked>
-            </div>
-            
-            <div class="admin__buttons">
-                <button title="save" class="button__save">
-                    <i class="fas fa-save"></i>
-                </button>
-
-                <button title="close" class="button__cancel">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-        </form>
+        <!-- Filas y Columnas -->
+        @include('admin.modules._parts.roles-rows')
         
-        <form action="#" class="role__editor" method="POST">
+        <!-- <form action="/admin/set-role" class="role__editor" method="POST">
             @csrf
-            @method('update')
+            @method('put')
 
             <div class="editor__title">
                 Editor
@@ -94,9 +68,9 @@
             </div>
         </form>
         
-        <form action="#" class="role__guest" method="POST">
+        <form action="/admin/set-role" class="role__guest" method="POST">
             @csrf
-            @method('update')
+            @method('put')
 
             <div class="guest__title">
                 Guest
@@ -129,9 +103,9 @@
             </div>
         </form>
         
-        <form action="#" class="role__special" method="POST">
+        <form action="/admin/set-role" class="role__special" method="POST">
             @csrf
-            @method('update')
+            @method('put')
 
             <div class="special__title">
                 Special
@@ -162,7 +136,7 @@
                     <i class="fas fa-window-close"></i>
                 </button>
             </div>
-        </form>
+        </form> -->
         
         {{-- <div class="roles__buttons">
             <!-- Acciones -->
@@ -204,7 +178,7 @@
             display: flex;
             align-items: center;
         }
-        
+        .role,
         .role__admin,
         .role__editor,
         .role__guest,
@@ -225,6 +199,7 @@
             margin: 0 10px;
         }
 
+        .role div input[type="checkbox"],
         .role__admin div input[type="checkbox"],
         .role__editor div input[type="checkbox"],
         .role__guest div input[type="checkbox"],
@@ -242,6 +217,7 @@
             cursor: pointer;
         }
         
+        .role div input[type="checkbox"]::after,
         .role__admin div input[type="checkbox"]::after,
         .role__editor div input[type="checkbox"]::after,
         .role__guest div input[type="checkbox"]::after,
@@ -254,6 +230,7 @@
             color: white;
         }
         
+        .role div input[type="checkbox"]:hover,
         .role__admin div input[type="checkbox"]:hover,
         .role__editor div input[type="checkbox"]:hover,
         .role__guest div input[type="checkbox"]:hover,
@@ -261,6 +238,7 @@
             background-color: gray;
         }
         
+        .role div input[type="checkbox"]:checked,
         .role__admin div input[type="checkbox"]:checked,
         .role__editor div input[type="checkbox"]:checked,
         .role__guest div input[type="checkbox"]:checked,
@@ -268,6 +246,7 @@
             background-color: #28a745;
         }
         
+        .role div input[type="checkbox"]:checked:after,
         .role__admin div input[type="checkbox"]:checked:after,
         .role__editor div input[type="checkbox"]:checked:after,
         .role__guest div input[type="checkbox"]:checked:after,
@@ -275,6 +254,7 @@
             display: block;
         }
         
+        .role__buttons button,
         .admin__buttons button,
         .editor__buttons button,
         .guest__buttons button,
@@ -298,4 +278,50 @@
             border: 1px solid transparent;
         }
     </style>
+@stop
+
+@section('js')
+<script type="application/javascript">
+    const urlController = '/admin/roles/update';
+    const DataContainer = $('#permisionsContainer');
+
+    DataContainer.on('click', getCheckData)
+
+
+    function getCheckData(event){
+        let role, permission, target, isChecked;
+        target = event.target;
+
+        if(!target.getAttribute('type') || target.getAttribute('type') != 'checkbox'){
+            return null;
+        }
+        let checkboxData = {
+            "role": target.name,
+            "permission": target.value,
+            "isChecked": target.checked
+        }
+
+        putByAjax(urlController,checkboxData);
+    }
+
+    function putByAjax(url = '', values = {}){
+        $.ajax({
+            url: url,
+            type: 'PUT',
+            data: {data: JSON.stringify(values), _token: '{{csrf_token()}}'},
+            success: function success(data){
+                let response = JSON.parse(data)
+                let canOrCant = response.isChecked == true ? 'asignado' : 'revocado';
+                let html = `
+                    <h2>Permiso : ${response.permission} ${canOrCant} a ${response.role}</h2>
+                `;
+                $('#infoFeedback').html(html);
+                console.log(response)
+            },  
+            error: function error(err){
+                console.error(err);
+            }
+        });
+    }
+</script>
 @stop

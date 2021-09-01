@@ -231,83 +231,90 @@ return [
             'topnav_right' => true,
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text'        => 'Dashborad',
-            'url'         => 'admin',
+            'route'         => 'admin.home',
             'icon'        => 'fas fa-globe',
             'label_color' => 'success',
         ],
         ['header' => 'Secciones'],
         [
             'text' => 'Menu',
-            'url'  => 'admin/category_menu',
+            'route'  => 'admin.menu',
             'icon' => 'fas fa-list-ul',
+            'can' => 'admin.menu'
         ],
         [
             'text' => 'Slider',
-            'url'  => 'admin/slide',
+            'route'  => 'admin.slide',
             'icon' => 'far fa-images',
+            'can' => 'admin.slider'
         ],
         [
             'text' => 'Historia',
-            'url'  => 'admin/module/historia/6',
+            'route'  => ['admin.module',['name' => 'historia','id' => 6]],
             'icon' => 'fas fa-landmark',
+            'can' => 'admin.historia'
         ],
         [
             'text' => 'Obras',
-            'url'  => 'admin/module/obras/1',
+            'route'  => ['admin.module',['name' => 'obras','id' => 1]],
             'icon' => 'fas fa-hard-hat',
+            'can' => 'admin.obras'
         ],
         [
             'text' => 'Rehabilitaciones',
-            'url'  => 'admin/module/rehabilitaciones/2',
+            'route'  => ['admin.module',['name' => 'rehabilitaciones','id' => 2]],
             'icon' => 'fas fa-hammer',
+            'can' => 'admin.rehabilitaciones'
         ],
         [
             'text' => 'Interiores',
-            'url'  => 'admin/module/interiores/3',
+            'route'  => ['admin.module',['name' => 'interiores','id' => 3]],
             'icon' => 'fas fa-couch',
+            'can' => 'admin.cocinas'
         ],
         [
             'text' => 'Cocinas',
-            'url'  => 'admin/module/cocinas/4',
+            'route'  => ['admin.module',['name' => 'cocinas','id' => 4]],
             'icon' => 'fas fa-utensils',
+            'can' => 'admin.cocinas'
         ],
         [
             'text' => 'Parquets',
-            'url'  => 'admin/module/parquets/5',
+            'route'  => ['admin.module',['name' => 'parquets','id' => 5]],
             'icon' => 'fas fa-briefcase',
+            'can' => 'admin.parquets'
         ],
         [
             'text' => 'Partners',
-            'url'  => 'admin/module/partners',
+            'route'  => 'admin.module.partners',
             'icon' => 'fas fa-handshake',
+            'can' => 'admin.partners',
         ],
         ['header' => 'Gestion de usuarios'],
         [
             'text' => 'Usuarios',
-            'url'  => 'admin/users',
+            'route'  => 'admin.users',
             'icon' => 'fas fa-address-book',
             'can' => 'admin.users'
         ],
         [
             'text' => 'Roles',
-            'url'  => 'admin/roles',
-            'icon' => 'fas fa-lock'
+            'route'  => 'admin.roles',
+            'icon' => 'fas fa-lock',
+            'can' => 'admin.roles'
         ],
         [
             'text' => 'Permisos',
-            'url'  => 'admin/permissions',
-            'icon' => 'fas fa-key'
+            'route'  => 'admin.permissions',
+            'icon' => 'fas fa-key',
+            'can' => 'admin.premisos'
         ],
         [
             'text' => 'Perfil',
-            'url'  => 'admin/profile',
+            'route'  => 'admin.profile',
             'icon' => 'fas fa-fw fa-user',
+            'can' => 'admin.perfil'
         ],
     ],
 

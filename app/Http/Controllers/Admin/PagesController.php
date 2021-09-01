@@ -17,8 +17,7 @@ class PagesController extends Controller
         App::setLocale('es');
         $module_name = $param;
         $isModule = Pages::select('id')->where('id', '=', $id )->first();
-        if(!$isModule)
-        {
+        if(!$isModule){
             return redirect()->route('admin.home');
         }
         $module = Menu::find($id)->getPage;
@@ -58,6 +57,9 @@ class PagesController extends Controller
 
     public function update(Request $request, Pages $module, $name, $id)
     {
+        if ($request->user()->cannot('update', $module)) {
+            abort(403);
+        }
         $module =  Pages::find($id);
 
         $datos = request()->validate([
