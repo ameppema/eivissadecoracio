@@ -56,6 +56,7 @@ Route::get('/users', [UsersController::class, 'index'])->name('admin.users');
 Route::post('/users', [UsersController::class, 'store'])->name('admin.users.create');
 Route::get('/users-roles/{user}', [UsersController::class, 'userRole'])->name('admin.users.roles');
 Route::put('/user/{id}', [UsersController::class, 'update'])->name('admin.users.update')->middleware('can:update');
+Route::delete('/user/{id}', [UsersController::class, 'destroy'])->name('admin.users.destroy')->middleware('can:delete');
 
 // Roles & Permissions
 Route::get('/permissions', [PermissionsController::class, 'index'])->name('admin.permissions');
@@ -63,9 +64,6 @@ Route::put('/permissions/update', [PermissionsController::class, 'updateByAjax']
 
 Route::get('/roles', [RolesController::class, 'index'])->name('admin.roles');
 Route::put('/roles/update', [RolesController::class, 'updateByAjax'])->name('admin.roles.update');
-Route::put('set-role', function(Request $req){
-    return $req->all();
-})->name('admin.setroles');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
 Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('admin.profile.update');

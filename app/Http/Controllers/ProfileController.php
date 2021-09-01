@@ -20,7 +20,7 @@ class ProfileController extends Controller
     }
     public function update(Request $request, User $user){
 
-        if($request->password != null && $request->password_confirmation != null){
+        if(request('password') !== null && request('password')){
             $newPassword = request()->validate([
                 'password'=> ['required','confirmed','min:6'],
             ]);

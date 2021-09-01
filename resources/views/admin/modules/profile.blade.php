@@ -79,16 +79,16 @@
 
                 <!-- Item Password -->
                 <div class="col">
-                    <input name="password" class="form-control" type="password" placeholder="">
-                    <small id="passwordHelpBlock" class="form-text text-muted">
+                    <input name="password" class="form-control" type="password">
+                    <small class="form-text text-muted">
                     ¡Aviso: Solo si quiere cambiar su contraseña llene este campo!
                     </small>
                 </div>
                 
                 <!-- Item Confirmation -->
                 <div class="col">
-                    <input name="password_confirmation" class="form-control" type="password" placeholder="">
-                    <small id="passwordHelpBlock" class="form-text text-muted">
+                    <input name="password_confirmation" class="form-control" type="password">
+                    <small class="form-text text-muted">
                     ¡Aviso: Solo si quiere cambiar su contraseña llene este campo!
                     </small>
                 </div>

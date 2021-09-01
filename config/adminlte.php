@@ -271,7 +271,7 @@ return [
             'text' => 'Interiores',
             'route'  => ['admin.module',['name' => 'interiores','id' => 3]],
             'icon' => 'fas fa-couch',
-            'can' => 'admin.cocinas'
+            'can' => 'admin.interiores'
         ],
         [
             'text' => 'Cocinas',
