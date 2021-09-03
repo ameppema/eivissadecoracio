@@ -24,6 +24,7 @@ class RolesController extends Controller
     public function updateByAjax(Request $request){
         $inputData = json_decode($request->data);
         if(isset($inputData->role)){
+            if($inputData->role === 'Admin') return response()->json(json_encode($inputData));
             $role = Role::where('name',$inputData->role)->first();
             if($inputData->isChecked == true){
                 if($inputData->permission == 'all'){
