@@ -15,11 +15,10 @@ class PermissionsController extends Controller
     }
     public function index(Request $request)
     {
-        $userID = User::where('id', $request->user()->id)->first();
         $rolesAll = Role::all()->pluck('name');
         $permissionsAll = Permission::all()->whereNotIn('name',['create','read','update','delete'])->pluck('name');
         
-        return view('admin.modules.permissions', compact(['userID', 'permissionsAll', 'rolesAll']));
+        return view('admin.modules.permissions', compact(['permissionsAll', 'rolesAll']));
     }
 
     public function updateByAjax(Request $request){

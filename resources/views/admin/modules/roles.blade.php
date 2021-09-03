@@ -211,8 +211,6 @@
                 const checkList = $('[name="'+ response.role+ '"]');
                 const checkAll = $('[name="'+ response.role+ '"][value="all"]');
                 const checkedElements = $('input[value!="all"][name="'+ response.role+ '"]input:checked') 
-                console.log(response)
-                console.log(checkedElements.length)
 
                 if(response.permission == 'all' && response.isChecked === true) {//check all inputs from a certain role
                     checkList.each((i,element)=>{element.checked = true;})

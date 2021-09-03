@@ -15,13 +15,10 @@
 
 
     <div class="admin__actions">
-        <button title="save" class="button__save">
-            <i class="fas fa-save"></i>
-        </button>
-
-        <button title="close" class="button__cancel">
-            <i class="fas fa-window-close"></i>
-        </button>
+        <div class="">
+                <input class="checked-all" value="all" name="{{$role}}" id="editor__read" type="checkbox" @roleCanAll($role,['create','read','update','delete']) checked @endroleCanAll>
+                <span >Seleccionar todos</span>
+        </div>
     </div>
 </form>
 @endforeach
