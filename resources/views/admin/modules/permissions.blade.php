@@ -192,8 +192,6 @@
         }
 
         putByAjax(urlController,checkboxData);
-        
-        console.log(checkboxData);
     }
 
     function putByAjax(url = '', values = {}){
@@ -203,6 +201,19 @@
             data: {data: JSON.stringify(values), _token: '{{csrf_token()}}'},
             success: function success(data){
                 let response = JSON.parse(data)
+                const checkList = $('[name="'+ response.role+ '"]');
+                const checkAll = $('[name="'+ response.role+ '"][value="all"]');
+                const checkedElements = $('input[value!="all"][name="'+ response.role+ '"]input:checked')
+
+                if(response.permission == 'all' && response.isChecked === true) {//check all inputs from a certain role
+                    checkList.each((i,element)=>{element.checked = true;})
+                }
+                else if(response.permission == 'all' && response.isChecked === false){//uncheck all inputs from a speceific role
+                    checkList.each((i,element)=>{element.checked = false;})
+                }
+
+                if(checkedElements.length >= checkList.length - 1){checkAll.attr('checked','checked')}//check input where value = all from a speceific role
+                else if(checkedElements.length < checkList.length - 1){checkAll.attr('checked',false)}//uncheck input where value = all from a speceific role
                 console.log(response)
             },  
             error: function error(err){
