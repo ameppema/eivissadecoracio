@@ -54,7 +54,7 @@
                             <tbody id="mylist">
                                 @foreach($menu as $item)
                                     <tr data-id="{{$item->id}}">
-                                        <td style="vertical-align: middle;" data-id="{{$item->id}}">{{$item->sort_order}}</td>
+                                        <td style="vertical-align: middle;" data-id="{{$item->id}}" class="drag-element">{{$item->sort_order}}</td>
                                         
                                         <td style="vertical-align: middle;" class="text-capitalize">{{$item->nombre}}</td>
 
@@ -163,12 +163,16 @@
             onEnd: getOrder
         });
 
-        function getOrder(){
+        function getOrder(event){
             let ordered = SortList.sortable('toArray');
             let orderUpdated = [];
             ordered.forEach((id, index) => {
                 index += 1;
                 orderUpdated.push({index, id});
+            });
+
+            $('.drag-element').each((i,element) => {
+                element.textContent = orderUpdated[i].index
             });
 
             $.ajax({
@@ -202,7 +206,6 @@
             url: '/admin/category_menu/getDataByAjax/' + dataId,
             type: 'GET',
             success: function(data){
-                console.log(data)
                 $('#menu_nombre_en').val(data.translation.nombre_en);
                 $('#menu_nombre_es').val(data.nombre);
             },

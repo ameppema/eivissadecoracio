@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use App\Traits\Generator;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;

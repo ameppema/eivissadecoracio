@@ -10,7 +10,6 @@ $(document).on('DOMContentLoaded', function(){
 
 /* IMAGES FEEDBACK */
 function FeedBackImg(InputImage, placeHolderImg, placeHolderText = false){
-    console.log(InputImage);
     let preview = $(placeHolderImg) ?? placeHolderImg;
     $(InputImage).on('change',function(){
         let file = $(InputImage)[0].files[0];

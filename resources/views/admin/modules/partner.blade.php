@@ -84,7 +84,7 @@
                             <tbody id="mylist">
                                 @foreach($gallery as $item)
                                     <tr data-id="{{$item->id}}">
-                                        <td data-id="{{$item->id}}">{{$item->sort_order}}</td>
+                                        <td data-id="{{$item->id}}" class="drag-element">{{$item->sort_order}}</td>
                                         <td>
                                             <img style="width: 150px;" src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
                                         </td>
@@ -294,6 +294,9 @@
                     index += 1;
                     orderUpdated.push({index, id});
                 });
+                $($(".drag-element").get().reverse()).each((i,element) => {
+                element.textContent = orderUpdated[i].index
+            });
                 $.ajax({
                     type: 'PUT',
                     url: '/admin/module/partners/order',
@@ -311,7 +314,6 @@
                         setTimeout(() => {
                             Alert.toggle('slow');
                         }, 2000);
-                        // console.log('%c Orden Cambiado Correctamente','background-color:green')
                     },
                     error: (err) => console.error('Not Succes')
                 })
