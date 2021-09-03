@@ -2,7 +2,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\SlideController;
-use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ImagesController;
@@ -11,7 +10,6 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RolesController;
-use Illuminate\Http\Request;
 
 Route::get('/home', [HomeController::class, 'index'])->name('admin.home');
 
@@ -29,10 +27,6 @@ Route::put('/category_menu/sort', [MenuController::class, 'sortMenu'])->name('ad
 Route::get('/category_menu/getDataByAjax/{id}', [MenuController::class, 'getDataByAjax'])->name('admin.menu.ajax');
 Route::put('/category_menu/edit/{id}', [MenuController::class, 'update'])->name('admin.menu.update')->middleware('can:update');
 Route::delete('/category_menu/delete/{id}', [MenuController::class, 'destroy'])->name('admin.menu.destroy')->middleware('can:delete');
-
-/* Services routes */
-Route::get('/services', [ServiceController::class, 'index'])->name('admin.service');
-Route::post('/services', [ServiceController::class, 'store'])->name('admin.store');
 
 //Gallery routes
 Route::post('/gallery', [ImagesController::class, 'store'])->name('admin.gallery.image.store');
@@ -68,7 +62,15 @@ Route::put('/roles/update', [RolesController::class, 'updateByAjax'])->name('adm
 Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
 Route::put('/profile/{user}', [ProfileController::class, 'update'])->name('admin.profile.update');
 
-// Generators
-Route::get('/generate-translations',['App\Http\Controllers\Admin\GeneratorController', 'CreateTranslation'])->name('generator');
-Route::get('/generate-roles-permissions',['App\Http\Controllers\Admin\GeneratorController', 'CreateRolesPermisions'])->name('generator');
-Route::get('/generate-delete',['App\Http\Controllers\Admin\GeneratorController', 'DeleteTranslation'])->name('generator.delete');
+//Production Commands
+Route::get('/laravel/generate-storage-link',function(){
+    Artisan::call('storage:link');
+    return redirect()->route('admin.home')->with(['message'=>'Storage Enlazado!','alertStatus'=>'success']);
+});
+Route::get('/laravel/cache-clear-all',function(){
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+    return redirect()->route('admin.home')->with(['message'=>'Datos en Cache Limpiados!','alertStatus'=>'success']);
+});
