@@ -16,7 +16,7 @@
 
     <div class="admin__actions">
         <div class="">
-                <input class="checked-all" value="all" name="{{$role}}" id="editor__read" type="checkbox" @roleCanAll($role,['create','read','update','delete']) checked @endroleCanAll>
+                <input class="checked-all" value="all" name="{{$role}}" type="checkbox" @roleCanAll($role,$permissionsNames) checked @endroleCanAll>
                 <span >Seleccionar todos</span>
         </div>
     </div>
