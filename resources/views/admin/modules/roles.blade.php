@@ -33,111 +33,6 @@
         <!-- Filas y Columnas -->
         @include('admin.modules._parts.roles-rows')
         
-        <!-- <form action="/admin/set-role" class="role__editor" method="POST">
-            @csrf
-            @method('put')
-
-            <div class="editor__title">
-                Editor
-            </div>
-            
-            <div class="editor__read">
-                <input id="editor__read" type="checkbox">
-            </div>
-
-            <div class="editor__update">
-                <input id="editor__update" type="checkbox">
-            </div>
-            
-            <div class="editor__create">
-                <input id="editor__create" type="checkbox">
-            </div>
-
-            <div class="editor__delete">
-                <input id="editor__delete" type="checkbox">
-            </div>
-            
-            <div class="editor__buttons">
-                <button title="save" class="button__save">
-                    <i class="fas fa-save"></i>
-                </button>
-
-                <button title="close" class="button__cancel">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-        </form>
-        
-        <form action="/admin/set-role" class="role__guest" method="POST">
-            @csrf
-            @method('put')
-
-            <div class="guest__title">
-                Guest
-            </div>
-            
-            <div class="guest__read">
-                <input id="guest__read" type="checkbox">
-            </div>
-
-            <div class="guest__update">
-                <input id="guest__update" type="checkbox">
-            </div>
-            
-            <div class="guest__create">
-                <input id="guest__create" type="checkbox">
-            </div>
-
-            <div class="guest__delete">
-                <input id="guest__delete" type="checkbox">
-            </div>
-            
-            <div class="guest__buttons">
-                <button title="save" class="button__save">
-                    <i class="fas fa-save"></i>
-                </button>
-
-                <button title="close" class="button__cancel">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-        </form>
-        
-        <form action="/admin/set-role" class="role__special" method="POST">
-            @csrf
-            @method('put')
-
-            <div class="special__title">
-                Special
-            </div>
-            
-            <div class="special__read">
-                <input id="special__read" type="checkbox">
-            </div>
-
-            <div class="special__update">
-                <input id="special__update" type="checkbox">
-            </div>
-            
-            <div class="special__create">
-                <input id="special__create" type="checkbox">
-            </div>
-
-            <div class="special__delete">
-                <input id="special__delete" type="checkbox">
-            </div>
-            
-            <div class="special__buttons">
-                <button title="save" class="button__save">
-                    <i class="fas fa-save"></i>
-                </button>
-
-                <button title="close" class="button__cancel">
-                    <i class="fas fa-window-close"></i>
-                </button>
-            </div>
-        </form> -->
-        
         {{-- <div class="roles__buttons">
             <!-- Acciones -->
             <button title="guardar" class="btn btn-success">
@@ -277,6 +172,7 @@
             background-color: #dc3545;
             border: 1px solid transparent;
         }
+        /* Jean */
     </style>
 @stop
 
@@ -295,6 +191,7 @@
         if(!target.getAttribute('type') || target.getAttribute('type') != 'checkbox'){
             return null;
         }
+
         let checkboxData = {
             "role": target.name,
             "permission": target.value,
@@ -310,13 +207,27 @@
             type: 'PUT',
             data: {data: JSON.stringify(values), _token: '{{csrf_token()}}'},
             success: function success(data){
-                let response = JSON.parse(data)
+                const response = JSON.parse(data)
+                const checkList = $('[name="'+ response.role+ '"]');
+                const checkAll = $('[name="'+ response.role+ '"][value="all"]');
+                const checkedElements = $('input[value!="all"][name="'+ response.role+ '"]input:checked') 
+
+                if(response.permission == 'all' && response.isChecked === true) {//check all inputs from a certain role
+                    checkList.each((i,element)=>{element.checked = true;})
+                }
+                else if(response.permission == 'all' && response.isChecked === false){//uncheck all inputs from a speceific role
+                    checkList.each((i,element)=>{element.checked = false;})
+                }
+
+                if(checkedElements.length >= 4){checkAll.attr('checked','checked')}//check input where value = all from a speceific role
+                else if(checkedElements.length < 4){checkAll.attr('checked',false)}//uncheck input where value = all from a speceific role
+
                 let canOrCant = response.isChecked == true ? 'asignado' : 'revocado';
                 let html = `
-                    <h2>Permiso : ${response.permission} ${canOrCant} a ${response.role}</h2>
+                    <span>Permiso : ${response.permission} ${canOrCant} a ${response.role}</span>
                 `;
                 $('#infoFeedback').html(html);
-                console.log(response)
+                
             },  
             error: function error(err){
                 console.error(err);

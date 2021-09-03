@@ -26,7 +26,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Blade::if('roleCan', function ($roleName,$permission) {
-            return Role::findByName($roleName)->hasPermissionTo($permission);;
+            return Role::findByName($roleName)->hasPermissionTo($permission);
+        });
+        Blade::if('roleCanAll', function ($roleName,$permissions) {
+            $rolePermissionNames = Role::findByName($roleName)->permissions->pluck('name');
+            return (count(array_intersect($rolePermissionNames->all(),$permissions)) === count($permissions));
         });
     }
 }
