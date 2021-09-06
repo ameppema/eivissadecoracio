@@ -208,6 +208,7 @@
             data: {data: JSON.stringify(values), _token: '{{csrf_token()}}'},
             success: function success(data){
                 const response = JSON.parse(data)
+                console.log(response)
                 const checkList = $('[name="'+ response.role+ '"]');
                 const checkAll = $('[name="'+ response.role+ '"][value="all"]');
                 const checkedElements = $('input[value!="all"][name="'+ response.role+ '"]input:checked') 
