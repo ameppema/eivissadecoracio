@@ -29,7 +29,7 @@
     <section id="gallery" class="gallery">
         @foreach ($galleryOne as $item)
             <div class="gallery__image">
-                <img src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
+                <img class="lightbox" src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
             </div>
         @endforeach
     </section>
@@ -41,7 +41,7 @@
     <section id="gallery" class="gallery">
         @foreach ($galleryTwo as $item)
             <div class="gallery__image">
-                <img src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
+                <img class="lightbox" src="/storage/{{$item->image_src}}" alt="{{$item->image_alt}}">
             </div>
         @endforeach
     </section>
@@ -57,4 +57,12 @@
     <footer class="footer">
         @include('_partials.footer')
     </footer>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('css/ligthbox.css')}}">
+@endsection
+
+@section('js')
+    <script src="{{asset('js/lightbox.js')}}"></script>
 @endsection
