@@ -19,6 +19,7 @@
     <link rel="apple-icon" sizes="144x144" href="{{ asset('favicon/apple-icon-144x144.png') }}"/>
     <link rel="apple-icon" sizes="152x152" href="{{ asset('favicon/apple-icon-152x152.png') }}"/>
     <link rel="apple-icon" sizes="180x180" href="{{ asset('favicon/apple-icon-180x180.png') }}"/>
+    @yield('css')
 
     <title>Eivissa Decoracio - @yield('title')</title>
 </head>
@@ -31,5 +32,6 @@
 
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>
+    @yield('js')
 </body>
 </html>

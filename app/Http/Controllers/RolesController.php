@@ -5,41 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Traits\RolesNPermissions;
 
 class RolesController extends Controller
 {
-    private $onlyCRUDpermissions;
+    use RolesNPermissions;
+    private $specificPermissions;
+
     public function __construct()
     {
         $this->middleware(['can:admin.roles']);
-        $this->onlyCRUDpermissions = ['read','update','create','delete'];
+        $this->specificPermissions = ['read','update','create','delete'];
     }
     public function index(Request $request)
     {
         $rolesAll = Role::all()->pluck('name');
-        $permissionsCRUD = Permission::whereIn('name',$this->onlyCRUDpermissions)->get();
+        $permissionsCRUD = Permission::whereIn('name',$this->specificPermissions)->get();
         return view('admin.modules.roles', compact(['permissionsCRUD','rolesAll']));
     }
 
     public function updateByAjax(Request $request){
+
         $inputData = json_decode($request->data);
-        if(isset($inputData->role)){
-            if($inputData->role === 'Admin') return response()->json(json_encode($inputData));
-            $role = Role::where('name',$inputData->role)->first();
-            if($inputData->isChecked == true){
-                if($inputData->permission == 'all'){
-                    $role->givePermissionTo($this->onlyCRUDpermissions);
-                    return response()->json(json_encode($inputData));
-                }
-                $role->givePermissionTo($inputData->permission);
-            }else{
-                if($inputData->permission == 'all'){
-                    $role->revokePermissionTo($this->onlyCRUDpermissions);
-                    return response()->json(json_encode($inputData));
-                }
-                $role->revokePermissionTo($inputData->permission);
-            }
-        }
+
+        if(!isset($inputData->role) || $inputData->role === 'Admin') return json_encode(["msg"=>"Can't modify Admin Role permissions or Undefined role given","data"=> $inputData]);
+
+        $role = Role::where('name',$inputData->role)->first();
+        
+        $this->PermissionHandler($inputData->permission, $role, $inputData->isChecked);
+
         return response()->json(json_encode($inputData));
     }
 }
