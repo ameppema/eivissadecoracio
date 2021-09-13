@@ -20,7 +20,7 @@
 @endif
 
 <!-- Formulario para agregar un elemento -->
-<form action="" method="post" enctype="multipart/form-data">
+<form action="{{route('admin.module.partners.update', ['id' => $partnerData->id])}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('put')
 
