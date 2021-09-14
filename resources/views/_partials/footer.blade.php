@@ -21,19 +21,19 @@
 <div class="footer__social">
     <p class="social__title">Social Networks</p>
 
-    <a class="social__mail" href="/">
+    <a class="social__mail" href="/" target="_blank">
         <img src="/images/footer/icon_mail.png" alt="Mail">
     </a>
 
-    <a class="social__facebook" href="/">
+    <a class="social__facebook" href="/" target="_blank">
         <img src="/images/footer/icon_facebook.png" alt="Facebook">
     </a>
 
-    <a class="social__instagram" href="/">
+    <a class="social__instagram" href="/" target="_blank">
         <img src="/images/footer/icon_instagram.png" alt="Instagram">
     </a>
     
-    <a class="social__login" href="/admin">
+    <a class="social__login" href="/admin" target="_blank">
         <img src="/images/footer/icon_login.png" alt="Login">
     </a>
 </div>
