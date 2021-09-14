@@ -1,9 +1,9 @@
 <?php
 return [
     'historyTitle'=> 'Our History',
-    'historyDescription'=> 'Phasellus consequat sed dui a dapibus. Aliquam erat volutpat.(en)',
+    'historyDescription'=> 'We will take on any challenge that comes our way.',
     'contactTitle'=>'Contact.',
-    'contactDescription'=>'Phasellus consequat sed dui a dapibus.(en)',
+    'contactDescription'=>'Write to us for a quote or to ask any questions you may have.',
     'contactName'=>'Name',
     'contactMail'=>'Email',
     'contactPhone'=>'Phone Number',
