@@ -11,7 +11,7 @@ class ContactMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subject = "Correo desde la Web";
+    public $subject = "Formulario de contacto Web";
     public $contactInfo;
 
     /**

@@ -11,6 +11,7 @@
 
     <form class="contact__form" action="{{route('contact.send')}}" method="POST">
         @csrf
+        @honeypot
 
         <div class="form__name">
             <input type="text" id="name" name="name" placeholder="{{__('translations.contactName')}}:">

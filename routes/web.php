@@ -1,6 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ObrasController;
@@ -11,8 +12,8 @@ use App\Http\Controllers\RehabilitacionesController;
 use App\Http\Controllers\ParquetsController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Middleware\Localization;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
+use Spatie\Honeypot\ProtectAgainstSpam;
+
 /* Language Implementation */
 Auth::routes();
 Route::get('lang/{locale}', [LocalizationController::class, 'lang'])->name('lang');
@@ -28,4 +29,6 @@ Route::middleware('locale')->group(function(){
     Route::get('{locale}/parquets', [ParquetsController::class, 'index'])->name('parquets');
 
 });
-Route::post('contact', [ContactController::class, 'send'])->name('contact.send')->withoutMiddleware(Localization::class);
+// Route::post('contact', [ContactController::class, 'send'])->name('contact.send')->withoutMiddleware(Localization::class);
+
+Route::post('contact', [ContactController::class, 'send'])->name('contact.send')->middleware(ProtectAgainstSpam::class)->withoutMiddleware(Localization::class);
