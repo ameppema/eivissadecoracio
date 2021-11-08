@@ -39,10 +39,27 @@
             
             <div class="title__users">Usuarios</div>
 
-            <div class="title__actions">Acciones</div>
+            <div class="title__actions">Todos</div>
         </div>
 
-        @include('admin.modules._parts.permissions-rows')
+        @foreach($rolesAll as $role)
+            <form class="permission__admin" method="POST">
+                @csrf
+                @method('put')
+
+                <div class="admin__title">{{$role}}</div>
+                
+                @foreach($permissionsAll as $permission)
+                    <div class="editor__dashboard">
+                        <input name="{{$role}}" value="{{$permission}}" type="checkbox" @roleCan($role,$permission) checked @endroleCan>
+                    </div>
+                @endforeach
+                
+                <div class="admin__actions">
+                    <input class="checked-all" value="all" name="{{$role}}" type="checkbox" @roleCanAll($role,$permissionsNames) checked @endroleCanAll>
+                </div>
+            </form>
+        @endforeach
         
     </section>
 @stop

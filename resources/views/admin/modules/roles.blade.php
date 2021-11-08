@@ -14,7 +14,9 @@
             <div id="infoFeedback"></div>
         </div>
     </div>
+
     <section class="roles" id="permisionsContainer">
+        <!-- Roles Titles -->
         <div class="role__titles">
             <div class="title__role">Permisos</div>
             
@@ -23,26 +25,35 @@
             <div class="title__read">Ver</div>
             
             <div class="title__update">Editar</div>
-            
-            
+                        
             <div class="title__delete">Borrar</div>
             
-            <div class="title__actions">Acciones</div>
+            <div class="title__actions">Todos</div>
         </div>
         
-        <!-- Filas y Columnas -->
-        @include('admin.modules._parts.roles-rows')
-        
-        {{-- <div class="roles__buttons">
-            <!-- Acciones -->
-            <button title="guardar" class="btn btn-success">
-                Guardar
-            </button>
-    
-            <button title="cancelar" class="btn btn-danger">
-                Cancelar
-            </button>
-        </div> --}}
+        <!-- Roles Items -->
+        @foreach($rolesAll as $role)
+            <form action="/admin/set-role" class="role" method="POST">
+                @csrf
+                @method('put')
+
+                <div class="">
+                    {{$role}}
+                </div>
+
+                @foreach($permissionsCRUD as $permission)
+                    <div class="" data-role="{{$role}}">
+                        <input value="{{$permission->name}}" name="{{$role}}" id="editor__read" type="checkbox" @roleCan($role,$permission) checked  @endroleCan>
+                    </div>
+                @endforeach
+
+                <div class="role__buttons">
+                    <div class="">
+                        <input class="checked-all" value="all" name="{{$role}}" id="editor__read" type="checkbox" @roleCanAll($role,['create','read','update','delete']) checked @endroleCanAll>
+                    </div>
+                </div>
+            </form>
+        @endforeach
     </section>
 @stop
 
@@ -73,11 +84,7 @@
             display: flex;
             align-items: center;
         }
-        .role,
-        .role__admin,
-        .role__editor,
-        .role__guest,
-        .role__special {
+        .role {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             grid-template-rows: 1fr;
@@ -94,11 +101,7 @@
             margin: 0 10px;
         }
 
-        .role div input[type="checkbox"],
-        .role__admin div input[type="checkbox"],
-        .role__editor div input[type="checkbox"],
-        .role__guest div input[type="checkbox"],
-        .role__special div input[type="checkbox"] {
+        .role div input[type="checkbox"] {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -112,11 +115,7 @@
             cursor: pointer;
         }
         
-        .role div input[type="checkbox"]::after,
-        .role__admin div input[type="checkbox"]::after,
-        .role__editor div input[type="checkbox"]::after,
-        .role__guest div input[type="checkbox"]::after,
-        .role__special div input[type="checkbox"]::after {
+        .role div input[type="checkbox"]::after {
             display: none;
             font-family: "Font Awesome 5 Free";
             font-weight: 900;
@@ -125,35 +124,19 @@
             color: white;
         }
         
-        .role div input[type="checkbox"]:hover,
-        .role__admin div input[type="checkbox"]:hover,
-        .role__editor div input[type="checkbox"]:hover,
-        .role__guest div input[type="checkbox"]:hover,
-        .role__special div input[type="checkbox"]:hover {
+        .role div input[type="checkbox"]:hover {
             background-color: gray;
         }
         
-        .role div input[type="checkbox"]:checked,
-        .role__admin div input[type="checkbox"]:checked,
-        .role__editor div input[type="checkbox"]:checked,
-        .role__guest div input[type="checkbox"]:checked,
-        .role__special div input[type="checkbox"]:checked {
+        .role div input[type="checkbox"]:checked {
             background-color: #28a745;
         }
         
-        .role div input[type="checkbox"]:checked:after,
-        .role__admin div input[type="checkbox"]:checked:after,
-        .role__editor div input[type="checkbox"]:checked:after,
-        .role__guest div input[type="checkbox"]:checked:after,
-        .role__special div input[type="checkbox"]:checked:after {
+        .role div input[type="checkbox"]:checked:after {
             display: block;
         }
         
-        .role__buttons button,
-        .admin__buttons button,
-        .editor__buttons button,
-        .guest__buttons button,
-        .special__buttons button {
+        .role__buttons button {
             display: inline-block;
             margin-right: 5px;
             color: white;
@@ -172,7 +155,6 @@
             background-color: #dc3545;
             border: 1px solid transparent;
         }
-        /* Jean */
     </style>
 @stop
 
